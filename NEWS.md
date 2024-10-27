@@ -1,6 +1,9 @@
 # Version (development version)
 
- * ...
+## Bug Fixes
+
+ * Use of `future.seed = TRUE` could result in an error
+   `!any(seed_next != seed) is not TRUE` in rare cases.
 
 
 # Version 1.11.2 [2024-03-27]
