@@ -32,6 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(".", repos=NULL, type="source")
+        shell: Rscript {0}
 
       - name: Test coverage
         run: |
