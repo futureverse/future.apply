@@ -1,54 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://future.apply.futureverse.org/404.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/articles/future.apply-1-overview.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/index.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/fold.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/future.apply.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/future.apply.options.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/future_apply.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/future_by.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/future_lapply.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/future_mapply.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://future.apply.futureverse.org/reference/makeChunks.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://future.apply.futureverse.org/404.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/CONDUCT.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/CONTRIBUTING.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/articles/future.apply-1-overview.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/articles/index.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/authors.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/index.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/news/index.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/fold.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/future.apply.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/future.apply.options.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/future_apply.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/future_by.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/future_lapply.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/future_mapply.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/index.html</loc></url>
+<url><loc>https://future.apply.futureverse.org/reference/makeChunks.html</loc></url>
 </urlset>
+
