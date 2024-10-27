@@ -119,7 +119,7 @@ for (strategy in supportedStrategies()) {
   }
 
   message("- future_lapply(X, ...) - 'X' containing globals ...")
-  ## From https://github.com/HenrikBengtsson/future.apply/issues/12
+  ## From https://github.com/futureverse/future.apply/issues/12
   a <- 42
   b <- 21
   X <- list(
@@ -145,7 +145,7 @@ for (strategy in supportedStrategies()) {
   str(list(z1 = z1))
   stopifnot(identical(z1, z0))
 
-  ## https://github.com/HenrikBengtsson/future.apply/issues/47
+  ## https://github.com/futureverse/future.apply/issues/47
   message("- future_lapply(X, ...) - '{ a <- a + 1; a }' ...")
   a <- 1
   z0 <- lapply(1, function(ii) {
@@ -158,7 +158,7 @@ for (strategy in supportedStrategies()) {
   })
   stopifnot(identical(z1, z0))
 
-  ## https://github.com/HenrikBengtsson/future.apply/issues/47
+  ## https://github.com/futureverse/future.apply/issues/47
   message("- future_lapply(X, ...) - '{ a; a <- a + 1 }' ...")
   z2 <- tryCatch(future_lapply(1, function(ii) {
     a
@@ -166,7 +166,7 @@ for (strategy in supportedStrategies()) {
   }), error = identity)
   stopifnot(identical(z2, z0))
 
-  ## https://github.com/HenrikBengtsson/future.apply/issues/85
+  ## https://github.com/futureverse/future.apply/issues/85
   message("- future_lapply(..., future.globals = <list>) ...")
   a <- 0
   y <- future_lapply(1, FUN = function(x) a, future.globals = list(a = 42))
