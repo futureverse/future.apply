@@ -60,3 +60,4 @@ Rplots.pdf$
 ^docs
 ^pkgdown
 [.]Rdump
+^\.github$

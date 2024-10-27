@@ -58,7 +58,10 @@ set_random_seed <- function(seed) {
 next_random_seed <- function(seed = get_random_seed()) {
   sample.int(n = 1L, size = 1L, replace = FALSE)
   seed_next <- get_random_seed()
-  stop_if_not(!any(seed_next != seed))
+  
+  ## Assert RNG state changed
+  stop_if_not(identical(seed_next, seed))
+  
   invisible(seed_next)
 }
 

@@ -114,7 +114,7 @@ for (strategy in supportedStrategies()) {
   }
 
   message("- future_mapply(FUN, X, ...) - 'X' containing globals ...")
-  ## From https://github.com/HenrikBengtsson/future.apply/issues/12
+  ## From https://github.com/futureverse/future.apply/issues/12
   a <- 42
   b <- 21
   X <- list(

@@ -96,8 +96,8 @@ section on the
 Useful links:
 \itemize{
   \item \url{https://future.apply.futureverse.org}
-  \item \url{https://github.com/HenrikBengtsson/future.apply}
-  \item Report bugs at \url{https://github.com/HenrikBengtsson/future.apply/issues}
+  \item \url{https://github.com/futureverse/future.apply}
+  \item Report bugs at \url{https://github.com/futureverse/future.apply/issues}
 }
 
 }
