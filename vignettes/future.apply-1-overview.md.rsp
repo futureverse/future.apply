@@ -128,7 +128,7 @@ Bioconductor's parallel mappers:<br>
 <code>bpvec()</code>
 </td>
 <td>
-All <strong>future</strong> backends via <a href="https://cran.r-project.org/package=doFuture"><strong>doFuture</strong></a> (because it supports <strong>foreach</strong>) or via <a href="https://github.com/HenrikBengtsson/BiocParallel.FutureParam"><strong>BiocParallel.FutureParam</strong></a> (direct BiocParallelParam support; prototype)
+All <strong>future</strong> backends via <a href="https://cran.r-project.org/package=doFuture"><strong>doFuture</strong></a> (because it supports <strong>foreach</strong>) or via <a href="https://github.com/futureverse/BiocParallel.FutureParam"><strong>BiocParallel.FutureParam</strong></a> (direct BiocParallelParam support; prototype)
 </td>
 </tr>
 

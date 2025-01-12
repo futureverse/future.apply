@@ -6,7 +6,7 @@ labels: ''
 assignees: ''
 
 ---
-(Please use <https://github.com/HenrikBengtsson/future/discussions> for Q&A)
+(Please use <https://github.com/futureverse/future/discussions> for Q&A)
 
 **Describe the bug**
 A clear and concise description of what the bug is.  
