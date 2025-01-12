@@ -1,6 +1,12 @@
 # Version (development version)
 
- * ...
+## Deprecated and Defunct
+
+ * Specifying the function `FUN` for `future_by()` as a character
+   string is defunct. It should be specified as a function, e.g. `FUN
+   = sqrt` and ``FUN = `[[` ``, which is what `base::by()`
+   requires. Use of a string has been deprecated since
+   **future.apply** 1.10.0 (2022-11-04).
 
 
 # Version 1.11.3 [2024-10-27]

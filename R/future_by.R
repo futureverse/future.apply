@@ -160,7 +160,7 @@ future_by_internal <- function(data, INDICES, FUN, ..., simplify = TRUE, .SUBSET
 future_by_match_FUN <- function(FUN) {
   if (is.function(FUN)) return(FUN)
   
-  .Deprecated(msg = "Specifying the function 'FUN' for future_by() as a character string is deprecated in future.apply (>= 1.10.0) [2022-11-04], because base::by() does not support it. Instead, specify it as a function, e.g. FUN = sqrt and FUN = `[[`. It is deprecated.", package = .packageName)
+  .Defunct(msg = "Specifying the function 'FUN' for future_by() as a character string is defunct in future.apply (>= 1.12.0) [2025-??-??], because base::by() does not support it. Instead, specify it as a function, e.g. FUN = sqrt and FUN = `[[`", package = .packageName)
 
   match.fun(FUN)
 }
