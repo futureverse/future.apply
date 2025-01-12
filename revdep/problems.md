@@ -270,7 +270,7 @@ Run `revdepcheck::revdep_details(, "collinear")` for more info
 
 </details>
 
-## In both
+## Newly fixed
 
 *   checking installed package size ... NOTE
     ```
@@ -278,6 +278,8 @@ Run `revdepcheck::revdep_details(, "collinear")` for more info
       sub-directories of 1Mb or more:
         data   7.0Mb
     ```
+
+## In both
 
 *   checking data for non-ASCII characters ... NOTE
     ```
@@ -355,9 +357,8 @@ Run `revdepcheck::revdep_details(, "dipsaus")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.6Mb
+      installed size is  6.2Mb
       sub-directories of 1Mb or more:
-        R      1.0Mb
         libs   4.2Mb
     ```
 
@@ -438,7 +439,7 @@ Run `revdepcheck::revdep_details(, "EFAtools")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  7.6Mb
+      installed size is  7.5Mb
       sub-directories of 1Mb or more:
         libs   6.2Mb
     ```
@@ -463,7 +464,12 @@ Run `revdepcheck::revdep_details(, "EpiNow2")` for more info
 
 </details>
 
-## Newly broken
+## In both
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘cmdstanr’
+    ```
 
 *   checking installed package size ... NOTE
     ```
@@ -484,19 +490,30 @@ Run `revdepcheck::revdep_details(, "EpiNow2")` for more info
     GNU make is a SystemRequirements.
     ```
 
-## Newly fixed
+# fdacluster
 
-*   checking whether package ‘EpiNow2’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/c4/home/henrik/futureverse/future.apply/revdep/checks/EpiNow2/old/EpiNow2.Rcheck/00install.out’ for details.
-    ```
+<details>
+
+* Version: 0.4.0
+* GitHub: https://github.com/astamm/fdacluster
+* Source code: https://github.com/cran/fdacluster
+* Date/Publication: 2025-01-12 18:00:02 UTC
+* Number of recursive dependencies: 125
+
+Run `revdepcheck::revdep_details(, "fdacluster")` for more info
+
+</details>
 
 ## In both
 
-*   checking package dependencies ... NOTE
+*   checking installed package size ... NOTE
     ```
-    Package suggested but not available for checking: ‘cmdstanr’
+      installed size is 23.0Mb
+      sub-directories of 1Mb or more:
+        R      1.9Mb
+        doc    1.5Mb
+        help   2.1Mb
+        libs  17.0Mb
     ```
 
 # forecastML
@@ -558,13 +575,6 @@ Run `revdepcheck::revdep_details(, "geocmeans")` for more info
 Run `revdepcheck::revdep_details(, "geohabnet")` for more info
 
 </details>
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.7Mb
-    ```
 
 ## In both
 
@@ -861,10 +871,10 @@ Run `revdepcheck::revdep_details(, "kmeRtone")` for more info
 
 <details>
 
-* Version: 1.8.0
+* Version: 1.8.1
 * GitHub: https://github.com/kkholst/lava
 * Source code: https://github.com/cran/lava
-* Date/Publication: 2024-03-05 13:00:02 UTC
+* Date/Publication: 2025-01-12 11:40:02 UTC
 * Number of recursive dependencies: 133
 
 Run `revdepcheck::revdep_details(, "lava")` for more info
@@ -1117,7 +1127,31 @@ Run `revdepcheck::revdep_details(, "missSBM")` for more info
     ```
       installed size is 10.0Mb
       sub-directories of 1Mb or more:
-        libs   7.9Mb
+        libs   8.0Mb
+    ```
+
+# modelsummary
+
+<details>
+
+* Version: 2.2.0
+* GitHub: https://github.com/vincentarelbundock/modelsummary
+* Source code: https://github.com/cran/modelsummary
+* Date/Publication: 2024-09-02 21:20:02 UTC
+* Number of recursive dependencies: 319
+
+Run `revdepcheck::revdep_details(, "modelsummary")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  6.4Mb
+      sub-directories of 1Mb or more:
+        help       4.3Mb
+        tinytest   1.7Mb
     ```
 
 # MOSS
@@ -1164,7 +1198,7 @@ Run `revdepcheck::revdep_details(, "nhdplusTools")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.6Mb
+      installed size is  6.5Mb
       sub-directories of 1Mb or more:
         data   1.6Mb
         doc    4.2Mb
@@ -1407,6 +1441,47 @@ Run `revdepcheck::revdep_details(, "qgcomp")` for more info
     checkRd: (-1) qgcomp.survcurve.boot.Rd:24-25: Lost braces in \itemize; \value handles \item{}{} directly
     ```
 
+# receptiviti
+
+<details>
+
+* Version: 0.1.8
+* GitHub: https://github.com/Receptiviti/receptiviti-r
+* Source code: https://github.com/cran/receptiviti
+* Date/Publication: 2024-03-29 18:00:03 UTC
+* Number of recursive dependencies: 65
+
+Run `revdepcheck::revdep_details(, "receptiviti")` for more info
+
+</details>
+
+## In both
+
+*   checking tests ...
+    ```
+      Running ‘testthat.R’
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Complete output:
+      > library(testthat)
+      > library(receptiviti)
+      > 
+      > test_check("receptiviti")
+      Status: ERROR
+      Message: Invalid header received from client.
+    ...
+       7. └─receptiviti::receptiviti(...)
+      ── Failure ('test-receptiviti_status.R:5:3'): failures works ───────────────────
+      receptiviti_status(...) is not NULL
+      
+      `actual` is a list
+      `expected` is NULL
+      
+      [ FAIL 2 | WARN 0 | SKIP 2 | PASS 6 ]
+      Error: Test failures
+      Execution halted
+    ```
+
 # sctransform
 
 <details>
@@ -1511,7 +1586,7 @@ Run `revdepcheck::revdep_details(, "Seurat")` for more info
       installed size is 16.0Mb
       sub-directories of 1Mb or more:
         R      1.7Mb
-        libs  13.4Mb
+        libs  13.5Mb
     ```
 
 *   checking Rd cross-references ... NOTE
@@ -1544,7 +1619,7 @@ Run `revdepcheck::revdep_details(, "SeuratObject")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  5.5Mb
+      installed size is  5.6Mb
       sub-directories of 1Mb or more:
         R      1.5Mb
         libs   3.2Mb
@@ -1599,9 +1674,9 @@ Run `revdepcheck::revdep_details(, "Signac")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  5.2Mb
+      installed size is  5.5Mb
       sub-directories of 1Mb or more:
-        R      1.1Mb
+        R      1.5Mb
         libs   2.9Mb
     ```
 
@@ -1769,9 +1844,9 @@ Run `revdepcheck::revdep_details(, "spaMM")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 55.6Mb
+      installed size is 54.4Mb
       sub-directories of 1Mb or more:
-        R      4.1Mb
+        R      2.8Mb
         libs  50.2Mb
     ```
 
@@ -1883,7 +1958,7 @@ Run `revdepcheck::revdep_details(, "spNetwork")` for more info
       installed size is 27.7Mb
       sub-directories of 1Mb or more:
         extdata   2.6Mb
-        libs     22.7Mb
+        libs     22.6Mb
     ```
 
 # stars
@@ -2115,9 +2190,9 @@ Run `revdepcheck::revdep_details(, "tsgarch")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 144.3Mb
+      installed size is 144.2Mb
       sub-directories of 1Mb or more:
-        libs  143.2Mb
+        libs  143.1Mb
     ```
 
 # tsmarch
