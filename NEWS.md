@@ -8,6 +8,12 @@
    requires. Use of a string has been deprecated since
    **future.apply** 1.10.0 (2022-11-04).
 
+ * Use of `...` as global variables is now considered a mistake. For
+   example, instead of `f <- function(X, ...)  future_lapply(X,
+   function(x) sum(x, ...))`, use `f <- function(X, ...)
+   future_lapply(X, function(x, ...) sum(x, ...), ...)` such that
+   `...` is passed as arguments.
+ 
 
 # Version 1.11.3 [2024-10-27]
 
