@@ -8,9 +8,13 @@
 #' 
 #' @param FUN  A function taking at least one argument.
 #' 
-#' @param \ldots  (optional) Additional arguments passed to `FUN()`.
+#' @param \ldots (optional) Additional arguments passed to `FUN()`.
 #' For `future_*apply()` functions and `replicate()`, any `future.*` arguments
 #' part of `\ldots` are passed on to `future_lapply()` used internally.
+#' Importantly, if this is called inside another function which also declares
+#' \ldots arguments, do not forget to explicitly pass such \ldots arguments
+#' down to the `future_*apply()` function too, which will then pass them on
+#' to `FUN()`. See below for an example.
 #' 
 #' @param future.envir An [environment] passed as argument `envir` to
 #'        [future::future()] as-is.

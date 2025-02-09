@@ -158,7 +158,10 @@ See \code{\link[base:lapply]{base::vapply()}} for details.}
 
 \item{\ldots}{(optional) Additional arguments passed to \code{FUN()}.
 For \code{future_*apply()} functions and \code{replicate()}, any \verb{future.*} arguments
-part of \verb{\\ldots} are passed on to \code{future_lapply()} used internally.}
+part of \verb{\\ldots} are passed on to \code{future_lapply()} used internally.
+Importantly, if this is called inside another function with also declare
+\ldots arguments, do not forget to explicitly pass such \ldots arguments
+down to this function here to. See below for an example.}
 }
 \value{
 A named (unless \code{USE.NAMES = FALSE}) list.
@@ -329,6 +332,27 @@ y1 <- future_lapply(chunks, FUN = function(iris) sum(iris$Sepal.Length))
 y1 <- do.call(sum, y1)
 print(y1)
 stopifnot(all.equal(y1, y0))
+
+
+## ---------------------------------------------------------
+## Remember to pass down '...' arguments
+## ---------------------------------------------------------
+## It is important that we don't use '...' as a global variable,
+## as attempted in the following not_okay_fcn()
+bad_fcn <- function(X, ...) {
+  y <- future_lapply(X, FUN = function(x) {
+    mean(x, ...)  ## here '...' is a global variable
+  })
+  y
+}
+
+## Instead, make sure to pass '...' via arguments all the way through
+good_fcn <- function(X, ...) { ## outer '...'
+  y <- future_lapply(X, FUN = function(x, ...) {
+    mean(x, ...)  ## here '...' is an argument of FUN()
+  }, ...) ## pass outer '...' to FUN()
+  y
+}
 
 
 \dontshow{
