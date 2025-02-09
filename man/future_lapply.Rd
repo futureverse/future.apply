@@ -159,9 +159,10 @@ See \code{\link[base:lapply]{base::vapply()}} for details.}
 \item{\ldots}{(optional) Additional arguments passed to \code{FUN()}.
 For \code{future_*apply()} functions and \code{replicate()}, any \verb{future.*} arguments
 part of \verb{\\ldots} are passed on to \code{future_lapply()} used internally.
-Importantly, if this is called inside another function with also declare
+Importantly, if this is called inside another function which also declares
 \ldots arguments, do not forget to explicitly pass such \ldots arguments
-down to this function here to. See below for an example.}
+down to the \code{future_*apply()} function too, which will then pass them on
+to \code{FUN()}. See below for an example.}
 }
 \value{
 A named (unless \code{USE.NAMES = FALSE}) list.
