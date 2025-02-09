@@ -25,7 +25,7 @@ Analogously, this is true for all the other future_nnn() functions."><!-- mathja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">future.apply</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.3-9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.3-9004</span>
       </span>
     </div>
 
@@ -337,7 +337,10 @@ See <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">bas
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>(optional) Additional arguments passed to <code>FUN()</code>.
 For <code>future_*apply()</code> functions and <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate()</a></code>, any <code>future.*</code> arguments
-part of <code>\ldots</code> are passed on to <code>future_lapply()</code> used internally.</p></dd>
+part of <code>\ldots</code> are passed on to <code>future_lapply()</code> used internally.
+Importantly, if this is called inside another function with also declare
+... arguments, do not forget to explicitly pass such ... arguments
+down to this function here to. See below for an example.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -537,6 +540,27 @@ base <span style="R">R</span> functions, which are licensed under GPL (&gt;= 2) 
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 876.5</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">y1</span>, <span class="va">y0</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ---------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Remember to pass down '...' arguments</span></span></span>
+<span class="r-in"><span><span class="co">## ---------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## It is important that we don't use '...' as a global variable,</span></span></span>
+<span class="r-in"><span><span class="co">## as attempted in the following not_okay_fcn()</span></span></span>
+<span class="r-in"><span><span class="va">bad_fcn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">X</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">future_lapply</span><span class="op">(</span><span class="va">X</span>, FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>  <span class="co">## here '...' is a global variable</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Instead, make sure to pass '...' via arguments all the way through</span></span></span>
+<span class="r-in"><span><span class="va">good_fcn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">X</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span> <span class="co">## outer '...'</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">future_lapply</span><span class="op">(</span><span class="va">X</span>, FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>  <span class="co">## here '...' is an argument of FUN()</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span>, <span class="va">...</span><span class="op">)</span> <span class="co">## pass outer '...' to FUN()</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

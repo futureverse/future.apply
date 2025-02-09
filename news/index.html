@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">future.apply</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.3-9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.3-9004</span>
       </span>
     </div>
 
@@ -137,8 +137,12 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
-<ul><li>…</li>
+<div class="section level3">
+<h3 id="deprecated-and-defunct-development-version">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-development-version"></a></h3>
+<ul><li><p>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN    = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</p></li>
+<li><p>Use of <code>...</code> as global variables is now considered a mistake. For example, instead of <code>f &lt;- function(X, ...)  future_lapply(X,    function(x) sum(x, ...))</code>, use <code>f &lt;- function(X, ...)    future_lapply(X, function(x, ...) sum(x, ...), ...)</code> such that <code>...</code> is passed as arguments.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.11.3" id="version-1113">Version 1.11.3<small>2024-10-27</small><a class="anchor" aria-label="anchor" href="#version-1113"></a></h2>
 <div class="section level3">
