@@ -26,10 +26,10 @@ Run `revdepcheck::revdep_details(, "AIPW")` for more info
 
 <details>
 
-* Version: 0.4.0
+* Version: 0.5.0
 * GitHub: https://github.com/etiennebacher/altdoc
 * Source code: https://github.com/cran/altdoc
-* Date/Publication: 2024-07-23 21:10:02 UTC
+* Date/Publication: 2025-01-23 16:40:07 UTC
 * Number of recursive dependencies: 80
 
 Run `revdepcheck::revdep_details(, "altdoc")` for more info
@@ -58,7 +58,7 @@ Run `revdepcheck::revdep_details(, "altdoc")` for more info
        6.           └─altdoc:::.qmd2md(origin, tar_dir, verbose = verbose, preamble = pre)
        7.             └─base::cat(out[[2]])
       
-      [ FAIL 8 | WARN 0 | SKIP 10 | PASS 53 ]
+      [ FAIL 8 | WARN 0 | SKIP 8 | PASS 55 ]
       Error: Test failures
       Execution halted
     ```
@@ -117,7 +117,7 @@ Run `revdepcheck::revdep_details(, "BEKKs")` for more info
 * GitHub: https://github.com/spatialstatisticsupna/bigDM
 * Source code: https://github.com/cran/bigDM
 * Date/Publication: 2024-08-19 12:00:10 UTC
-* Number of recursive dependencies: 127
+* Number of recursive dependencies: 135
 
 Run `revdepcheck::revdep_details(, "bigDM")` for more info
 
@@ -158,9 +158,9 @@ Run `revdepcheck::revdep_details(, "blavaan")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 186.6Mb
+      installed size is 186.8Mb
       sub-directories of 1Mb or more:
-        R           1.2Mb
+        R           1.5Mb
         libs      183.6Mb
         testdata    1.4Mb
     ```
@@ -197,6 +197,30 @@ Run `revdepcheck::revdep_details(, "brms")` for more info
       sub-directories of 1Mb or more:
         R     3.8Mb
         doc   3.6Mb
+    ```
+
+# bsitar
+
+<details>
+
+* Version: 0.3.2
+* GitHub: https://github.com/Sandhu-SS/bsitar
+* Source code: https://github.com/cran/bsitar
+* Date/Publication: 2025-02-07 06:50:02 UTC
+* Number of recursive dependencies: 166
+
+Run `revdepcheck::revdep_details(, "bsitar")` for more info
+
+</details>
+
+## In both
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  7.7Mb
+      sub-directories of 1Mb or more:
+        R      1.3Mb
+        data   5.3Mb
     ```
 
 # ClustIRR
@@ -269,15 +293,6 @@ Run `revdepcheck::revdep_details(, "codalm")` for more info
 Run `revdepcheck::revdep_details(, "collinear")` for more info
 
 </details>
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  7.4Mb
-      sub-directories of 1Mb or more:
-        data   7.0Mb
-    ```
 
 ## In both
 
@@ -357,8 +372,9 @@ Run `revdepcheck::revdep_details(, "dipsaus")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.2Mb
+      installed size is  6.6Mb
       sub-directories of 1Mb or more:
+        R      1.0Mb
         libs   4.2Mb
     ```
 
@@ -392,10 +408,10 @@ Run `revdepcheck::revdep_details(, "disk.frame")` for more info
 
 <details>
 
-* Version: 2.0.0
+* Version: 2.0.2
 * GitHub: https://github.com/BlasBenito/distantia
 * Source code: https://github.com/cran/distantia
-* Date/Publication: 2025-01-08 23:50:02 UTC
+* Date/Publication: 2025-02-01 19:50:02 UTC
 * Number of recursive dependencies: 68
 
 Run `revdepcheck::revdep_details(, "distantia")` for more info
@@ -439,7 +455,7 @@ Run `revdepcheck::revdep_details(, "EFAtools")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  7.5Mb
+      installed size is  7.6Mb
       sub-directories of 1Mb or more:
         libs   6.2Mb
     ```
@@ -454,10 +470,10 @@ Run `revdepcheck::revdep_details(, "EFAtools")` for more info
 
 <details>
 
-* Version: 1.6.1
+* Version: 1.7.0
 * GitHub: https://github.com/epiforecasts/EpiNow2
 * Source code: https://github.com/cran/EpiNow2
-* Date/Publication: 2024-10-31 14:40:02 UTC
+* Date/Publication: 2025-02-05 08:30:02 UTC
 * Number of recursive dependencies: 131
 
 Run `revdepcheck::revdep_details(, "EpiNow2")` for more info
@@ -473,11 +489,10 @@ Run `revdepcheck::revdep_details(, "EpiNow2")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 249.1Mb
+      installed size is 265.1Mb
       sub-directories of 1Mb or more:
-        doc        1.4Mb
-        extdata    2.3Mb
-        libs     244.0Mb
+        doc     1.5Mb
+        libs  261.1Mb
     ```
 
 *   checking Rd cross-references ... NOTE
@@ -494,10 +509,10 @@ Run `revdepcheck::revdep_details(, "EpiNow2")` for more info
 
 <details>
 
-* Version: 0.4.0
+* Version: 0.4.1
 * GitHub: https://github.com/astamm/fdacluster
 * Source code: https://github.com/cran/fdacluster
-* Date/Publication: 2025-01-12 18:00:02 UTC
+* Date/Publication: 2025-01-14 16:50:09 UTC
 * Number of recursive dependencies: 125
 
 Run `revdepcheck::revdep_details(, "fdacluster")` for more info
@@ -508,12 +523,12 @@ Run `revdepcheck::revdep_details(, "fdacluster")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 23.0Mb
+      installed size is 23.6Mb
       sub-directories of 1Mb or more:
         R      1.9Mb
         doc    1.5Mb
         help   2.1Mb
-        libs  17.0Mb
+        libs  17.5Mb
     ```
 
 # forecastML
@@ -546,7 +561,7 @@ Run `revdepcheck::revdep_details(, "forecastML")` for more info
 * GitHub: https://github.com/JeremyGelb/geocmeans
 * Source code: https://github.com/cran/geocmeans
 * Date/Publication: 2023-09-12 03:10:02 UTC
-* Number of recursive dependencies: 200
+* Number of recursive dependencies: 206
 
 Run `revdepcheck::revdep_details(, "geocmeans")` for more info
 
@@ -598,7 +613,7 @@ Run `revdepcheck::revdep_details(, "geohabnet")` for more info
        17.               └─future (local) signalConditionsASAP(obj, resignal = FALSE, pos = ii)
        18.                 └─future:::signalConditions(...)
       
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 12 ]
+      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 16 ]
       Error: Test failures
       Execution halted
     ```
@@ -653,10 +668,10 @@ Run `revdepcheck::revdep_details(, "hackeRnews")` for more info
 
 <details>
 
-* Version: 2.3.2
+* Version: 2.4.0
 * GitHub: https://github.com/jbolstad/hbamr
 * Source code: https://github.com/cran/hbamr
-* Date/Publication: 2024-09-23 12:20:07 UTC
+* Date/Publication: 2025-01-26 23:30:02 UTC
 * Number of recursive dependencies: 90
 
 Run `revdepcheck::revdep_details(, "hbamr")` for more info
@@ -667,9 +682,9 @@ Run `revdepcheck::revdep_details(, "hbamr")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 340.4Mb
+      installed size is 92.1Mb
       sub-directories of 1Mb or more:
-        libs  338.7Mb
+        libs  90.7Mb
     ```
 
 *   checking for GNU extensions in Makefiles ... NOTE
@@ -693,9 +708,25 @@ Run `revdepcheck::revdep_details(, "hero")` for more info
 
 ## In both
 
-*   checking package dependencies ... NOTE
+*   checking dependencies in R code ... NOTE
     ```
-    Package suggested but not available for checking: ‘Rmpi’
+    [c4-n38:09630] OPAL ERROR: Not initialized in file ext2x_client.c at line 112
+    --------------------------------------------------------------------------
+    The application appears to have been direct launched using "srun",
+    but OMPI was not built with SLURM's PMI support and therefore cannot
+    execute. There are several options for building PMI support under
+    SLURM, depending upon the SLURM version you are using:
+    
+      version 16.05 or later: you can use SLURM's PMIx support. This
+      requires that you configure and build SLURM --with-pmix.
+    
+      Versions earlier than 16.05: you must use either SLURM's PMI-1 or
+      PMI-2 support. SLURM builds PMI-1 by default, or you can manually
+      install PMI-2. You must then build Open MPI using --with-pmi pointing
+      to the SLURM PMI library location.
+    
+    Please configure as appropriate and try again.
+    --------------------------------------------------------------------------
     ```
 
 *   checking Rd files ... NOTE
@@ -706,11 +737,6 @@ Run `revdepcheck::revdep_details(, "hero")` for more info
     checkRd: (-1) hero.Rd:69: Lost braces
         69 | code{package == "Rmpi"}, then \code{\link[Rmpi]{mpi.applyLB}} is used.}
            |     ^
-    ```
-
-*   checking Rd cross-references ... NOTE
-    ```
-    Package unavailable to check Rd xrefs: ‘Rmpi’
     ```
 
 # InPAS
@@ -811,7 +837,7 @@ Run `revdepcheck::revdep_details(, "JANE")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 12.9Mb
+      installed size is 13.0Mb
       sub-directories of 1Mb or more:
         libs  12.7Mb
     ```
@@ -867,27 +893,6 @@ Run `revdepcheck::revdep_details(, "kmeRtone")` for more info
     GNU make is a SystemRequirements.
     ```
 
-# lava
-
-<details>
-
-* Version: 1.8.1
-* GitHub: https://github.com/kkholst/lava
-* Source code: https://github.com/cran/lava
-* Date/Publication: 2025-01-12 11:40:02 UTC
-* Number of recursive dependencies: 133
-
-Run `revdepcheck::revdep_details(, "lava")` for more info
-
-</details>
-
-## In both
-
-*   checking package dependencies ... NOTE
-    ```
-    Package suggested but not available for checking: ‘lavaSearch2’
-    ```
-
 # MAI
 
 <details>
@@ -896,7 +901,7 @@ Run `revdepcheck::revdep_details(, "lava")` for more info
 * GitHub: https://github.com/KechrisLab/MAI
 * Source code: https://github.com/cran/MAI
 * Date/Publication: 2024-10-29
-* Number of recursive dependencies: 176
+* Number of recursive dependencies: 177
 
 Run `revdepcheck::revdep_details(, "MAI")` for more info
 
@@ -919,7 +924,7 @@ Run `revdepcheck::revdep_details(, "MAI")` for more info
 * GitHub: https://github.com/SchlossLab/mikropml
 * Source code: https://github.com/cran/mikropml
 * Date/Publication: 2023-08-21 15:10:05 UTC
-* Number of recursive dependencies: 129
+* Number of recursive dependencies: 130
 
 Run `revdepcheck::revdep_details(, "mikropml")` for more info
 
@@ -1134,23 +1139,23 @@ Run `revdepcheck::revdep_details(, "missSBM")` for more info
 
 <details>
 
-* Version: 2.2.0
+* Version: 2.3.0
 * GitHub: https://github.com/vincentarelbundock/modelsummary
 * Source code: https://github.com/cran/modelsummary
-* Date/Publication: 2024-09-02 21:20:02 UTC
-* Number of recursive dependencies: 319
+* Date/Publication: 2025-02-02 12:50:02 UTC
+* Number of recursive dependencies: 321
 
 Run `revdepcheck::revdep_details(, "modelsummary")` for more info
 
 </details>
 
-## Newly broken
+## In both
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.4Mb
+      installed size is  5.4Mb
       sub-directories of 1Mb or more:
-        help       4.3Mb
+        help       3.3Mb
         tinytest   1.7Mb
     ```
 
@@ -1167,6 +1172,15 @@ Run `revdepcheck::revdep_details(, "modelsummary")` for more info
 Run `revdepcheck::revdep_details(, "MOSS")` for more info
 
 </details>
+
+## Newly broken
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  5.1Mb
+      sub-directories of 1Mb or more:
+        doc   1.5Mb
+    ```
 
 ## In both
 
@@ -1230,6 +1244,29 @@ Run `revdepcheck::revdep_details(, "OptimalGoldstandardDesigns")` for more info
            |                                                ^
     ```
 
+# PAMscapes
+
+<details>
+
+* Version: 0.10.0
+* GitHub: NA
+* Source code: https://github.com/cran/PAMscapes
+* Date/Publication: 2025-01-29 06:10:02 UTC
+* Number of recursive dependencies: 122
+
+Run `revdepcheck::revdep_details(, "PAMscapes")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘PAMscapes’ can be installed ... WARNING
+    ```
+    Found the following significant warnings:
+      Warning: no DISPLAY variable so Tk is not available
+    See ‘/c4/home/henrik/futureverse/future.apply/revdep/checks/PAMscapes/new/PAMscapes.Rcheck/00install.out’ for details.
+    ```
+
 # pavo
 
 <details>
@@ -1257,10 +1294,10 @@ Run `revdepcheck::revdep_details(, "pavo")` for more info
 
 <details>
 
-* Version: 1.2.0
+* Version: 1.2.2
 * GitHub: https://github.com/progenetix/pgxRpi
 * Source code: https://github.com/cran/pgxRpi
-* Date/Publication: 2024-10-29
+* Date/Publication: 2025-01-19
 * Number of recursive dependencies: 158
 
 Run `revdepcheck::revdep_details(, "pgxRpi")` for more info
@@ -1313,7 +1350,7 @@ Run `revdepcheck::revdep_details(, "phylolm")` for more info
 * GitHub: https://github.com/pln-team/PLNmodels
 * Source code: https://github.com/cran/PLNmodels
 * Date/Publication: 2024-03-05 15:50:03 UTC
-* Number of recursive dependencies: 158
+* Number of recursive dependencies: 157
 
 Run `revdepcheck::revdep_details(, "PLNmodels")` for more info
 
@@ -1348,9 +1385,9 @@ Run `revdepcheck::revdep_details(, "portvine")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 50.1Mb
+      installed size is 53.7Mb
       sub-directories of 1Mb or more:
-        libs  49.0Mb
+        libs  52.5Mb
     ```
 
 # qape
@@ -1415,30 +1452,6 @@ Run `revdepcheck::revdep_details(, "QDNAseq")` for more info
     
     Error: Vignette re-building failed.
     Execution halted
-    ```
-
-# qgcomp
-
-<details>
-
-* Version: 2.15.2
-* GitHub: https://github.com/alexpkeil1/qgcomp
-* Source code: https://github.com/cran/qgcomp
-* Date/Publication: 2023-08-10 09:10:06 UTC
-* Number of recursive dependencies: 158
-
-Run `revdepcheck::revdep_details(, "qgcomp")` for more info
-
-</details>
-
-## In both
-
-*   checking Rd files ... NOTE
-    ```
-    checkRd: (-1) qgcomp.survcurve.boot.Rd:17-19: Lost braces in \itemize; \value handles \item{}{} directly
-    checkRd: (-1) qgcomp.survcurve.boot.Rd:20-21: Lost braces in \itemize; \value handles \item{}{} directly
-    checkRd: (-1) qgcomp.survcurve.boot.Rd:22-23: Lost braces in \itemize; \value handles \item{}{} directly
-    checkRd: (-1) qgcomp.survcurve.boot.Rd:24-25: Lost braces in \itemize; \value handles \item{}{} directly
     ```
 
 # receptiviti
@@ -1521,9 +1534,9 @@ Run `revdepcheck::revdep_details(, "sdmTMB")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 97.9Mb
+      installed size is 97.7Mb
       sub-directories of 1Mb or more:
-        libs  96.1Mb
+        libs  95.8Mb
     ```
 
 # sentopics
@@ -1534,7 +1547,7 @@ Run `revdepcheck::revdep_details(, "sdmTMB")` for more info
 * GitHub: https://github.com/odelmarcelle/sentopics
 * Source code: https://github.com/cran/sentopics
 * Date/Publication: 2024-09-20 12:20:02 UTC
-* Number of recursive dependencies: 171
+* Number of recursive dependencies: 172
 
 Run `revdepcheck::revdep_details(, "sentopics")` for more info
 
@@ -1564,11 +1577,11 @@ Run `revdepcheck::revdep_details(, "sentopics")` for more info
 
 <details>
 
-* Version: 5.1.0
+* Version: 5.2.1
 * GitHub: https://github.com/satijalab/seurat
 * Source code: https://github.com/cran/Seurat
-* Date/Publication: 2024-05-10 17:23:17 UTC
-* Number of recursive dependencies: 266
+* Date/Publication: 2025-01-24 06:50:06 UTC
+* Number of recursive dependencies: 282
 
 Run `revdepcheck::revdep_details(, "Seurat")` for more info
 
@@ -1578,15 +1591,16 @@ Run `revdepcheck::revdep_details(, "Seurat")` for more info
 
 *   checking package dependencies ... NOTE
     ```
-    Packages suggested but not available for checking: 'BPCells', 'presto'
+    Packages suggested but not available for checking:
+      'BPCells', 'hdf5r', 'presto'
     ```
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 16.0Mb
+      installed size is 16.1Mb
       sub-directories of 1Mb or more:
         R      1.7Mb
-        libs  13.5Mb
+        libs  13.4Mb
     ```
 
 *   checking Rd cross-references ... NOTE
@@ -1619,7 +1633,7 @@ Run `revdepcheck::revdep_details(, "SeuratObject")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  5.6Mb
+      installed size is  5.5Mb
       sub-directories of 1Mb or more:
         R      1.5Mb
         libs   3.2Mb
@@ -1628,6 +1642,35 @@ Run `revdepcheck::revdep_details(, "SeuratObject")` for more info
 *   checking Rd cross-references ... NOTE
     ```
     Package unavailable to check Rd xrefs: ‘plotly’
+    ```
+
+# shapr
+
+<details>
+
+* Version: 1.0.2
+* GitHub: https://github.com/NorskRegnesentral/shapr
+* Source code: https://github.com/cran/shapr
+* Date/Publication: 2025-02-07 00:40:02 UTC
+* Number of recursive dependencies: 167
+
+Run `revdepcheck::revdep_details(, "shapr")` for more info
+
+</details>
+
+## In both
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 13.3Mb
+      sub-directories of 1Mb or more:
+        doc    4.2Mb
+        libs   7.8Mb
+    ```
+
+*   checking Rd cross-references ... NOTE
+    ```
+    Package unavailable to check Rd xrefs: ‘devtools’
     ```
 
 # sharp
@@ -1674,9 +1717,9 @@ Run `revdepcheck::revdep_details(, "Signac")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  5.5Mb
+      installed size is  5.2Mb
       sub-directories of 1Mb or more:
-        R      1.5Mb
+        R      1.1Mb
         libs   2.9Mb
     ```
 
@@ -1941,11 +1984,11 @@ Run `revdepcheck::revdep_details(, "sperrorest")` for more info
 
 <details>
 
-* Version: 0.4.4.3
+* Version: 0.4.4.5
 * GitHub: https://github.com/JeremyGelb/spNetwork
 * Source code: https://github.com/cran/spNetwork
-* Date/Publication: 2024-06-21 21:40:02 UTC
-* Number of recursive dependencies: 142
+* Date/Publication: 2025-01-20 11:30:03 UTC
+* Number of recursive dependencies: 152
 
 Run `revdepcheck::revdep_details(, "spNetwork")` for more info
 
@@ -1955,20 +1998,21 @@ Run `revdepcheck::revdep_details(, "spNetwork")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 27.7Mb
+      installed size is 27.2Mb
       sub-directories of 1Mb or more:
+        doc       1.1Mb
         extdata   2.6Mb
-        libs     22.6Mb
+        libs     22.0Mb
     ```
 
 # stars
 
 <details>
 
-* Version: 0.6-7
+* Version: 0.6-8
 * GitHub: https://github.com/r-spatial/stars
 * Source code: https://github.com/cran/stars
-* Date/Publication: 2024-11-07 20:40:02 UTC
+* Date/Publication: 2025-02-01 18:50:02 UTC
 * Number of recursive dependencies: 165
 
 Run `revdepcheck::revdep_details(, "stars")` for more info
@@ -2009,8 +2053,9 @@ Run `revdepcheck::revdep_details(, "stars")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.8Mb
+      installed size is  7.3Mb
       sub-directories of 1Mb or more:
+        R     1.0Mb
         doc   2.9Mb
         nc    1.7Mb
     ```
@@ -2066,10 +2111,10 @@ Run `revdepcheck::revdep_details(, "targeted")` for more info
 
 <details>
 
-* Version: 0.0-6
+* Version: 0.0-7
 * GitHub: NA
 * Source code: https://github.com/cran/tramvs
-* Date/Publication: 2024-09-04 13:50:02 UTC
+* Date/Publication: 2025-01-31 10:10:02 UTC
 * Number of recursive dependencies: 104
 
 Run `revdepcheck::revdep_details(, "tramvs")` for more info
@@ -2180,7 +2225,7 @@ Run `revdepcheck::revdep_details(, "tsdistributions")` for more info
 * GitHub: https://github.com/tsmodels/tsgarch
 * Source code: https://github.com/cran/tsgarch
 * Date/Publication: 2024-10-12 00:50:02 UTC
-* Number of recursive dependencies: 93
+* Number of recursive dependencies: 94
 
 Run `revdepcheck::revdep_details(, "tsgarch")` for more info
 
@@ -2190,9 +2235,9 @@ Run `revdepcheck::revdep_details(, "tsgarch")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 144.2Mb
+      installed size is 144.3Mb
       sub-directories of 1Mb or more:
-        libs  143.1Mb
+        libs  143.2Mb
     ```
 
 # tsmarch
@@ -2236,10 +2281,10 @@ Run `revdepcheck::revdep_details(, "tsmarch")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 21.7Mb
+      installed size is 21.5Mb
       sub-directories of 1Mb or more:
         doc    1.6Mb
-        libs  18.7Mb
+        libs  18.5Mb
     ```
 
 *   checking for GNU extensions in Makefiles ... NOTE
