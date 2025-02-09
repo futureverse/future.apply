@@ -22,7 +22,7 @@ jobs:
           - {os: macOS-latest,   r: 'devel'    }
           - {os: macOS-latest,   r: 'release'  }
           - {os: macOS-latest,   r: 'oldrel'   }
-          - {os: ubuntu-latest,  r: 'devel'    }
+#          - {os: ubuntu-latest,  r: 'devel'    }
           - {os: ubuntu-latest,  r: 'release'  }
           - {os: ubuntu-latest,  r: 'oldrel'   }
           - {os: ubuntu-latest,  r: 'oldrel-1' }
@@ -31,6 +31,8 @@ jobs:
           - {os: ubuntu-latest,  r: 'release'  , language: ko,    label: ko    }
           - {os: ubuntu-latest,  r: 'release'  , globals_keepWhere: true, label: 'keepWhere' }
           - {os: ubuntu-latest,  r: 'release'  , globals_keepWhere: false, label: '!keepWhere' }
+          - {os: ubuntu-latest,  r: 'release', future_version: develop, label: 'w/ future-develop' }
+          - {os: ubuntu-latest,  r: 'release', future_version: feature/evalFuture-3, label: 'w/ future-feature/evalFuture-3' }
  
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -48,6 +50,7 @@ jobs:
       ## Specific to futures
       R_FUTURE_RNG_ONMISUSE: error
       R_FUTURE_GLOBALS_KEEPWHERE: ${{ matrix.config.globals_keepWhere }}
+      R_FUTURE_VERSION: ${{ matrix.config.future_version }}
       
     steps:
       - uses: actions/checkout@v4
@@ -68,6 +71,15 @@ jobs:
       - name: Install package itself (special case)
         run: |
           install.packages(".", repos = NULL, type = "source")  ## needed by parallel workers
+        shell: Rscript {0}
+
+      - name: Test with specific future version?
+        run: |
+          future_version <- Sys.getenv("R_FUTURE_VERSION")
+          if (nzchar(future_version)) {
+            install.packages("remotes")
+            remotes::install_github("futureverse/future", ref=future_version)
+          }
         shell: Rscript {0}
 
       - name: Session info
