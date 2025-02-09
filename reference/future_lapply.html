@@ -338,9 +338,10 @@ See <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">bas
 <dd><p>(optional) Additional arguments passed to <code>FUN()</code>.
 For <code>future_*apply()</code> functions and <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate()</a></code>, any <code>future.*</code> arguments
 part of <code>\ldots</code> are passed on to <code>future_lapply()</code> used internally.
-Importantly, if this is called inside another function with also declare
+Importantly, if this is called inside another function which also declares
 ... arguments, do not forget to explicitly pass such ... arguments
-down to this function here to. See below for an example.</p></dd>
+down to the <code>future_*apply()</code> function too, which will then pass them on
+to <code>FUN()</code>. See below for an example.</p></dd>
 
 </dl></div>
     <div id="value">
