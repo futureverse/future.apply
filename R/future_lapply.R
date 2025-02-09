@@ -152,6 +152,7 @@
 #' @export
 future_lapply <- local({
   tmpl_expr <- bquote_compile({
+    "# future.apply::future_lapply(): process chunk of elements"
     lapply(seq_along(...future.elements_ii), FUN = function(jj) {
        ...future.X_jj <- ...future.elements_ii[[jj]]
        .(expr_FUN)
@@ -159,6 +160,7 @@ future_lapply <- local({
   })
 
   tmpl_expr_with_rng <- bquote_compile({
+    "# future.apply::future_lapply(): process chunk of elements while setting random seeds"
     lapply(seq_along(...future.elements_ii), FUN = function(jj) {
        ...future.X_jj <- ...future.elements_ii[[jj]]
        assign(".Random.seed", ...future.seeds_ii[[jj]], envir = globalenv(), inherits = FALSE)
@@ -196,11 +198,20 @@ future_lapply <- local({
     ...future.FUN <- NULL ## To please R CMD check
   
     ## Does FUN() rely on '...' being a global?
-    global_dotdotdot <- ("..." %in% findGlobals(FUN, dotdotdot = "return"))
+    ## If so, make sure to *not* pass '...' to FUN() 
+    globals_FUN <- findGlobals(FUN, dotdotdot = "return")
+    if (debug) {
+      mdebugf("- Globals in FUN(): [n=%d] %s", length(globals_FUN), paste(sQuote(globals_FUN), collapse = ", "))
+    }
+    global_dotdotdot <- ("..." %in% globals_FUN)
     if (global_dotdotdot) {
+      ## Don't pass '...' to FUN()
       expr_FUN <- quote(...future.FUN(...future.X_jj))
+      if (debug) mdebugf("  => Will not pass '...' to FUN(): %s", deparse(expr_FUN))
     } else {
+      ## Okay to pass '...' to FUN()
       expr_FUN <- quote(...future.FUN(...future.X_jj, ...))
+      if (debug) mdebugf("  => Will pass '...' to FUN(): %s", deparse(expr_FUN))
     }
     
     ## With or without RNG?

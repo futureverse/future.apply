@@ -1,6 +1,7 @@
 #' @importFrom future Future nbrOfWorkers future resolve value as.FutureGlobals getGlobalsAndPackages
 future_xapply <- local({
   tmpl_expr_options <- bquote_compile({
+    "# future.apply:::future_xapply(): preserve future option"
     ...future.globals.maxSize.org <- getOption("future.globals.maxSize")
     if (!identical(...future.globals.maxSize.org, ...future.globals.maxSize)) {
       oopts <- options(future.globals.maxSize = ...future.globals.maxSize)
@@ -10,6 +11,9 @@ future_xapply <- local({
   })
   
   function(FUN, nX, chunk_args, args = NULL, MoreArgs = NULL, expr, envir = parent.frame(), future.envir, future.globals, future.packages, future.scheduling, future.chunk.size, future.stdout, future.conditions, future.seed, future.label, get_chunk, fcn_name, args_name, ..., debug) {
+    fcn_name <- "future_xapply"
+    if (debug) mdebugf("%s() ...", fcn_name)
+    
     stop_if_not(is.function(FUN))
     
     stop_if_not(is.logical(future.stdout), length(future.stdout) == 1L)
@@ -96,6 +100,10 @@ future_xapply <- local({
   
     ## At this point a globals should be resolved and we should know their total size
   ##  stop_if_not(attr(globals, "resolved"), !is.na(attr(globals, "total_size")))
+    if (debug) {
+      mdebugf(" - Globals pass to each chunk: [n=%d] %s", length(globals), commaq(names(globals)))
+      mstr(globals)
+    }
   
     ## To please R CMD check
     ...future.FUN <- ...future.elements_ii <- ...future.seeds_ii <-
@@ -104,7 +112,7 @@ future_xapply <- local({
     globals.maxSize <- getOption("future.globals.maxSize")
     globals.maxSize.default <- globals.maxSize
     if (is.null(globals.maxSize.default)) globals.maxSize.default <- 500 * 1024^2
-    
+
     nchunks <- length(chunks)
     if (debug) mdebugf("Number of futures (= number of chunks): %d", nchunks)
 
@@ -167,7 +175,7 @@ future_xapply <- local({
                                   "...future.seeds_ii"), names(globals_args))
           if (length(reserved) > 0) {
             stop("Detected globals in '%s' using reserved variables names: ",
-                 args_name, paste(sQuote(reserved), collapse = ", "))
+                 args_name, commaq(reserved))
           }
           globals_args <- as.FutureGlobals(globals_args)
           globals_ii <- unique(c(globals_ii, globals_args))
@@ -327,7 +335,10 @@ future_xapply <- local({
     }
   
     if (debug) mdebugf("Reducing values from %d chunks ... DONE", nchunks)
-  
+
+    fcn_name <- "future_xapply"
+    if (debug) mdebugf("%s() ... DONE", fcn_name)
+
     values
   } ## future_xapply()
 })
