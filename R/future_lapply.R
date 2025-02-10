@@ -205,12 +205,16 @@ future_lapply <- local({
     }
     global_dotdotdot <- ("..." %in% globals_FUN)
     if (global_dotdotdot) {
-      ## Don't pass '...' to FUN()
-      expr_FUN <- quote(...future.FUN(...future.X_jj))
+      ## Yes; don't pass '...' to FUN()
+      expr_FUN <- quote({
+        ...future.FUN(...future.X_jj)
+      })
       if (debug) mdebugf("  => Will not pass '...' to FUN(): %s", deparse(expr_FUN))
     } else {
-      ## Okay to pass '...' to FUN()
-      expr_FUN <- quote(...future.FUN(...future.X_jj, ...))
+      ## No; okay to pass '...' to FUN()
+      expr_FUN <- quote({
+        ...future.FUN(...future.X_jj, ...)
+      })
       if (debug) mdebugf("  => Will pass '...' to FUN(): %s", deparse(expr_FUN))
     }
     
