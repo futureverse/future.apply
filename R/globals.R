@@ -42,7 +42,7 @@ getGlobalsAndPackagesXApply <- function(FUN, args = NULL, MoreArgs = NULL, envir
     names <- names(globals)
     if (debug) mdebugf(" - future.globals: <name-value list> with names %s", commaq(globals))
     if (length(globals) > 0 && is.null(names)) {
-      stop("Invalid argument 'future.globals'. All globals must be named.")
+      stop("Invalid argument 'future.globals'. All globals must be named")
     }
   } else {
     stop("Invalid argument 'future.globals': ", mode(globals))
@@ -86,7 +86,7 @@ getGlobalsAndPackagesXApply <- function(FUN, args = NULL, MoreArgs = NULL, envir
                         "...future.seeds_ii"), names)
   if (length(reserved) > 0) {
     stop("Detected globals using reserved variables names: ",
-         paste(sQuote(reserved), collapse = ", "))
+         commaq(reserved))
   }
  
   ## Avoid FUN() clash with mapply(..., FUN) below.

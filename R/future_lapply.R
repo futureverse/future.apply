@@ -201,7 +201,7 @@ future_lapply <- local({
     ## If so, make sure to *not* pass '...' to FUN() 
     globals_FUN <- findGlobals(FUN, dotdotdot = "return")
     if (debug) {
-      mdebugf("- Globals in FUN(): [n=%d] %s", length(globals_FUN), paste(sQuote(globals_FUN), collapse = ", "))
+      mdebugf("- Globals in FUN(): [n=%d] %s", length(globals_FUN), commaq(globals_FUN))
     }
     global_dotdotdot <- ("..." %in% globals_FUN)
     if (global_dotdotdot) {

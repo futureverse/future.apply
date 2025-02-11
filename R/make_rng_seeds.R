@@ -65,7 +65,7 @@ make_rng_seeds <- function(count, seed = FALSE) {
 
     ## Did use specify scalar integers as meant for set.seed()?
     if (ns == 1L) {
-      stop("Argument 'seed' is invalid. Pre-generated random seeds must be valid .Random.seed seeds, which means they should be all integers and consists of two or more elements, not just one.")
+      stop("Argument 'seed' is invalid. Pre-generated random seeds must be valid .Random.seed seeds, which means they should be all integers and consists of two or more elements, not just one")
     }
 
     types <- unlist(lapply(seeds, FUN = typeof), use.names = FALSE)
