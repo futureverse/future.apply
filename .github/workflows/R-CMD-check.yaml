@@ -32,7 +32,6 @@ jobs:
           - {os: ubuntu-latest,  r: 'release'  , globals_keepWhere: true, label: 'keepWhere' }
           - {os: ubuntu-latest,  r: 'release'  , globals_keepWhere: false, label: '!keepWhere' }
           - {os: ubuntu-latest,  r: 'release', future_version: develop, label: 'w/ future-develop' }
-          - {os: ubuntu-latest,  r: 'release', future_version: feature/evalFuture-3, label: 'w/ future-feature/evalFuture-3' }
  
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
