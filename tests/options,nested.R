@@ -4,7 +4,7 @@ message("*** Options in nested parallelization ...")
 
 options(future.debug = FALSE)
 options(future.apply.debug = FALSE)
-options(future.globals.maxSize = 1234000)
+options(future.globals.maxSize = 1.50 * 1024^2)
 
 for (cores in 1:availCores) {
   message(sprintf("Testing with %d cores ...", cores))
