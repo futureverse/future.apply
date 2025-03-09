@@ -40,7 +40,7 @@ getGlobalsAndPackagesXApply <- function(FUN, args = NULL, MoreArgs = NULL, envir
     globals <- globalsByName(globals, envir = envir, mustExist = FALSE)
   } else if (is.list(globals)) {
     names <- names(globals)
-    if (debug) mdebugf(" - future.globals: <name-value list> with names %s", commaq(globals))
+    if (debug) mdebugf(" - future.globals: <name-value list> with names %s", commaq(names(globals)))
     if (length(globals) > 0 && is.null(names)) {
       stop("Invalid argument 'future.globals'. All globals must be named")
     }
