@@ -84,12 +84,12 @@
 #' ("chunking") strategy, and number of workers.
 #' 
 #' RNG reproducibility is achieved by pregenerating the random seeds for all
-#' iterations (over `X`) by using L'Ecuyer-CMRG RNG streams.  In each
+#' iterations (over `X`) by using parallel RNG streams.  In each
 #' iteration, these seeds are set before calling `FUN(X[[ii]], ...)`.
 #' _Note, for large `length(X)` this may introduce a large overhead._
 #'
 #' If `future.seed = TRUE`, then \code{\link[base:Random]{.Random.seed}}
-#' is used if it holds a L'Ecuyer-CMRG RNG seed, otherwise one is created
+#' is used if it holds a parallel RNG seed, otherwise one is created
 #' randomly.
 #'
 #' If `future.seed = FALSE`, it is expected that none of the
@@ -100,9 +100,9 @@
 #' the check whether random numbers were generated or not.
 #'
 #' As input, `future.seed` may also take a fixed initial seed (integer),
-#' either as a full L'Ecuyer-CMRG RNG seed (vector of 1+6 integers), or
-#' as a seed generating such a full L'Ecuyer-CMRG seed. This seed will
-#' be used to generated `length(X)` L'Ecuyer-CMRG RNG streams.
+#' either as a full parallel RNG seed, or as a seed generating such a
+#' full parallel seed. This seed will be used to generated `length(X)`
+#' parallel RNG streams.
 #'
 #' In addition to the above, it is possible to specify a pre-generated
 #' sequence of RNG seeds as a list such that

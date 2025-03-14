@@ -1,5 +1,12 @@
 # Version (development version)
 
+## New Features
+
+ * Now **future.apply** lets **future** take care of the generation of
+   parallel RNG seed. Consolodating random number generation to the
+   core package will allow us to add central support for custom
+   parallel RNG methods beyond the built-in L'Ecuyer-CMRG method.
+
 ## Deprecated and Defunct
 
  * Specifying the function `FUN` for `future_by()` as a character

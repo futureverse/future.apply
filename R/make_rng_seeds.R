@@ -1,37 +1,6 @@
-#' Produce Reproducible Seeds for Parallel Random Number Generation
-#'
-#' @param count The number of RNG seeds to produce.
-#'
-#' @param seed A logical specifying whether RNG seeds should be generated
-#' or not.  (`seed = NULL` corresponds to `seed = FALSE`).
-#' If a list, then it should be of length `count` and each element should
-#' consist of a valid RNG seed.
-#'
-#' @return Returns a non-named list of `count` independent `L'Ecuyer-CMRG`
-#' random seeds.
-#' If `seed` is `NULL` or `FALSE`, then `NULL` is returned.
-#' 
-#' @example incl/make_rng_seeds.R
-#'
-#' @details
-#' This function generates `count` independent `L'Ecuyer-CMRG` random seeds
-#' that can be used as `.Random.seed` for parallel processing.  These seeds
-#' are produced with help of [parallel::nextRNGSubStream()] and
-#' [parallel::nextRNGStream()] using a strategy that 
-#'
-#' ```r
-#' seed <- <initial RNG seed>
-#' for (ii in seq_len(count)) {
-#'   seeds[[ii]] <- parallel::nextRNGSubStream(seed)
-#'   seed <- parallel::nextRNGStream(seed)
-#' }
-#' ```
-#' This function forwards the RNG state `1 + count` times if `seed = TRUE`.
-#' 
 #' @importFrom parallel nextRNGStream nextRNGSubStream splitIndices
 #' @importFrom utils capture.output str
-#' @noRd
-make_rng_seeds <- function(count, seed = FALSE) {
+make_rng_seeds <- import_future("make_rng_seeds", default = function(count, seed = FALSE) {
   ## Don't use RNGs? (seed = {FALSE, NULL})
   if (is.null(seed)) return(NULL)
   if (is.logical(seed) && !is.na(seed) && !seed) return(NULL)
@@ -126,4 +95,5 @@ make_rng_seeds <- function(count, seed = FALSE) {
   }
 
   seeds
-}
+})
+
