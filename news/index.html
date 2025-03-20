@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">future.apply</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.3-9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.3-9008</span>
       </span>
     </div>
 
@@ -137,6 +137,14 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
+<div class="section level3">
+<h3 id="significant-changes-development-version">Significant changes<a class="anchor" aria-label="anchor" href="#significant-changes-development-version"></a></h3>
+<ul><li>All <strong>future.apply</strong> functions will now attempt to interrupt any remaining non-resolved futures if a user interrupt (Ctrl-C) is signalled or one of the futures produces an error. For backends that support interruption of futures, this results in the functions returning sooner and less compute resources wasted.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li>Now <strong>future.apply</strong> lets <strong>future</strong> take care of the generation of parallel RNG seed. Consolidating random number generation to the core package will allow us to add central support for custom parallel RNG methods beyond the built-in L’Ecuyer-CMRG method.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="deprecated-and-defunct-development-version">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-development-version"></a></h3>
 <ul><li><p>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN    = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</p></li>

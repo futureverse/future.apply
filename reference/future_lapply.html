@@ -25,7 +25,7 @@ Analogously, this is true for all the other future_nnn() functions."><!-- mathja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">future.apply</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.3-9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.3-9008</span>
       </span>
     </div>
 
@@ -390,11 +390,11 @@ generate the exact same sequence of random numbers <em>given the same initial
 seed / RNG state</em> - this regardless of type of futures, scheduling
 ("chunking") strategy, and number of workers.</p>
 <p>RNG reproducibility is achieved by pregenerating the random seeds for all
-iterations (over <code>X</code>) by using L'Ecuyer-CMRG RNG streams.  In each
+iterations (over <code>X</code>) by using parallel RNG streams.  In each
 iteration, these seeds are set before calling <code>FUN(X[[ii]], ...)</code>.
 <em>Note, for large <code>length(X)</code> this may introduce a large overhead.</em></p>
 <p>If <code>future.seed = TRUE</code>, then <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">.Random.seed</a></code>
-is used if it holds a L'Ecuyer-CMRG RNG seed, otherwise one is created
+is used if it holds a parallel RNG seed, otherwise one is created
 randomly.</p>
 <p>If <code>future.seed = FALSE</code>, it is expected that none of the
 <code>FUN(X[[ii]], ...)</code> function calls use random number generation.
@@ -403,9 +403,9 @@ on settings. See <a href="https://future.futureverse.org/reference/future.html" 
 Using <code>future.seed = NULL</code>, is like <code>future.seed = FALSE</code> but without
 the check whether random numbers were generated or not.</p>
 <p>As input, <code>future.seed</code> may also take a fixed initial seed (integer),
-either as a full L'Ecuyer-CMRG RNG seed (vector of 1+6 integers), or
-as a seed generating such a full L'Ecuyer-CMRG seed. This seed will
-be used to generated <code>length(X)</code> L'Ecuyer-CMRG RNG streams.</p>
+either as a full parallel RNG seed, or as a seed generating such a
+full parallel seed. This seed will be used to generated <code>length(X)</code>
+parallel RNG streams.</p>
 <p>In addition to the above, it is possible to specify a pre-generated
 sequence of RNG seeds as a list such that
 <code>length(future.seed) == length(X)</code> and where each element is an
