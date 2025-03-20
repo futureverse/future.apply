@@ -15,7 +15,7 @@ further notice.}
 }
 \details{
 For settings specific to the \pkg{future} package, see
-\link[future:future.options]{future::future.options} page.
+\link[future:zzz-future.options]{future::future.options} page.
 }
 \section{Options for debugging future.apply}{
 

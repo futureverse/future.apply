@@ -9,9 +9,16 @@ future_xapply <- local({
     }
     .(expr)
   })
-  
-  function(FUN, nX, chunk_args, args = NULL, MoreArgs = NULL, expr, envir = parent.frame(), future.envir, future.globals, future.packages, future.scheduling, future.chunk.size, future.stdout, future.conditions, future.seed, future.label, get_chunk, fcn_name, args_name, ..., debug) {
-    fcn_name <- "future_xapply"
+
+  interrupt <- import_future("interrupt", default = function(x, ...) { x })
+
+  FutureInterruptError <- import_future("FutureInterruptError", default = function(...) {
+    ex <- FutureError(...)
+    class(ex) <- c("FutureInterruptError", class(ex))
+    ex
+  })
+
+  function(FUN, nX, chunk_args, args = NULL, MoreArgs = NULL, expr, envir = parent.frame(), future.envir, future.globals, future.packages, future.scheduling, future.chunk.size, future.stdout, future.conditions, future.seed, future.label, get_chunk, fcn_name = "future_xapply", args_name, ..., debug) {
     if (debug) mdebugf("%s() ...", fcn_name)
     
     stop_if_not(is.function(FUN))
@@ -145,155 +152,185 @@ future_xapply <- local({
   
     if (debug) mdebugf("Launching %d futures (chunks) ...", nchunks)
     fs <- vector("list", length = nchunks)
-    for (ii in seq_along(chunks)) {
-      chunk <- chunks[[ii]]
-      if (debug) mdebugf("Chunk #%d of %d ...", ii, length(chunks))
+    values <- tryCatch({
+      for (ii in seq_along(chunks)) {
+        chunk <- chunks[[ii]]
+        if (debug) mdebugf("Chunk #%d of %d ...", ii, length(chunks))
+    
+        args_ii <- get_chunk(chunk_args, chunk)
+        globals_ii <- globals
+        ## Subsetting outside future is more efficient
+        globals_ii[["...future.elements_ii"]] <- args_ii
+        packages_ii <- packages
+    
+        if (scanForGlobals) {
+          if (debug) mdebugf(" - Finding globals in '%s' for chunk #%d ...", args_name, ii)
+          gp <- getGlobalsAndPackages(args_ii, envir = envir, globals = TRUE)
+          globals_args <- gp$globals
+          packages_args <- gp$packages
+          gp <- NULL
+          
+          if (debug) {
+            mdebugf("   + additional globals found: [n=%d] %s",
+                    length(globals_args), commaq(names(globals_args)))
+            mdebugf("   + additional namespaces needed: [n=%d] %s",
+                    length(packages_args), commaq(packages_args))
+          }
+        
+          ## Export also globals found in arguments?
+          if (length(globals_args) > 0L) {
+            reserved <- intersect(c("...future.FUN", "...future.elements_ii",
+                                    "...future.seeds_ii"), names(globals_args))
+            if (length(reserved) > 0) {
+              stop("Detected globals in '%s' using reserved variables names: ",
+                   args_name, commaq(reserved))
+            }
+            globals_args <- as.FutureGlobals(globals_args)
+            globals_ii <- unique(c(globals_ii, globals_args))
+    
+            ## Packages needed due to globals in arguments?
+            if (length(packages_args) > 0L)
+              packages_ii <- unique(c(packages_ii, packages_args))
+          }
+          
+          if (debug) mdebugf(" - Finding globals in '%s' for chunk #%d ... DONE", args_name, ii)
+        }
+        
+        args_ii <- NULL    
+    ##    stop_if_not(attr(globals_ii, "resolved"))
   
-      args_ii <- get_chunk(chunk_args, chunk)
-      globals_ii <- globals
-      ## Subsetting outside future is more efficient
-      globals_ii[["...future.elements_ii"]] <- args_ii
-      packages_ii <- packages
+        if (!is.null(globals.maxSize)) {
+          globals_ii["...future.globals.maxSize"] <- list(globals.maxSize)
+        }
   
-      if (scanForGlobals) {
-        if (debug) mdebugf(" - Finding globals in '%s' for chunk #%d ...", args_name, ii)
-        gp <- getGlobalsAndPackages(args_ii, envir = envir, globals = TRUE)
-        globals_args <- gp$globals
-        packages_args <- gp$packages
-        gp <- NULL
+        ## Adjust option 'future.globals.maxSize' to account for the fact that more
+        ## than one element is processed per future.  The adjustment is done by
+        ## scaling up the limit by the number of elements in the chunk.  This is
+        ## a "good enough" approach.
+        ## (https://github.com/futureverse/future.apply/issues/8).
+        if (length(chunks) > 1L) {
+          options(future.globals.maxSize = length(chunks) * globals.maxSize.default)
+          if (debug) mdebugf(" - Adjusted option 'future.globals.maxSize': %.0f -> %d * %.0f = %.0f (bytes)", globals.maxSize.default, length(chunks), globals.maxSize.default, getOption("future.globals.maxSize"))
+          on.exit(options(future.globals.maxSize = globals.maxSize), add = TRUE)
+        }
+        
+        ## Using RNG seeds or not?
+        if (is.null(seeds)) {
+          if (debug) mdebug(" - seeds: <none>")
+        } else {
+          if (debug) mdebugf(" - seeds: [%d] <seeds>", length(chunk))
+          globals_ii[["...future.seeds_ii"]] <- seeds[chunk]
+        }
+  
+        if (debug) {
+          mdebugf(" - All globals exported: [n=%d] %s",
+                  length(globals_ii), commaq(names(globals_ii)))
+        }
+  
+        fs[[ii]] <- future(
+          expr, substitute = FALSE,
+          envir = future.envir,
+          stdout = future.stdout,
+          conditions = future.conditions,
+          globals = globals_ii, packages = packages_ii,
+          seed = future.seed,
+          label = labels[ii]
+        )
         
         if (debug) {
-          mdebugf("   + additional globals found: [n=%d] %s",
-                  length(globals_args), commaq(names(globals_args)))
-          mdebugf("   + additional namespaces needed: [n=%d] %s",
-                  length(packages_args), commaq(packages_args))
-        }
-      
-        ## Export also globals found in arguments?
-        if (length(globals_args) > 0L) {
-          reserved <- intersect(c("...future.FUN", "...future.elements_ii",
-                                  "...future.seeds_ii"), names(globals_args))
-          if (length(reserved) > 0) {
-            stop("Detected globals in '%s' using reserved variables names: ",
-                 args_name, commaq(reserved))
-          }
-          globals_args <- as.FutureGlobals(globals_args)
-          globals_ii <- unique(c(globals_ii, globals_args))
-  
-          ## Packages needed due to globals in arguments?
-          if (length(packages_args) > 0L)
-            packages_ii <- unique(c(packages_ii, packages_args))
+          mdebug("Created future:")
+          mprint(fs[[ii]])
         }
         
-        if (debug) mdebugf(" - Finding globals in '%s' for chunk #%d ... DONE", args_name, ii)
-      }
-      
-      args_ii <- NULL    
-  ##    stop_if_not(attr(globals_ii, "resolved"))
-
-      if (!is.null(globals.maxSize)) {
-        globals_ii["...future.globals.maxSize"] <- list(globals.maxSize)
-      }
-
-      ## Adjust option 'future.globals.maxSize' to account for the fact that more
-      ## than one element is processed per future.  The adjustment is done by
-      ## scaling up the limit by the number of elements in the chunk.  This is
-      ## a "good enough" approach.
-      ## (https://github.com/futureverse/future.apply/issues/8).
-      if (length(chunks) > 1L) {
-        options(future.globals.maxSize = length(chunks) * globals.maxSize.default)
-        if (debug) mdebugf(" - Adjusted option 'future.globals.maxSize': %.0f -> %d * %.0f = %.0f (bytes)", globals.maxSize.default, length(chunks), globals.maxSize.default, getOption("future.globals.maxSize"))
-        on.exit(options(future.globals.maxSize = globals.maxSize), add = TRUE)
-      }
-      
-      ## Using RNG seeds or not?
-      if (is.null(seeds)) {
-        if (debug) mdebug(" - seeds: <none>")
-      } else {
-        if (debug) mdebugf(" - seeds: [%d] <seeds>", length(chunk))
-        globals_ii[["...future.seeds_ii"]] <- seeds[chunk]
-      }
-
-      if (debug) {
-        mdebugf(" - All globals exported: [n=%d] %s",
-                length(globals_ii), commaq(names(globals_ii)))
-      }
-
-      fs[[ii]] <- future(
-        expr, substitute = FALSE,
-        envir = future.envir,
-        stdout = future.stdout,
-        conditions = future.conditions,
-        globals = globals_ii, packages = packages_ii,
-        seed = future.seed,
-        label = labels[ii]
-      )
-      
-      if (debug) {
-        mdebug("Created future:")
-        mprint(fs[[ii]])
-      }
-      
-      ## Not needed anymore
-      rm(list = c("chunk", "globals_ii"))
-  
-      if (debug) mdebugf("Chunk #%d of %d ... DONE", ii, nchunks)
-    } ## for (ii ...)
-    if (debug) mdebugf("Launching %d futures (chunks) ... DONE", nchunks)
-  
-    ## 4. Resolving futures
-    if (debug) mdebugf("Resolving %d futures (chunks) ...", nchunks)
-  
-    ## Check for RngFutureCondition:s when resolving futures?
-    if (isFALSE(future.seed)) {
-      withCallingHandlers({
-        values <- local({
-          oopts <- options(future.rng.onMisuse.keepFuture = FALSE)
-          on.exit(options(oopts))
-          value(fs)
-        })
-      }, RngFutureCondition = function(cond) {
-        ## One of "our" futures?
-        idx <- NULL
-        
-        ## Compare future UUIDs or whole futures?
-        uuid <- attr(cond, "uuid")
-        if (!is.null(uuid)) {
-          ## (a) Future UUIDs are available
-          for (kk in seq_along(fs)) {
-            if (identical(fs[[kk]]$uuid, uuid)) idx <- kk
-          }
-        } else {        
-          ## (b) Future UUIDs are not available, use Future object?
-          f <- attr(cond, "future")
-          if (is.null(f)) return()
-          ## Nothing to do?
-          if (!isFALSE(f$seed)) return()  ## shouldn't really happen
-          for (kk in seq_along(fs)) {
-            if (identical(fs[[kk]], f)) idx <- kk
-          }
-        }
-        
-        ## Nothing more to do, i.e. not one of our futures?
-        if (is.null(idx)) return()
-        
-        ## Adjust message to give instructions relevant to this package
-        f <- fs[[idx]]
-        label <- f$label
-        if (is.null(label)) label <- "<none>"
-        message <- sprintf("UNRELIABLE VALUE: One of the %s iterations (%s) unexpectedly generated random numbers without declaring so. There is a risk that those random numbers are not statistically sound and the overall results might be invalid. To fix this, specify 'future.seed=TRUE'. This ensures that proper, parallel-safe random numbers are produced via a parallel RNG method. To disable this check, use 'future.seed = NULL', or set option 'future.rng.onMisuse' to \"ignore\".", sQuote(.packageName), sQuote(label))
-        cond$message <- message
-        if (inherits(cond, "warning")) {
-          warning(cond)
-          invokeRestart("muffleWarning")
-        } else if (inherits(cond, "error")) {
-          stop(cond)
-        }
-      }) ## withCallingHandlers()
-    } else {
-      values <- value(fs)
-    }
+        ## Not needed anymore
+        rm(list = c("chunk", "globals_ii"))
     
+        if (debug) mdebugf("Chunk #%d of %d ... DONE", ii, nchunks)
+      } ## for (ii ...)
+      if (debug) mdebugf("Launching %d futures (chunks) ... DONE", nchunks)
+    
+      ## 4. Resolving futures
+      if (debug) mdebugf("Resolving %d futures (chunks) ...", nchunks)
+    
+      ## Check for RngFutureCondition:s when resolving futures?
+      if (isFALSE(future.seed)) {
+        withCallingHandlers({
+          values <- local({
+            oopts <- options(future.rng.onMisuse.keepFuture = FALSE)
+            on.exit(options(oopts))
+            value(fs)
+          })
+        }, RngFutureCondition = function(cond) {
+          ## One of "our" futures?
+          idx <- NULL
+          
+          ## Compare future UUIDs or whole futures?
+          uuid <- attr(cond, "uuid")
+          if (!is.null(uuid)) {
+            ## (a) Future UUIDs are available
+            for (kk in seq_along(fs)) {
+              if (identical(fs[[kk]]$uuid, uuid)) idx <- kk
+            }
+          } else {        
+            ## (b) Future UUIDs are not available, use Future object?
+            f <- attr(cond, "future")
+            if (is.null(f)) return()
+            ## Nothing to do?
+            if (!isFALSE(f$seed)) return()  ## shouldn't really happen
+            for (kk in seq_along(fs)) {
+              if (identical(fs[[kk]], f)) idx <- kk
+            }
+          }
+          
+          ## Nothing more to do, i.e. not one of our futures?
+          if (is.null(idx)) return()
+          
+          ## Adjust message to give instructions relevant to this package
+          f <- fs[[idx]]
+          label <- f$label
+          if (is.null(label)) label <- "<none>"
+          message <- sprintf("UNRELIABLE VALUE: One of the %s iterations (%s) unexpectedly generated random numbers without declaring so. There is a risk that those random numbers are not statistically sound and the overall results might be invalid. To fix this, specify 'future.seed=TRUE'. This ensures that proper, parallel-safe random numbers are produced via a parallel RNG method. To disable this check, use 'future.seed = NULL', or set option 'future.rng.onMisuse' to \"ignore\".", sQuote(.packageName), sQuote(label))
+          cond$message <- message
+          if (inherits(cond, "warning")) {
+            warning(cond)
+            invokeRestart("muffleWarning")
+          } else if (inherits(cond, "error")) {
+            stop(cond)
+          }
+        }) ## withCallingHandlers()
+      } else {
+        ## value() exits early if it detects a future with an error.
+        ## In future (> 1.42.0), non-resolved futures will be automatically
+        ## interrupted if there's an error.
+        value(fs)
+      }
+    }, interrupt = identity, error = identity) ## tryCatch()
+
+    if (inherits(values, "interrupt") || inherits(values, "error")) {
+      when <- Sys.time()
+      host <- Sys.info()[["nodename"]]
+      pid <- Sys.getpid()
+      msg <- sprintf("%s() interrupted at %s, while running on %s (pid %s)", fcn_name, format(when, format = "%FT%T"), sQuote(host), pid)
+      warning(sprintf("%s. Cleaning up ...", msg), immediate. = TRUE, call. = FALSE)
+
+      ## Interrupt all futures
+      fs <- interrupt(fs)
+
+      ## Make sure all workers finish before continuing
+      fs <- resolve(fs)
+
+      ## Collect all results
+      void <- lapply(fs, FUN = function(f) {
+        tryCatch(f, error = identity)
+      })
+
+      ## Resignal error?
+      if (inherits(values, "error")) {
+        stop(values)
+      }
+
+      stop(FutureInterruptError(msg))
+    }
   
     ## Not needed anymore
     rm(list = "fs")

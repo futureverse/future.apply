@@ -1,9 +1,17 @@
 # Version (development version)
 
+## Significant changes
+
+ * All **future.apply** functions will now attempt to interrupt any
+   remaining non-resolved futures if a user interrupt (Ctrl-C) is
+   signalled or one of the futures produces an error.  For backends
+   that support interruption of futures, this results in the functions
+   returning sooner and less compute resources wasted.
+
 ## New Features
 
  * Now **future.apply** lets **future** take care of the generation of
-   parallel RNG seed. Consolodating random number generation to the
+   parallel RNG seed. Consolidating random number generation to the
    core package will allow us to add central support for custom
    parallel RNG methods beyond the built-in L'Ecuyer-CMRG method.
 
