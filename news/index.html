@@ -139,7 +139,7 @@
 <h2 class="page-header" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
 <div class="section level3">
 <h3 id="significant-changes-development-version">Significant changes<a class="anchor" aria-label="anchor" href="#significant-changes-development-version"></a></h3>
-<ul><li>All <strong>future.apply</strong> functions will now attempt to interrupt any remaining non-resolved futures if a user interrupt (Ctrl-C) is signalled or one of the futures produces an error. For backends that support interruption of futures, this results in the functions returning sooner and less compute resources wasted.</li>
+<ul><li>All <strong>future.apply</strong> functions will now attempt to interrupt any remaining non-resolved futures if a user interrupt (Ctrl-C) is signalled or one of the futures produces an error. For backends that support interruption of futures, this results in the functions return sooner and compute resources are freed up sooner.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
@@ -240,7 +240,7 @@
 <h2 class="page-header" data-toc-text="1.8.0" id="version-180">Version 1.8.0<a class="anchor" aria-label="anchor" href="#version-180"></a></h2>
 <div class="section level3">
 <h3 id="new-features-1-8-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-8-0"></a></h3>
-<ul><li><p>Add argument <code>future.envir</code> to all <code>future_nnn()</code> functions, which is passed as argument <code>envir</code> to <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future()</a></code>.</p></li>
+<ul><li><p>Add argument <code>future.envir</code> to all <code>future_nnn()</code> functions, which is passed as argument <code>envir</code> to <code>future()</code>.</p></li>
 <li><p>Add option <code>future.apply.debug</code> for debugging features specific to this package. It defaults to option <code>future.debug</code>.</p></li>
 </ul></div>
 <div class="section level3">
@@ -306,7 +306,7 @@
 <h2 class="page-header" data-toc-text="1.3.0" id="version-130">Version 1.3.0<small>2019-06-18</small><a class="anchor" aria-label="anchor" href="#version-130"></a></h2>
 <div class="section level3">
 <h3 id="new-features-1-3-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-3-0"></a></h3>
-<ul><li><p>Now <code>future.conditions</code> defaults to the same as argument <code>conditions</code> of <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code>. If the latter changes, this package will follow.</p></li>
+<ul><li><p>Now <code>future.conditions</code> defaults to the same as argument <code>conditions</code> of <code>future::future()</code>. If the latter changes, this package will follow.</p></li>
 <li><p>Debug messages are now prepended with a timestamp.</p></li>
 </ul></div>
 <div class="section level3">
@@ -335,7 +335,7 @@
 <div class="section level3">
 <h3 id="new-features-1-1-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-1-0"></a></h3>
 <ul><li><p>Elements can be processed in random order by setting attribute <code>ordering</code> to <code>"random"</code> of argument <code>future.chunk.size</code> or <code>future.scheduling</code>, e.g. <code>future.chunk.size = structure(TRUE,    ordering = "random")</code>. This can help improve load balancing in cases where there is a correlation between processing time and ordering of the elements. Note that the order of the returned values is not affected when randomizing the processing order.</p></li>
-<li><p>Swapped order of arguments <code>future.lazy</code> and <code>future.seed</code> to be consistent with ditto arguments of <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code>.</p></li>
+<li><p>Swapped order of arguments <code>future.lazy</code> and <code>future.seed</code> to be consistent with ditto arguments of <code>future::future()</code>.</p></li>
 </ul></div>
 </div>
     <div class="section level2">
