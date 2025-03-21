@@ -6,7 +6,7 @@
    remaining non-resolved futures if a user interrupt (Ctrl-C) is
    signalled or one of the futures produces an error.  For backends
    that support interruption of futures, this results in the functions
-   returning sooner and less compute resources wasted.
+   return sooner and compute resources are freed up sooner.
 
 ## New Features
 
