@@ -13,8 +13,8 @@ for (cores in 1:availCores) {
 
   for (strategy1 in strategies) {
     for (strategy2 in strategies) {
-      message(sprintf("- plan('%s') ...", strategy2))
-      plan(list(outer = tweak(strategy1), inner = strategy2))
+      message(sprintf("- plan(list('%s', '%s')) ...", strategy1, strategy2))
+      plan(list(outer = strategy1, inner = strategy2))
 
       v <- future_lapply(1:2, FUN = function(x) {
         outer <- data.frame(
