@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.11.3-9008</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.11.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,9 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/future.apply-1-overview.html">A Future for R: Apply Function to Elements in Parallel</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
-      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="https://www.futureverse.org/"><span class="fa fas fa-home"></span></a></li>
+      </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://www.futureverse.org/"><span class="fa fas fa-home"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-packages" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Packages</button>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-packages"><li><a class="external-link dropdown-item" href="https://doFuture.futureverse.org">doFuture (map-reduce)</a></li>
@@ -67,22 +69,6 @@
       <small>Source: <a href="https://github.com/futureverse/future.apply/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
-<div class="section level3">
-<h3 id="significant-changes-development-version">Significant changes<a class="anchor" aria-label="anchor" href="#significant-changes-development-version"></a></h3>
-<ul><li>All <strong>future.apply</strong> functions will now attempt to interrupt any remaining non-resolved futures if a user interrupt (Ctrl-C) is signalled or one of the futures produces an error. For backends that support interruption of futures, this results in the functions return sooner and compute resources are freed up sooner.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
-<ul><li>Now <strong>future.apply</strong> lets <strong>future</strong> take care of the generation of parallel RNG seed. Consolidating random number generation to the core package will allow us to add central support for custom parallel RNG methods beyond the built-in L’Ecuyer-CMRG method.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="deprecated-and-defunct-development-version">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-development-version"></a></h3>
-<ul><li><p>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN    = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</p></li>
-<li><p>Use of <code>...</code> as global variables is now considered a mistake. For example, instead of <code>f &lt;- function(X, ...)  future_lapply(X,    function(x) sum(x, ...))</code>, use <code>f &lt;- function(X, ...)    future_lapply(X, function(x, ...) sum(x, ...), ...)</code> such that <code>...</code> is passed as arguments.</p></li>
-</ul></div>
-</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.11.3" id="version-1113">Version 1.11.3<a class="anchor" aria-label="anchor" href="#version-1113"></a></h2><p class="text-muted">CRAN release: 2024-10-27</p>
 <div class="section level3">
