@@ -10,7 +10,7 @@ future_xapply <- local({
     .(expr)
   })
 
-  interrupt <- import_future("interrupt", default = function(x, ...) { x })
+  cancel <- import_future("cancel", default = function(x, ...) { x })
 
   FutureInterruptError <- import_future("FutureInterruptError", default = function(...) {
     ex <- FutureError(...)
@@ -314,7 +314,7 @@ future_xapply <- local({
       warning(sprintf("%s. Cleaning up ...", msg), immediate. = TRUE, call. = FALSE)
 
       ## Interrupt all futures
-      fs <- interrupt(fs)
+      fs <- cancel(fs)
 
       ## Make sure all workers finish before continuing
       fs <- resolve(fs)
