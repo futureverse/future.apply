@@ -1,3 +1,5 @@
+#' @tags rng
+
 loadNamespace("future.apply")
 
 message("*** RNG ...")
@@ -163,5 +165,3 @@ set_random_seed(seed_org)
 stopifnot(identical(get_random_seed(), seed_org))
 
 message("*** RNG ... DONE")
-
-

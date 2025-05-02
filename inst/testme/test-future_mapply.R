@@ -1,3 +1,6 @@
+#' @tags future_mapply
+#' @tags sequential multisession multicore
+
 library(future.apply)
 
 message("*** future_mapply() ...")
@@ -247,5 +250,3 @@ stopifnot(length(y) == 0L, !is.null(names(y)), identical(y, X))
 message("*** future_mapply() - special cases ... DONE")
 
 message("*** future_mapply() ... DONE")
-
-

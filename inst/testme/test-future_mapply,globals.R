@@ -1,5 +1,8 @@
+#' @tags future_mapply
+#' @tags sequential multisession multicore
+
 library(future.apply)
-library("tools") ## toTitleCase()
+library(tools) ## toTitleCase()
 
 message("*** future_mapply() - globals ...")
 

@@ -1,5 +1,8 @@
-library(future.apply)
+#' @tags future_vapply
+#' @tags detritus-files
+#' @tags sequential multisession multicore
 
+library(future.apply)
 
 message("*** future_vapply() ...")
 
@@ -168,5 +171,3 @@ for (strategy in supportedStrategies()) {
 
 
 message("*** future_vapply() ... DONE")
-
-

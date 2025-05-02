@@ -1,3 +1,6 @@
+#' @tags future_lapply future_mapply
+#' @tags sequential multisession multicore
+
 library(future.apply)
 
 message("*** future_*apply() and 'future.stdout' ...")

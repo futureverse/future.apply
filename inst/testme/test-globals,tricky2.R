@@ -1,3 +1,7 @@
+#' @tags future_apply
+#' @tags globals
+#' @tags sequential multisession multicore
+
 if (packageVersion("future") > "1.40.0-9200") {
 
   library(future.apply)

@@ -1,3 +1,7 @@
+#' @tags future_apply
+#' @tags globals
+#' @tags sequential multisession multicore
+
 library(future.apply)
 
 ## Test adopted from http://stackoverflow.com/questions/42561088/nested-do-call-within-a-foreach-dopar-environment-cant-find-function-passed-w

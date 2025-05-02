@@ -1,3 +1,5 @@
+#' @tags fold
+
 loadNamespace("future.apply")
 
 message("*** fold() ...")
@@ -79,5 +81,3 @@ reduced <- Reduce(key_merge, tables[-1], tables[[1]])
 stopifnot(all.equal(unname(folded), unname(reduced)))
 
 message("*** fold() ... DONE")
-
-

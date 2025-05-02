@@ -1,3 +1,6 @@
+#' @tags future_lapply
+#' @tags sequential multisession multicore
+
 library(future.apply)
 
 message("*** future_lapply() and RNGs ...")

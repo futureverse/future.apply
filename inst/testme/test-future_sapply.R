@@ -1,3 +1,6 @@
+#' @tags future_sapply
+#' @tags sequential multisession multicore
+
 library(future.apply)
 
 message("*** future_sapply() ...")
@@ -61,5 +64,3 @@ for (strategy in supportedStrategies()) {
 } ## for (strategy in ...) 
 
 message("*** future_sapply() ... DONE")
-
-

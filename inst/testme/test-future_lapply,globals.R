@@ -1,5 +1,8 @@
+#' @tags future_lapply
+#' @tags sequential multisession multicore
+
 library(future.apply)
-library("tools") ## toTitleCase()
+library(tools) ## toTitleCase()
 
 options(future.debug = FALSE)
 options(future.apply.debug = TRUE)

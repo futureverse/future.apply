@@ -1,3 +1,6 @@
+#' @tags future_eapply
+#' @tags sequential multisession multicore
+
 library(future.apply)
 
 message("*** future_eapply() ...")

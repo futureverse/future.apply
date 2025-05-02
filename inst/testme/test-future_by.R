@@ -1,5 +1,9 @@
+#' @tags future_by
+#' @tags listenv
+#' @tags sequential multisession multicore
+
 library(future.apply)
-library("listenv")
+library(listenv)
 
 all_equal_but_call <- function(target, current, ...) {
   attr(target, "call") <- NULL
@@ -83,5 +87,3 @@ if (require("datasets") && require("stats")) { ## warpbreaks & lm()
 } ## if (require("stats"))
 
 message("*** future_by() ... DONE")
-
-

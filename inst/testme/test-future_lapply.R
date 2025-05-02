@@ -1,5 +1,9 @@
+#' @tags future_lapply
+#' @tags listenv
+#' @tags sequential multisession multicore
+
 library(future.apply)
-library("listenv")
+library(listenv)
 
 message("*** future_lapply() ...")
 
@@ -131,5 +135,3 @@ stopifnot(inherits(res, "error"))
 message("*** future_lapply() - exceptions ... DONE")
 
 message("*** future_lapply() ... DONE")
-
-
