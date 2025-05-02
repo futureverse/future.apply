@@ -17,7 +17,7 @@ Analogously, this is true for all the other future_nnn() functions."><!-- Global
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.11.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.11.3-9011</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -274,7 +274,11 @@ See <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">bas
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>(optional) Additional arguments passed to <code>FUN()</code>.
 For <code>future_*apply()</code> functions and <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate()</a></code>, any <code>future.*</code> arguments
-part of <code>\ldots</code> are passed on to <code>future_lapply()</code> used internally.</p></dd>
+part of <code>\ldots</code> are passed on to <code>future_lapply()</code> used internally.
+Importantly, if this is called inside another function which also declares
+... arguments, do not forget to explicitly pass such ... arguments
+down to the <code>future_*apply()</code> function too, which will then pass them on
+to <code>FUN()</code>. See below for an example.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -323,11 +327,11 @@ generate the exact same sequence of random numbers <em>given the same initial
 seed / RNG state</em> - this regardless of type of futures, scheduling
 ("chunking") strategy, and number of workers.</p>
 <p>RNG reproducibility is achieved by pregenerating the random seeds for all
-iterations (over <code>X</code>) by using L'Ecuyer-CMRG RNG streams.  In each
+iterations (over <code>X</code>) by using parallel RNG streams.  In each
 iteration, these seeds are set before calling <code>FUN(X[[ii]], ...)</code>.
 <em>Note, for large <code>length(X)</code> this may introduce a large overhead.</em></p>
 <p>If <code>future.seed = TRUE</code>, then <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">.Random.seed</a></code>
-is used if it holds a L'Ecuyer-CMRG RNG seed, otherwise one is created
+is used if it holds a parallel RNG seed, otherwise one is created
 randomly.</p>
 <p>If <code>future.seed = FALSE</code>, it is expected that none of the
 <code>FUN(X[[ii]], ...)</code> function calls use random number generation.
@@ -336,9 +340,9 @@ on settings. See <a href="https://future.futureverse.org/reference/future.html" 
 Using <code>future.seed = NULL</code>, is like <code>future.seed = FALSE</code> but without
 the check whether random numbers were generated or not.</p>
 <p>As input, <code>future.seed</code> may also take a fixed initial seed (integer),
-either as a full L'Ecuyer-CMRG RNG seed (vector of 1+6 integers), or
-as a seed generating such a full L'Ecuyer-CMRG seed. This seed will
-be used to generated <code>length(X)</code> L'Ecuyer-CMRG RNG streams.</p>
+either as a full parallel RNG seed, or as a seed generating such a
+full parallel seed. This seed will be used to generated <code>length(X)</code>
+parallel RNG streams.</p>
 <p>In addition to the above, it is possible to specify a pre-generated
 sequence of RNG seeds as a list such that
 <code>length(future.seed) == length(X)</code> and where each element is an
@@ -474,6 +478,27 @@ base <span style="R">R</span> functions, which are licensed under GPL (&gt;= 2) 
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 876.5</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">y1</span>, <span class="va">y0</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ---------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Remember to pass down '...' arguments</span></span></span>
+<span class="r-in"><span><span class="co">## ---------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## It is important that we don't use '...' as a global variable,</span></span></span>
+<span class="r-in"><span><span class="co">## as attempted in the following not_okay_fcn()</span></span></span>
+<span class="r-in"><span><span class="va">bad_fcn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">X</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">future_lapply</span><span class="op">(</span><span class="va">X</span>, FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>  <span class="co">## here '...' is a global variable</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Instead, make sure to pass '...' via arguments all the way through</span></span></span>
+<span class="r-in"><span><span class="va">good_fcn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">X</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span> <span class="co">## outer '...'</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">future_lapply</span><span class="op">(</span><span class="va">X</span>, FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>  <span class="co">## here '...' is an argument of FUN()</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span>, <span class="va">...</span><span class="op">)</span> <span class="co">## pass outer '...' to FUN()</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
