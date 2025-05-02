@@ -2,11 +2,12 @@
 
 ## Significant changes
 
- * All **future.apply** functions will now attempt to interrupt any
-   remaining non-resolved futures if a user interrupt (Ctrl-C) is
-   signalled or one of the futures produces an error.  For backends
-   that support interruption of futures, this results in the functions
-   return sooner and compute resources are freed up sooner.
+ * All **future.apply** functions will now cancel any remaining
+   non-resolved futures if one of the futures produces an error, or a
+   user interrupt (Ctrl-C) is detected. If the backend where the
+   futures are running support it, the canceled futures are also
+   interrupted, which results in compute resources being freed up
+   sooner and the **future.apply** function returning sooner.
 
 ## New Features
 
