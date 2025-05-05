@@ -27,12 +27,14 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::covr, any::xml2
+          extra-packages: any::covr, any::xml2, any::remotes
           needs: coverage
 
       - name: Install itself
         run: |
           install.packages(".", repos = NULL, type = "source")
+          remotes::install_github("futureverse/globals", ref = "develop")
+          remotes::install_github("futureverse/future", ref = "develop")
         shell: Rscript {0}
 
       - name: Test coverage
