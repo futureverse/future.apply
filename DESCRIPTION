@@ -5,7 +5,7 @@ Depends:
     R (>= 3.2.0),
     future (>= 1.40.0)
 Imports:
-    globals (>= 0.18.0),
+    globals,
     parallel,
     utils
 Suggests:
