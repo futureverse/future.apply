@@ -209,13 +209,13 @@ future_lapply <- local({
       expr_FUN <- quote({
         ...future.FUN(...future.X_jj)
       })
-      if (debug) mdebugf("  => Will not pass '...' to FUN(): %s", deparse(expr_FUN))
+      if (debug) mdebugf("  => Will not pass '...' to FUN(): %s", commaq(deparse(expr_FUN)))
     } else {
       ## No; okay to pass '...' to FUN()
       expr_FUN <- quote({
         ...future.FUN(...future.X_jj, ...)
       })
-      if (debug) mdebugf("  => Will pass '...' to FUN(): %s", deparse(expr_FUN))
+      if (debug) mdebugf("  => Will pass '...' to FUN(): %s", commaq(deparse(expr_FUN)))
     }
     
     ## With or without RNG?
