@@ -16,9 +16,6 @@ Suggests:
     R.rsp,
     markdown
 VignetteBuilder: R.rsp
-Remotes:
-    futureverse/globals@0.18.0,
-    futureverse/future@develop
 Authors@R: c(person("Henrik", "Bengtsson",
                     role = c("aut", "cre", "cph"),
                     email = "henrikb@braju.com",
