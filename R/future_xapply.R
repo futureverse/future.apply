@@ -300,7 +300,7 @@ future_xapply <- local({
         }) ## withCallingHandlers()
       } else {
         ## value() exits early if it detects a future with an error.
-        ## In future (> 1.40.0), non-resolved futures will be automatically
+        ## In future (>= 1.40.0), non-resolved futures will be automatically
         ## canceled if there's an error.
         value(fs)
       }
@@ -312,11 +312,11 @@ future_xapply <- local({
         host <- Sys.info()[["nodename"]]
         pid <- Sys.getpid()
         msg <- sprintf("%s() interrupted at %s, while running on %s (pid %s)", fcn_name, format(when, format = "%FT%T"), sQuote(host), pid)
-        warning(sprintf("%s. Cleaning up ...", msg), immediate. = TRUE, call. = FALSE)
+        warning(sprintf("%s. Canceling all iterations ...", msg), immediate. = TRUE, call. = FALSE)
+        
+        ## Interrupt all futures (if an error, value() already did it)
+        fs <- cancel(fs)
       }
-
-      ## Interrupt all futures
-      fs <- cancel(fs)
 
       ## Make sure all workers finish before continuing
       fs <- resolve(fs)

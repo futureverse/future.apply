@@ -3,7 +3,7 @@
 #' @tags detritus-files
 #' @tags sequential multisession multicore
 
-if (packageVersion("future") > "1.40.0-9200") {
+if (packageVersion("future") > "1.49.0" && isTRUE(getOption("future.globals.keepWhere"))) {
 
   library(future.apply)
   options(future.debug = FALSE)
