@@ -181,9 +181,12 @@ future_lapply <- local({
 
     FUN <- match.fun(FUN)
 
-    debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-    
-    if (debug) mdebugf("%s() ...", fcn_name)
+    debug <- isTRUE(getOption("future.debug"))
+    debug <- isTRUE(getOption("future.apply.debug", debug))
+    if (debug) {
+      mdebugf_push("%s() ...", fcn_name)
+      on.exit(mdebug_pop())
+    }
   
     ## NOTE TO SELF: We'd ideally have a 'future.envir' argument also for
     ## this function, cf. future().  However, it's not yet clear to me how
@@ -201,7 +204,7 @@ future_lapply <- local({
     ## If so, make sure to *not* pass '...' to FUN() 
     globals_FUN <- findGlobals(FUN, dotdotdot = "return")
     if (debug) {
-      mdebugf("- Globals in FUN(): [n=%d] %s", length(globals_FUN), commaq(globals_FUN))
+      mdebugf("Globals in FUN(): [n=%d] %s", length(globals_FUN), commaq(globals_FUN))
     }
     global_dotdotdot <- ("..." %in% globals_FUN)
     if (global_dotdotdot) {
@@ -209,13 +212,13 @@ future_lapply <- local({
       expr_FUN <- quote({
         ...future.FUN(...future.X_jj)
       })
-      if (debug) mdebugf("  => Will not pass '...' to FUN(): %s", commaq(deparse(expr_FUN)))
+      if (debug) mdebugf("=> Will not pass '...' to FUN(): %s", commaq(deparse(expr_FUN)))
     } else {
       ## No; okay to pass '...' to FUN()
       expr_FUN <- quote({
         ...future.FUN(...future.X_jj, ...)
       })
-      if (debug) mdebugf("  => Will pass '...' to FUN(): %s", commaq(deparse(expr_FUN)))
+      if (debug) mdebugf("=> Will pass '...' to FUN(): %s", commaq(deparse(expr_FUN)))
     }
     
     ## With or without RNG?
@@ -257,8 +260,6 @@ future_lapply <- local({
     ## Reduce
     ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     names(values) <- names(X)
-  
-    if (debug) mdebugf("%s() ... DONE", fcn_name)
     
     values
   }

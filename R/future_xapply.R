@@ -11,8 +11,11 @@ future_xapply <- local({
   })
 
   function(FUN, nX, chunk_args, args = NULL, MoreArgs = NULL, expr, envir = parent.frame(), future.envir, future.globals, future.packages, future.scheduling, future.chunk.size, future.stdout, future.conditions, future.seed, future.label, get_chunk, fcn_name = "future_xapply", args_name, ..., debug) {
-    if (debug) mdebugf("%s() ...", fcn_name)
-    
+    if (debug) {
+      mdebugf_push("%s() -> future_xapply() ...", fcn_name)
+      on.exit(mdebug_pop())
+    }
+      
     stop_if_not(is.function(FUN))
     
     stop_if_not(is.logical(future.stdout), length(future.stdout) == 1L)
@@ -100,7 +103,7 @@ future_xapply <- local({
     ## At this point a globals should be resolved and we should know their total size
   ##  stop_if_not(attr(globals, "resolved"), !is.na(attr(globals, "total_size")))
     if (debug) {
-      mdebugf(" - Globals pass to each chunk: [n=%d] %s", length(globals), commaq(names(globals)))
+      mdebugf("Globals pass to each chunk: [n=%d] %s", length(globals), commaq(names(globals)))
       mstr(globals)
     }
   
@@ -344,9 +347,6 @@ future_xapply <- local({
     }
   
     if (debug) mdebugf("Reducing values from %d chunks ... DONE", nchunks)
-
-    fcn_name <- "future_xapply"
-    if (debug) mdebugf("%s() ... DONE", fcn_name)
 
     values
   } ## future_xapply()

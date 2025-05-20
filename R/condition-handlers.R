@@ -1,9 +1,9 @@
 #' @importFrom future FutureInterruptError
 onInterrupt <- function(int, fcn_name, debug = FALSE) {
   if (debug) {
-    mdebug("onInterrupt() ...")
+    mdebug_push("onInterrupt() ...")
     mdebug(sprintf("Received <%s>", class(int)[1]))
-    on.exit(mdebug("onInterrupt() ... done"))
+    on.exit(mdebug_pop())
   }
   
   when <- Sys.time()
@@ -21,9 +21,9 @@ onInterrupt <- function(int, fcn_name, debug = FALSE) {
 #' @importFrom future cancel resolve value
 onError <- function(ex, futures, debug = FALSE) {
   if (debug) {
-    mdebug("onError() ...")
+    mdebug_push("onError() ...")
     mdebug(sprintf("Received <%s>", class(ex)[1]))
-    on.exit(mdebug("onError() ... done"))
+    on.exit(mdebug_pop())
   }
   
   ## Canceling all futures

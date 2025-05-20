@@ -84,9 +84,12 @@ future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES 
   
   stop_if_not(is.null(MoreArgs) || is.list(MoreArgs))
 
-  debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-  
-  if (debug) mdebugf("%s() ...", fcn_name)
+  debug <- isTRUE(getOption("future.debug"))
+  debug <- isTRUE(getOption("future.apply.debug", debug))
+  if (debug) {
+    mdebugf_push("%s() ...", fcn_name)
+    on.exit(mdebug_pop())
+  }
 
   ## NOTE TO SELF: We'd ideally have a 'future.envir' argument also for
   ## this function, cf. future().  However, it's not yet clear to me how
@@ -171,8 +174,6 @@ future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES 
   if (!isFALSE(SIMPLIFY) && length(values) > 0L) {
     values <- simplify2array(values, higher = (SIMPLIFY == "array"))
   } 
-  
-  if (debug) mdebugf("%s() ... DONE", fcn_name)
   
   values
 }

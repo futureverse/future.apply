@@ -85,8 +85,13 @@ future_by.data.frame <- function(data, INDICES, FUN, ..., simplify = TRUE, futur
 
 future_by_internal <- function(data, INDICES, FUN, ..., simplify = TRUE, .SUBSETTER, .CALL, .INDICES.NAME, future.envir = parent.frame(), future.label = "future_by-%d") {
   fcn_name <- "future_by_internal"
-  debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-  if (debug) mdebugf("%s() ...", fcn_name)
+  
+  debug <- isTRUE(getOption("future.debug"))
+  debug <- isTRUE(getOption("future.apply.debug", debug))
+  if (debug) {
+    mdebugf_push("%s() ...", fcn_name)
+    on.exit(mdebug_pop())
+  }
 
   FUN <- future_by_match_FUN(FUN)  ## to be removed /HB 2022-10-24
   stop_if_not(is.function(FUN))
@@ -147,8 +152,6 @@ future_by_internal <- function(data, INDICES, FUN, ..., simplify = TRUE, .SUBSET
   
   if (length(ans) > 0L) ansmat[index] <- ans
   ans <- NULL ## Not needed anymore
-
-  if (debug) mdebugf("%s() ... DONE", fcn_name)
 
   structure(ansmat,
     call = .CALL,
