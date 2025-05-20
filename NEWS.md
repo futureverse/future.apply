@@ -5,7 +5,7 @@
  * All **future.apply** functions will now cancel any remaining
    non-resolved futures if one of the futures produces an error, or a
    user interrupt (Ctrl-C) is detected. If the backend where the
-   futures are running support it, the canceled futures are also
+   futures are running supports it, the canceled futures are also
    interrupted, which results in compute resources being freed up
    sooner and the **future.apply** function returning sooner.
 

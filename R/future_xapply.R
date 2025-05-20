@@ -1,4 +1,4 @@
-#' @importFrom future Future nbrOfWorkers future resolve value as.FutureGlobals getGlobalsAndPackages
+#' @importFrom future cancel Future nbrOfWorkers future resolve value as.FutureGlobals getGlobalsAndPackages FutureInterruptError
 future_xapply <- local({
   tmpl_expr_options <- bquote_compile({
     "# future.apply:::future_xapply(): preserve future option"
@@ -8,14 +8,6 @@ future_xapply <- local({
       on.exit(options(oopts), add = TRUE)
     }
     .(expr)
-  })
-
-  cancel <- import_future("cancel", default = function(x, ...) { x })
-
-  FutureInterruptError <- import_future("FutureInterruptError", default = function(...) {
-    ex <- FutureError(...)
-    class(ex) <- c("FutureInterruptError", class(ex))
-    ex
   })
 
   function(FUN, nX, chunk_args, args = NULL, MoreArgs = NULL, expr, envir = parent.frame(), future.envir, future.globals, future.packages, future.scheduling, future.chunk.size, future.stdout, future.conditions, future.seed, future.label, get_chunk, fcn_name = "future_xapply", args_name, ..., debug) {
@@ -226,7 +218,9 @@ future_xapply <- local({
           mdebugf(" - All globals exported: [n=%d] %s",
                   length(globals_ii), commaq(names(globals_ii)))
         }
-  
+
+        ## FIXME: Handle interrupts also here, i.e. as soon as we have
+        ## launched the first future, we should be able to interrupt it
         fs[[ii]] <- future(
           expr, substitute = FALSE,
           envir = future.envir,
@@ -304,36 +298,12 @@ future_xapply <- local({
         ## canceled if there's an error.
         value(fs)
       }
-    }, interrupt = identity, error = identity) ## tryCatch()
+    }, interrupt = function(int) {
+      onInterrupt(int, fcn_name = fcn_name, debug = debug)
+    }, error = function(e) {
+      onError(e, futures = fs, debug = debug)
+    }) ## tryCatch()
 
-    if (inherits(values, "interrupt") || inherits(values, "error")) {
-      if (inherits(values, "interrupt")) {
-        when <- Sys.time()
-        host <- Sys.info()[["nodename"]]
-        pid <- Sys.getpid()
-        msg <- sprintf("%s() interrupted at %s, while running on %s (pid %s)", fcn_name, format(when, format = "%FT%T"), sQuote(host), pid)
-        warning(sprintf("%s. Canceling all iterations ...", msg), immediate. = TRUE, call. = FALSE)
-        
-        ## Interrupt all futures (if an error, value() already did it)
-        fs <- cancel(fs)
-      }
-
-      ## Make sure all workers finish before continuing
-      fs <- resolve(fs)
-
-      ## Collect all results
-      void <- lapply(fs, FUN = function(f) {
-        tryCatch(f, error = identity)
-      })
-
-      ## Resignal error?
-      if (inherits(values, "error")) {
-        stop(values)
-      }
-
-      stop(FutureInterruptError(msg))
-    }
-  
     ## Not needed anymore
     rm(list = "fs")
   
