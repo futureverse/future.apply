@@ -53,7 +53,7 @@ Where does the **[future.apply]** package fit in the software stack?  You can th
 <br>
 </td>
 <td>
-Future-versions of common goto <code>*apply()</code> functions available in base R (of the <strong>base</strong> package):<br>
+Future-versions of common goto <code>*apply()</code> functions available in base R (of the <strong>base</strong> and <strong>stats</strong> packages):<br>
 <code>future_apply()</code>, 
 <code>future_by()</code>, 
 <code>future_eapply()</code>, 
@@ -63,8 +63,9 @@ Future-versions of common goto <code>*apply()</code> functions available in base
 <code>future_.mapply()</code>, 
 <code>future_replicate()</code>,
 <code>future_sapply()</code>,
-<code>future_tapply()</code>, and 
-<code>future_vapply()</code>.
+<code>future_tapply()</code>,
+<code>future_vapply()</code>, and
+<code>future_kernapply()</code>.
 <br>
 <em>The following function is not implemented:</em><br>
 <code>future_rapply()</code><br>
