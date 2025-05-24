@@ -4,7 +4,6 @@
 \alias{future_kernapply}
 \alias{future_kernapply.default}
 \alias{future_kernapply.ts}
-\alias{kernapply.tskernel}
 \title{Apply Smoothing Kernel in Parallel}
 \usage{
 future_kernapply(x, ...)
@@ -12,8 +11,6 @@ future_kernapply(x, ...)
 \method{future_kernapply}{default}(x, k, circular = FALSE, ...)
 
 \method{future_kernapply}{ts}(x, k, circular = FALSE, ...)
-
-\method{kernapply}{tskernel}(x, k, ...)
 }
 \arguments{
 \item{x}{an input vector, matrix, time series or kernel to be smoothed.}
@@ -32,15 +29,15 @@ See \link[stats:kernapply]{stats::kernapply} for details.
 \code{future_kernapply()} is a futurized version of
 \code{\link[stats:kernapply]{stats::kernapply()}}, i.e. it computes, in parallel, the
 convolution between an input sequence and a specific kernel.
-Parallelization takes place when \code{x} is a matrix or a
-\code{tskernel} object.
+Parallelization takes place over columns when \code{x} is a matrix,
+including a \code{ts} matrix.
 }
 \examples{
 library(datasets)
 library(stats)
 
-x <- EuStockMarkets[,1]
+X <- EuStockMarkets[, 1:2]
 k <- kernel("daniell", 50)  # a long moving average
-x <- future_kernapply(x, k = k)
+X_smooth <- future_kernapply(X, k = k)
 
 }
