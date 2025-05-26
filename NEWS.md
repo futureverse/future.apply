@@ -11,16 +11,16 @@
 
 ## New Features
 
- * Now **future.apply** lets **future** take care of the generation of
-   parallel RNG seed. Consolidating random number generation to the
-   core package will allow us to add central support for custom
-   parallel RNG methods beyond the built-in L'Ecuyer-CMRG method.
-
  * Added `future_Filter()`, which is parallel version of
    `base::Filter()`.
 
  * Added `future_kernapply()`, which is parallel version of
    `stats::kernapply()`.
+
+ * Now **future.apply** lets **future** take care of the generation of
+   parallel RNG seed. Consolidating random number generation to the
+   core package will allow us to add central support for custom
+   parallel RNG methods beyond the built-in L'Ecuyer-CMRG method.
 
 ## Deprecated and Defunct
 
@@ -43,7 +43,8 @@
 
 ## Miscellaneous
 
- * Relaxed on unit test that triggered an error on 32-bit architectures.
+ * Relaxed one unit test that triggered an error on 32-bit
+   architectures.
 
 
 # Version 1.11.1 [2023-12-19]
