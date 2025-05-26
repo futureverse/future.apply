@@ -15,7 +15,10 @@
    parallel RNG seed. Consolidating random number generation to the
    core package will allow us to add central support for custom
    parallel RNG methods beyond the built-in L'Ecuyer-CMRG method.
-   
+
+ * Added `future_Filter()`, which is parallel version of
+   `base::Filter()`.
+
  * Added `future_kernapply()`, which is parallel version of
    `stats::kernapply()`.
 
