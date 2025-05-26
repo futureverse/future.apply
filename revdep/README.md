@@ -68,7 +68,7 @@
 |cvCovEst                 |1.2.2     |      |        |     |
 |DeclareDesign            |1.0.10    |      |        |     |
 |deseats                  |1.1.0     |      |        |     |
-|[dipsaus](problems.md#dipsaus)|0.3.1     |-1    |        |1    |
+|[dipsaus](problems.md#dipsaus)|0.3.1     |      |        |1    |
 |[disk.frame](problems.md#diskframe)|0.8.3     |      |        |1    |
 |distantia                |2.0.2     |      |        |     |
 |doFuture                 |1.1.0     |      |        |     |

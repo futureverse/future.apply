@@ -282,33 +282,6 @@ Run `revdepcheck::revdep_details(, "dipsaus")` for more info
 
 </details>
 
-## Newly fixed
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘dipsaus-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: map
-    > ### Title: Create R object map.
-    > ### Aliases: map session_map rds_map text_map
-    > 
-    > ### ** Examples
-    > 
-    > # ----------------------Basic Usage ----------------------
-    ...
-    > # Reset
-    > map$reset()
-    > 
-    > # Check if the map is corrupted.
-    > map$validate()
-    Warning in file(con, "w") :
-      cannot open file '/c4/home/henrik/.cache/R/dipsaus/file_locks/4dMaH8wQnr6YGuuP1TjgiouKOyTKKHP9yRoGtIfjPLUtBt5R4w': No such file or directory
-    Error in file(con, "w") : cannot open the connection
-    Calls: <Anonymous> ... <Anonymous> -> <Anonymous> -> dipsaus_lock -> writeLines -> file
-    Execution halted
-    ```
-
 ## In both
 
 *   checking compiled code ... NOTE
