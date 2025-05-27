@@ -95,7 +95,7 @@
 #' If `future.seed = FALSE`, it is expected that none of the
 #' `FUN(X[[ii]], ...)` function calls use random number generation.
 #' If they do, then an informative warning or error is produces depending
-#' on settings. See [future::future] for more details.
+#' on settings. See [future::future()] for more details.
 #' Using `future.seed = NULL`, is like `future.seed = FALSE` but without
 #' the check whether random numbers were generated or not.
 #'

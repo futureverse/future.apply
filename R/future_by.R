@@ -11,12 +11,12 @@
 #' @param \ldots Additional arguments pass to [future_lapply()] and
 #'   then to `FUN()`.
 #'
-#' @param simplify logical: see [base::tapply].
+#' @param simplify logical: see [base::tapply()].
 #' 
 #' @return
 #' An object of class "by", giving the results for each subset.
 #' This is always a list if simplify is false, otherwise a list
-#' or array (see [base::tapply]).
+#' or array (see [base::tapply()]).
 #' See also [base::by()] for details.
 #'
 #' @example incl/future_by.R

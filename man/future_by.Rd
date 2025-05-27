@@ -20,7 +20,7 @@ future_by(
 
 \item{FUN}{a function to be applied to (usually data-frame) subsets of \code{data}.}
 
-\item{simplify}{logical: see \link[base:tapply]{base::tapply}.}
+\item{simplify}{logical: see \code{\link[base:tapply]{base::tapply()}}.}
 
 \item{future.envir}{An \link{environment} passed as argument \code{envir} to
 \code{\link[future:future]{future::future()}} as-is.}
@@ -31,7 +31,7 @@ then to \code{FUN()}.}
 \value{
 An object of class "by", giving the results for each subset.
 This is always a list if simplify is false, otherwise a list
-or array (see \link[base:tapply]{base::tapply}).
+or array (see \code{\link[base:tapply]{base::tapply()}}).
 See also \code{\link[base:by]{base::by()}} for details.
 }
 \description{

@@ -23,7 +23,7 @@ future_kernapply(x, ...)
     smoothed is treated as circular, i.e., periodic.}
 }
 \value{
-See \link[stats:kernapply]{stats::kernapply} for details.
+See \code{\link[stats:kernapply]{stats::kernapply()}} for details.
 }
 \description{
 \code{future_kernapply()} is a futurized version of

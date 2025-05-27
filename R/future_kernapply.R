@@ -9,7 +9,7 @@
 #' @inheritParams stats::kernapply
 #'
 #' @returns
-#' See [stats::kernapply] for details.
+#' See [stats::kernapply()] for details.
 #'
 #' @examples
 #' library(datasets)

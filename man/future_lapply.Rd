@@ -228,7 +228,7 @@ randomly.
 If \code{future.seed = FALSE}, it is expected that none of the
 \code{FUN(X[[ii]], ...)} function calls use random number generation.
 If they do, then an informative warning or error is produces depending
-on settings. See \link[future:future]{future::future} for more details.
+on settings. See \code{\link[future:future]{future::future()}} for more details.
 Using \code{future.seed = NULL}, is like \code{future.seed = FALSE} but without
 the check whether random numbers were generated or not.
 
