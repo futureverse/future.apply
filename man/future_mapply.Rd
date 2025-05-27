@@ -131,9 +131,13 @@ Note that \code{\link[base:mapply]{base::.mapply()}}, which \code{future_.mapply
 is listed as an "internal" function in \R despite being exported.
 }
 \examples{
+## ---------------------------------------------------------
+## Filter()
+## ---------------------------------------------------------
 is_even <- function(x) { x \%\% 2 == 0 }
 x <- sample.int(100, size = 1000, replace = TRUE)
-y <- Filter(is_even, x)
+y <- future_Filter(is_even, x)
+
 
 ## ---------------------------------------------------------
 ## mapply()

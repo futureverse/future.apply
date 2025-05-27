@@ -8,10 +8,7 @@
 #' @return
 #' See [base::Filter()] for details.
 #'
-#' @examples
-#' is_even <- function(x) { x %% 2 == 0 }
-#' x <- sample.int(100, size = 1000, replace = TRUE)
-#' y <- Filter(is_even, x)
+#' @example incl/future_Filter.R
 #'
 #' @author
 #' The implementations of `future_Filter()` is adopted from the source code
