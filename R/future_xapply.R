@@ -284,9 +284,8 @@ future_xapply <- local({
           
           ## Adjust message to give instructions relevant to this package
           f <- fs[[idx]]
-          label <- f$label
-          if (is.null(label)) label <- "<none>"
-          message <- sprintf("UNRELIABLE VALUE: One of the %s iterations (%s) unexpectedly generated random numbers without declaring so. There is a risk that those random numbers are not statistically sound and the overall results might be invalid. To fix this, specify 'future.seed=TRUE'. This ensures that proper, parallel-safe random numbers are produced via a parallel RNG method. To disable this check, use 'future.seed = NULL', or set option 'future.rng.onMisuse' to \"ignore\".", sQuote(.packageName), sQuote(label))
+          label <- sQuoteLabel(f)
+          message <- sprintf("UNRELIABLE VALUE: One of the %s iterations (%s) unexpectedly generated random numbers without declaring so. There is a risk that those random numbers are not statistically sound and the overall results might be invalid. To fix this, specify 'future.seed=TRUE'. This ensures that proper, parallel-safe random numbers are produced via a parallel RNG method. To disable this check, use 'future.seed = NULL', or set option 'future.rng.onMisuse' to \"ignore\".", sQuote(.packageName), label)
           cond$message <- message
           if (inherits(cond, "warning")) {
             warning(cond)
