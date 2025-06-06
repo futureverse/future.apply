@@ -4,6 +4,8 @@
 .onLoad <- function(libname, pkgname) {
   .package[["version"]] <- utils::packageVersion(pkgname)
 
+  import_future_functions()
+
   update_package_option("future.apply.debug", mode = "logical")
   debug <- getOption("future.apply.debug", FALSE)
 

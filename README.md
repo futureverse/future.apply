@@ -44,17 +44,19 @@ Where does the **[future.apply]** package fit in the software stack?  You can th
 <br>
 </td>
 <td>
-Future-versions of common goto <code>*apply()</code> functions available in base R (of the <strong>base</strong> package):<br>
+Future-versions of common goto <code>*apply()</code> functions available in base R (of the <strong>base</strong> and <strong>stats</strong> packages):<br>
 <code>future_apply()</code>, 
 <code>future_by()</code>, 
 <code>future_eapply()</code>, 
+<code>future_Filter()</code>, 
 <code>future_lapply()</code>, 
+<code>future_kernapply()</code>,
 <code>future_Map()</code>, 
 <code>future_mapply()</code>, 
 <code>future_.mapply()</code>, 
 <code>future_replicate()</code>,
 <code>future_sapply()</code>,
-<code>future_tapply()</code>, and 
+<code>future_tapply()</code>, and
 <code>future_vapply()</code>.
 <br>
 <em>The following function is not implemented:</em><br>
@@ -119,7 +121,7 @@ Bioconductor's parallel mappers:<br>
 <code>bpvec()</code>
 </td>
 <td>
-All <strong>future</strong> backends via <a href="https://cran.r-project.org/package=doFuture"><strong>doFuture</strong></a> (because it supports <strong>foreach</strong>) or via <a href="https://github.com/HenrikBengtsson/BiocParallel.FutureParam"><strong>BiocParallel.FutureParam</strong></a> (direct BiocParallelParam support; prototype)
+All <strong>future</strong> backends via <a href="https://cran.r-project.org/package=doFuture"><strong>doFuture</strong></a> (because it supports <strong>foreach</strong>) or via <a href="https://github.com/futureverse/BiocParallel.FutureParam"><strong>BiocParallel.FutureParam</strong></a> (direct BiocParallelParam support; prototype)
 </td>
 </tr>
 

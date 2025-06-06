@@ -59,37 +59,6 @@ comma <- function(x, sep = ", ") paste(x, collapse = sep)
 
 commaq <- function(x, sep = ", ") paste(sQuote(x), collapse = sep)
 
-now <- function(x = Sys.time(), format = "[%H:%M:%OS3] ") {
-  ## format(x, format = format) ## slower
-  format(as.POSIXlt(x, tz = ""), format = format)
-}
-
-mdebug <- function(..., debug = NA) {
-  if (is.na(debug)) debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-  if (!debug) return()
-  message(now(), ...)
-}
-
-mdebugf <- function(..., appendLF = TRUE, debug = NA) {
-  if (is.na(debug)) debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-  if (!debug) return()
-  message(now(), sprintf(...), appendLF = appendLF)
-}
-
-#' @importFrom utils capture.output
-mprint <- function(..., appendLF = TRUE, debug = NA) {
-  if (is.na(debug)) debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-  if (!debug) return()
-  message(paste(now(), capture.output(print(...)), sep = "", collapse = "\n"), appendLF = appendLF)
-}
-
-#' @importFrom utils capture.output
-mstr <- function(..., appendLF = TRUE, debug = NA) {
-  if (is.na(debug)) debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-  if (!debug) return()
-  message(paste(now(), capture.output(str(...)), sep = "", collapse = "\n"), appendLF = appendLF)
-}
-
 if (getRversion() < "4.0.0") {
   ## When 'default' is specified, this is 30x faster than
   ## base::getOption().  The difference is that here we use

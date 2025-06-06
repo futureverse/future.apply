@@ -1,18 +1,18 @@
 Package: future.apply
-Version: 1.11.3
+Version: 1.20.0
 Title: Apply Function to Elements in Parallel using Futures
 Depends:
     R (>= 3.2.0),
-    future (>= 1.28.0)
+    future (>= 1.49.0)
 Imports:
-    globals (>= 0.16.1),
+    globals,
     parallel,
     utils
 Suggests:
     datasets,
     stats,
     tools,
-    listenv (>= 0.8.0),
+    listenv,
     R.rsp,
     markdown
 VignetteBuilder: R.rsp
@@ -26,5 +26,7 @@ License: GPL (>= 2)
 LazyLoad: TRUE
 URL: https://future.apply.futureverse.org, https://github.com/futureverse/future.apply
 BugReports: https://github.com/futureverse/future.apply/issues
+Language: en-US
+Encoding: UTF-8
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)

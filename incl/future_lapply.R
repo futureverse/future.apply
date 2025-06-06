@@ -52,6 +52,27 @@ print(y1)
 stopifnot(all.equal(y1, y0))
 
 
+## ---------------------------------------------------------
+## Remember to pass down '...' arguments
+## ---------------------------------------------------------
+## It is important that we don't use '...' as a global variable,
+## as attempted in the following not_okay_fcn()
+bad_fcn <- function(X, ...) {
+  y <- future_lapply(X, FUN = function(x) {
+    mean(x, ...)  ## here '...' is a global variable
+  })
+  y
+}
+
+## Instead, make sure to pass '...' via arguments all the way through
+good_fcn <- function(X, ...) { ## outer '...'
+  y <- future_lapply(X, FUN = function(x, ...) {
+    mean(x, ...)  ## here '...' is an argument of FUN()
+  }, ...) ## pass outer '...' to FUN()
+  y
+}
+
+
 \dontshow{
 ## R CMD check: make sure any open connections are closed afterward
 if (!inherits(plan(), "sequential")) plan(sequential)

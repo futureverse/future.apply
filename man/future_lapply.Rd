@@ -158,7 +158,11 @@ See \code{\link[base:lapply]{base::vapply()}} for details.}
 
 \item{\ldots}{(optional) Additional arguments passed to \code{FUN()}.
 For \code{future_*apply()} functions and \code{replicate()}, any \verb{future.*} arguments
-part of \verb{\\ldots} are passed on to \code{future_lapply()} used internally.}
+part of \verb{\\ldots} are passed on to \code{future_lapply()} used internally.
+Importantly, if this is called inside another function which also declares
+\ldots arguments, do not forget to explicitly pass such \ldots arguments
+down to the \code{future_*apply()} function too, which will then pass them on
+to \code{FUN()}. See below for an example.}
 }
 \value{
 A named (unless \code{USE.NAMES = FALSE}) list.
@@ -213,25 +217,25 @@ seed / RNG state} - this regardless of type of futures, scheduling
 ("chunking") strategy, and number of workers.
 
 RNG reproducibility is achieved by pregenerating the random seeds for all
-iterations (over \code{X}) by using L'Ecuyer-CMRG RNG streams.  In each
+iterations (over \code{X}) by using parallel RNG streams.  In each
 iteration, these seeds are set before calling \code{FUN(X[[ii]], ...)}.
 \emph{Note, for large \code{length(X)} this may introduce a large overhead.}
 
 If \code{future.seed = TRUE}, then \code{\link[base:Random]{.Random.seed}}
-is used if it holds a L'Ecuyer-CMRG RNG seed, otherwise one is created
+is used if it holds a parallel RNG seed, otherwise one is created
 randomly.
 
 If \code{future.seed = FALSE}, it is expected that none of the
 \code{FUN(X[[ii]], ...)} function calls use random number generation.
 If they do, then an informative warning or error is produces depending
-on settings. See \link[future:future]{future::future} for more details.
+on settings. See \code{\link[future:future]{future::future()}} for more details.
 Using \code{future.seed = NULL}, is like \code{future.seed = FALSE} but without
 the check whether random numbers were generated or not.
 
 As input, \code{future.seed} may also take a fixed initial seed (integer),
-either as a full L'Ecuyer-CMRG RNG seed (vector of 1+6 integers), or
-as a seed generating such a full L'Ecuyer-CMRG seed. This seed will
-be used to generated \code{length(X)} L'Ecuyer-CMRG RNG streams.
+either as a full parallel RNG seed, or as a seed generating such a
+full parallel seed. This seed will be used to generated \code{length(X)}
+parallel RNG streams.
 
 In addition to the above, it is possible to specify a pre-generated
 sequence of RNG seeds as a list such that
@@ -329,6 +333,27 @@ y1 <- future_lapply(chunks, FUN = function(iris) sum(iris$Sepal.Length))
 y1 <- do.call(sum, y1)
 print(y1)
 stopifnot(all.equal(y1, y0))
+
+
+## ---------------------------------------------------------
+## Remember to pass down '...' arguments
+## ---------------------------------------------------------
+## It is important that we don't use '...' as a global variable,
+## as attempted in the following not_okay_fcn()
+bad_fcn <- function(X, ...) {
+  y <- future_lapply(X, FUN = function(x) {
+    mean(x, ...)  ## here '...' is a global variable
+  })
+  y
+}
+
+## Instead, make sure to pass '...' via arguments all the way through
+good_fcn <- function(X, ...) { ## outer '...'
+  y <- future_lapply(X, FUN = function(x, ...) {
+    mean(x, ...)  ## here '...' is an argument of FUN()
+  }, ...) ## pass outer '...' to FUN()
+  y
+}
 
 
 \dontshow{

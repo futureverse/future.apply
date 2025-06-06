@@ -11,12 +11,12 @@
 #' @param \ldots Additional arguments pass to [future_lapply()] and
 #'   then to `FUN()`.
 #'
-#' @param simplify logical: see [base::tapply].
+#' @param simplify logical: see [base::tapply()].
 #' 
 #' @return
 #' An object of class "by", giving the results for each subset.
 #' This is always a list if simplify is false, otherwise a list
-#' or array (see [base::tapply]).
+#' or array (see [base::tapply()]).
 #' See also [base::by()] for details.
 #'
 #' @example incl/future_by.R
@@ -85,8 +85,13 @@ future_by.data.frame <- function(data, INDICES, FUN, ..., simplify = TRUE, futur
 
 future_by_internal <- function(data, INDICES, FUN, ..., simplify = TRUE, .SUBSETTER, .CALL, .INDICES.NAME, future.envir = parent.frame(), future.label = "future_by-%d") {
   fcn_name <- "future_by_internal"
-  debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-  if (debug) mdebugf("%s() ...", fcn_name)
+  
+  debug <- isTRUE(getOption("future.debug"))
+  debug <- isTRUE(getOption("future.apply.debug", debug))
+  if (debug) {
+    mdebugf_push("%s() ...", fcn_name)
+    on.exit(mdebug_pop())
+  }
 
   FUN <- future_by_match_FUN(FUN)  ## to be removed /HB 2022-10-24
   stop_if_not(is.function(FUN))
@@ -148,8 +153,6 @@ future_by_internal <- function(data, INDICES, FUN, ..., simplify = TRUE, .SUBSET
   if (length(ans) > 0L) ansmat[index] <- ans
   ans <- NULL ## Not needed anymore
 
-  if (debug) mdebugf("%s() ... DONE", fcn_name)
-
   structure(ansmat,
     call = .CALL,
     class = "by"
@@ -160,7 +163,7 @@ future_by_internal <- function(data, INDICES, FUN, ..., simplify = TRUE, .SUBSET
 future_by_match_FUN <- function(FUN) {
   if (is.function(FUN)) return(FUN)
   
-  .Deprecated(msg = "Specifying the function 'FUN' for future_by() as a character string is deprecated in future.apply (>= 1.10.0) [2022-11-04], because base::by() does not support it. Instead, specify it as a function, e.g. FUN = sqrt and FUN = `[[`. It is deprecated.", package = .packageName)
+  .Defunct(msg = "Specifying the function 'FUN' for future_by() as a character string is defunct in future.apply (>= 1.12.0), because base::by() does not support it. Instead, specify it as a function, e.g. FUN = sqrt and FUN = `[[`", package = .packageName)
 
   match.fun(FUN)
 }

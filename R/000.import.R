@@ -1,18 +1,18 @@
-import_from <- function(name, default = NULL, package) {
+import_from <- function(name, mode = "function", default = NULL, package) {
   ns <- getNamespace(package)
-  if (exists(name, mode = "function", envir = ns, inherits = FALSE)) {
-    get(name, mode = "function", envir = ns, inherits = FALSE)
+  if (exists(name, mode = mode, envir = ns, inherits = FALSE)) {
+    get(name, mode = mode, envir = ns, inherits = FALSE)
   } else if (!is.null(default)) {
     default
   } else {
-    stopf("No such '%s' function: %s()", package, name)
+    stop(sprintf("No such '%s' %s: %s()", package, mode, name))
   }
 }
 
-import_future <- function(name, default = NULL) {
-  import_from(name, default = default, package = "future")
+import_future <- function(name, mode = "function", default = NULL) {
+  import_from(name, mode = mode, default = default, package = "future")
 }
 
-import_base <- function(name, default = NULL) {
-  import_from(name, default = default, package = "base")
+import_base <- function(name, mode = "function", default = NULL) {
+  import_from(name, mode = mode, default = default, package = "base")
 }

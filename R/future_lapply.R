@@ -8,9 +8,13 @@
 #' 
 #' @param FUN  A function taking at least one argument.
 #' 
-#' @param \ldots  (optional) Additional arguments passed to `FUN()`.
+#' @param \ldots (optional) Additional arguments passed to `FUN()`.
 #' For `future_*apply()` functions and `replicate()`, any `future.*` arguments
 #' part of `\ldots` are passed on to `future_lapply()` used internally.
+#' Importantly, if this is called inside another function which also declares
+#' \ldots arguments, do not forget to explicitly pass such \ldots arguments
+#' down to the `future_*apply()` function too, which will then pass them on
+#' to `FUN()`. See below for an example.
 #' 
 #' @param future.envir An [environment] passed as argument `envir` to
 #'        [future::future()] as-is.
@@ -80,25 +84,25 @@
 #' ("chunking") strategy, and number of workers.
 #' 
 #' RNG reproducibility is achieved by pregenerating the random seeds for all
-#' iterations (over `X`) by using L'Ecuyer-CMRG RNG streams.  In each
+#' iterations (over `X`) by using parallel RNG streams.  In each
 #' iteration, these seeds are set before calling `FUN(X[[ii]], ...)`.
 #' _Note, for large `length(X)` this may introduce a large overhead._
 #'
 #' If `future.seed = TRUE`, then \code{\link[base:Random]{.Random.seed}}
-#' is used if it holds a L'Ecuyer-CMRG RNG seed, otherwise one is created
+#' is used if it holds a parallel RNG seed, otherwise one is created
 #' randomly.
 #'
 #' If `future.seed = FALSE`, it is expected that none of the
 #' `FUN(X[[ii]], ...)` function calls use random number generation.
 #' If they do, then an informative warning or error is produces depending
-#' on settings. See [future::future] for more details.
+#' on settings. See [future::future()] for more details.
 #' Using `future.seed = NULL`, is like `future.seed = FALSE` but without
 #' the check whether random numbers were generated or not.
 #'
 #' As input, `future.seed` may also take a fixed initial seed (integer),
-#' either as a full L'Ecuyer-CMRG RNG seed (vector of 1+6 integers), or
-#' as a seed generating such a full L'Ecuyer-CMRG seed. This seed will
-#' be used to generated `length(X)` L'Ecuyer-CMRG RNG streams.
+#' either as a full parallel RNG seed, or as a seed generating such a
+#' full parallel seed. This seed will be used to generated `length(X)`
+#' parallel RNG streams.
 #'
 #' In addition to the above, it is possible to specify a pre-generated
 #' sequence of RNG seeds as a list such that
@@ -148,6 +152,7 @@
 #' @export
 future_lapply <- local({
   tmpl_expr <- bquote_compile({
+    "# future.apply::future_lapply(): process chunk of elements"
     lapply(seq_along(...future.elements_ii), FUN = function(jj) {
        ...future.X_jj <- ...future.elements_ii[[jj]]
        .(expr_FUN)
@@ -155,6 +160,7 @@ future_lapply <- local({
   })
 
   tmpl_expr_with_rng <- bquote_compile({
+    "# future.apply::future_lapply(): process chunk of elements while setting random seeds"
     lapply(seq_along(...future.elements_ii), FUN = function(jj) {
        ...future.X_jj <- ...future.elements_ii[[jj]]
        assign(".Random.seed", ...future.seeds_ii[[jj]], envir = globalenv(), inherits = FALSE)
@@ -175,9 +181,12 @@ future_lapply <- local({
 
     FUN <- match.fun(FUN)
 
-    debug <- getOption("future.apply.debug", getOption("future.debug", FALSE))
-    
-    if (debug) mdebugf("%s() ...", fcn_name)
+    debug <- isTRUE(getOption("future.debug"))
+    debug <- isTRUE(getOption("future.apply.debug", debug))
+    if (debug) {
+      mdebugf_push("%s() ...", fcn_name)
+      on.exit(mdebug_pop())
+    }
   
     ## NOTE TO SELF: We'd ideally have a 'future.envir' argument also for
     ## this function, cf. future().  However, it's not yet clear to me how
@@ -192,11 +201,24 @@ future_lapply <- local({
     ...future.FUN <- NULL ## To please R CMD check
   
     ## Does FUN() rely on '...' being a global?
-    global_dotdotdot <- ("..." %in% findGlobals(FUN, dotdotdot = "return"))
+    ## If so, make sure to *not* pass '...' to FUN() 
+    globals_FUN <- findGlobals(FUN, dotdotdot = "return")
+    if (debug) {
+      mdebugf("Globals in FUN(): [n=%d] %s", length(globals_FUN), commaq(globals_FUN))
+    }
+    global_dotdotdot <- ("..." %in% globals_FUN)
     if (global_dotdotdot) {
-      expr_FUN <- quote(...future.FUN(...future.X_jj))
+      ## Yes; don't pass '...' to FUN()
+      expr_FUN <- quote({
+        ...future.FUN(...future.X_jj)
+      })
+      if (debug) mdebugf("=> Will not pass '...' to FUN(): %s", commaq(deparse(expr_FUN)))
     } else {
-      expr_FUN <- quote(...future.FUN(...future.X_jj, ...))
+      ## No; okay to pass '...' to FUN()
+      expr_FUN <- quote({
+        ...future.FUN(...future.X_jj, ...)
+      })
+      if (debug) mdebugf("=> Will pass '...' to FUN(): %s", commaq(deparse(expr_FUN)))
     }
     
     ## With or without RNG?
@@ -238,8 +260,6 @@ future_lapply <- local({
     ## Reduce
     ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     names(values) <- names(X)
-  
-    if (debug) mdebugf("%s() ... DONE", fcn_name)
     
     values
   }
