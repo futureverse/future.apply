@@ -26,6 +26,30 @@ Run `revdepcheck::revdep_details(, "adestr")` for more info
         ‘plot.R’ ‘print.R’ ‘reference_implementation.R’
     ```
 
+# AgePopDenom
+
+<details>
+
+* Version: 0.4.0
+* GitHub: NA
+* Source code: https://github.com/cran/AgePopDenom
+* Date/Publication: 2025-02-25 18:10:02 UTC
+* Number of recursive dependencies: 138
+
+Run `revdepcheck::revdep_details(, "AgePopDenom")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘terra’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
+
 # alphaci
 
 <details>
@@ -123,7 +147,7 @@ Run `revdepcheck::revdep_details(, "bolasso")` for more info
 * GitHub: https://github.com/paul-buerkner/brms
 * Source code: https://github.com/cran/brms
 * Date/Publication: 2024-09-23 13:00:29 UTC
-* Number of recursive dependencies: 205
+* Number of recursive dependencies: 206
 
 Run `revdepcheck::revdep_details(, "brms")` for more info
 
@@ -136,6 +160,47 @@ Run `revdepcheck::revdep_details(, "brms")` for more info
     Found the following significant warnings:
       Warning: namespace ‘colorspace’ is not available and has been replaced
     See ‘/scratch/henrik/revdep/future.apply/checks/brms/new/brms.Rcheck/00install.out’ for details.
+    ```
+
+# canaper
+
+<details>
+
+* Version: 1.0.1
+* GitHub: https://github.com/ropensci/canaper
+* Source code: https://github.com/cran/canaper
+* Date/Publication: 2023-05-04 23:00:06 UTC
+* Number of recursive dependencies: 151
+
+Run `revdepcheck::revdep_details(, "canaper")` for more info
+
+</details>
+
+## In both
+
+*   checking tests ...
+    ```
+      Running ‘testthat.R’
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 50 lines of output:
+        8.       └─base::withRestarts(stop(cond), retry_loadNamespace = function() NULL)
+        9.         └─base (local) withOneRestart(expr, restarts[[1L]])
+       10.           └─base (local) doWithOneRestart(return(expr), restart)
+      ── Error ('test-get_ses.R:9:1'): (code run outside of `test_that()`) ───────────
+      <purrr_error_indexed/rlang_error/error/condition>
+      Error in `purrr::map(1:100, ~calc_biodiv_random(comm, phy, phy_alt, "curveball", 
+    ...
+        7.   └─base::loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]])
+        8.     ├─base::namespaceImport(...)
+        9.     └─base::loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]])
+       10.       └─base::withRestarts(stop(cond), retry_loadNamespace = function() NULL)
+       11.         └─base (local) withOneRestart(expr, restarts[[1L]])
+       12.           └─base (local) doWithOneRestart(return(expr), restart)
+      
+      [ FAIL 9 | WARN 1 | SKIP 0 | PASS 99 ]
+      Error: Test failures
+      Execution halted
     ```
 
 # ClustIRR
@@ -431,29 +496,36 @@ Run `revdepcheck::revdep_details(, "geocmeans")` for more info
 
 ## In both
 
-*   checking re-building of vignette outputs ... ERROR
+*   checking package dependencies ... ERROR
     ```
-    Error(s) in re-building vignettes:
-    --- re-building ‘introduction.Rmd’ using rmarkdown
+    Package required but not available: ‘terra’
     
-    Quitting from introduction.Rmd:487-489 [unnamed-chunk-38]
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    <error/rlang_error>
-    Error in `st_transform.bbox()`:
-    ! method not available for GDAL: 3.0.4
-    ---
-    Backtrace:
-    ...
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
+
+# geohabnet
+
+<details>
+
+* Version: 2.2
+* GitHub: https://github.com/GarrettLab/HabitatConnectivity
+* Source code: https://github.com/cran/geohabnet
+* Date/Publication: 2025-05-21 09:00:02 UTC
+* Number of recursive dependencies: 139
+
+Run `revdepcheck::revdep_details(, "geohabnet")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘terra’
     
-    Error: processing vignette 'introduction.Rmd' failed with diagnostics:
-    method not available for GDAL: 3.0.4
-    --- failed re-building ‘introduction.Rmd’
-    
-    SUMMARY: processing the following file failed:
-      ‘introduction.Rmd’
-    
-    Error: Vignette re-building failed.
-    Execution halted
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
     ```
 
 # hero
@@ -559,6 +631,30 @@ Run `revdepcheck::revdep_details(, "InPAS")` for more info
     The \usage entries must correspond to syntactically valid R code.
     See chapter ‘Writing R documentation files’ in the ‘Writing R
     Extensions’ manual.
+    ```
+
+# InterpolateR
+
+<details>
+
+* Version: 1.3-4
+* GitHub: https://github.com/Jonnathan-Landi/InterpolateR
+* Source code: https://github.com/cran/InterpolateR
+* Date/Publication: 2025-05-02 18:50:06 UTC
+* Number of recursive dependencies: 67
+
+Run `revdepcheck::revdep_details(, "InterpolateR")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘terra’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
     ```
 
 # ivmte
@@ -680,6 +776,30 @@ Run `revdepcheck::revdep_details(, "MAI")` for more info
     is not mentioned in the DESCRIPTION file.
     ```
 
+# malariaAtlas
+
+<details>
+
+* Version: 1.6.3
+* GitHub: https://github.com/malaria-atlas-project/malariaAtlas
+* Source code: https://github.com/cran/malariaAtlas
+* Date/Publication: 2024-08-26 08:20:02 UTC
+* Number of recursive dependencies: 122
+
+Run `revdepcheck::revdep_details(, "malariaAtlas")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘terra’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
+
 # mikropml
 
 <details>
@@ -731,6 +851,31 @@ Run `revdepcheck::revdep_details(, "MineICA")` for more info
 
 ## In both
 
+*   checking re-building of vignette outputs ... ERROR
+    ```
+    Error(s) in re-building vignettes:
+    --- re-building ‘MineICA.Rnw’ using Sweave
+    Loading required package: BiocGenerics
+    Loading required package: generics
+    
+    Attaching package: ‘generics’
+    
+    The following objects are masked from ‘package:base’:
+    
+        as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
+    ...
+    Error in { : task 3 failed - "Multiple cache results found.
+    Please clear your cache by running biomartCacheClear()"
+    
+    --- failed re-building ‘MineICA.Rnw’
+    
+    SUMMARY: processing the following file failed:
+      ‘MineICA.Rnw’
+    
+    Error: Vignette re-building failed.
+    Execution halted
+    ```
+
 *   checking dependencies in R code ... WARNING
     ```
     Namespace in Imports field not imported from: ‘lumiHumanAll.db’
@@ -745,11 +890,9 @@ Run `revdepcheck::revdep_details(, "MineICA")` for more info
     Missing or unexported object: ‘GOstats::geneIdsByCategory’
     ':::' calls which should be '::':
       ‘Biobase:::annotation<-’ ‘Biobase:::validMsg’ ‘fpc:::pamk’
-      ‘mclust:::adjustedRandIndex’
+      ‘lumi:::getChipInfo’ ‘mclust:::adjustedRandIndex’
       See the note in ?`:::` about the use of this operator.
     Unexported object imported by a ':::' call: ‘Biobase:::isValidVersion’
-      See the note in ?`:::` about the use of this operator.
-    Unavailable namespace imported from by a ':::' call: ‘lumi’
       See the note in ?`:::` about the use of this operator.
     ```
 
@@ -781,31 +924,6 @@ Run `revdepcheck::revdep_details(, "MineICA")` for more info
     should have documentation entries.
     See chapter ‘Writing R documentation files’ in the ‘Writing R
     Extensions’ manual.
-    ```
-
-*   checking re-building of vignette outputs ... WARNING
-    ```
-    Error(s) in re-building vignettes:
-    --- re-building ‘MineICA.Rnw’ using Sweave
-    Loading required package: BiocGenerics
-    Loading required package: generics
-    
-    Attaching package: ‘generics’
-    
-    The following objects are masked from ‘package:base’:
-    
-        as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
-    ...
-    l.23 \usepackage
-                    {subfig}^^M
-    !  ==> Fatal error occurred, no output PDF file produced!
-    --- failed re-building ‘MineICA.Rnw’
-    
-    SUMMARY: processing the following file failed:
-      ‘MineICA.Rnw’
-    
-    Error: Vignette re-building failed.
-    Execution halted
     ```
 
 *   checking DESCRIPTION meta-information ... NOTE
@@ -1033,6 +1151,30 @@ Run `revdepcheck::revdep_details(, "qape")` for more info
            |                                                                            ^
     ```
 
+# QBMS
+
+<details>
+
+* Version: 1.5.0
+* GitHub: https://github.com/icarda-git/QBMS
+* Source code: https://github.com/cran/QBMS
+* Date/Publication: 2024-09-18 12:40:02 UTC
+* Number of recursive dependencies: 52
+
+Run `revdepcheck::revdep_details(, "QBMS")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘terra’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
+
 # QDNAseq
 
 <details>
@@ -1074,6 +1216,72 @@ Run `revdepcheck::revdep_details(, "QDNAseq")` for more info
     Execution halted
     ```
 
+# rangeMapper
+
+<details>
+
+* Version: 2.0.3
+* GitHub: https://github.com/mpio-be/rangeMapper
+* Source code: https://github.com/cran/rangeMapper
+* Date/Publication: 2022-10-03 22:20:02 UTC
+* Number of recursive dependencies: 110
+
+Run `revdepcheck::revdep_details(, "rangeMapper")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘rangeMapper’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/scratch/henrik/revdep/future.apply/checks/rangeMapper/new/rangeMapper.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘rangeMapper’ ...
+** this is package ‘rangeMapper’ version ‘2.0.3’
+** package ‘rangeMapper’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘terra’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘rangeMapper’
+* removing ‘/scratch/henrik/revdep/future.apply/checks/rangeMapper/new/rangeMapper.Rcheck/rangeMapper’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘rangeMapper’ ...
+** this is package ‘rangeMapper’ version ‘2.0.3’
+** package ‘rangeMapper’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘terra’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘rangeMapper’
+* removing ‘/scratch/henrik/revdep/future.apply/checks/rangeMapper/old/rangeMapper.Rcheck/rangeMapper’
+
+
+```
 # rsi
 
 <details>
@@ -1090,13 +1298,36 @@ Run `revdepcheck::revdep_details(, "rsi")` for more info
 
 ## In both
 
-*   checking DESCRIPTION meta-information ... NOTE
+*   checking package dependencies ... ERROR
     ```
-      Missing dependency on R >= 4.1.0 because package code uses the pipe
-      |> or function shorthand \(...) syntax added in R 4.1.0.
-      File(s) using such syntax:
-        ‘calculate_indices.Rd’ ‘get_stac_data.R’ ‘get_stac_data.Rd’
-        ‘landsat_mask_function.Rd’
+    Package required but not available: ‘terra’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
+
+# SDModels
+
+<details>
+
+* Version: 1.0.13
+* GitHub: https://github.com/markusul/SDModels
+* Source code: https://github.com/cran/SDModels
+* Date/Publication: 2025-06-05 16:10:05 UTC
+* Number of recursive dependencies: 138
+
+Run `revdepcheck::revdep_details(, "SDModels")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘GPUmatrix’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
     ```
 
 # signeR
@@ -1275,6 +1506,47 @@ Run `revdepcheck::revdep_details(, "sperrorest")` for more info
            |                                                             ^
     ```
 
+# spNetwork
+
+<details>
+
+* Version: 0.4.4.6
+* GitHub: https://github.com/JeremyGelb/spNetwork
+* Source code: https://github.com/cran/spNetwork
+* Date/Publication: 2025-03-29 16:00:02 UTC
+* Number of recursive dependencies: 155
+
+Run `revdepcheck::revdep_details(, "spNetwork")` for more info
+
+</details>
+
+## In both
+
+*   checking re-building of vignette outputs ... ERROR
+    ```
+    Error(s) in re-building vignettes:
+    --- re-building ‘KNetworkFunctions.Rmd’ using rmarkdown
+    
+    Quitting from KNetworkFunctions.Rmd:63-77 [unnamed-chunk-2]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <error/rlang_error>
+    Error:
+    ! package or namespace load failed for 'tmap' in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
+     there is no package called 'terra'
+    ---
+    ...
+    Error: processing vignette 'TNKDE.Rmd' failed with diagnostics:
+    package or namespace load failed for 'tmap' in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
+     there is no package called 'terra'
+    --- failed re-building ‘TNKDE.Rmd’
+    
+    SUMMARY: processing the following files failed:
+      ‘KNetworkFunctions.Rmd’ ‘NKDE.Rmd’ ‘NetworkBuilding.Rmd’ ‘TNKDE.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
+    ```
+
 # stars
 
 <details>
@@ -1294,15 +1566,15 @@ Run `revdepcheck::revdep_details(, "stars")` for more info
 *   checking tests ...
     ```
       Running ‘aggregate.R’
-      Comparing ‘aggregate.Rout’ to ‘aggregate.Rout.save’ ... OK
-      Running ‘align.R’
-      Comparing ‘align.Rout’ to ‘align.Rout.save’ ... OK
-      Running ‘area.R’
-      Comparing ‘area.Rout’ to ‘area.Rout.save’ ... OK
-      Running ‘crop.R’
-      Comparing ‘crop.Rout’ to ‘crop.Rout.save’ ... OK
-      Running ‘curvilinear.R’
-      Comparing ‘curvilinear.Rout’ to ‘curvilinear.Rout.save’ ... OK
+      Comparing ‘aggregate.Rout’ to ‘aggregate.Rout.save’ ...92,93c92,108
+    < Error: package or namespace load failed for 'raster' in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
+    <  there is no package called 'terra'
+    ---
+    > stars object with 2 dimensions and 1 attribute
+    > attribute(s):
+    >     Min. 1st Qu. Median  Mean 3rd Qu. Max.
+    > A1    28  194.25  360.5 360.5  526.75  693
+    > dimension(s):
     ...
       > 
       > s = st_set_dimensions(s, st_dimensions(s), xy = NULL) 
@@ -1324,6 +1596,84 @@ Run `revdepcheck::revdep_details(, "stars")` for more info
         ‘prcomp.Rd’
     ```
 
+# steps
+
+<details>
+
+* Version: 1.3.0
+* GitHub: https://github.com/steps-dev/steps
+* Source code: https://github.com/cran/steps
+* Date/Publication: 2022-10-04 23:30:02 UTC
+* Number of recursive dependencies: 71
+
+Run `revdepcheck::revdep_details(, "steps")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘steps’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/scratch/henrik/revdep/future.apply/checks/steps/new/steps.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘steps’ ...
+** this is package ‘steps’ version ‘1.3.0’
+** package ‘steps’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘g++ (GCC) 13.3.1 20240611 (Red Hat 13.3.1-2)’
+g++ -std=gnu++17 -I"/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/include" -DNDEBUG  -I'/scratch/henrik/revdep/future.apply/library/steps/Rcpp/include' -I/usr/local/include    -fpic  -g -O2   -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++17 -I"/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/include" -DNDEBUG  -I'/scratch/henrik/revdep/future.apply/library/steps/Rcpp/include' -I/usr/local/include    -fpic  -g -O2   -c rcpp_dispersal_funs_v4.cpp -o rcpp_dispersal_funs_v4.o
+g++ -std=gnu++17 -I"/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/include" -DNDEBUG  -I'/scratch/henrik/revdep/future.apply/library/steps/Rcpp/include' -I/usr/local/include    -fpic  -g -O2   -c rcpp_utils_funs.cpp -o rcpp_utils_funs.o
+g++ -std=gnu++17 -shared -L/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/lib -L/usr/local/lib64 -o steps.so RcppExports.o rcpp_dispersal_funs_v4.o rcpp_utils_funs.o -L/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/lib -lR
+...
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘terra’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘steps’
+* removing ‘/scratch/henrik/revdep/future.apply/checks/steps/new/steps.Rcheck/steps’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘steps’ ...
+** this is package ‘steps’ version ‘1.3.0’
+** package ‘steps’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘g++ (GCC) 13.3.1 20240611 (Red Hat 13.3.1-2)’
+g++ -std=gnu++17 -I"/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/include" -DNDEBUG  -I'/scratch/henrik/revdep/future.apply/library/steps/Rcpp/include' -I/usr/local/include    -fpic  -g -O2   -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++17 -I"/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/include" -DNDEBUG  -I'/scratch/henrik/revdep/future.apply/library/steps/Rcpp/include' -I/usr/local/include    -fpic  -g -O2   -c rcpp_dispersal_funs_v4.cpp -o rcpp_dispersal_funs_v4.o
+g++ -std=gnu++17 -I"/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/include" -DNDEBUG  -I'/scratch/henrik/revdep/future.apply/library/steps/Rcpp/include' -I/usr/local/include    -fpic  -g -O2   -c rcpp_utils_funs.cpp -o rcpp_utils_funs.o
+g++ -std=gnu++17 -shared -L/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/lib -L/usr/local/lib64 -o steps.so RcppExports.o rcpp_dispersal_funs_v4.o rcpp_utils_funs.o -L/software/c4/cbi/software/_rocky8/R-4.5.0-gcc13/lib64/R/lib -lR
+...
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘terra’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘steps’
+* removing ‘/scratch/henrik/revdep/future.apply/checks/steps/old/steps.Rcheck/steps’
+
+
+```
 # stppSim
 
 <details>
@@ -1340,11 +1690,36 @@ Run `revdepcheck::revdep_details(, "stppSim")` for more info
 
 ## In both
 
-*   checking whether package ‘stppSim’ can be installed ... WARNING
+*   checking package dependencies ... ERROR
     ```
-    Found the following significant warnings:
-      Warning: no DISPLAY variable so Tk is not available
-    See ‘/scratch/henrik/revdep/future.apply/checks/stppSim/new/stppSim.Rcheck/00install.out’ for details.
+    Package required but not available: ‘terra’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
+
+# supercells
+
+<details>
+
+* Version: 1.0.0
+* GitHub: https://github.com/Nowosad/supercells
+* Source code: https://github.com/cran/supercells
+* Date/Publication: 2024-02-11 14:20:02 UTC
+* Number of recursive dependencies: 73
+
+Run `revdepcheck::revdep_details(, "supercells")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘terra’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
     ```
 
 # targeted
@@ -1496,7 +1871,6 @@ Run `revdepcheck::revdep_details(, "tsmarch")` for more info
 *   checking re-building of vignette outputs ... ERROR
     ```
     Error(s) in re-building vignettes:
-      ...
     --- re-building ‘feasible_multivariate_garch.Rmd’ using rmarkdown
     ! Undefined control sequence.
     l.97 \NewDocumentCommand
@@ -1506,11 +1880,14 @@ Run `revdepcheck::revdep_details(, "tsmarch")` for more info
     LaTeX failed to compile /scratch/henrik/revdep/future.apply/checks/tsmarch/new/tsmarch.Rcheck/vign_test/tsmarch/vignettes/feasible_multivariate_garch.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See feasible_multivariate_garch.log for more info.
     --- failed re-building ‘feasible_multivariate_garch.Rmd’
     
-    --- re-building ‘tsmarch_demo.Rmd’ using rmarkdown
-    --- finished re-building ‘tsmarch_demo.Rmd’
-    
-    SUMMARY: processing the following file failed:
-      ‘feasible_multivariate_garch.Rmd’
+    ...
+    36: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+    37: tryCatchList(expr, classes, parentenv, handlers)
+    38: tryCatch({    engine$weave(file, quiet = quiet, encoding = enc)    setwd(startdir)    output <- find_vignette_product(name, by = "weave", engine = engine)    if (!have.makefile && vignette_is_tex(output)) {        texi2pdf(file = output, clean = FALSE, quiet = quiet)        output <- find_vignette_product(name, by = "texi2pdf",             engine = engine)    }}, error = function(e) {    OK <<- FALSE    message(gettextf("Error: processing vignette '%s' failed with diagnostics:\n%s",         file, conditionMessage(e)))})
+    39: tools:::.buildOneVignette("tsmarch_demo.Rmd", "/scratch/henrik/revdep/future.apply/checks/tsmarch/new/tsmarch.Rcheck/vign_test/tsmarch",     TRUE, FALSE, "tsmarch_demo", "UTF-8", "/scratch/henrik/RtmpzpPmDJ/file3cc5be4a1d2a56.rds")
+    An irrecoverable exception occurred. R is aborting now ...
+    SUMMARY: processing the following files failed:
+      ‘feasible_multivariate_garch.Rmd’ ‘tsmarch_demo.Rmd’
     
     Error: Vignette re-building failed.
     Execution halted

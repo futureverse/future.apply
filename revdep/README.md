@@ -10,7 +10,7 @@
 |collate  |en_US.UTF-8                                               |
 |ctype    |en_US.UTF-8                                               |
 |tz       |America/Los_Angeles                                       |
-|date     |2025-05-26                                                |
+|date     |2025-06-05                                                |
 |pandoc   |3.6.3 @ /software/c4/cbi/software/pandoc-3.6.3/bin/pandoc |
 |quarto   |NA                                                        |
 
@@ -18,28 +18,30 @@
 
 |package      |old    |new         |Δ  |
 |:------------|:------|:-----------|:--|
-|future.apply |1.11.3 |1.11.3-9024 |*  |
+|future.apply |1.11.3 |1.11.3-9026 |*  |
 |codetools    |0.2-20 |0.2-20      |   |
 |digest       |0.6.37 |0.6.37      |   |
-|future       |1.49.0 |1.49.0      |   |
+|future       |1.49.0 |1.58.0      |*  |
 |globals      |0.18.0 |0.18.0      |   |
 |listenv      |0.9.1  |0.9.1       |   |
-|parallelly   |1.44.0 |1.44.0      |   |
+|parallelly   |1.44.0 |1.45.0      |*  |
 
 # Revdeps
 
-## Failed to check (1)
+## Failed to check (3)
 
-|package   |version |error |warning |note |
-|:---------|:-------|:-----|:-------|:----|
+|package     |version |error |warning |note |
+|:-----------|:-------|:-----|:-------|:----|
+|[rangeMapper](failures.md#rangemapper)|2.0.3   |1     |        |     |
+|[steps](failures.md#steps)|1.3.0   |1     |        |     |
 |[XNAString](failures.md#xnastring)|1.15.0  |1     |        |     |
 
-## All (190)
+## All (195)
 
 |package                  |version   |error |warning |note |
 |:------------------------|:---------|:-----|:-------|:----|
 |[adestr](problems.md#adestr)|1.0.0     |      |        |1    |
-|AgePopDenom              |0.4.0     |      |        |     |
+|[AgePopDenom](problems.md#agepopdenom)|0.4.0     |1     |        |     |
 |AIPW                     |0.6.9.2   |      |        |     |
 |[alphaci](problems.md#alphaci)|1.0.1     |      |        |1    |
 |[altdoc](problems.md#altdoc)|0.5.0     |1     |        |     |
@@ -49,6 +51,7 @@
 |BAMBI                    |2.3.6     |      |        |     |
 |BayesianMCPMod           |1.1.0     |      |        |     |
 |bayesSSM                 |0.5.0     |      |        |     |
+|bbknnR                   |2.0.1     |      |        |     |
 |bcmaps                   |2.2.1     |      |        |     |
 |BEKKs                    |1.4.5     |      |        |     |
 |bigDM                    |0.5.6     |      |        |     |
@@ -57,7 +60,7 @@
 |[brms](problems.md#brms) |2.22.0    |      |1       |     |
 |bsitar                   |0.3.2     |      |        |     |
 |calmr                    |0.7.0     |      |        |     |
-|canaper                  |1.0.1     |      |        |     |
+|[canaper](problems.md#canaper)|1.0.1     |1     |        |     |
 |clickR                   |0.9.45    |      |        |     |
 |[ClustIRR](problems.md#clustirr)|1.6.0     |      |        |3    |
 |[codalm](problems.md#codalm)|0.1.2     |      |        |1    |
@@ -66,6 +69,7 @@
 |conformalInference.multi |1.1.1     |      |        |     |
 |[cSEM](problems.md#csem) |0.6.1     |      |        |1    |
 |cvCovEst                 |1.2.2     |      |        |     |
+|DAISIE                   |4.6.0     |      |        |     |
 |DeclareDesign            |1.0.10    |      |        |     |
 |deseats                  |1.1.0     |      |        |     |
 |[dipsaus](problems.md#dipsaus)|0.3.1     |      |        |1    |
@@ -87,12 +91,12 @@
 |[forecastML](problems.md#forecastml)|0.9.0     |      |        |1    |
 |fundiversity             |1.1.1     |      |        |     |
 |future.batchtools        |0.12.1    |      |        |     |
-|future.callr             |0.8.2     |      |        |     |
+|future.callr             |0.10.0    |-1    |        |     |
 |future.mirai             |0.2.2     |      |        |     |
 |futureverse              |0.1.0     |      |        |     |
 |genBaRcode               |1.2.8     |      |        |     |
 |[geocmeans](problems.md#geocmeans)|0.3.4     |1     |        |     |
-|geohabnet                |2.2       |      |        |     |
+|[geohabnet](problems.md#geohabnet)|2.2       |1     |        |     |
 |GPCsign                  |0.1.1     |      |        |     |
 |gstat                    |2.1-3     |      |        |     |
 |gWQS                     |3.0.5     |      |        |     |
@@ -100,17 +104,18 @@
 |hbamr                    |2.4.2     |      |        |     |
 |[hero](problems.md#hero) |0.6       |      |        |1    |
 |[hydroloom](problems.md#hydroloom)|1.1.0     |      |        |1    |
-|iml                      |0.11.4    |      |        |     |
+|iml                      |0.11.4    |-1    |        |     |
 |incubate                 |1.3.0     |      |        |     |
 |iNEXT.beta3D             |1.0.2     |      |        |     |
 |inlinedocs               |2023.9.4  |      |        |     |
 |[InPAS](problems.md#inpas)|2.16.0    |      |1       |2    |
-|InterpolateR             |1.3-4     |      |        |     |
+|[InterpolateR](problems.md#interpolater)|1.3-4     |1     |        |     |
 |isopam                   |3.2       |      |        |     |
 |[ivmte](problems.md#ivmte)|1.4.0     |      |        |1    |
 |IVPP                     |1.1.1     |      |        |     |
 |jackknifeR               |2.0.0     |      |        |     |
 |[JANE](problems.md#jane) |1.0.0     |      |        |1    |
+|jpinfect                 |0.1.2     |      |        |     |
 |[kappaGold](problems.md#kappagold)|0.4.0     |      |        |1    |
 |kernelboot               |0.1.10    |      |        |     |
 |keyATM                   |0.5.3     |      |        |     |
@@ -120,18 +125,19 @@
 |LexFindR                 |1.1.0     |      |        |     |
 |lgr                      |0.4.4     |      |        |     |
 |lightr                   |1.8.0     |      |        |     |
+|LLMR                     |0.3.0     |      |        |     |
 |LTFHPlus                 |2.1.4     |      |        |     |
 |[MAI](problems.md#mai)   |1.14.0    |      |        |1    |
-|malariaAtlas             |1.6.3     |      |        |     |
-|MAMS                     |3.0.1     |      |        |     |
-|marginaleffects          |0.26.0    |      |        |     |
+|[malariaAtlas](problems.md#malariaatlas)|1.6.3     |1     |        |     |
+|MAMS                     |3.0.2     |      |        |     |
+|marginaleffects          |0.27.0    |      |        |     |
 |mcmcensemble             |3.1.0     |      |        |     |
 |mcp                      |0.3.4     |      |        |     |
 |merTools                 |0.6.2     |      |        |     |
 |metasnf                  |2.1.2     |      |        |     |
-|MIC                      |1.0.2     |      |        |     |
+|MIC                      |1.1.0     |      |        |     |
 |[mikropml](problems.md#mikropml)|1.6.1     |      |        |1    |
-|[MineICA](problems.md#mineica)|1.48.0    |      |4       |3    |
+|[MineICA](problems.md#mineica)|1.48.0    |1     |3       |3    |
 |missSBM                  |1.0.5     |      |        |     |
 |mlr3                     |0.23.0    |      |        |     |
 |mlr3db                   |0.5.2     |      |        |     |
@@ -162,11 +168,11 @@
 |[powRICLPM](problems.md#powriclpm)|0.2.1     |      |        |1    |
 |progressr                |0.15.1    |      |        |     |
 |[qape](problems.md#qape) |2.1       |      |        |1    |
-|QBMS                     |1.5.0     |      |        |     |
+|[QBMS](problems.md#qbms) |1.5.0     |1     |        |     |
 |[QDNAseq](problems.md#qdnaseq)|1.44.0    |      |1       |     |
 |qgcomp                   |2.18.4    |      |        |     |
 |qgcompint                |1.0.0     |      |        |     |
-|rangeMapper              |2.0.3     |      |        |     |
+|[rangeMapper](failures.md#rangemapper)|2.0.3     |1     |        |     |
 |ravepipeline             |0.0.1     |      |        |     |
 |rBiasCorrection          |0.3.5     |      |        |     |
 |readsdr                  |0.3.0     |      |        |     |
@@ -175,12 +181,13 @@
 |refineR                  |1.6.2     |      |        |     |
 |restriktor               |0.6-10    |      |        |     |
 |robotstxt                |0.7.15    |      |        |     |
-|[rsi](problems.md#rsi)   |0.3.2     |      |        |1    |
+|[rsi](problems.md#rsi)   |0.3.2     |1     |        |     |
 |RTransferEntropy         |0.2.21    |      |        |     |
 |s3fs                     |0.1.7     |      |        |     |
 |scDiffCom                |1.0.0     |      |        |     |
 |SCGLR                    |3.1.0     |      |        |     |
 |sctransform              |0.4.2     |      |        |     |
+|[SDModels](problems.md#sdmodels)|1.0.13    |1     |        |     |
 |sdmTMB                   |0.7.0     |      |        |     |
 |semtree                  |0.9.20    |      |        |     |
 |sentopics                |0.7.4     |      |        |     |
@@ -201,14 +208,14 @@
 |[SPARSEMODr](problems.md#sparsemodr)|1.2.0     |      |        |1    |
 |spatialwarnings          |3.1.0     |      |        |     |
 |[sperrorest](problems.md#sperrorest)|3.0.5     |      |        |1    |
-|spNetwork                |0.4.4.6   |      |        |     |
+|[spNetwork](problems.md#spnetwork)|0.4.4.6   |1     |        |     |
 |spStack                  |1.0.1     |      |        |     |
 |squat                    |0.4.0     |      |        |     |
 |[stars](problems.md#stars)|0.6-8     |1     |        |1    |
 |stenographer             |1.0.0     |      |        |     |
-|steps                    |1.3.0     |      |        |     |
-|[stppSim](problems.md#stppsim)|1.3.4     |      |1       |     |
-|supercells               |1.0.0     |      |        |     |
+|[steps](failures.md#steps)|1.3.0     |1     |        |     |
+|[stppSim](problems.md#stppsim)|1.3.4     |1     |        |     |
+|[supercells](problems.md#supercells)|1.0.0     |1     |        |     |
 |svycoxme                 |1.0.0     |      |        |     |
 |[targeted](problems.md#targeted)|0.5       |      |        |1    |
 |TaxaNorm                 |2.4       |      |        |     |
