@@ -1,5 +1,5 @@
 Package: future.apply
-Version: 1.11.3-9026
+Version: 1.20.0
 Title: Apply Function to Elements in Parallel using Futures
 Depends:
     R (>= 3.2.0),
