@@ -17,7 +17,7 @@ Analogously, this is true for all the other future_nnn() functions."><!-- Global
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0-9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -374,11 +374,11 @@ This attribute can take the following values:</p><ul><li><p>index vector - an nu
 index vector of length <code>length(X)</code>, e.g.
 <code>function(n) rev(seq_len(n))</code> for reverse ordering.</p></li>
 <li><p><code>"random"</code>   - this will randomize the ordering via random index
-vector <code>sample.int(length(X))</code>.
-For example, <code>future.scheduling = structure(TRUE, ordering = "random")</code>.
+vector <code>sample.int(length(X))</code>.</p></li>
+</ul><p>For example, <code>future.scheduling = structure(TRUE, ordering = "random")</code>.
 <em>Note</em>, when elements are processed out of order, then captured standard
-output and conditions are also relayed in that order, that is out of order.</p></li>
-</ul></div>
+output and conditions are relayed in that order as well.</p>
+    </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
     <p>The implementations of <code>future_replicate()</code>, <code>future_sapply()</code>, and
