@@ -140,9 +140,10 @@
 #'                  `function(n) rev(seq_len(n))` for reverse ordering.
 #' * `"random"`   - this will randomize the ordering via random index
 #'                  vector `sample.int(length(X))`.
+#'
 #' For example, `future.scheduling = structure(TRUE, ordering = "random")`.
 #' _Note_, when elements are processed out of order, then captured standard
-#' output and conditions are also relayed in that order, that is out of order.
+#' output and conditions are relayed in that order as well.
 #'
 #' @example incl/future_lapply.R
 #'
