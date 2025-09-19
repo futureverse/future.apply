@@ -1,6 +1,6 @@
 ## revdepcheck results
 
-We checked 195 reverse dependencies (187 from CRAN + 8 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 222 reverse dependencies (213 from CRAN + 9 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
  * We saw 0 new problems
  * We failed to check 2 packages
@@ -9,5 +9,5 @@ Issues with CRAN packages are summarised below.
 
 ### Failed to check
 
-* rangeMapper (NA)
-* steps       (NA)
+* brms  (NA)
+* ctsem (NA)
