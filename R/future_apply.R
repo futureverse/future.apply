@@ -124,6 +124,8 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
       nWorkers <- nbrOfWorkers()
       chunk_size <- size / nWorkers
       other_size <- attr(globals, "total_size")
+      ## Calculate size of the 'globals', if not already done
+      if (is.na(other_size)) other_size <- objectSize(X)
       if (is.numeric(other_size)) chunk_size <- chunk_size + other_size
       if (chunk_size > maxSize) {
         asIEC <- import_future("asIEC")
