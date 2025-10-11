@@ -128,6 +128,27 @@
 #' reproducible given the same initial seed.
 #'
 #'
+#' @section Load balancing ("chunking"):
+#' Whether load balancing ("chunking") should take place or not can be
+#' controlled by specifying either argument
+#' `future.scheduling = <ratio>` or `future.chunk.size = <count>`.
+#'
+#' The value `future.chunk.size` specifies the average number of elements
+#' processed per future ("chunks").
+#' If `+Inf`, then all elements are processed in a single future (one worker).
+#' If `NULL`, then argument `future.scheduling` is used.
+#'
+#' The value `future.scheduling` specifies the average number of futures
+#' ("chunks") that each worker processes.
+#' If `0.0`, then a single future is used to process all iterations;
+#' none of the other workers are not used.
+#' If `1.0` or `TRUE`, then one future per worker is used.
+#' If `2.0`, then each worker will process two futures (if there are
+#' enough iterations).
+#' If `+Inf` or `FALSE`, then one future per iteration is used.
+#' The default value is `scheduling = 1.0`.
+#'
+#'
 #' @section Control processing order of elements:
 #' Attribute `ordering` of `future.chunk.size` or `future.scheduling` can
 #' be used to control the ordering the elements are iterated over, which
