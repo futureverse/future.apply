@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0-9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0-9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,7 +87,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated-and-defunct-1-20-0">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-1-20-0"></a></h3>
-<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN    = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</li>
+<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -137,7 +137,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated-and-defunct-1-10-0">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-1-10-0"></a></h3>
-<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is deprecated, because <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> does not support it. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN =    `[[`</code>.</li>
+<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is deprecated, because <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> does not support it. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN = `[[`</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -189,7 +189,7 @@
 <div class="section level3">
 <h3 id="bug-fixes-1-8-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-0"></a></h3>
 <ul><li>
-<code>f &lt;- function(...) future_lapply(X, function(x) list(...));    f(a=1)</code> would produce an error on ’unused argument (a = 1)” with the upcoming release of <strong>future</strong> 1.22.0.</li>
+<code>f &lt;- function(...) future_lapply(X, function(x) list(...)); f(a=1)</code> would produce an error on ’unused argument (a = 1)” with the upcoming release of <strong>future</strong> 1.22.0.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -222,7 +222,7 @@
 <div class="section level3">
 <h3 id="bug-fixes-1-5-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-5-0"></a></h3>
 <ul><li>
-<code><a href="../reference/future_mapply.html">future_mapply()</a></code> would chunk up <code>MoreArgs</code> when <code>future.seed =    TRUE</code>.</li>
+<code><a href="../reference/future_mapply.html">future_mapply()</a></code> would chunk up <code>MoreArgs</code> when <code>future.seed = TRUE</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -273,7 +273,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-1-1-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-1-0"></a></h3>
-<ul><li><p>Elements can be processed in random order by setting attribute <code>ordering</code> to <code>"random"</code> of argument <code>future.chunk.size</code> or <code>future.scheduling</code>, e.g. <code>future.chunk.size = structure(TRUE,    ordering = "random")</code>. This can help improve load balancing in cases where there is a correlation between processing time and ordering of the elements. Note that the order of the returned values is not affected when randomizing the processing order.</p></li>
+<ul><li><p>Elements can be processed in random order by setting attribute <code>ordering</code> to <code>"random"</code> of argument <code>future.chunk.size</code> or <code>future.scheduling</code>, e.g. <code>future.chunk.size = structure(TRUE, ordering = "random")</code>. This can help improve load balancing in cases where there is a correlation between processing time and ordering of the elements. Note that the order of the returned values is not affected when randomizing the processing order.</p></li>
 <li><p>Swapped order of arguments <code>future.lazy</code> and <code>future.seed</code> to be consistent with ditto arguments of <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code>.</p></li>
 </ul></div>
 </div>

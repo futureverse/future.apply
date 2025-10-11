@@ -17,7 +17,7 @@ Analogously, this is true for all the other future_nnn() functions."><!-- Global
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0-9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0-9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -360,6 +360,27 @@ in the same way regardless of <code>future.seed</code>, <code>future.scheduling<
 and future strategy used.  This is done in order to guarantee that an <span style="R">R</span>
 script calling <code>future_lapply()</code> multiple times should be numerically
 reproducible given the same initial seed.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="load-balancing-chunking-">Load balancing ("chunking")<a class="anchor" aria-label="anchor" href="#load-balancing-chunking-"></a></h2>
+
+
+<p>Whether load balancing ("chunking") should take place or not can be
+controlled by specifying either argument
+<code>future.scheduling = &lt;ratio&gt;</code> or <code>future.chunk.size = &lt;count&gt;</code>.</p>
+<p>The value <code>future.chunk.size</code> specifies the average number of elements
+processed per future ("chunks").
+If <code>+Inf</code>, then all elements are processed in a single future (one worker).
+If <code>NULL</code>, then argument <code>future.scheduling</code> is used.</p>
+<p>The value <code>future.scheduling</code> specifies the average number of futures
+("chunks") that each worker processes.
+If <code>0.0</code>, then a single future is used to process all iterations;
+none of the other workers are not used.
+If <code>1.0</code> or <code>TRUE</code>, then one future per worker is used.
+If <code>2.0</code>, then each worker will process two futures (if there are
+enough iterations).
+If <code>+Inf</code> or <code>FALSE</code>, then one future per iteration is used.
+The default value is <code>scheduling = 1.0</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="control-processing-order-of-elements">Control processing order of elements<a class="anchor" aria-label="anchor" href="#control-processing-order-of-elements"></a></h2>
