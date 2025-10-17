@@ -1,4 +1,4 @@
-#' @importFrom future cancel Future nbrOfWorkers future resolve value as.FutureGlobals getGlobalsAndPackages FutureInterruptError
+#' @importFrom future cancel Future nbrOfWorkers future resolve value as.FutureGlobals getGlobalsAndPackages
 future_xapply <- local({
   tmpl_expr_options <- bquote_compile({
     "# future.apply:::future_xapply(): preserve future option"
