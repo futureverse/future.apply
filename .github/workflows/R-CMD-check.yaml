@@ -31,9 +31,7 @@ jobs:
           - {os: ubuntu-latest,  r: 'release'  , language: ko,    label: ko    }
           - {os: ubuntu-latest,  r: 'release'  , globals_keepWhere: true, label: 'keepWhere' }
           - {os: ubuntu-latest,  r: 'release'  , globals_keepWhere: false, label: '!keepWhere' }
-          - {os: windows-latest, r: 'devel', globals_version: develop, future_version: develop, label: 'w/ future-develop' }
           - {os: windows-latest, r: 'devel', future_version: develop, label: 'w/ future-develop' }
-          - {os: ubuntu-latest,  r: 'release', globals_version: develop, future_version: develop, label: 'w/ future-develop' }
           - {os: ubuntu-latest,  r: 'release', future_version: develop, label: 'w/ future-develop' }
  
     env:
