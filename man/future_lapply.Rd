@@ -260,6 +260,28 @@ script calling \code{future_lapply()} multiple times should be numerically
 reproducible given the same initial seed.
 }
 
+\section{Load balancing ("chunking")}{
+
+Whether load balancing ("chunking") should take place or not can be
+controlled by specifying either argument
+\verb{future.scheduling = <ratio>} or \verb{future.chunk.size = <count>}.
+
+The value \code{future.chunk.size} specifies the average number of elements
+processed per future ("chunks").
+If \code{+Inf}, then all elements are processed in a single future (one worker).
+If \code{NULL}, then argument \code{future.scheduling} is used.
+
+The value \code{future.scheduling} specifies the average number of futures
+("chunks") that each worker processes.
+If \code{0.0}, then a single future is used to process all iterations;
+none of the other workers are not used.
+If \code{1.0} or \code{TRUE}, then one future per worker is used.
+If \code{2.0}, then each worker will process two futures (if there are
+enough iterations).
+If \code{+Inf} or \code{FALSE}, then one future per iteration is used.
+The default value is \code{scheduling = 1.0}.
+}
+
 \section{Control processing order of elements}{
 
 Attribute \code{ordering} of \code{future.chunk.size} or \code{future.scheduling} can
@@ -274,10 +296,11 @@ index vector of length \code{length(X)}, e.g.
 \code{function(n) rev(seq_len(n))} for reverse ordering.
 \item \code{"random"}   - this will randomize the ordering via random index
 vector \code{sample.int(length(X))}.
+}
+
 For example, \code{future.scheduling = structure(TRUE, ordering = "random")}.
 \emph{Note}, when elements are processed out of order, then captured standard
-output and conditions are also relayed in that order, that is out of order.
-}
+output and conditions are relayed in that order as well.
 }
 
 \examples{

@@ -22,7 +22,7 @@ jobs:
           - {os: macOS-latest,   r: 'devel'    }
           - {os: macOS-latest,   r: 'release'  }
           - {os: macOS-latest,   r: 'oldrel'   }
-#          - {os: ubuntu-latest,  r: 'devel'    }
+          - {os: ubuntu-latest,  r: 'devel', strict: true, label: 'strict' }
           - {os: ubuntu-latest,  r: 'release'  }
           - {os: ubuntu-latest,  r: 'oldrel'   }
           - {os: ubuntu-latest,  r: 'oldrel-1' }
@@ -31,9 +31,7 @@ jobs:
           - {os: ubuntu-latest,  r: 'release'  , language: ko,    label: ko    }
           - {os: ubuntu-latest,  r: 'release'  , globals_keepWhere: true, label: 'keepWhere' }
           - {os: ubuntu-latest,  r: 'release'  , globals_keepWhere: false, label: '!keepWhere' }
-          - {os: windows-latest, r: 'devel', globals_version: develop, future_version: develop, label: 'w/ future-develop' }
           - {os: windows-latest, r: 'devel', future_version: develop, label: 'w/ future-develop' }
-          - {os: ubuntu-latest,  r: 'release', globals_version: develop, future_version: develop, label: 'w/ future-develop' }
           - {os: ubuntu-latest,  r: 'release', future_version: develop, label: 'w/ future-develop' }
  
     env:
@@ -107,6 +105,16 @@ jobs:
 
       - name: Check
         run: |
+          if ("${{ matrix.config.strict }}" == "true") {
+            Sys.setenv(NOT_CRAN = "true")
+            Sys.setenv(R_FUTURE_GLOBALENV_ONMISUSE = "error")
+            Sys.setenv(R_FUTURE_RNG_ONMISUSE = "error")
+            Sys.setenv(R_FUTURE_FUTURE_EARLYSIGNAL = "defunct")
+            Sys.setenv(R_FUTURE_FUTURE_LOCAL = "defunct")
+            Sys.setenv(R_FUTURE_FUTURE_GC = "defunct")
+            Sys.setenv(R_FUTURE_PLAN_EARLYSIGNAL = "defunct")
+            Sys.setenv(R_FUTURE_RESOLVED_RUN = "defunct")
+          }
           if (nzchar(Sys.getenv("R_FUTURE_PLAN"))) Sys.setenv(RCMDCHECK_ERROR_ON = "error")
           rcmdcheck::rcmdcheck(
             args = c("--no-manual", "--as-cran"),

@@ -1,3 +1,12 @@
+# Version 1.20.1 [2025-12-08]
+
+## Bug Fixes
+
+ * `future_apply(..., future.globals = list(...))` would produce
+   'Error in if (chunk_size > maxSize) { : missing value where
+   TRUE/FALSE needed'.
+ 
+
 # Version 1.20.0 [2025-06-06]
 
 ## Significant changes
