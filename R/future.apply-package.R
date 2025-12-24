@@ -16,7 +16,7 @@
 #' * [future_sapply()]: a parallel version of [sapply()][base::sapply]
 #' * [future_tapply()]: a parallel version of [tapply()][base::tapply]
 #' * [future_vapply()]: a parallel version of [vapply()][base::vapply]
-#' * [future_Map()]: a parallel version of [Map()][base::Map]
+#' * [future_Map()]: a parallel version of [Map()][Map]
 #' * [future_replicate()]: a parallel version of [replicate()][base::replicate]
 #' * [future_.mapply()]: a parallel version of [.mapply()][base::.mapply]
 #'

@@ -106,11 +106,11 @@ strictly positive length, or all of zero length).}
 length, or zero if one of them is of length zero.}
 }
 \value{
-See \code{\link[base:funprog]{base::Filter()}} for details.
+See \link[=Filter]{base::Filter()} for details.
 
 \code{future_Map()} is a simple wrapper to \code{future_mapply()} which does not
 attempt to simplify the result.
-See \code{\link[base:funprog]{base::Map()}} for details.
+See \link[=Map]{base::Map()} for details.
 
 \code{future_mapply()} returns a list, or for \code{SIMPLIFY = TRUE}, a vector,
 array or list.  See \code{\link[base:mapply]{base::mapply()}} for details.

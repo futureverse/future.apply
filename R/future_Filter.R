@@ -6,7 +6,7 @@
 #' @param x A vector-like object to iterate over.
 #' 
 #' @return
-#' See [base::Filter()] for details.
+#' See [base::Filter()][Filter] for details.
 #'
 #' @example incl/future_Filter.R
 #'

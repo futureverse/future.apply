@@ -6,7 +6,7 @@
 #' @return
 #' `future_Map()` is a simple wrapper to `future_mapply()` which does not
 #' attempt to simplify the result.
-#' See [base::Map()] for details.
+#' See [base::Map()][Map] for details.
 #'
 #' @export
 #'
