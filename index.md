@@ -11,7 +11,6 @@ should be able to replace any of these in the core with its futurized
 equivalent and things will just work. For example, instead of doing:
 
 ``` r
-
 library(datasets)
 library(stats)
 y <- lapply(mtcars, FUN = mean, trim = 0.10)
@@ -20,7 +19,6 @@ y <- lapply(mtcars, FUN = mean, trim = 0.10)
 one can do:
 
 ``` r
-
 library(future.apply)
 plan(multisession) ## Run in parallel on local computer
 
@@ -85,7 +83,6 @@ R package future.apply is available on
 installed in R as:
 
 ``` r
-
 install.packages("future.apply")
 ```
 
@@ -95,7 +92,6 @@ To install the pre-release version that is available in Git branch
 `develop` on GitHub, use:
 
 ``` r
-
 remotes::install_github("futureverse/future.apply", ref="develop")
 ```
 

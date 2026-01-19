@@ -1,6 +1,12 @@
 # Changelog
 
+## Version (development version)
+
+- …
+
 ## Version 1.20.1
+
+CRAN release: 2025-12-09
 
 ### Bug Fixes
 
@@ -151,11 +157,7 @@ CRAN release: 2022-09-07
 
 - Fix some HTML5 issues in help pages.
 
-## Version 1.9.0
-
-CRAN release: 2022-04-25
-
-### Signficant Changes
+### Significant Changes
 
 - [`future_mapply()`](https://future.apply.futureverse.org/reference/future_mapply.md)
   and
@@ -224,7 +226,7 @@ CRAN release: 2021-01-04
 
 CRAN release: 2020-07-01
 
-### Signficant Changes
+### Significant Changes
 
 - [`future_apply()`](https://future.apply.futureverse.org/reference/future_apply.md)
   gained argument `simplify`, which is added to R-devel (to become R
@@ -323,7 +325,7 @@ CRAN release: 2019-03-07
 
 CRAN release: 2019-01-17
 
-### Signficant Changes
+### Significant Changes
 
 - Added argument `future.stdout` and `future.conditions` for controlling
   whether standard output and conditions (e.g. messages and warnings)
@@ -375,7 +377,7 @@ CRAN release: 2018-08-26
 
 CRAN release: 2018-06-20
 
-### Signficant Changes
+### Significant Changes
 
 - License changed from LGPL (\>= 2.1) to GPL (\>= 2) to make sure it is
   compatible with the source code adopted from R base’s

@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.1-9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +70,11 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.20.1" id="version-1201">Version 1.20.1<a class="anchor" aria-label="anchor" href="#version-1201"></a></h2>
+<h2 class="pkg-version" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
+<ul><li>…</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.20.1" id="version-1201">Version 1.20.1<a class="anchor" aria-label="anchor" href="#version-1201"></a></h2><p class="text-muted">CRAN release: 2025-12-09</p>
 <div class="section level3">
 <h3 id="bug-fixes-1-20-1">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-20-1"></a></h3>
 <ul><li>
@@ -91,7 +95,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated-and-defunct-1-20-0">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-1-20-0"></a></h3>
-<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</li>
+<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN    = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -141,7 +145,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated-and-defunct-1-10-0">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-1-10-0"></a></h3>
-<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is deprecated, because <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> does not support it. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN = `[[`</code>.</li>
+<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is deprecated, because <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> does not support it. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN =    `[[`</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -154,20 +158,17 @@
 <h3 id="miscellaneous-1-9-1">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous-1-9-1"></a></h3>
 <ul><li>Fix some HTML5 issues in help pages.</li>
 </ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.9.0" id="version-190">Version 1.9.0<a class="anchor" aria-label="anchor" href="#version-190"></a></h2><p class="text-muted">CRAN release: 2022-04-25</p>
 <div class="section level3">
-<h3 id="signficant-changes-1-9-0">Signficant Changes<a class="anchor" aria-label="anchor" href="#signficant-changes-1-9-0"></a></h3>
+<h3 id="significant-changes-1-9-1">Significant Changes<a class="anchor" aria-label="anchor" href="#significant-changes-1-9-1"></a></h3>
 <ul><li>
 <code><a href="../reference/future_mapply.html">future_mapply()</a></code> and <code><a href="../reference/future_mapply.html">future_Map()</a></code> was updated to match the new behavior of <code><a href="https://rdrr.io/r/base/mapply.html" class="external-link">mapply()</a></code> and <code><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Map()</a></code> in R (&gt;= 4.2.0), which follows the “max-or-0-if-any” recycling rule.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="performance-1-9-0">Performance<a class="anchor" aria-label="anchor" href="#performance-1-9-0"></a></h3>
+<h3 id="performance-1-9-1">Performance<a class="anchor" aria-label="anchor" href="#performance-1-9-1"></a></h3>
 <ul><li>Now captured standard output and conditions are deleted as soon as they have been relayed. This requires <strong>future</strong> (&gt;= 1.25.0).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="deprecated-and-defunct-1-9-0">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-1-9-0"></a></h3>
+<h3 id="deprecated-and-defunct-1-9-1">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-1-9-1"></a></h3>
 <ul><li>Removed moot argument <code>future.lazy</code> from all functions. Regardless of setting it to TRUE or FALSE, futures would be resolved momentarily and always before the apply returned.</li>
 </ul></div>
 </div>
@@ -193,7 +194,7 @@
 <div class="section level3">
 <h3 id="bug-fixes-1-8-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-0"></a></h3>
 <ul><li>
-<code>f &lt;- function(...) future_lapply(X, function(x) list(...)); f(a=1)</code> would produce an error on ’unused argument (a = 1)” with the upcoming release of <strong>future</strong> 1.22.0.</li>
+<code>f &lt;- function(...) future_lapply(X, function(x) list(...));    f(a=1)</code> would produce an error on ’unused argument (a = 1)” with the upcoming release of <strong>future</strong> 1.22.0.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -207,7 +208,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.6.0" id="version-160">Version 1.6.0<a class="anchor" aria-label="anchor" href="#version-160"></a></h2><p class="text-muted">CRAN release: 2020-07-01</p>
 <div class="section level3">
-<h3 id="signficant-changes-1-6-0">Signficant Changes<a class="anchor" aria-label="anchor" href="#signficant-changes-1-6-0"></a></h3>
+<h3 id="significant-changes-1-6-0">Significant Changes<a class="anchor" aria-label="anchor" href="#significant-changes-1-6-0"></a></h3>
 <ul><li>
 <code><a href="../reference/future_apply.html">future_apply()</a></code> gained argument <code>simplify</code>, which is added to R-devel (to become R 4.1.0).</li>
 </ul></div>
@@ -226,7 +227,7 @@
 <div class="section level3">
 <h3 id="bug-fixes-1-5-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-5-0"></a></h3>
 <ul><li>
-<code><a href="../reference/future_mapply.html">future_mapply()</a></code> would chunk up <code>MoreArgs</code> when <code>future.seed = TRUE</code>.</li>
+<code><a href="../reference/future_mapply.html">future_mapply()</a></code> would chunk up <code>MoreArgs</code> when <code>future.seed =    TRUE</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -272,12 +273,12 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="version-110">Version 1.1.0<a class="anchor" aria-label="anchor" href="#version-110"></a></h2><p class="text-muted">CRAN release: 2019-01-17</p>
 <div class="section level3">
-<h3 id="signficant-changes-1-1-0">Signficant Changes<a class="anchor" aria-label="anchor" href="#signficant-changes-1-1-0"></a></h3>
+<h3 id="significant-changes-1-1-0">Significant Changes<a class="anchor" aria-label="anchor" href="#significant-changes-1-1-0"></a></h3>
 <ul><li>Added argument <code>future.stdout</code> and <code>future.conditions</code> for controlling whether standard output and conditions (e.g. messages and warnings) produced during the evaluation of futures should be captured and relayed or not. Standard output is guaranteed to be relayed in the same order as it would when using sequential processing. Analogously for conditions. However, standard output is always relayed before conditions. Errors are always relayed. Relaying of non-error conditions requires <strong>future</strong> (&gt;= 1.11.0).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-1-1-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-1-0"></a></h3>
-<ul><li><p>Elements can be processed in random order by setting attribute <code>ordering</code> to <code>"random"</code> of argument <code>future.chunk.size</code> or <code>future.scheduling</code>, e.g. <code>future.chunk.size = structure(TRUE, ordering = "random")</code>. This can help improve load balancing in cases where there is a correlation between processing time and ordering of the elements. Note that the order of the returned values is not affected when randomizing the processing order.</p></li>
+<ul><li><p>Elements can be processed in random order by setting attribute <code>ordering</code> to <code>"random"</code> of argument <code>future.chunk.size</code> or <code>future.scheduling</code>, e.g. <code>future.chunk.size = structure(TRUE,    ordering = "random")</code>. This can help improve load balancing in cases where there is a correlation between processing time and ordering of the elements. Note that the order of the returned values is not affected when randomizing the processing order.</p></li>
 <li><p>Swapped order of arguments <code>future.lazy</code> and <code>future.seed</code> to be consistent with ditto arguments of <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code>.</p></li>
 </ul></div>
 </div>
@@ -296,7 +297,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.0" id="version-100">Version 1.0.0<a class="anchor" aria-label="anchor" href="#version-100"></a></h2><p class="text-muted">CRAN release: 2018-06-20</p>
 <div class="section level3">
-<h3 id="signficant-changes-1-0-0">Signficant Changes<a class="anchor" aria-label="anchor" href="#signficant-changes-1-0-0"></a></h3>
+<h3 id="significant-changes-1-0-0">Significant Changes<a class="anchor" aria-label="anchor" href="#significant-changes-1-0-0"></a></h3>
 <ul><li>License changed from LGPL (&gt;= 2.1) to GPL (&gt;= 2) to make sure it is compatible with the source code adopted from R base’s <code><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply()</a></code>, <code><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Map()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply()</a></code>, and <code><a href="https://rdrr.io/r/base/tapply.html" class="external-link">tapply()</a></code>, which are all GPL (&gt;= 2).</li>
 </ul></div>
 <div class="section level3">

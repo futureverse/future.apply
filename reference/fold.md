@@ -46,5 +46,5 @@ folding, binary function `f` must be *associative* with itself, i.e.
 `f(f(x[[1]], x[[2]]), x[[3]])` equals `f(x[[1]], f(x[[2]]), x[[3]])`.
 
 This function is a more efficient (memory and speed) of
-`Reduce(f, x, right = !left, accumulate = FALSE)`, especially when `x`
-is long.
+[`Reduce(f, x, right = !left, accumulate = FALSE)`](https://rdrr.io/r/base/funprog.html),
+especially when `x` is long.

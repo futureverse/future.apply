@@ -146,11 +146,11 @@ future_.mapply(FUN, dots, MoreArgs, ..., future.label = "future_.mapply-%d")
 
 ## Value
 
-See [`base::Filter()`](https://rdrr.io/r/base/funprog.html) for details.
+See [base::Filter()](https://rdrr.io/r/base/funprog.html) for details.
 
 `future_Map()` is a simple wrapper to `future_mapply()` which does not
 attempt to simplify the result. See
-[`base::Map()`](https://rdrr.io/r/base/funprog.html) for details.
+[base::Map()](https://rdrr.io/r/base/funprog.html) for details.
 
 `future_mapply()` returns a list, or for `SIMPLIFY = TRUE`, a vector,
 array or list. See

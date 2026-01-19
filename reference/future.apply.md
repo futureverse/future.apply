@@ -35,7 +35,7 @@ Currently implemented functions are:
   a parallel version of [vapply()](https://rdrr.io/r/base/lapply.html)
 
 - [`future_Map()`](https://future.apply.futureverse.org/reference/future_mapply.md):
-  a parallel version of Map()
+  a parallel version of [Map()](https://rdrr.io/r/base/funprog.html)
 
 - [`future_replicate()`](https://future.apply.futureverse.org/reference/future_lapply.md):
   a parallel version of
