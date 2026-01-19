@@ -121,9 +121,9 @@ If <code>nbrOfElements == 0</code>, then an empty list is returned.</p>
 <p>Attribute <code>ordering</code> of <code>future.chunk.size</code> or <code>future.scheduling</code> can
 be used to control the ordering the elements are iterated over, which
 only affects the processing order <em>not</em> the order values are returned.
-This attribute can take the following values:</p><ul><li><p>index vector - an numeric vector of length <code>nbrOfElements</code> specifying
+This attribute can take the following values:</p><ul><li><p>index vector - a numeric vector of length <code>nbrOfElements</code> specifying
 how elements are remapped</p></li>
-<li><p>function     - an function taking one argument which is called as
+<li><p>function     - a function taking one argument which is called as
 <code>ordering(nbrOfElements)</code> and which must return an
 index vector of length <code>nbrOfElements</code>, e.g.
 <code>function(n) rev(seq_len(n))</code> for reverse ordering.</p></li>

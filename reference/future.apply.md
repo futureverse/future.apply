@@ -1,6 +1,6 @@
 # future.apply: Apply Function to Elements in Parallel using Futures
 
-The future.apply packages provides parallel implementations of common
+The future.apply package provides parallel implementations of common
 "apply" functions provided by base R. The parallel processing is
 performed via the future ecosystem, which provides a large number of
 parallel backends, e.g. on the local machine, a remote cluster, and a

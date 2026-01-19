@@ -234,7 +234,7 @@ For `future_vapply()`, a vector with same length and names as `X`. See
 ## Global variables
 
 Argument `future.globals` may be used to control how globals should be
-handled similarly how the `globals` argument is used with
+handled similarly to how the `globals` argument is used with
 [`future()`](https://future.futureverse.org/reference/future.html).
 Since all function calls use the same set of globals, this function can
 do any gathering of globals upfront (once), which is more efficient than
@@ -263,7 +263,7 @@ a parallel RNG seed, otherwise one is created randomly.
 
 If `future.seed = FALSE`, it is expected that none of the
 `FUN(X[[ii]], ...)` function calls use random number generation. If they
-do, then an informative warning or error is produces depending on
+do, then an informative warning or error is produced depending on
 settings. See
 [`future::future()`](https://future.futureverse.org/reference/future.html)
 for more details. Using `future.seed = NULL`, is like
@@ -323,9 +323,9 @@ be used to control the ordering the elements are iterated over, which
 only affects the processing order and *not* the order values are
 returned. This attribute can take the following values:
 
-- index vector - an numeric vector of length `length(X)`
+- index vector - a numeric vector of length `length(X)`
 
-- function - an function taking one argument which is called as
+- function - a function taking one argument which is called as
   `ordering(length(X))` and which must return an index vector of length
   `length(X)`, e.g. `function(n) rev(seq_len(n))` for reverse ordering.
 

@@ -167,12 +167,12 @@ in R despite being exported.
 
 ## Author
 
-The implementations of `future_Filter()` is adopted from the source code
+The implementation of `future_Filter()` is adopted from the source code
 of the corresponding base R function
 [`Filter()`](https://rdrr.io/r/base/funprog.html), which is licensed
 under GPL (\>= 2) with 'The R Core Team' as the copyright holder.
 
-The implementations of `future_Map()` is adopted from the source code of
+The implementation of `future_Map()` is adopted from the source code of
 the corresponding base R function
 [`Map()`](https://rdrr.io/r/base/funprog.html), which is licensed under
 GPL (\>= 2) with 'The R Core Team' as the copyright holder.

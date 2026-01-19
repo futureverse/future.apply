@@ -307,7 +307,7 @@ See <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">bas
 
 
 <p>Argument <code>future.globals</code> may be used to control how globals
-should be handled similarly how the <code>globals</code> argument is used with
+should be handled similarly to how the <code>globals</code> argument is used with
 <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future()</a></code>.
 Since all function calls use the same set of globals, this function can do
 any gathering of globals upfront (once), which is more efficient than if
@@ -335,7 +335,7 @@ is used if it holds a parallel RNG seed, otherwise one is created
 randomly.</p>
 <p>If <code>future.seed = FALSE</code>, it is expected that none of the
 <code>FUN(X[[ii]], ...)</code> function calls use random number generation.
-If they do, then an informative warning or error is produces depending
+If they do, then an informative warning or error is produced depending
 on settings. See <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code> for more details.
 Using <code>future.seed = NULL</code>, is like <code>future.seed = FALSE</code> but without
 the check whether random numbers were generated or not.</p>
@@ -389,8 +389,8 @@ The default value is <code>scheduling = 1.0</code>.</p>
 <p>Attribute <code>ordering</code> of <code>future.chunk.size</code> or <code>future.scheduling</code> can
 be used to control the ordering the elements are iterated over, which
 only affects the processing order and <em>not</em> the order values are returned.
-This attribute can take the following values:</p><ul><li><p>index vector - an numeric vector of length <code>length(X)</code></p></li>
-<li><p>function     - an function taking one argument which is called as
+This attribute can take the following values:</p><ul><li><p>index vector - a numeric vector of length <code>length(X)</code></p></li>
+<li><p>function     - a function taking one argument which is called as
 <code>ordering(length(X))</code> and which must return an
 index vector of length <code>length(X)</code>, e.g.
 <code>function(n) rev(seq_len(n))</code> for reverse ordering.</p></li>
