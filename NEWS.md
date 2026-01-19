@@ -132,9 +132,7 @@
  * Fix some HTML5 issues in help pages.
  
 
-# Version 1.9.0 [2022-04-24]
-
-## Signficant Changes
+## Significant Changes
 
  * `future_mapply()` and `future_Map()` was updated to match the new
    behavior of `mapply()` and `Map()` in R (>= 4.2.0), which follows
@@ -195,7 +193,7 @@
 
 # Version 1.6.0 [2020-06-30]
 
-## Signficant Changes
+## Significant Changes
 
  * `future_apply()` gained argument `simplify`, which is added to
    R-devel (to become R 4.1.0).
@@ -283,7 +281,7 @@
 
 # Version 1.1.0 [2019-01-16]
 
-## Signficant Changes
+## Significant Changes
 
  * Added argument `future.stdout` and `future.conditions` for
    controlling whether standard output and conditions (e.g. messages
@@ -328,7 +326,7 @@
 
 # Version 1.0.0 [2018-06-19]
 
-## Signficant Changes
+## Significant Changes
 
  * License changed from LGPL (>= 2.1) to GPL (>= 2) to make sure it is
    compatible with the source code adopted from R base's `apply()`,

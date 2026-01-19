@@ -23,9 +23,9 @@
 #' be used to control the ordering the elements are iterated over, which
 #' only affects the processing order _not_ the order values are returned.
 #' This attribute can take the following values:
-#' * index vector - an numeric vector of length `nbrOfElements` specifying
+#' * index vector - a numeric vector of length `nbrOfElements` specifying
 #'                  how elements are remapped
-#' * function     - an function taking one argument which is called as
+#' * function     - a function taking one argument which is called as
 #'                  `ordering(nbrOfElements)` and which must return an
 #'                  index vector of length `nbrOfElements`, e.g.
 #'                  `function(n) rev(seq_len(n))` for reverse ordering.
