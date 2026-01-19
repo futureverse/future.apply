@@ -197,7 +197,7 @@ Analogously, this is true for all the other \code{future_nnn()} functions.
 \section{Global variables}{
 
 Argument \code{future.globals} may be used to control how globals
-should be handled similarly how the \code{globals} argument is used with
+should be handled similarly to how the \code{globals} argument is used with
 \code{future()}.
 Since all function calls use the same set of globals, this function can do
 any gathering of globals upfront (once), which is more efficient than if
@@ -227,7 +227,7 @@ randomly.
 
 If \code{future.seed = FALSE}, it is expected that none of the
 \code{FUN(X[[ii]], ...)} function calls use random number generation.
-If they do, then an informative warning or error is produces depending
+If they do, then an informative warning or error is produced depending
 on settings. See \code{\link[future:future]{future::future()}} for more details.
 Using \code{future.seed = NULL}, is like \code{future.seed = FALSE} but without
 the check whether random numbers were generated or not.
@@ -289,8 +289,8 @@ be used to control the ordering the elements are iterated over, which
 only affects the processing order and \emph{not} the order values are returned.
 This attribute can take the following values:
 \itemize{
-\item index vector - an numeric vector of length \code{length(X)}
-\item function     - an function taking one argument which is called as
+\item index vector - a numeric vector of length \code{length(X)}
+\item function     - a function taking one argument which is called as
 \code{ordering(length(X))} and which must return an
 index vector of length \code{length(X)}, e.g.
 \code{function(n) rev(seq_len(n))} for reverse ordering.

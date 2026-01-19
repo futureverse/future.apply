@@ -6,7 +6,7 @@
 \alias{future.apply-package}
 \title{future.apply: Apply Function to Elements in Parallel using Futures}
 \description{
-The \pkg{future.apply} packages provides parallel implementations of
+The \pkg{future.apply} package provides parallel implementations of
 common "apply" functions provided by base \R.  The parallel processing
 is performed via the \pkg{future} ecosystem, which provides a large
 number of parallel backends, e.g. on the local machine, a remote cluster,

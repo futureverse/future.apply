@@ -196,11 +196,11 @@ if (!inherits(plan(), "sequential")) plan(sequential)
 }
 }
 \author{
-The implementations of \code{future_Filter()} is adopted from the source code
+The implementation of \code{future_Filter()} is adopted from the source code
 of the corresponding base \R function \code{Filter()}, which is licensed under
 GPL (>= 2) with 'The R Core Team' as the copyright holder.
 
-The implementations of \code{future_Map()} is adopted from the source code
+The implementation of \code{future_Map()} is adopted from the source code
 of the corresponding base \R function \code{Map()}, which is licensed under
 GPL (>= 2) with 'The R Core Team' as the copyright holder.
 }
