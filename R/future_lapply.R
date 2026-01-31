@@ -10,7 +10,7 @@
 #' 
 #' @param \ldots (optional) Additional arguments passed to `FUN()`.
 #' For `future_*apply()` functions and `replicate()`, any `future.*` arguments
-#' part of `\ldots` are passed on to `future_lapply()` used internally.
+#' part of \ldots are passed on to `future_lapply()` used internally.
 #' Importantly, if this is called inside another function which also declares
 #' \ldots arguments, do not forget to explicitly pass such \ldots arguments
 #' down to the `future_*apply()` function too, which will then pass them on
@@ -74,7 +74,7 @@
 #' If `TRUE` (default), then globals are automatically identified and gathered.
 #' If a character vector of names is specified, then those globals are gathered.
 #' If a named list, then those globals are used as is.
-#' In all cases, `FUN` and any `\ldots` arguments are automatically
+#' In all cases, `FUN` and any \ldots arguments are automatically
 #' passed as globals to each future created as they are always needed.
 #'
 #' @section Reproducible random number generation (RNG):

@@ -158,7 +158,7 @@ See \code{\link[base:lapply]{base::vapply()}} for details.}
 
 \item{\ldots}{(optional) Additional arguments passed to \code{FUN()}.
 For \code{future_*apply()} functions and \code{replicate()}, any \verb{future.*} arguments
-part of \verb{\\ldots} are passed on to \code{future_lapply()} used internally.
+part of \ldots are passed on to \code{future_lapply()} used internally.
 Importantly, if this is called inside another function which also declares
 \ldots arguments, do not forget to explicitly pass such \ldots arguments
 down to the \code{future_*apply()} function too, which will then pass them on
@@ -205,7 +205,7 @@ it would be done for each future independently.
 If \code{TRUE} (default), then globals are automatically identified and gathered.
 If a character vector of names is specified, then those globals are gathered.
 If a named list, then those globals are used as is.
-In all cases, \code{FUN} and any \verb{\\ldots} arguments are automatically
+In all cases, \code{FUN} and any \ldots arguments are automatically
 passed as globals to each future created as they are always needed.
 }
 

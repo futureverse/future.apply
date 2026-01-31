@@ -58,7 +58,7 @@ are assigned.}
 result to a vector, matrix or higher dimensional array; see the simplify
 argument of \code{\link[base:lapply]{base::sapply()}}.}
 
-\item{USE.NAMES}{A logical; use names if the first \verb{\\ldots} argument has
+\item{USE.NAMES}{A logical; use names if the first \ldots argument has
 names, or if it is a character vector, use that character vector as the
 names.}
 
@@ -122,7 +122,7 @@ array or list.  See \code{\link[base:mapply]{base::mapply()}} for details.
 replication of results, regardless of future backend used.
 Analogously to \code{mapply()}, \code{future_mapply()} is a multivariate version of
 \code{future_sapply()}.
-It applies \code{FUN} to the first elements of each \verb{\\ldots} argument,
+It applies \code{FUN} to the first elements of each \ldots argument,
 the second elements, the third elements, and so on.
 Arguments are recycled if necessary.
 }
