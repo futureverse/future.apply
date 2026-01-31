@@ -198,7 +198,7 @@ future_vapply(
   (optional) Additional arguments passed to `FUN()`. For
   `future_*apply()` functions and
   [`replicate()`](https://rdrr.io/r/base/lapply.html), any `future.*`
-  arguments part of `\ldots` are passed on to `future_lapply()` used
+  arguments part of ... are passed on to `future_lapply()` used
   internally. Importantly, if this is called inside another function
   which also declares ... arguments, do not forget to explicitly pass
   such ... arguments down to the `future_*apply()` function too, which
@@ -242,8 +242,8 @@ if it would be done for each future independently. If `TRUE` (default),
 then globals are automatically identified and gathered. If a character
 vector of names is specified, then those globals are gathered. If a
 named list, then those globals are used as is. In all cases, `FUN` and
-any `\ldots` arguments are automatically passed as globals to each
-future created as they are always needed.
+any ... arguments are automatically passed as globals to each future
+created as they are always needed.
 
 ## Reproducible random number generation (RNG)
 

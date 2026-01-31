@@ -17,7 +17,7 @@ Analogously, this is true for all the other future_nnn() functions."><!-- Global
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.1-9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.1-9004</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -274,7 +274,7 @@ See <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">bas
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>(optional) Additional arguments passed to <code>FUN()</code>.
 For <code>future_*apply()</code> functions and <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate()</a></code>, any <code>future.*</code> arguments
-part of <code>\ldots</code> are passed on to <code>future_lapply()</code> used internally.
+part of ... are passed on to <code>future_lapply()</code> used internally.
 Importantly, if this is called inside another function which also declares
 ... arguments, do not forget to explicitly pass such ... arguments
 down to the <code>future_*apply()</code> function too, which will then pass them on
@@ -315,7 +315,7 @@ it would be done for each future independently.
 If <code>TRUE</code> (default), then globals are automatically identified and gathered.
 If a character vector of names is specified, then those globals are gathered.
 If a named list, then those globals are used as is.
-In all cases, <code>FUN</code> and any <code>\ldots</code> arguments are automatically
+In all cases, <code>FUN</code> and any ... arguments are automatically
 passed as globals to each future created as they are always needed.</p>
     </div>
     <div class="section level2">

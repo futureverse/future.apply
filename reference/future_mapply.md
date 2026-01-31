@@ -6,9 +6,9 @@ with perfect replication of results, regardless of future backend used.
 Analogously to [`mapply()`](https://rdrr.io/r/base/mapply.html),
 `future_mapply()` is a multivariate version of
 [`future_sapply()`](https://future.apply.futureverse.org/reference/future_lapply.md).
-It applies `FUN` to the first elements of each `\ldots` argument, the
-second elements, the third elements, and so on. Arguments are recycled
-if necessary.
+It applies `FUN` to the first elements of each ... argument, the second
+elements, the third elements, and so on. Arguments are recycled if
+necessary.
 
 ## Usage
 
@@ -83,8 +83,8 @@ future_.mapply(FUN, dots, MoreArgs, ..., future.label = "future_.mapply-%d")
 
 - USE.NAMES:
 
-  A logical; use names if the first `\ldots` argument has names, or if
-  it is a character vector, use that character vector as the names.
+  A logical; use names if the first ... argument has names, or if it is
+  a character vector, use that character vector as the names.
 
 - future.stdout:
 
