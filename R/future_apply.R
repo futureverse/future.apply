@@ -95,7 +95,9 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
       var <- sprintf("future.%s", name)
       assign(var, opts[[name]], envir = environment(), inherits = FALSE)
     }
-    options(future.disposable = NULL)
+    if (!identical(attr(opts, "dispose"), FALSE)) {
+      options(future.disposable = NULL)
+    }
 
 
     ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

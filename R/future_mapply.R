@@ -108,7 +108,9 @@ future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES 
     var <- sprintf("future.%s", name)
     assign(var, opts[[name]], envir = environment(), inherits = FALSE)
   }
-  options(future.disposable = NULL)
+  if (!identical(attr(opts, "dispose"), FALSE)) {
+    options(future.disposable = NULL)
+  }
 
 
   ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
