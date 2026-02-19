@@ -91,12 +91,14 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
     ## Support %globals%, %packages%, %seed%, ...
     ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     opts <- getOption("future.disposable", NULL)
-    for (name in names(opts)) {
-      var <- sprintf("future.%s", name)
-      assign(var, opts[[name]], envir = environment(), inherits = FALSE)
-    }
-    if (!identical(attr(opts, "dispose"), FALSE)) {
-      options(future.disposable = NULL)
+    if (length(opts) > 0) {
+      for (name in names(opts)) {
+        var <- sprintf("future.%s", name)
+        assign(var, opts[[name]], envir = environment(), inherits = FALSE)
+      }
+      if (!identical(attr(opts, "dispose"), FALSE)) {
+        options(future.disposable = NULL)
+      }
     }
 
 
