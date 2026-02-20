@@ -1,8 +1,12 @@
 # Changelog
 
-## Version (development version)
+## Version 1.20.2
 
-- …
+CRAN release: 2026-02-20
+
+### Miscellaneous
+
+- This is a maintenance update with internal updates only.
 
 ## Version 1.20.1
 
