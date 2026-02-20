@@ -6,12 +6,12 @@
 #' @param x A vector-like object to iterate over.
 #' 
 #' @return
-#' See [base::Filter()] for details.
+#' See [base::Filter()][Filter] for details.
 #'
 #' @example incl/future_Filter.R
 #'
 #' @author
-#' The implementations of `future_Filter()` is adopted from the source code
+#' The implementation of `future_Filter()` is adopted from the source code
 #' of the corresponding base \R function `Filter()`, which is licensed under
 #' GPL (>= 2) with 'The R Core Team' as the copyright holder.
 #' 

@@ -58,7 +58,7 @@ are assigned.}
 result to a vector, matrix or higher dimensional array; see the simplify
 argument of \code{\link[base:lapply]{base::sapply()}}.}
 
-\item{USE.NAMES}{A logical; use names if the first \verb{\\ldots} argument has
+\item{USE.NAMES}{A logical; use names if the first \ldots argument has
 names, or if it is a character vector, use that character vector as the
 names.}
 
@@ -106,11 +106,11 @@ strictly positive length, or all of zero length).}
 length, or zero if one of them is of length zero.}
 }
 \value{
-See \code{\link[base:funprog]{base::Filter()}} for details.
+See \link[=Filter]{base::Filter()} for details.
 
 \code{future_Map()} is a simple wrapper to \code{future_mapply()} which does not
 attempt to simplify the result.
-See \code{\link[base:funprog]{base::Map()}} for details.
+See \link[=Map]{base::Map()} for details.
 
 \code{future_mapply()} returns a list, or for \code{SIMPLIFY = TRUE}, a vector,
 array or list.  See \code{\link[base:mapply]{base::mapply()}} for details.
@@ -122,7 +122,7 @@ array or list.  See \code{\link[base:mapply]{base::mapply()}} for details.
 replication of results, regardless of future backend used.
 Analogously to \code{mapply()}, \code{future_mapply()} is a multivariate version of
 \code{future_sapply()}.
-It applies \code{FUN} to the first elements of each \verb{\\ldots} argument,
+It applies \code{FUN} to the first elements of each \ldots argument,
 the second elements, the third elements, and so on.
 Arguments are recycled if necessary.
 }
@@ -196,11 +196,11 @@ if (!inherits(plan(), "sequential")) plan(sequential)
 }
 }
 \author{
-The implementations of \code{future_Filter()} is adopted from the source code
+The implementation of \code{future_Filter()} is adopted from the source code
 of the corresponding base \R function \code{Filter()}, which is licensed under
 GPL (>= 2) with 'The R Core Team' as the copyright holder.
 
-The implementations of \code{future_Map()} is adopted from the source code
+The implementation of \code{future_Map()} is adopted from the source code
 of the corresponding base \R function \code{Map()}, which is licensed under
 GPL (>= 2) with 'The R Core Team' as the copyright holder.
 }

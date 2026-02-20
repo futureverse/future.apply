@@ -1,6 +1,6 @@
 #' future.apply: Apply Function to Elements in Parallel using Futures
 #'
-#' The \pkg{future.apply} packages provides parallel implementations of
+#' The \pkg{future.apply} package provides parallel implementations of
 #' common "apply" functions provided by base \R.  The parallel processing
 #' is performed via the \pkg{future} ecosystem, which provides a large
 #' number of parallel backends, e.g. on the local machine, a remote cluster,
@@ -16,7 +16,7 @@
 #' * [future_sapply()]: a parallel version of [sapply()][base::sapply]
 #' * [future_tapply()]: a parallel version of [tapply()][base::tapply]
 #' * [future_vapply()]: a parallel version of [vapply()][base::vapply]
-#' * [future_Map()]: a parallel version of [Map()][base::Map]
+#' * [future_Map()]: a parallel version of [Map()][Map]
 #' * [future_replicate()]: a parallel version of [replicate()][base::replicate]
 #' * [future_.mapply()]: a parallel version of [.mapply()][base::.mapply]
 #'

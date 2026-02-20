@@ -10,7 +10,7 @@
 #' 
 #' @param \ldots (optional) Additional arguments passed to `FUN()`.
 #' For `future_*apply()` functions and `replicate()`, any `future.*` arguments
-#' part of `\ldots` are passed on to `future_lapply()` used internally.
+#' part of \ldots are passed on to `future_lapply()` used internally.
 #' Importantly, if this is called inside another function which also declares
 #' \ldots arguments, do not forget to explicitly pass such \ldots arguments
 #' down to the `future_*apply()` function too, which will then pass them on
@@ -66,7 +66,7 @@
 #'
 #' @section Global variables:
 #' Argument `future.globals` may be used to control how globals
-#' should be handled similarly how the `globals` argument is used with
+#' should be handled similarly to how the `globals` argument is used with
 #' `future()`.
 #' Since all function calls use the same set of globals, this function can do
 #' any gathering of globals upfront (once), which is more efficient than if
@@ -74,7 +74,7 @@
 #' If `TRUE` (default), then globals are automatically identified and gathered.
 #' If a character vector of names is specified, then those globals are gathered.
 #' If a named list, then those globals are used as is.
-#' In all cases, `FUN` and any `\ldots` arguments are automatically
+#' In all cases, `FUN` and any \ldots arguments are automatically
 #' passed as globals to each future created as they are always needed.
 #'
 #' @section Reproducible random number generation (RNG):
@@ -94,7 +94,7 @@
 #'
 #' If `future.seed = FALSE`, it is expected that none of the
 #' `FUN(X[[ii]], ...)` function calls use random number generation.
-#' If they do, then an informative warning or error is produces depending
+#' If they do, then an informative warning or error is produced depending
 #' on settings. See [future::future()] for more details.
 #' Using `future.seed = NULL`, is like `future.seed = FALSE` but without
 #' the check whether random numbers were generated or not.
@@ -154,8 +154,8 @@
 #' be used to control the ordering the elements are iterated over, which
 #' only affects the processing order and _not_ the order values are returned.
 #' This attribute can take the following values:
-#' * index vector - an numeric vector of length `length(X)`
-#' * function     - an function taking one argument which is called as
+#' * index vector - a numeric vector of length `length(X)`
+#' * function     - a function taking one argument which is called as
 #'                  `ordering(length(X))` and which must return an
 #'                  index vector of length `length(X)`, e.g.
 #'                  `function(n) rev(seq_len(n))` for reverse ordering.

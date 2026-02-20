@@ -139,7 +139,7 @@ if (!inherits(plan(), "sequential")) plan(sequential)
 }
 }
 \author{
-The implementations of \code{future_apply()} is adopted from the source code
+The implementation of \code{future_apply()} is adopted from the source code
 of the corresponding base \R function, which is licensed under GPL (>= 2)
 with 'The R Core Team' as the copyright holder.
 }

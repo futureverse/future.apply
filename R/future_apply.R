@@ -28,7 +28,7 @@
 #' See [base::apply()] for details.
 #'
 #' @author
-#' The implementations of `future_apply()` is adopted from the source code
+#' The implementation of `future_apply()` is adopted from the source code
 #' of the corresponding base \R function, which is licensed under GPL (>= 2)
 #' with 'The R Core Team' as the copyright holder.
 #'
@@ -91,11 +91,15 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
     ## Support %globals%, %packages%, %seed%, ...
     ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     opts <- getOption("future.disposable", NULL)
-    for (name in names(opts)) {
-      var <- sprintf("future.%s", name)
-      assign(var, opts[[name]], envir = environment(), inherits = FALSE)
+    if (length(opts) > 0) {
+      for (name in names(opts)) {
+        var <- sprintf("future.%s", name)
+        assign(var, opts[[name]], envir = environment(), inherits = FALSE)
+      }
+      if (!identical(attr(opts, "dispose"), FALSE)) {
+        options(future.disposable = NULL)
+      }
     }
-    options(future.disposable = NULL)
 
 
     ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
