@@ -1,6 +1,8 @@
 # Version (development version)
 
- * ...
+## Miscellaneous
+
+ * This is a maintenance update with internal updates only.
 
 
 # Version 1.20.1 [2025-12-08]
