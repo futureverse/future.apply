@@ -11,6 +11,7 @@ should be able to replace any of these in the core with its futurized
 equivalent and things will just work. For example, instead of doing:
 
 ``` r
+
 library(datasets)
 library(stats)
 y <- lapply(mtcars, FUN = mean, trim = 0.10)
@@ -19,6 +20,7 @@ y <- lapply(mtcars, FUN = mean, trim = 0.10)
 one can do:
 
 ``` r
+
 library(future.apply)
 plan(multisession) ## Run in parallel on local computer
 

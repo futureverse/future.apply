@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/future.apply-1-overview.html">A Future for R: Apply Function to Elements in Parallel</a></li>
   </ul></li>
-<li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
+<li class="active nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://www.futureverse.org/"><span class="fa fas fa-home"></span></a></li>
@@ -44,6 +44,7 @@
     <li><a class="external-link dropdown-item" href="https://globals.futureverse.org">globals</a></li>
     <li><a class="external-link dropdown-item" href="https://listenv.futureverse.org">listenv</a></li>
     <li><a class="external-link dropdown-item" href="https://parallelly.futureverse.org">parallelly</a></li>
+    <li><a class="external-link dropdown-item" href="https://progressify.futureverse.org">progressify</a></li>
     <li><a class="external-link dropdown-item" href="https://progressr.futureverse.org">progressr</a></li>
     <li><a class="external-link dropdown-item" href="https://future.p2p.futureverse.org">future.p2p (experimental)</a></li>
     <li><a class="external-link dropdown-item" href="https://future.tools.futureverse.org">future.tools (experimental)</a></li>
@@ -69,6 +70,10 @@
       <small>Source: <a href="https://github.com/futureverse/future.apply/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
+<ul><li>…</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.20.2" id="version-1202">Version 1.20.2<a class="anchor" aria-label="anchor" href="#version-1202"></a></h2><p class="text-muted">CRAN release: 2026-02-20</p>
 <div class="section level3">
@@ -98,7 +103,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated-and-defunct-1-20-0">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-1-20-0"></a></h3>
-<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN    = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</li>
+<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is defunct. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN = `[[`</code>, which is what <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> requires. Use of a string has been deprecated since <strong>future.apply</strong> 1.10.0 (2022-11-04).</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -148,7 +153,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated-and-defunct-1-10-0">Deprecated and Defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-1-10-0"></a></h3>
-<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is deprecated, because <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> does not support it. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN =    `[[`</code>.</li>
+<ul><li>Specifying the function <code>FUN</code> for <code><a href="../reference/future_by.html">future_by()</a></code> as a character string is deprecated, because <code><a href="https://rdrr.io/r/base/by.html" class="external-link">base::by()</a></code> does not support it. It should be specified as a function, e.g. <code>FUN = sqrt</code> and <code>FUN = `[[`</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -197,7 +202,7 @@
 <div class="section level3">
 <h3 id="bug-fixes-1-8-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-0"></a></h3>
 <ul><li>
-<code>f &lt;- function(...) future_lapply(X, function(x) list(...));    f(a=1)</code> would produce an error on ’unused argument (a = 1)” with the upcoming release of <strong>future</strong> 1.22.0.</li>
+<code>f &lt;- function(...) future_lapply(X, function(x) list(...)); f(a=1)</code> would produce an error on ’unused argument (a = 1)” with the upcoming release of <strong>future</strong> 1.22.0.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -230,7 +235,7 @@
 <div class="section level3">
 <h3 id="bug-fixes-1-5-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-5-0"></a></h3>
 <ul><li>
-<code><a href="../reference/future_mapply.html">future_mapply()</a></code> would chunk up <code>MoreArgs</code> when <code>future.seed =    TRUE</code>.</li>
+<code><a href="../reference/future_mapply.html">future_mapply()</a></code> would chunk up <code>MoreArgs</code> when <code>future.seed = TRUE</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -281,7 +286,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-1-1-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-1-0"></a></h3>
-<ul><li><p>Elements can be processed in random order by setting attribute <code>ordering</code> to <code>"random"</code> of argument <code>future.chunk.size</code> or <code>future.scheduling</code>, e.g. <code>future.chunk.size = structure(TRUE,    ordering = "random")</code>. This can help improve load balancing in cases where there is a correlation between processing time and ordering of the elements. Note that the order of the returned values is not affected when randomizing the processing order.</p></li>
+<ul><li><p>Elements can be processed in random order by setting attribute <code>ordering</code> to <code>"random"</code> of argument <code>future.chunk.size</code> or <code>future.scheduling</code>, e.g. <code>future.chunk.size = structure(TRUE, ordering = "random")</code>. This can help improve load balancing in cases where there is a correlation between processing time and ordering of the elements. Note that the order of the returned values is not affected when randomizing the processing order.</p></li>
 <li><p>Swapped order of arguments <code>future.lazy</code> and <code>future.seed</code> to be consistent with ditto arguments of <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code>.</p></li>
 </ul></div>
 </div>

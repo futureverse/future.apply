@@ -1,9 +1,9 @@
-pandoc: 3.1.3
+pandoc: '3.9'
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   future.apply-1-overview: future.apply-1-overview.html
-last_built: 2026-02-20T16:33Z
+last_built: 2026-04-07T15:55Z
 urls:
   reference: https://future.apply.futureverse.org/reference
   article: https://future.apply.futureverse.org/articles
