@@ -7,10 +7,10 @@ Depends:
 Imports:
     globals,
     parallel,
+    stats,
     utils
 Suggests:
     datasets,
-    stats,
     tools,
     listenv,
     R.rsp,
