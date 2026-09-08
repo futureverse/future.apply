@@ -31,9 +31,8 @@
 #' @seealso
 #' To set \R options or environment variables when \R starts (even before the \pkg{future} package is loaded), see the \link[base]{Startup} help page.  The \href{https://cran.r-project.org/package=startup}{\pkg{startup}} package provides a friendly mechanism for configuring \R's startup process.
 #'
-#' @aliases
-#' future.apply.debug
-#' R_FUTURE_APPLY_DEBUG
+#' @aliases future.apply.debug
+#' @aliases R_FUTURE_APPLY_DEBUG
 #'
 #' @name future.apply.options
 NULL
