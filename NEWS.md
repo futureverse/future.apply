@@ -2,7 +2,7 @@
 
 ## Miscellaneous
 
- * Package **stats** is not declared as an imported package instead of
+ * Package **stats** is now declared as an imported package instead of
    just a suggested package.
 
 
