@@ -1,0 +1,47 @@
+# ------------------------------------------------
+# CITATION.cff file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# ------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "future.apply" in publications use:'
+type: software
+license: GPL-2.0-or-later
+title: 'future.apply: Apply Function to Elements in Parallel using Futures'
+doi: 10.32614/CRAN.package.future.apply
+abstract: Implementations of apply(), by(), eapply(), lapply(), Map(), .mapply(),
+  mapply(), replicate(), sapply(), tapply(), and vapply() that can be resolved using
+  any future-supported backend, e.g. parallel on the local machine or distributed
+  on a compute cluster. These future_*apply() functions come with the same pros and
+  cons as the corresponding base-R *apply() functions but with the additional feature
+  of being able to be processed via the future framework <https://doi.org/10.32614/RJ-2021-048>.
+authors:
+- family-names: Bengtsson
+  given-names: Henrik
+  email: henrikb@braju.com
+  orcid: https://orcid.org/0000-0002-7579-5165
+preferred-citation:
+  type: article
+  title: A Unifying Framework for Parallel and Distributed Processing in R using Futures
+  authors:
+  - family-names: Bengtsson
+    given-names: Henrik
+    email: henrikb@braju.com
+    orcid: https://orcid.org/0000-0002-7579-5165
+  year: '2021'
+  journal: The R Journal
+  doi: 10.32614/RJ-2021-048
+  url: https://doi.org/10.32614/RJ-2021-048
+  volume: '13'
+  issue: '2'
+  start: '208'
+  end: '227'
+repository: https://CRAN.R-project.org/package=future.apply
+repository-code: https://github.com/futureverse/future.apply
+url: https://future.apply.futureverse.org
+contact:
+- family-names: Bengtsson
+  given-names: Henrik
+  email: henrikb@braju.com
+  orcid: https://orcid.org/0000-0002-7579-5165
+
