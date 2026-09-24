@@ -2,7 +2,10 @@
 
 ## Version (development version)
 
-- …
+### Miscellaneous
+
+- Package **stats** is now declared as an imported package instead of
+  just a suggested package.
 
 ## Version 1.20.2
 
