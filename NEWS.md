@@ -1,5 +1,15 @@
 # Version (development version)
 
+## Bug Fixes
+
+ * `future_lapply()`, `future_sapply()`, `future_vapply()`,
+   `future_tapply()`, `future_eapply()`, `future_by()`, and
+   `future_Filter()` ignored `... %seed% seed`. This led to random
+   numbers depending on the future backend, the number of workers, and
+   the chunk size. Per-element seeds were still generated, but
+   silently dropped. Note that `future_apply()`, `future_mapply()`,
+   `future_.mapply()`, and `future_Map()` were not affected.
+
 ## Miscellaneous
 
  * Package **stats** is now declared as an imported package instead of
