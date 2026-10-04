@@ -2,6 +2,26 @@
 
 ## Version (development version)
 
+### Bug Fixes
+
+- [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_sapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_vapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_tapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_eapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_by()`](https://future.apply.futureverse.org/reference/future_by.md),
+  and
+  [`future_Filter()`](https://future.apply.futureverse.org/reference/future_mapply.md)
+  ignored `... %seed% seed`. This led to random numbers depending on the
+  future backend, the number of workers, and the chunk size. Per-element
+  seeds were still generated, but silently dropped. Note that
+  [`future_apply()`](https://future.apply.futureverse.org/reference/future_apply.md),
+  [`future_mapply()`](https://future.apply.futureverse.org/reference/future_mapply.md),
+  [`future_.mapply()`](https://future.apply.futureverse.org/reference/future_mapply.md),
+  and
+  [`future_Map()`](https://future.apply.futureverse.org/reference/future_mapply.md)
+  were not affected.
+
 ### Miscellaneous
 
 - Package **stats** is now declared as an imported package instead of

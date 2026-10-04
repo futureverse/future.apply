@@ -10,24 +10,20 @@ e.g. [`apply()`](https://rdrr.io/r/base/apply.html),
 should be able to replace any of these in the core with its futurized
 equivalent and things will just work. For example, instead of doing:
 
-``` r
-
-library(datasets)
-library(stats)
-y <- lapply(mtcars, FUN = mean, trim = 0.10)
-```
+\
+[`library`](https://rdrr.io/r/base/library.html)`(``datasets``)`\
+[`library`](https://rdrr.io/r/base/library.html)`(``stats``)`\
+`y`` ``<-`` `[`lapply`](https://rdrr.io/r/base/lapply.html)`(``mtcars``, FUN ``=`` ``mean``, trim ``=`` ``0.10``)`
 
 one can do:
 
-``` r
-
-library(future.apply)
-plan(multisession) ## Run in parallel on local computer
-
-library(datasets)
-library(stats)
-y <- future_lapply(mtcars, FUN = mean, trim = 0.10)
-```
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`future.apply`](https://future.apply.futureverse.org)`)`\
+[`plan`](https://future.futureverse.org/reference/plan.html)`(``multisession``)`` ``## Run in parallel on local computer`\
+\
+[`library`](https://rdrr.io/r/base/library.html)`(``datasets``)`\
+[`library`](https://rdrr.io/r/base/library.html)`(``stats``)`\
+`y`` ``<-`` `[`future_lapply`](https://future.apply.futureverse.org/reference/future_lapply.md)`(``mtcars``, FUN ``=`` ``mean``, trim ``=`` ``0.10``)`
 
 Reproducibility is part of the core design, which means that perfect,
 parallel random number generation (RNG) is supported regardless of the
