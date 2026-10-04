@@ -56,7 +56,10 @@
 #'        If `NULL`, then argument `future.scheduling` is used.
 #' 
 #' @param future.label If a character string, then each future is assigned
-#'        a label `sprintf(future.label, chunk_idx)`.  If TRUE, then the
+#'        a label `sprintf(future.label, chunk_idx)`.  If the string has no
+#'        format specifier, then `-%d` is appended, e.g.
+#'        `future.label = "my-label"` is the same as
+#'        `future.label = "my-label-%d"`.  If TRUE, then the
 #'        same as `future.label = "future_lapply-%d"`.  If FALSE, no labels
 #'        are assigned.
 #'

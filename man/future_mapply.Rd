@@ -46,7 +46,10 @@ future_.mapply(FUN, dots, MoreArgs, ..., future.label = "future_.mapply-\%d")
 \code{\link[future:future]{future::future()}} as-is.}
 
 \item{future.label}{If a character string, then each future is assigned
-a label \code{sprintf(future.label, chunk_idx)}.  If TRUE, then the
+a label \code{sprintf(future.label, chunk_idx)}.  If the string has no
+format specifier, then \verb{-\%d} is appended, e.g.
+\code{future.label = "my-label"} is the same as
+\code{future.label = "my-label-\%d"}.  If TRUE, then the
 same as \code{future.label = "future_lapply-\%d"}.  If FALSE, no labels
 are assigned.}
 

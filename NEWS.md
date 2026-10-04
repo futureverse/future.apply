@@ -1,5 +1,13 @@
 # Version (development version)
 
+## New Features
+
+ * If argument `future.label` of `future_lapply()` and friends has no
+   format specifier, such as `%d`, then `-%d` is appended, e.g.
+   `future.label = "my-label"` gives future labels `"my-label-1"`,
+   `"my-label-2"`, and so on. Previously, such labels produced a
+   warning 'one argument not used by format'.
+
 ## Bug Fixes
 
  * `future_lapply()`, `future_sapply()`, `future_vapply()`,

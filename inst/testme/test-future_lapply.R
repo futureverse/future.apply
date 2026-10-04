@@ -125,6 +125,21 @@ stopifnot(identical(y, y0))
 message("*** future_lapply() - special cases ... DONE")
 
 
+message("*** future_lapply() - labels ...")
+
+plan(sequential)
+
+## Labels without a format specifier
+y <- withCallingHandlers({
+  future_lapply(1:2, FUN = identity, future.label = "my-label")
+}, warning = function(w) {
+  stop("Unexpected warning: ", conditionMessage(w))
+})
+stopifnot(identical(y, list(1L, 2L)))
+
+message("*** future_lapply() - labels ... DONE")
+
+
 message("*** future_lapply() - exceptions ...")
 
 res <- tryCatch({

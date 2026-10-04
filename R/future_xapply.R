@@ -143,6 +143,10 @@ future_xapply <- local({
       future.label <- sprintf("%s-%%d", fcn_name)
     }
     if (is.character(future.label)) {
+      ## Append a format specifier, if missing, e.g. "my" -> "my-%d"
+      if (!grepl("%", gsub("%%", "", future.label, fixed = TRUE), fixed = TRUE)) {
+        future.label <- paste(future.label, "-%d", sep = "")
+      }
       labels <- sprintf(future.label, seq_len(nchunks))
       stopifnot(length(labels) == nchunks)
     } else {
