@@ -140,6 +140,27 @@ stopifnot(identical(y, list(1L, 2L)))
 message("*** future_lapply() - labels ... DONE")
 
 
+message("*** future_lapply() - future.chunk.size < 1 ...")
+
+## Chunk sizes less than one should give one element per chunk,
+## not empty chunks
+makeChunks <- future.apply:::makeChunks
+for (nbrOfElements in c(1L, 2L, 8L)) {
+  for (chunk.size in c(0.01, 0.5, 0.99)) {
+    chunks <- makeChunks(nbrOfElements, nbrOfWorkers = 2L,
+                         future.chunk.size = chunk.size)
+    stopifnot(length(chunks) == nbrOfElements)
+    nidxs <- vapply(chunks, FUN = length, FUN.VALUE = 0L)
+    stopifnot(all(nidxs == 1L))
+  }
+}
+
+y <- future_lapply(1:3, FUN = identity, future.chunk.size = 0.5, future.seed = TRUE)
+stopifnot(identical(y, list(1L, 2L, 3L)))
+
+message("*** future_lapply() - future.chunk.size < 1 ... DONE")
+
+
 message("*** future_lapply() - exceptions ...")
 
 res <- tryCatch({
