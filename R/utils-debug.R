@@ -13,9 +13,6 @@ debug_indent <- local({
   }
 })
 
-if (!exists(".debug", inherits = FALSE)) .debug <- new.env(parent = emptyenv())
-if (!"stack" %in% names(".debug")) .debug$stack <- list()
-
 mdebug_push <- function(...) {
   msg <- mdebug(...)
   .debug$stack <- c(.debug$stack, msg)
