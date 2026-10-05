@@ -44,6 +44,8 @@ makeChunks <- function(nbrOfElements, nbrOfWorkers,
                 future.chunk.size > 0)
     ## Same definition as parallel:::staticNChunks() in R (>= 3.5.0)
     nbrOfChunks <- max(1, ceiling(nbrOfElements / future.chunk.size))
+    ## Avoid empty chunks, e.g. when 'future.chunk.size' < 1
+    nbrOfChunks <- min(nbrOfChunks, nbrOfElements)
 
     ## Customized ordering?
     ordering <- attr(future.chunk.size, "ordering", exact = TRUE)
