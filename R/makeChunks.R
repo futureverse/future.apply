@@ -20,8 +20,9 @@
 #'
 #' @section Control processing order of elements:
 #' Attribute `ordering` of `future.chunk.size` or `future.scheduling` can
-#' be used to control the ordering the elements are iterated over, which
-#' only affects the processing order _not_ the order values are returned.
+#' be used to control the order in which the elements are iterated over, which
+#' only affects the processing order and _not_ the order in which values are
+#' returned.
 #' This attribute can take the following values:
 #' * index vector - a numeric vector of length `nbrOfElements` specifying
 #'                  how elements are remapped
@@ -37,6 +38,8 @@
 makeChunks <- function(nbrOfElements, nbrOfWorkers,
                        future.scheduling = 1.0, future.chunk.size = NULL) {
   stop_if_not(nbrOfElements >= 0L, nbrOfWorkers >= 1L)
+
+  if (nbrOfElements == 0L) return(list())
 
   ## 'future.chunk.size != NULL' takes precedence over 'future.scheduling'
   if (!is.null(future.chunk.size)) {
@@ -87,7 +90,7 @@ makeChunks <- function(nbrOfElements, nbrOfWorkers,
     } else if (is.function(ordering)) {
       map <- ordering(nbrOfElements)
     } else {
-      stopf("Unknown value of attribute %s for argument %s: %s", "ordering", if (!is.null(future.chunk.size)) "future.chunk.size" else "future.scheduling", mode(ordering))
+      stop(sprintf("Unknown value of attribute %s for argument %s: ", "ordering", if (!is.null(future.chunk.size)) "future.chunk.size" else "future.scheduling"), mode(ordering))
     }
 
     if (!is.null(map)) {
