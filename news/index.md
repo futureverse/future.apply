@@ -31,6 +31,10 @@
   [`future_Map()`](https://future.apply.futureverse.org/reference/future_mapply.md)
   were not affected.
 
+- [`future_vapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
+  on empty input failed with an error if `FUN.VALUE` had length greater
+  than one.
+
 - [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
   and friends with `%seed%`, `%packages%`, … would leak those options to
   the next call, if there were zero elements to process.
@@ -39,6 +43,10 @@
   and friends with a `future.chunk.size` less than one would launch
   futures that processed no elements. Now such chunk sizes result in one
   element per future.
+
+- [`future_apply()`](https://future.apply.futureverse.org/reference/future_apply.md)
+  with argument `future.globals` as a list could produce an false error
+  on globals exceeding the maximum size allowed.
 
 ### Miscellaneous
 

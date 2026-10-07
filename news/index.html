@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9010</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,8 +80,10 @@
 <div class="section level3">
 <h3 id="bug-fixes-development-version">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
 <ul><li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code>, <code><a href="../reference/future_lapply.html">future_sapply()</a></code>, <code><a href="../reference/future_lapply.html">future_vapply()</a></code>, <code><a href="../reference/future_lapply.html">future_tapply()</a></code>, <code><a href="../reference/future_lapply.html">future_eapply()</a></code>, <code><a href="../reference/future_by.html">future_by()</a></code>, and <code><a href="../reference/future_mapply.html">future_Filter()</a></code> ignored <code>... %seed% seed</code>. This led to random numbers depending on the future backend, the number of workers, and the chunk size. Per-element seeds were still generated, but silently dropped. Note that <code><a href="../reference/future_apply.html">future_apply()</a></code>, <code><a href="../reference/future_mapply.html">future_mapply()</a></code>, <code><a href="../reference/future_mapply.html">future_.mapply()</a></code>, and <code><a href="../reference/future_mapply.html">future_Map()</a></code> were not affected.</p></li>
+<li><p><code><a href="../reference/future_lapply.html">future_vapply()</a></code> on empty input failed with an error if <code>FUN.VALUE</code> had length greater than one.</p></li>
 <li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code> and friends with <code>%seed%</code>, <code>%packages%</code>, … would leak those options to the next call, if there were zero elements to process.</p></li>
 <li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code> and friends with a <code>future.chunk.size</code> less than one would launch futures that processed no elements. Now such chunk sizes result in one element per future.</p></li>
+<li><p><code><a href="../reference/future_apply.html">future_apply()</a></code> with argument <code>future.globals</code> as a list could produce an false error on globals exceeding the maximum size allowed.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="miscellaneous-development-version">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous-development-version"></a></h3>
