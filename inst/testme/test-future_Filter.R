@@ -15,7 +15,7 @@ for (strategy in supportedStrategies()) {
   message(sprintf("*** strategy = %s ...", sQuote(strategy)))
   plan(strategy)
 
-  y <- Filter(is_even, x)
+  y <- future_Filter(is_even, x)
   str(y)
 
   stopifnot(identical(y, y_truth))
