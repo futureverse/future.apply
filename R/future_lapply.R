@@ -204,7 +204,7 @@ future_lapply <- local({
     ## template, in order to get correct RNG seeds
     opts <- getOption("future.disposable", NULL)
     if (length(opts) > 0) {
-      ## Override future.* arguments per 'future.disponsable' option
+      ## Override future.* arguments per 'future.disposable' option
       for (name in names(opts)) {
         var <- sprintf("future.%s", name)
         assign(var, opts[[name]], envir = environment(), inherits = FALSE)
