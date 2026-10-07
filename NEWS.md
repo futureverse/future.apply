@@ -29,6 +29,10 @@
    than one would launch futures that processed no elements. Now such
    chunk sizes result in one element per future.   
 
+ * `future_apply()` with argument `future.globals` as a list could
+   produce an false error on globals exceeding the maximum size
+   allowed.
+
 ## Miscellaneous
 
  * Package **stats** is now declared as an imported package instead of

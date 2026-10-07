@@ -129,6 +129,15 @@ res <- tryCatch({
   y <- future_apply(X, MARGIN = "cols", FUN = identity)
 }, error = identity)
 stopifnot(inherits(res, "error"))
+## Error: globals exceed maxSize when future.globals is a list
+X <- matrix(1:4, nrow = 2L, ncol = 2L)
+large_obj <- numeric(2e6)
+oopts <- options(future.globals.maxSize = 5 * 1024^2)
+res <- tryCatch({
+  y <- future_apply(X, MARGIN = 1L, FUN = identity, future.globals = list(large = large_obj))
+}, error = identity)
+options(oopts)
+stopifnot(inherits(res, "error"))
 
 
 message("*** future_apply() ... DONE")
