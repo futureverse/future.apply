@@ -54,13 +54,13 @@ future_vapply <- function(X, FUN, FUN.VALUE, ..., USE.NAMES = TRUE, future.envir
     dim_res <- NULL
   }
 
-  if (USE.NAMES && length(res) > 0L) {
+  if (USE.NAMES) {
     if (is.null(dim)) {
       names_FUN.VALUE <- names(FUN.VALUE)
-      if (is.null(names_FUN.VALUE)) names_FUN.VALUE <- names(res[[1]])
+      if (is.null(names_FUN.VALUE) && length(res) > 0L) names_FUN.VALUE <- names(res[[1]])
     } else {
       names_FUN.VALUE <- dimnames(FUN.VALUE)
-      if (is.null(names_FUN.VALUE)) names_FUN.VALUE <- dimnames(res[[1]])
+      if (is.null(names_FUN.VALUE) && length(res) > 0L) names_FUN.VALUE <- dimnames(res[[1]])
     }
   }
   

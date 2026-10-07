@@ -40,8 +40,31 @@ for (strategy in supportedStrategies()) {
   y1 <- future_vapply(x, FUN = fun, FUN.VALUE = fun_value)
   str(y1)
   stopifnot(all.equal(y1, y0))
-  
-  
+  message("- future_vapply(x, ...) with empty x ...")
+  for (USE.NAMES in c(TRUE, FALSE)) {
+    y0 <- vapply(integer(0), FUN = identity, FUN.VALUE = c(a = 1, b = 2), USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(integer(0), FUN = identity, FUN.VALUE = c(a = 1, b = 2), USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+
+    y0 <- vapply(integer(0), FUN = identity, FUN.VALUE = numeric(2), USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(integer(0), FUN = identity, FUN.VALUE = numeric(2), USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+
+    y0 <- vapply(setNames(integer(0), character(0)), FUN = identity, FUN.VALUE = c(a = 1, b = 2), USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(setNames(integer(0), character(0)), FUN = identity, FUN.VALUE = c(a = 1, b = 2), USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+
+    FV <- matrix(1:4, 2, 2, dimnames = list(c("r1", "r2"), c("c1", "c2")))
+    y0 <- vapply(integer(0), FUN = identity, FUN.VALUE = FV, USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(integer(0), FUN = identity, FUN.VALUE = FV, USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+
+    FV <- matrix(1:4, 2, 2)
+    y0 <- vapply(integer(0), FUN = identity, FUN.VALUE = FV, USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(integer(0), FUN = identity, FUN.VALUE = FV, USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+  }
+
   df <- data.frame(x = 1:10, y = letters[1:10], stringsAsFactors=FALSE)
   fun <- class
   fun_value <- character(1L)
