@@ -144,4 +144,17 @@ for (cores in 1:availCores) {
   message(sprintf("Testing with %d cores ... DONE", cores))
 } ## for (cores ...)
 
+message("- future.disposable on empty inputs ...")
+options(future.disposable = structure(list(seed = 42), dispose = TRUE))
+res <- future_apply(matrix(nrow = 0, ncol = 2), MARGIN = 1, FUN = identity)
+stopifnot(is.null(getOption("future.disposable")))
+
+options(future.disposable = structure(list(seed = 42), dispose = TRUE))
+res <- future_mapply(identity, integer(0))
+stopifnot(is.null(getOption("future.disposable")))
+
+options(future.disposable = structure(list(seed = 42), dispose = TRUE))
+res <- future_mapply(identity)
+stopifnot(is.null(getOption("future.disposable")))
+
 message("*** RNG with 'seed' via future.disposable ... DONE")

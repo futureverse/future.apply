@@ -45,6 +45,20 @@
 future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE, future.envir = parent.frame(), future.stdout = TRUE, future.conditions = "condition", future.globals = TRUE, future.packages = NULL, future.seed = FALSE, future.scheduling = 1.0, future.chunk.size = NULL, future.label = "future_mapply-%d") {
   fcn_name <- "future_mapply"
   args_name <- "..."
+
+  ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  ## Support %globals%, %packages%, %seed%, ...
+  ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  opts <- getOption("future.disposable", NULL)
+  if (length(opts) > 0) {
+    for (name in names(opts)) {
+      var <- sprintf("future.%s", name)
+      assign(var, opts[[name]], envir = environment(), inherits = FALSE)
+    }
+    if (!identical(attr(opts, "dispose"), FALSE)) {
+      options(future.disposable = NULL)
+    }
+  }
   
   FUN <- match.fun(FUN)
 
@@ -98,21 +112,6 @@ future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES 
   ## arguments 'FUN' and '...'. /HB 2017-03-10
   envir <- future.envir
   envir <- environment()
-
-
-  ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  ## Support %globals%, %packages%, %seed%, ...
-  ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  opts <- getOption("future.disposable", NULL)
-  if (length(opts) > 0) {
-    for (name in names(opts)) {
-      var <- sprintf("future.%s", name)
-      assign(var, opts[[name]], envir = environment(), inherits = FALSE)
-    }
-    if (!identical(attr(opts, "dispose"), FALSE)) {
-      options(future.disposable = NULL)
-    }
-  }
 
 
   ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

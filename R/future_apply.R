@@ -37,6 +37,20 @@
 #' @importFrom future nbrOfWorkers
 #' @export
 future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = parent.frame(), future.stdout = TRUE, future.conditions = "condition", future.globals = TRUE, future.packages = NULL, future.seed = FALSE, future.scheduling = 1.0, future.chunk.size = NULL, future.label = "future_apply-%d") {
+    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    ## Support %globals%, %packages%, %seed%, ...
+    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    opts <- getOption("future.disposable", NULL)
+    if (length(opts) > 0) {
+      for (name in names(opts)) {
+        var <- sprintf("future.%s", name)
+        assign(var, opts[[name]], envir = environment(), inherits = FALSE)
+      }
+      if (!identical(attr(opts, "dispose"), FALSE)) {
+        options(future.disposable = NULL)
+      }
+    }
+
     debug <- isTRUE(getOption("future.debug"))
     debug <- isTRUE(getOption("future.apply.debug", debug))
 
@@ -83,22 +97,6 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
                    array(newX[, 1L], d.call, dn.call), ...)
         return(if(is.null(ans)) ans else if(length(d.ans) < 2L) ans[1L][-1L]
                else array(ans, d.ans, dn.ans))
-    }
-
-
-  
-    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    ## Support %globals%, %packages%, %seed%, ...
-    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    opts <- getOption("future.disposable", NULL)
-    if (length(opts) > 0) {
-      for (name in names(opts)) {
-        var <- sprintf("future.%s", name)
-        assign(var, opts[[name]], envir = environment(), inherits = FALSE)
-      }
-      if (!identical(attr(opts, "dispose"), FALSE)) {
-        options(future.disposable = NULL)
-      }
     }
 
 

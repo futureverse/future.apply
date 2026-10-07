@@ -18,6 +18,10 @@
    silently dropped. Note that `future_apply()`, `future_mapply()`,
    `future_.mapply()`, and `future_Map()` were not affected.
 
+ * `future_lapply()` and friends with `%seed%`, `%packages%`,
+   ... would leak those options to the next call, if there were zero
+   elements to process.
+
  * `future_lapply()` and friends with a `future.chunk.size` less
    than one would launch futures that processed no elements. Now such
    chunk sizes result in one element per future.
