@@ -153,6 +153,17 @@ future_xapply <- local({
       labels <- NULL
     }
   
+    ## Adjust option 'future.globals.maxSize' to account for the fact that more
+    ## than one element is processed per future.  The adjustment is done by
+    ## scaling up the limit by the number of elements in the chunk.  This is
+    ## a "good enough" approach.
+    ## (https://github.com/futureverse/future.apply/issues/8).
+    if (nchunks > 1L) {
+      options(future.globals.maxSize = nchunks * globals.maxSize.default)
+      if (debug) mdebugf(" - Adjusted option 'future.globals.maxSize': %.0f -> %d * %.0f = %.0f (bytes)", globals.maxSize.default, nchunks, globals.maxSize.default, getOption("future.globals.maxSize"))
+      on.exit(options(future.globals.maxSize = globals.maxSize), add = TRUE)
+    }
+
     if (debug) mdebugf("Launching %d futures (chunks) ...", nchunks)
     fs <- vector("list", length = nchunks)
     values <- tryCatch({
@@ -206,17 +217,6 @@ future_xapply <- local({
           globals_ii["...future.globals.maxSize"] <- list(globals.maxSize)
         }
   
-        ## Adjust option 'future.globals.maxSize' to account for the fact that more
-        ## than one element is processed per future.  The adjustment is done by
-        ## scaling up the limit by the number of elements in the chunk.  This is
-        ## a "good enough" approach.
-        ## (https://github.com/futureverse/future.apply/issues/8).
-        if (length(chunks) > 1L) {
-          options(future.globals.maxSize = length(chunks) * globals.maxSize.default)
-          if (debug) mdebugf(" - Adjusted option 'future.globals.maxSize': %.0f -> %d * %.0f = %.0f (bytes)", globals.maxSize.default, length(chunks), globals.maxSize.default, getOption("future.globals.maxSize"))
-          on.exit(options(future.globals.maxSize = globals.maxSize), add = TRUE)
-        }
-        
         ## Using RNG seeds or not?
         if (is.null(seeds)) {
           if (debug) mdebug(" - seeds: <none>")
