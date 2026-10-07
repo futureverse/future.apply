@@ -196,8 +196,8 @@ future_xapply <- local({
             reserved <- intersect(c("...future.FUN", "...future.elements_ii",
                                     "...future.seeds_ii"), names(globals_args))
             if (length(reserved) > 0) {
-              stop("Detected globals in '%s' using reserved variables names: ",
-                   args_name, commaq(reserved))
+              stop(sprintf("Detected globals in '%s' using reserved variable names: %s",
+                   args_name, commaq(reserved)))
             }
             globals_args <- as.FutureGlobals(globals_args)
             globals_ii <- unique(c(globals_ii, globals_args))
