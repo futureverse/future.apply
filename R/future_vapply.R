@@ -42,7 +42,7 @@ future_vapply <- function(X, FUN, FUN.VALUE, ..., USE.NAMES = TRUE, future.envir
       stopf("values must be length %d, but FUN(X[[ii]]) result is length %d",
             times, length(value))
     }
-    stop_if_not(all(dim(value) == dim), typeof(value) %in% valid_types)
+    stop_if_not(typeof(value) %in% valid_types)
     value
   }, ..., future.envir = future.envir, future.label = future.label)
 

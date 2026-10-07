@@ -155,6 +155,15 @@ for (strategy in supportedStrategies()) {
   y1 <- future_vapply(x, FUN = length, FUN.VALUE = -1L)
   stopifnot(identical(y1, y0))
 
+  message("- FUN.VALUE and return values with different dimensions ...")
+  y0 <- vapply(1:3, FUN = function(x) matrix(x * 1:4, 1, 4), FUN.VALUE = matrix(0L, 2, 2))
+  y1 <- future_vapply(1:3, FUN = function(x) matrix(x * 1:4, 1, 4), FUN.VALUE = matrix(0L, 2, 2))
+  stopifnot(identical(y1, y0))
+
+  y0 <- vapply(1:3, FUN = function(x) x * 1:4, FUN.VALUE = matrix(0L, 2, 2))
+  y1 <- future_vapply(1:3, FUN = function(x) x * 1:4, FUN.VALUE = matrix(0L, 2, 2))
+  stopifnot(identical(y1, y0))
+
   message("- exceptions ...")
   res <- tryCatch({
     y0 <- vapply(1:3, FUN = identity, FUN.VALUE = c(3, 3))
