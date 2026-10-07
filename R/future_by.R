@@ -38,7 +38,7 @@
 #' default is.
 #' For example, the S3 method of `as.data.frame()` for lists changed its
 #' (effective) default from `stringsAsFactors = TRUE` to
-#' `stringsAsFactors = TRUE` in R 4.0.0.
+#' `stringsAsFactors = FALSE` in R 4.0.0.
 #' 
 #'
 #' @rdname future_by

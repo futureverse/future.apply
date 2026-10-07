@@ -55,7 +55,7 @@ depending on whether it has a \code{stringsAsFactors} argument and what its
 default is.
 For example, the S3 method of \code{as.data.frame()} for lists changed its
 (effective) default from \code{stringsAsFactors = TRUE} to
-\code{stringsAsFactors = TRUE} in R 4.0.0.
+\code{stringsAsFactors = FALSE} in R 4.0.0.
 }
 
 \examples{
