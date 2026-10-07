@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,9 +74,13 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
 <div class="section level3">
+<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li>If argument <code>future.label</code> of <code><a href="../reference/future_lapply.html">future_lapply()</a></code> and friends has no format specifier, such as <code>%d</code>, then <code>-%d</code> is appended, e.g. <code>future.label = "my-label"</code> gives future labels <code>"my-label-1"</code>, <code>"my-label-2"</code>, and so on. Previously, such labels produced a warning ‘one argument not used by format’.</li>
+</ul></div>
+<div class="section level3">
 <h3 id="bug-fixes-development-version">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
-<ul><li>
-<code><a href="../reference/future_lapply.html">future_lapply()</a></code>, <code><a href="../reference/future_lapply.html">future_sapply()</a></code>, <code><a href="../reference/future_lapply.html">future_vapply()</a></code>, <code><a href="../reference/future_lapply.html">future_tapply()</a></code>, <code><a href="../reference/future_lapply.html">future_eapply()</a></code>, <code><a href="../reference/future_by.html">future_by()</a></code>, and <code><a href="../reference/future_mapply.html">future_Filter()</a></code> ignored <code>... %seed% seed</code>. This led to random numbers depending on the future backend, the number of workers, and the chunk size. Per-element seeds were still generated, but silently dropped. Note that <code><a href="../reference/future_apply.html">future_apply()</a></code>, <code><a href="../reference/future_mapply.html">future_mapply()</a></code>, <code><a href="../reference/future_mapply.html">future_.mapply()</a></code>, and <code><a href="../reference/future_mapply.html">future_Map()</a></code> were not affected.</li>
+<ul><li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code>, <code><a href="../reference/future_lapply.html">future_sapply()</a></code>, <code><a href="../reference/future_lapply.html">future_vapply()</a></code>, <code><a href="../reference/future_lapply.html">future_tapply()</a></code>, <code><a href="../reference/future_lapply.html">future_eapply()</a></code>, <code><a href="../reference/future_by.html">future_by()</a></code>, and <code><a href="../reference/future_mapply.html">future_Filter()</a></code> ignored <code>... %seed% seed</code>. This led to random numbers depending on the future backend, the number of workers, and the chunk size. Per-element seeds were still generated, but silently dropped. Note that <code><a href="../reference/future_apply.html">future_apply()</a></code>, <code><a href="../reference/future_mapply.html">future_mapply()</a></code>, <code><a href="../reference/future_mapply.html">future_.mapply()</a></code>, and <code><a href="../reference/future_mapply.html">future_Map()</a></code> were not affected.</p></li>
+<li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code> and friends with a <code>future.chunk.size</code> less than one would launch futures that processed no elements. Now such chunk sizes result in one element per future.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="miscellaneous-development-version">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous-development-version"></a></h3>

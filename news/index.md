@@ -2,6 +2,15 @@
 
 ## Version (development version)
 
+### New Features
+
+- If argument `future.label` of
+  [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
+  and friends has no format specifier, such as `%d`, then `-%d` is
+  appended, e.g. `future.label = "my-label"` gives future labels
+  `"my-label-1"`, `"my-label-2"`, and so on. Previously, such labels
+  produced a warning ‘one argument not used by format’.
+
 ### Bug Fixes
 
 - [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
@@ -21,6 +30,11 @@
   and
   [`future_Map()`](https://future.apply.futureverse.org/reference/future_mapply.md)
   were not affected.
+
+- [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
+  and friends with a `future.chunk.size` less than one would launch
+  futures that processed no elements. Now such chunk sizes result in one
+  element per future.
 
 ### Miscellaneous
 

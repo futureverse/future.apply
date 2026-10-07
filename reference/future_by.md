@@ -74,7 +74,7 @@ coerces strings to factors or not depending on whether it has a
 `stringsAsFactors` argument and what its default is. For example, the S3
 method of [`as.data.frame()`](https://rdrr.io/r/base/as.data.frame.html)
 for lists changed its (effective) default from `stringsAsFactors = TRUE`
-to `stringsAsFactors = TRUE` in R 4.0.0.
+to `stringsAsFactors = FALSE` in R 4.0.0.
 
 ## Examples
 

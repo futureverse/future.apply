@@ -104,7 +104,9 @@ future_apply(
 - future.label:
 
   If a character string, then each future is assigned a label
-  `sprintf(future.label, chunk_idx)`. If TRUE, then the same as
+  `sprintf(future.label, chunk_idx)`. If the string has no format
+  specifier, then `-%d` is appended, e.g. `future.label = "my-label"` is
+  the same as `future.label = "my-label-%d"`. If TRUE, then the same as
   `future.label = "future_lapply-%d"`. If FALSE, no labels are assigned.
 
 - ...:
