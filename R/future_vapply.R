@@ -65,7 +65,11 @@ future_vapply <- function(X, FUN, FUN.VALUE, ..., USE.NAMES = TRUE, future.envir
   }
   
   res <- unlist(res, use.names = FALSE)
-  if (is.null(res)) res <- vector(mode = type, length = 0L)
+  if (is.null(res)) {
+    res <- vector(mode = type, length = 0L)
+  } else if (storage.mode(res) != type) {
+    storage.mode(res) <- type
+  }
   if (!is.null(dim_res)) dim(res) <- dim_res
   
   if (USE.NAMES) {

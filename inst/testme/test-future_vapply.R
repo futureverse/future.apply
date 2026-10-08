@@ -187,6 +187,37 @@ for (strategy in supportedStrategies()) {
   y1 <- future_vapply(1:3, FUN = function(x) x * 1:4, FUN.VALUE = matrix(0L, 2, 2))
   stopifnot(identical(y1, y0))
 
+  message("- type promotion ...")
+  ## logical -> integer
+  y0 <- vapply(1:3, FUN = function(x) x > 1, FUN.VALUE = integer(1L))
+  y1 <- future_vapply(1:3, FUN = function(x) x > 1, FUN.VALUE = integer(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "integer")
+
+  ## integer -> double
+  y0 <- vapply(1:3, FUN = identity, FUN.VALUE = double(1L))
+  y1 <- future_vapply(1:3, FUN = identity, FUN.VALUE = double(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "double")
+
+  ## logical -> double
+  y0 <- vapply(1:3, FUN = function(x) x > 1, FUN.VALUE = double(1L))
+  y1 <- future_vapply(1:3, FUN = function(x) x > 1, FUN.VALUE = double(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "double")
+
+  ## integer -> complex
+  y0 <- vapply(1:3, FUN = identity, FUN.VALUE = complex(1L))
+  y1 <- future_vapply(1:3, FUN = identity, FUN.VALUE = complex(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "complex")
+
+  ## double -> complex
+  y0 <- vapply(1:3, FUN = function(x) x * 1.5, FUN.VALUE = complex(1L))
+  y1 <- future_vapply(1:3, FUN = function(x) x * 1.5, FUN.VALUE = complex(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "complex")
+
+  ## matrix promotion
+  y0 <- vapply(1:3, FUN = function(x) matrix(x, 2L, 2L), FUN.VALUE = matrix(0, 2L, 2L))
+  y1 <- future_vapply(1:3, FUN = function(x) matrix(x, 2L, 2L), FUN.VALUE = matrix(0, 2L, 2L))
+  stopifnot(identical(y1, y0), typeof(y1) == "double")
+
   message("- exceptions ...")
   res <- tryCatch({
     y0 <- vapply(1:3, FUN = identity, FUN.VALUE = c(3, 3))

@@ -36,6 +36,9 @@
  * `future_kernapply()` ignored `future.*` arguments, and any
    additional arguments `stats::kernapply()` might take.
 
+ * `future_vapply()` did not always return an object of the same type
+   as `FUN.VALUE` like `vapply() do.
+
 ## Miscellaneous
 
  * Package **stats** is now declared as an imported package instead of
