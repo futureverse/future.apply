@@ -48,13 +48,21 @@ if (require("datasets") && require("stats")) {
   ## ------------------------------------------------------
   x <- EuStockMarkets[, 1]
   x_vec <- as.vector(x)
-  y0 <- kernapply(x_vec, k = k1)
-  y1 <- future_kernapply(x_vec, k = k1)
-  stopifnot(identical(y1, y0))
+  y0_vec <- kernapply(x_vec, k = k1)
+  y1_vec <- future_kernapply(x_vec, k = k1)
+  stopifnot(identical(y1_vec, y0_vec))
 
-  y0 <- kernapply(x, k = k1)
-  y1 <- future_kernapply(x, k = k1)
-  stopifnot(identical(y1, y0))
+  ## Vector input with future.* arguments
+  y1_vec <- future_kernapply(x_vec, k = k1, future.chunk.size = 1, future.label = "custom_%d", future.seed = TRUE)
+  stopifnot(identical(y1_vec, y0_vec))
+
+  y0_ts <- kernapply(x, k = k1)
+  y1_ts <- future_kernapply(x, k = k1)
+  stopifnot(identical(y1_ts, y0_ts))
+
+  ## ts vector input with future.* arguments
+  y1_ts <- future_kernapply(x, k = k1, future.chunk.size = 1, future.label = "custom_%d", future.seed = TRUE)
+  stopifnot(identical(y1_ts, y0_ts))
 
   plan(sequential)
 }

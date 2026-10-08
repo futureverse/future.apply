@@ -32,6 +32,9 @@
  * `future_apply()` with argument `future.globals` as a list could
    produce a false error on globals exceeding the maximum size
    allowed.
+   
+ * `future_kernapply()` ignored `future.*` arguments, and any
+   additional arguments `stats::kernapply()` might take.
 
 ## Miscellaneous
 

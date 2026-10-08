@@ -30,12 +30,19 @@ future_kernapply <- function(x, ...) {
 #' @importFrom stats kernapply
 #' @export
 future_kernapply.default <- function(x, k, circular = FALSE, ...) {
-  if (is.vector(x))
-    return(kernapply(x, k, circular = circular, ...))
-  else if (is.matrix(x))
+  if (is.vector(x)) {
+    dots <- drop_future_args(...)
+    if (length(dots) == 0L) {
+      return(kernapply(x, k, circular = circular))
+    } else {
+      args <- c(list(x, k, circular = circular), dots)
+      return(do.call(kernapply, args = args))
+    }
+  } else if (is.matrix(x)) {
     return(future_apply(x, MARGIN = 2, FUN = kernapply, k, circular = circular, ...))
-  else
+  } else {
     stop("'future_kernapply' is not available for object 'x'")
+  }
 }
 
 
@@ -44,9 +51,16 @@ future_kernapply.default <- function(x, k, circular = FALSE, ...) {
 #' @importFrom stats kernapply end frequency ts
 #' @export
 future_kernapply.ts <- function(x, k, circular = FALSE, ...) {
-  if (!is.matrix(x))
-    y <- kernapply(as.vector(x), k, circular = circular, ...)
-  else
+  if (!is.matrix(x)) {
+    dots <- drop_future_args(...)
+    if (length(dots) == 0L) {
+      y <- kernapply(as.vector(x), k, circular = circular)
+    } else {
+      args <- c(list(as.vector(x), k, circular = circular), dots)
+      y <- do.call(kernapply, args = args)
+    }
+  } else {
     y <- future_apply(x, MARGIN = 2, FUN = kernapply, k, circular = circular, ...)
+  }
   ts(y, end = end(x), frequency = frequency(x))
 }
