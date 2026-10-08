@@ -64,7 +64,7 @@ future_vapply <- function(X, FUN, FUN.VALUE, ..., USE.NAMES = TRUE, future.envir
     }
   }
   
-  res <- unlist(res, use.names = FALSE)
+  res <- unlist(res, recursive = FALSE, use.names = FALSE)
   if (is.null(res)) {
     res <- vector(mode = type, length = 0L)
   } else if (storage.mode(res) != type) {

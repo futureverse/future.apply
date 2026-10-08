@@ -216,7 +216,36 @@ for (strategy in supportedStrategies()) {
   ## matrix promotion
   y0 <- vapply(1:3, FUN = function(x) matrix(x, 2L, 2L), FUN.VALUE = matrix(0, 2L, 2L))
   y1 <- future_vapply(1:3, FUN = function(x) matrix(x, 2L, 2L), FUN.VALUE = matrix(0, 2L, 2L))
-  stopifnot(identical(y1, y0), typeof(y1) == "double")
+  message("- list FUN.VALUE ...")
+  ## scalar list template
+  y0 <- vapply(1:3, FUN = function(x) list(x), FUN.VALUE = list(1))
+  y1 <- future_vapply(1:3, FUN = function(x) list(x), FUN.VALUE = list(1))
+  stopifnot(identical(y1, y0))
+
+  ## scalar list template with complex elements
+  y0 <- vapply(1:3, FUN = function(x) list(1:x), FUN.VALUE = list(integer(0)))
+  y1 <- future_vapply(1:3, FUN = function(x) list(1:x), FUN.VALUE = list(integer(0)))
+  stopifnot(identical(y1, y0))
+
+  ## scalar list template with NULL elements
+  y0 <- vapply(1:3, FUN = function(x) list(if (x == 2) NULL else x), FUN.VALUE = list(1))
+  y1 <- future_vapply(1:3, FUN = function(x) list(if (x == 2) NULL else x), FUN.VALUE = list(1))
+  stopifnot(identical(y1, y0))
+
+  ## length-2 list template
+  y0 <- vapply(1:3, FUN = function(x) list(x, letters[x]), FUN.VALUE = list(1, "a"))
+  y1 <- future_vapply(1:3, FUN = function(x) list(x, letters[x]), FUN.VALUE = list(1, "a"))
+  stopifnot(identical(y1, y0))
+
+  ## with names on X and FUN.VALUE
+  y0 <- vapply(c(A = 1, B = 2), FUN = function(x) list(x = x, y = letters[x]), FUN.VALUE = list(x = 1, y = "a"))
+  y1 <- future_vapply(c(A = 1, B = 2), FUN = function(x) list(x = x, y = letters[x]), FUN.VALUE = list(x = 1, y = "a"))
+  stopifnot(identical(y1, y0))
+
+  ## empty input with list template
+  y0 <- vapply(integer(0), FUN = function(x) list(x), FUN.VALUE = list(1))
+  y1 <- future_vapply(integer(0), FUN = function(x) list(x), FUN.VALUE = list(1))
+  stopifnot(identical(y1, y0))
 
   message("- exceptions ...")
   res <- tryCatch({

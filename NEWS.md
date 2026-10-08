@@ -21,6 +21,13 @@
  * `future_vapply()` on empty input failed with an error if
    `FUN.VALUE` had length greater than one.
 
+ * `future_vapply()` did not always return an object of the same type
+   as `FUN.VALUE` like `vapply()` does.
+
+ * `future_vapply()` with `FUN.VALUE` as a list would recursively
+   flatten the results into an atomic vector instead of returning a
+   list.
+   
  * `future_lapply()` and friends with `%seed%`, `%packages%`,
    ... would leak those options to the next call, if there were zero
    elements to process.
@@ -35,9 +42,6 @@
    
  * `future_kernapply()` ignored `future.*` arguments, and any
    additional arguments `stats::kernapply()` might take.
-
- * `future_vapply()` did not always return an object of the same type
-   as `FUN.VALUE` like `vapply() do.
 
 ## Miscellaneous
 
