@@ -83,7 +83,8 @@
 <li><p><code><a href="../reference/future_lapply.html">future_vapply()</a></code> on empty input failed with an error if <code>FUN.VALUE</code> had length greater than one.</p></li>
 <li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code> and friends with <code>%seed%</code>, <code>%packages%</code>, … would leak those options to the next call, if there were zero elements to process.</p></li>
 <li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code> and friends with a <code>future.chunk.size</code> less than one would launch futures that processed no elements. Now such chunk sizes result in one element per future.</p></li>
-<li><p><code><a href="../reference/future_apply.html">future_apply()</a></code> with argument <code>future.globals</code> as a list could produce an false error on globals exceeding the maximum size allowed.</p></li>
+<li><p><code><a href="../reference/future_apply.html">future_apply()</a></code> with argument <code>future.globals</code> as a list could produce a false error on globals exceeding the maximum size allowed.</p></li>
+<li><p><code><a href="../reference/future_kernapply.html">future_kernapply()</a></code> ignored <code>future.*</code> arguments, and any additional arguments <code><a href="https://rdrr.io/r/stats/kernapply.html" class="external-link">stats::kernapply()</a></code> might take.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="miscellaneous-development-version">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous-development-version"></a></h3>

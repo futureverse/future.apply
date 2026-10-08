@@ -45,8 +45,13 @@
   element per future.
 
 - [`future_apply()`](https://future.apply.futureverse.org/reference/future_apply.md)
-  with argument `future.globals` as a list could produce an false error
+  with argument `future.globals` as a list could produce a false error
   on globals exceeding the maximum size allowed.
+
+- [`future_kernapply()`](https://future.apply.futureverse.org/reference/future_kernapply.md)
+  ignored `future.*` arguments, and any additional arguments
+  [`stats::kernapply()`](https://rdrr.io/r/stats/kernapply.html) might
+  take.
 
 ### Miscellaneous
 
