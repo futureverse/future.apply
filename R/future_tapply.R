@@ -93,6 +93,6 @@ future_tapply <- function(X, INDEX, FUN = NULL, ...,
   }
   
   function(...) {
-    stop(errorCondition("future_tapply(X, INDEX, ...), where 'INDEX' is a formula, requires R (>= 4.3.0)", class = "NotSupportedByThisRVersionError")
+    stop(errorCondition("future_tapply(X, INDEX, ...), where 'INDEX' is a formula, requires R (>= 4.3.0)", class = "NotSupportedByThisRVersionError"))
   }
 }))
