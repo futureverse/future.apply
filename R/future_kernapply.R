@@ -31,9 +31,9 @@ future_kernapply <- function(x, ...) {
 #' @export
 future_kernapply.default <- function(x, k, circular = FALSE, ...) {
   if (is.vector(x))
-    return(kernapply(x, k, circular = circular))
+    return(kernapply(x, k, circular = circular, ...))
   else if (is.matrix(x))
-    return(future_apply(x, MARGIN = 2, FUN = kernapply, k, circular = circular))
+    return(future_apply(x, MARGIN = 2, FUN = kernapply, k, circular = circular, ...))
   else
     stop("'future_kernapply' is not available for object 'x'")
 }
@@ -45,8 +45,8 @@ future_kernapply.default <- function(x, k, circular = FALSE, ...) {
 #' @export
 future_kernapply.ts <- function(x, k, circular = FALSE, ...) {
   if (!is.matrix(x))
-    y <- kernapply(as.vector(x), k, circular = circular)
+    y <- kernapply(as.vector(x), k, circular = circular, ...)
   else
-    y <- future_apply(x, MARGIN = 2, FUN = kernapply, k, circular = circular)
+    y <- future_apply(x, MARGIN = 2, FUN = kernapply, k, circular = circular, ...)
   ts(y, end = end(x), frequency = frequency(x))
 }
