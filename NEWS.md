@@ -6,8 +6,8 @@
    cases. for functions `future_lapply()`, `future_sapply()`,
    `future_apply()`, `future_tapply()`, `future_by()`,
    `future_Filter()`, `future_eapply()`, `future_mapply()`, and
-   `future_Map()`. An outcome of this is that performance also
-   improvement. This improvement requires **future** (>= 1.77.0).
+   `future_Map()`. An outcome of this is that the performance also
+   improves. All this requires **future** (>= 1.77.0).
 
 ## New Features
 
