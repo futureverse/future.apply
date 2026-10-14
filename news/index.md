@@ -2,6 +2,22 @@
 
 ## Version (development version)
 
+### Significant Changes
+
+- Memory use on parallel workers has gone down significantly in some
+  cases. for functions
+  [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_sapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_apply()`](https://future.apply.futureverse.org/reference/future_apply.md),
+  [`future_tapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_by()`](https://future.apply.futureverse.org/reference/future_by.md),
+  [`future_Filter()`](https://future.apply.futureverse.org/reference/future_mapply.md),
+  [`future_eapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_mapply()`](https://future.apply.futureverse.org/reference/future_mapply.md),
+  and
+  [`future_Map()`](https://future.apply.futureverse.org/reference/future_mapply.md).
+  This improvement requires **future** (\>= 1.77.0).
+
 ### New Features
 
 - If argument `future.label` of
@@ -34,6 +50,14 @@
 - [`future_vapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
   on empty input failed with an error if `FUN.VALUE` had length greater
   than one.
+
+- [`future_vapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
+  did not always return an object of the same type as `FUN.VALUE` like
+  [`vapply()`](https://rdrr.io/r/base/lapply.html) does.
+
+- [`future_vapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
+  with `FUN.VALUE` as a list would recursively flatten the results into
+  an atomic vector instead of returning a list.
 
 - [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
   and friends with `%seed%`, `%packages%`, … would leak those options to
