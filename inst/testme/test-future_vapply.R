@@ -256,10 +256,47 @@ for (strategy in supportedStrategies()) {
     y1 <- future_vapply(1:3, FUN = identity, FUN.VALUE = c(3, 3))
   }, error = identity)
   stopifnot(inherits(res, "error"))
-  
+
+  message("- approximately invariant to chunk size ...")
+  X <- replicate(10L, rnorm(1000), simplify = FALSE)
+  FUN <- function(x) {
+    getOption("future.globals.maxSize")
+  }
+  sizes <- unclass(c(FUN = object.size(FUN), X = object.size(X)))
+  maxSize <- sizes[["FUN"]] + sizes[["X"]] / length(X)
+  maxSize <- 4.0 * maxSize  ## Add a bit of leeway
+
+  oMaxSize <- options(future.globals.maxSize = 1L)
+  res <- tryCatch({
+    future_vapply(X, FUN = FUN, FUN.VALUE = 0.0)
+  }, error = identity)
+  stopifnot(inherits(res, "error"))
+
+  options(future.globals.maxSize = maxSize)
+  for (chunk.size in c(1L, 2L, 5L)) {
+    y <- future_vapply(X, FUN = FUN, FUN.VALUE = 0.0,
+                       future.chunk.size = chunk.size)
+    stopifnot(all(y == maxSize))
+  }
+  options(oMaxSize)
+
   plan(sequential)
   message(sprintf("*** strategy = %s ... done", sQuote(strategy)))
-} ## for (strategy in ...) 
+} ## for (strategy in ...)
 
+message("*** make_future_vapply_FUN() - environment isolation ...")
+make_future_vapply_FUN <- future.apply:::make_future_vapply_FUN
+fcn <- function() {
+  large_payload <- raw(100 * 1024)  ## 100 KiB
+  times <- 1L
+  types <- "double"
+  make_future_vapply_FUN(identity, times = times, valid_types = types)
+}
+w <- fcn()
+stopifnot(identical(parent.env(environment(w)), asNamespace("future.apply")))
+vars <- ls(environment(w), all.names = TRUE)
+stopifnot(setequal(vars, c("FUN", "times", "valid_types")))
+stopifnot(length(serialize(w, NULL)) < 5000)
+message("*** make_future_vapply_FUN() - environment isolation ... DONE")
 
 message("*** future_vapply() ... DONE")
