@@ -1,7 +1,56 @@
+#' Creates a vapply-like FUN function for future_lapply()
+#'
+#' @param FUN The original `vapply()` FUN function to be applied to
+#' each element `x`.
+#'
+#' @param times Excepted length of each `FUN(x)`.
+#'
+#' @param valid_types Expected types of each `FUN(x)`
+#'
+#' @return A function can evaluates `FUN(x)`.
+#'
+#' @details
+#' Technically, this function could be an internal anonymous function of
+#' [future_apply()], but if doing so, it would introduce a unnecessary
+#' payload exported to parallel workers. By declaring it as an internal
+#' function in the package namespace, we avoid one half of that problem.
+#' The other half is avoided by forcing each argument to be resolved,
+#' which is technically not necessary, because \pkg{future}'s
+#' global-discovery algorithm does this as well.
+#'
+#' @noRd
+#' @keywords internal
+make_future_vapply_FUN <- function(FUN, times, valid_types) {
+  ## We force the evaluation of the argument to avoid that the created
+  ## functions carries them as promises, which would have all of the
+  ## calling frame enclosed, e.g. including the full 'X' object.
+  ## Note, technically this is also done by the global-discovery algorithm
+  ## in the 'future' package, but having it hear makes it clear what is
+  ## going on and what we try to avoid.
+  force(FUN)
+  force(times)
+  force(valid_types)
+  
+  function(x, ...) {
+    value <- FUN(x, ...)
+    
+    ## Assert expected length
+    if (length(value) != times) {
+      stopf("values must be length %d, but FUN(X[[ii]]) result is length %d",
+            times, length(value))
+    }
+    
+    ## Assert expected type
+    stop_if_not(typeof(value) %in% valid_types)
+    
+    value
+  }
+}
+
 #' @inheritParams future_lapply
 #' 
 #' @param FUN.VALUE A template for the required return value from
-#' each `FUN(X[ii], ...)`.
+#'        each `FUN(X[ii], ...)`.
 #' Types may be promoted to a higher type within the ordering
 #' logical < integer < double < complex, but not demoted.
 #' See [base::vapply()] for details.
@@ -34,17 +83,10 @@ future_vapply <- function(X, FUN, FUN.VALUE, ..., USE.NAMES = TRUE, future.envir
     complex = c("logical", "integer", "double", "complex"),
     type
   )
+
+  vapply_FUN <- make_future_vapply_FUN(FUN, times, valid_types)
   
-  x_FUN <- FUN
-  res <- future_lapply(X, FUN = function(x, ...) {
-    value <- x_FUN(x, ...)
-    if (length(value) != times) {
-      stopf("values must be length %d, but FUN(X[[ii]]) result is length %d",
-            times, length(value))
-    }
-    stop_if_not(typeof(value) %in% valid_types)
-    value
-  }, ..., future.envir = future.envir, future.label = future.label)
+  res <- future_lapply(X, FUN = vapply_FUN, ..., future.envir = future.envir, future.label = future.label)
 
   if (!is.null(dim)) {
     dim_res <- c(dim, n)

@@ -9,6 +9,10 @@
    `future_Map()`. An outcome of this is that the performance also
    improves. All this requires **future** (>= 1.77.0).
 
+ * Separately from the above, the memory use of `future_vapply()` has
+   gone down significantly, which also resulted in improved overall
+   performance.
+
 ## New Features
 
  * If argument `future.label` of `future_lapply()` and friends has no
