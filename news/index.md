@@ -16,7 +16,8 @@
   [`future_mapply()`](https://future.apply.futureverse.org/reference/future_mapply.md),
   and
   [`future_Map()`](https://future.apply.futureverse.org/reference/future_mapply.md).
-  This improvement requires **future** (\>= 1.77.0).
+  An outcome of this is that performance also improvement. This
+  improvement requires **future** (\>= 1.77.0).
 
 ### New Features
 
