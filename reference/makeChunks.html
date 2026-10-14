@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9015</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9016</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,8 +121,9 @@ If <code>nbrOfElements == 0</code>, then an empty list is returned.</p>
 
 
 <p>Attribute <code>ordering</code> of <code>future.chunk.size</code> or <code>future.scheduling</code> can
-be used to control the ordering the elements are iterated over, which
-only affects the processing order <em>not</em> the order values are returned.
+be used to control the order in which the elements are iterated over, which
+only affects the processing order and <em>not</em> the order in which values are
+returned.
 This attribute can take the following values:</p><ul><li><p>index vector - a numeric vector of length <code>nbrOfElements</code> specifying
 how elements are remapped</p></li>
 <li><p>function     - a function taking one argument which is called as

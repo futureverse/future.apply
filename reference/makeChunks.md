@@ -44,9 +44,9 @@ indices `[1, nbrOfElements]`. The union of all chunks holds
 ## Control processing order of elements
 
 Attribute `ordering` of `future.chunk.size` or `future.scheduling` can
-be used to control the ordering the elements are iterated over, which
-only affects the processing order *not* the order values are returned.
-This attribute can take the following values:
+be used to control the order in which the elements are iterated over,
+which only affects the processing order and *not* the order in which
+values are returned. This attribute can take the following values:
 
 - index vector - a numeric vector of length `nbrOfElements` specifying
   how elements are remapped

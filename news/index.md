@@ -16,8 +16,13 @@
   [`future_mapply()`](https://future.apply.futureverse.org/reference/future_mapply.md),
   and
   [`future_Map()`](https://future.apply.futureverse.org/reference/future_mapply.md).
-  An outcome of this is that performance also improvement. This
-  improvement requires **future** (\>= 1.77.0).
+  An outcome of this is that the performance also improves. All this
+  requires **future** (\>= 1.77.0).
+
+- Separately from the above, the memory use of
+  [`future_vapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
+  has gone down significantly, which also resulted in improved overall
+  performance.
 
 ### New Features
 
