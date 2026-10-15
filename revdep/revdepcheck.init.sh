@@ -50,7 +50,9 @@ fi
 
 ## Too many cores due to detectCores()
 pkgs_detectCores=()
-#revdep/run.R --rm "${pkgs_detectCores[@]}"
+if [[ ${#pkgs_detectCores[@]} -gt 0 ]]; then
+    revdep/run.R --rm "${pkgs_detectCores[@]}"
+fi
 
 ## Run revdep check
 revdep/run.R
@@ -60,5 +62,7 @@ revdep/run.R
 ## Phase 2
 ## ---------------------------------------------------------------------
 ## Set: Too many cores due to detectCores()
-#revdep/run.R --add "${pkgs_detectCores[@]}"
-#NSLOTS=4 revdep/run.R
+pkgs_detectCores=()
+    revdep/run.R --add "${pkgs_detectCores[@]}"
+    NSLOTS=4 revdep/run.R
+fi
