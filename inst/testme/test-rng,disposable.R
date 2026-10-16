@@ -2,6 +2,7 @@
 #' @tags future_lapply future_sapply future_vapply future_mapply
 #' @tags future_Map future_apply future_tapply future_eapply
 #' @tags future_replicate future_by future_Filter future_.mapply
+#' @tags detritus-files
 #' @tags sequential multisession multicore
 
 library(future.apply)
