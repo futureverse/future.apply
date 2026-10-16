@@ -5,7 +5,7 @@
 ### Significant Changes
 
 - Memory use on parallel workers has gone down significantly in some
-  cases. for functions
+  cases for functions
   [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
   [`future_sapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
   [`future_apply()`](https://future.apply.futureverse.org/reference/future_apply.md),
@@ -17,7 +17,7 @@
   and
   [`future_Map()`](https://future.apply.futureverse.org/reference/future_mapply.md).
   An outcome of this is that the performance also improves. All this
-  requires **future** (\>= 1.77.0).
+  requires **future** (\>= 1.80.0).
 
 - Separately from the above, the memory use of
   [`future_vapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
@@ -32,6 +32,10 @@
   appended, e.g. `future.label = "my-label"` gives future labels
   `"my-label-1"`, `"my-label-2"`, and so on. Previously, such labels
   produced a warning ‘one argument not used by format’.
+
+- [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md)
+  and friends now signal “Caught … Canceling all iterations …” as a
+  message instead of a warning.
 
 ### Bug Fixes
 
