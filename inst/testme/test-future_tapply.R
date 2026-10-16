@@ -182,4 +182,10 @@ res <- tryCatch({
 }, error = identity)
 stopifnot(inherits(res, "error"))
 
+## Error: 'INDEX' is a formula but 'X' is not a data frame
+res <- tryCatch({
+  y <- future_tapply(1:10, INDEX = ~ g, FUN = sum)
+}, error = identity)
+stopifnot(inherits(res, "error"))
+
 message("*** future_tapply() ... DONE")
