@@ -161,6 +161,7 @@ message("- RNG misuse detection ...")
 
 plan(multisession)
 
+oopts <- options(future.rng.onMisuse = "warning")
 w <- NULL
 y <- withCallingHandlers({
   future_lapply(1:2, FUN = function(x) runif(1))
@@ -168,6 +169,7 @@ y <- withCallingHandlers({
   w <<- cond
   invokeRestart("muffleWarning")
 })
+options(oopts)
 stopifnot(
   inherits(w, "RngFutureCondition"),
   inherits(w, "RngFutureWarning"),
