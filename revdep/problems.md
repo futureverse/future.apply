@@ -32,7 +32,7 @@ Run `revdepcheck::revdep_details(, "altdoc")` for more info
 *   checking for non-standard things in the check directory ... NOTE
      ```
      Found the following files/directories:
-       ‘testpkg2b751c5928dab4’
+       ‘testpkg19107e49002ddb’
      ```
 
 # conformalInference.fd (1.1.1)
@@ -120,10 +120,10 @@ Run `revdepcheck::revdep_details(, "hero")` for more info
 *   checking dependencies in R code ... NOTE
      ```
      ...
-     dev3.wynton.ucsf.edu:pid1061302.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
-     dev3.wynton.ucsf.edu:pid1061302: PSM3 can't open nic unit: 0 (err=23)
-     dev3.wynton.ucsf.edu:pid1061302.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
-     dev3.wynton.ucsf.edu:pid1061302.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     localhost::pid3811565.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     localhost::pid3811565: PSM3 can't open nic unit: 0 (err=23)
+     localhost::pid3811565.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
+     localhost::pid3811565.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
      --------------------------------------------------------------------------
      No OpenFabrics connection schemes reported that they were able to be
      used on a specific port.  As such, the openib BTL (OpenFabrics
@@ -134,9 +134,9 @@ Run `revdepcheck::revdep_details(, "hero")` for more info
        Local port:           1
        CPCs attempted:       rdmacm, udcm
      --------------------------------------------------------------------------
-     dev3.wynton.ucsf.edu:pid1061302: PSM3 can't open nic unit: 0 (err=23)
-     dev3.wynton.ucsf.edu:pid1061302.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
-     dev3.wynton.ucsf.edu:pid1061302.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     localhost::pid3811565: PSM3 can't open nic unit: 0 (err=23)
+     localhost::pid3811565.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
+     localhost::pid3811565.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
      --------------------------------------------------------------------------
      Open MPI failed an OFI Libfabric library call (fi_endpoint).  This is highly
      unusual; your job may behave unpredictably (and/or abort) after this.
@@ -199,46 +199,6 @@ Run `revdepcheck::revdep_details(, "kappaGold")` for more info
          ‘kappa_inference.R’
      ```
 
-# lme4 (2.0-6)
-
-* GitHub: <https://github.com/lme4/lme4>
-* Email: <mailto:bbolker+lme4@gmail.com>
-* GitHub mirror: <https://github.com/cran/lme4>
-
-Run `revdepcheck::revdep_details(, "lme4")` for more info
-
-## In both
-
-*   checking re-building of vignette outputs ... WARNING
-     ```
-     ...
-     --- re-building ‘lmer.Rnw’ using knitr
-     Error: processing vignette 'lmer.Rnw' failed with diagnostics:
-     Running 'texi2dvi' on 'lmer.tex' failed.
-     LaTeX errors:
-     ! LaTeX Error: File `thumbpdf.sty' not found.
-     
-     Type X to quit or <RETURN> to proceed,
-     or enter new name. (Default extension: sty)
-     
-     ! Emergency stop.
-     <read *> 
-              
-     l.26 \usepackage
-                     {blkarray}^^M
-     !  ==> Fatal error occurred, no output PDF file produced!
-     --- failed re-building ‘lmer.Rnw’
-     
-     --- re-building ‘PLSvGLS.Rnw’ using Sweave
-     --- finished re-building ‘PLSvGLS.Rnw’
-     
-     SUMMARY: processing the following files failed:
-       ‘glmer.Rnw’ ‘lmer.Rnw’
-     
-     Error: Vignette re-building failed.
-     Execution halted
-     ```
-
 # MAI (1.18.0)
 
 * GitHub: <https://github.com/KechrisLab/MAI>
@@ -268,10 +228,10 @@ Run `revdepcheck::revdep_details(, "mlr3resampling")` for more info
 *   checking dependencies in R code ... NOTE
      ```
      ...
-     dev3.wynton.ucsf.edu:pid1589108.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
-     dev3.wynton.ucsf.edu:pid1589108: PSM3 can't open nic unit: 0 (err=23)
-     dev3.wynton.ucsf.edu:pid1589108.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
-     dev3.wynton.ucsf.edu:pid1589108.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     localhost::pid4077518.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     localhost::pid4077518: PSM3 can't open nic unit: 0 (err=23)
+     localhost::pid4077518.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
+     localhost::pid4077518.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
      --------------------------------------------------------------------------
      No OpenFabrics connection schemes reported that they were able to be
      used on a specific port.  As such, the openib BTL (OpenFabrics
@@ -282,9 +242,9 @@ Run `revdepcheck::revdep_details(, "mlr3resampling")` for more info
        Local port:           1
        CPCs attempted:       rdmacm, udcm
      --------------------------------------------------------------------------
-     dev3.wynton.ucsf.edu:pid1589108: PSM3 can't open nic unit: 0 (err=23)
-     dev3.wynton.ucsf.edu:pid1589108.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
-     dev3.wynton.ucsf.edu:pid1589108.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     localhost::pid4077518: PSM3 can't open nic unit: 0 (err=23)
+     localhost::pid4077518.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
+     localhost::pid4077518.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
      --------------------------------------------------------------------------
      Open MPI failed an OFI Libfabric library call (fi_endpoint).  This is highly
      unusual; your job may behave unpredictably (and/or abort) after this.
@@ -390,84 +350,6 @@ Run `revdepcheck::revdep_details(, "pavo")` for more info
      See ‘/scratch/hb/revdepcheck/future.apply/checks/pavo/new/pavo.Rcheck/00install.out’ for details.
      ```
 
-# pgxRpi (1.7.0)
-
-* GitHub: <https://github.com/progenetix/pgxRpi>
-* Email: <mailto:hangjia.zhao@uzh.ch>
-
-Run `revdepcheck::revdep_details(, "pgxRpi")` for more info
-
-## In both
-
-*   checking tests ...
-     ```
-     ...
-       Actually got a <simpleError> with message:
-         cannot open the connection to 'https://progenetix.org/services/pgxsegvariants/?biosampleIds=pgxbs-kftvlaih,pgxbs-kftvjgcc'
-       ── Error ('test_variants.R:30:5'): retrieve variants with pgxseg ───────────────
-       Error in `eval(code, test_env)`: object 'result' not found
-       Backtrace:
-           ▆
-        1. ├─testthat::expect_gt(nrow(result), 0) at test_variants.R:30:5
-        2. │ └─testthat::quasi_label(enquo(object), label)
-        3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
-        4. └─base::nrow(result)
-       ── Failure ('test_variants.R:37:5'): retrieve variants with igv-bed ────────────
-       Expected `http_type(r)` to equal "application/vnd.realvnc.bed".
-       Differences:
-       1/1 mismatches
-       x[1]: "text/html"
-       y[1]: "application/vnd.realvnc.bed"
-       ── Failure ('test_variants.R:40:5'): retrieve variants with igv-bed ────────────
-       Expected `ncol(result)` > 5.
-       Actual comparison: 1.0 <= 5.0
-       Difference: -4.0 <= 0
-       
-       [ FAIL 5 | WARN 1 | SKIP 0 | PASS 36 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-*   checking re-building of vignette outputs ... ERROR
-     ```
-     ...
-      1. └─pgxRpi::segtoFreq(segdata, cnv_column_idx = 6, cohort_name = "c1")
-      2.   └─base::colSums(bin.dup.data1) at pgxRpi/R/segtoFreq.R:57:9
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     
-     Error: processing vignette 'Introduction_3_access_cnv_frequency.Rmd' failed with diagnostics:
-     'x' must be an array of at least two dimensions
-     --- failed re-building ‘Introduction_3_access_cnv_frequency.Rmd’
-     
-     --- re-building ‘Introduction_4_process_pgxseg.Rmd’ using rmarkdown
-     The magick package is required to crop "/scratch/hb/revdepcheck/future.apply/checks/pgxRpi/new/pgxRpi.Rcheck/vign_test/pgxRpi/vignettes/Introduction_4_process_pgxseg_files/figure-html/unnamed-chunk-6-1.png" but not available.
-     The magick package is required to crop "/scratch/hb/revdepcheck/future.apply/checks/pgxRpi/new/pgxRpi.Rcheck/vign_test/pgxRpi/vignettes/Introduction_4_process_pgxseg_files/figure-html/unnamed-chunk-7-1.png" but not available.
-     The magick package is required to crop "/scratch/hb/revdepcheck/future.apply/checks/pgxRpi/new/pgxRpi.Rcheck/vign_test/pgxRpi/vignettes/Introduction_4_process_pgxseg_files/figure-html/unnamed-chunk-8-1.png" but not available.
-     The magick package is required to crop "/scratch/hb/revdepcheck/future.apply/checks/pgxRpi/new/pgxRpi.Rcheck/vign_test/pgxRpi/vignettes/Introduction_4_process_pgxseg_files/figure-html/unnamed-chunk-13-1.png" but not available.
-     The magick package is required to crop "/scratch/hb/revdepcheck/future.apply/checks/pgxRpi/new/pgxRpi.Rcheck/vign_test/pgxRpi/vignettes/Introduction_4_process_pgxseg_files/figure-html/unnamed-chunk-14-1.png" but not available.
-     The magick package is required to crop "/scratch/hb/revdepcheck/future.apply/checks/pgxRpi/new/pgxRpi.Rcheck/vign_test/pgxRpi/vignettes/Introduction_4_process_pgxseg_files/figure-html/unnamed-chunk-15-1.png" but not available.
-     The magick package is required to crop "/scratch/hb/revdepcheck/future.apply/checks/pgxRpi/new/pgxRpi.Rcheck/vign_test/pgxRpi/vignettes/Introduction_4_process_pgxseg_files/figure-html/unnamed-chunk-16-1.png" but not available.
-     [WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
-     --- finished re-building ‘Introduction_4_process_pgxseg.Rmd’
-     
-     SUMMARY: processing the following files failed:
-       ‘Introduction_2_query_variants.Rmd’
-       ‘Introduction_3_access_cnv_frequency.Rmd’
-     
-     Error: Vignette re-building failed.
-     Execution halted
-     ```
-
-*   checking R code for possible problems ... NOTE
-     ```
-     pgxSegprocess: no visible binding for global variable
-       ‘followup_state_id’
-       (/scratch/hb/revdepcheck/future.apply/checks/pgxRpi/new/pgxRpi.Rcheck/00_pkg_src/pgxRpi/R/pgxSegprocess.R:58)
-     Undefined global functions or variables:
-       followup_state_id
-     ```
-
 # powRICLPM (0.2.1)
 
 * GitHub: <https://github.com/JeroenDMulder/powRICLPM>
@@ -516,7 +398,7 @@ Run `revdepcheck::revdep_details(, "rtemis")` for more info
      ```
      ...
        
-       2026-10-10 02:26:10 [0m[1;38;2;15;106;102m✓[0m Done in 0.34 seconds.[0m [train]
+       2026-10-15 14:03:48 [0m[1;38;2;15;106;102m✓[0m Done in 0.51 seconds.[0m [train]
        [ FAIL 1 | WARN 4 | SKIP 4 | PASS 356 ]
        
        ══ Skipped tests (4) ═══════════════════════════════════════════════════════════

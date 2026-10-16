@@ -10,19 +10,19 @@
 |collate  |en_US.UTF-8                                                              |
 |ctype    |en_US.UTF-8                                                              |
 |tz       |America/Los_Angeles                                                      |
-|date     |2026-10-10                                                               |
-|pandoc   |3.11 @ /wynton/home/cbi/shared/software/CBI/pandoc-3.11/bin/pandoc       |
-|quarto   |1.10.18 @ /wynton/home/cbi/shared/software/CBI/quarto-1.10.18/bin/quarto |
+|date     |2026-10-15                                                               |
+|pandoc   |3.11 @ /path/to/pandoc-3.11/bin/pandoc       |
+|quarto   |1.10.18 @ /path/to/quarto-1.10.18/bin/quarto |
 
 # Dependencies
 
 |package      |old    |new         |Δ  |
 |:------------|:------|:-----------|:--|
-|future.apply |1.20.2 |1.20.2-9014 |*  |
+|future.apply |1.20.2 |1.20.2-9019 |*  |
 |codetools    |0.2-20 |0.2-20      |   |
 |digest       |0.6.39 |0.6.39      |   |
 |future       |1.76.0 |1.76.0      |   |
-|globals      |0.19.1 |0.19.1      |   |
+|globals      |0.19.1 |0.20.0      |*  |
 |listenv      |1.1.0  |1.1.0       |   |
 |parallelly   |1.48.0 |1.48.0      |   |
 
@@ -75,6 +75,7 @@
 |bsitar                    |0.4.0        |      |        |     |
 |bspcov                    |1.0.3        |      |        |     |
 |calmr                     |0.8.1        |      |        |     |
+|cam2model                 |0.3.0        |      |        |     |
 |canaper                   |1.0.1        |      |        |     |
 |causaldef                 |0.2.1        |      |        |     |
 |CausalMixGPD              |0.8.0        |      |        |     |
@@ -99,7 +100,7 @@
 |DAISIE                    |5.0.2        |      |        |     |
 |datefixR                  |2.0.1        |      |        |     |
 |DeclareDesign             |1.1.1        |      |        |     |
-|deseats                   |1.1.2        |      |        |     |
+|deseats                   |1.1.3        |      |        |     |
 |detectXOR                 |0.1.0        |      |        |     |
 |dipsaus                   |0.3.5        |      |        |     |
 |distantia                 |2.0.3        |      |        |     |
@@ -108,7 +109,7 @@
 |DRPT                      |1.1          |      |        |     |
 |drtmle                    |1.1.2        |      |        |     |
 |dsos                      |0.1.2        |      |        |     |
-|DTEAssurance              |1.1.0        |      |        |     |
+|DTEAssurance              |1.3.0        |      |        |     |
 |e2tree                    |1.2.0        |      |        |     |
 |EconCausal                |1.0.4        |      |        |     |
 |eCV                       |0.0.2        |      |        |     |
@@ -127,16 +128,16 @@
 |fitlandr                  |0.1.1        |      |        |     |
 |flassomsm                 |0.1.0        |      |        |     |
 |fluxCore                  |2.1.0        |      |        |     |
-|forestsearch              |0.1.0        |      |        |     |
+|forestsearch              |0.4.0        |      |        |     |
 |FracFixR                  |1.1.0        |      |        |     |
 |fRagmentomics             |1.0.0        |      |        |     |
 |fundiversity              |1.1.1        |      |        |     |
 |[future.batchtools](problems.md#futurebatchtools)|0.22.0       |      |        |1    |
-|future.callr              |1.0.0        |      |        |     |
+|future.callr              |1.0.1        |      |        |     |
 |future.mirai              |1.0.0        |      |        |     |
 |futureverse               |0.3.0        |      |        |     |
 |futurize                  |1.0.0        |      |        |     |
-|fwb                       |0.6.0        |      |        |     |
+|fwb                       |1.0.0        |      |        |     |
 |gammaFuncModel            |6.0          |      |        |     |
 |gaQSAR                    |1.2.3        |      |        |     |
 |genBaRcode                |1.2.8        |      |        |     |
@@ -146,7 +147,7 @@
 |GeometricMorphometricsMix |0.6.1.1      |      |        |     |
 |geomeTriD                 |1.6.0        |      |        |     |
 |GeoModels                 |2.2.9        |      |        |     |
-|geomorphR                 |0.1.0        |      |        |     |
+|geomorphR                 |0.2.0        |      |        |     |
 |ggchangepoint             |0.5.0        |      |        |     |
 |goodpractice              |1.2.0        |      |        |     |
 |gooseR                    |0.1.2        |      |        |     |
@@ -195,7 +196,7 @@
 |LipidMS                   |3.1.3        |      |        |     |
 |LLMR                      |0.8.11       |      |        |     |
 |LLMRagent                 |0.8.1        |      |        |     |
-|[lme4](problems.md#lme4)  |2.0-6        |      |1       |     |
+|lme4                      |2.0-6        |      |        |     |
 |lmmprobe                  |0.1.0        |      |        |     |
 |LTFGRS                    |1.0.1        |      |        |     |
 |LTFHPlus                  |2.2.0        |      |        |     |
@@ -253,13 +254,12 @@
 |pbapply                   |1.7-5        |      |        |     |
 |PeakSegDisk               |2024.10.1    |      |        |     |
 |penaltyLearning           |2024.9.3     |      |        |     |
-|[pgxRpi](problems.md#pgxrpi)|1.7.0        |2     |        |1    |
 |phylolm                   |2.6.5        |      |        |     |
 |phylopath                 |1.4.0        |      |        |     |
 |phyr                      |1.1.3        |      |        |     |
 |picreg                    |0.1.4        |      |        |     |
 |plssem                    |0.1.5        |      |        |     |
-|polle                     |1.6.5        |      |        |     |
+|polle                     |1.6.7        |      |        |     |
 |portvine                  |1.0.3        |      |        |     |
 |powergrid                 |0.6.2        |      |        |     |
 |[powRICLPM](problems.md#powriclpm)|0.2.1        |      |        |1    |
@@ -307,11 +307,11 @@
 |sdmTMB                    |1.1.0        |      |        |     |
 |SelectBoost.beta          |0.4.5        |      |        |     |
 |SelectBoost.gamlss        |0.2.2        |      |        |     |
-|SemNeT                    |2.0.0        |      |        |     |
+|SemNeT                    |2.1.0        |      |        |     |
 |semtree                   |0.9.23       |      |        |     |
 |sentopics                 |1.0.1        |      |        |     |
 |seqHMM                    |2.2.0        |      |        |     |
-|SEQTaRget                 |1.4.4        |      |        |     |
+|SEQTaRget                 |1.4.5        |      |        |     |
 |[Seqtometry](problems.md#seqtometry)|1.0.1        |      |1       |2    |
 |Seurat                    |5.6.0        |      |        |     |
 |SeuratObject              |5.4.0        |      |        |     |
@@ -324,7 +324,7 @@
 |simglm                    |1.0.0        |      |        |     |
 |sims                      |0.0.5        |      |        |     |
 |SmoothPLS                 |0.1.5        |      |        |     |
-|smoots                    |1.1.4        |      |        |     |
+|smoots                    |1.1.5        |      |        |     |
 |sNPLS                     |1.0.27       |      |        |     |
 |socialSim                 |0.1.9        |      |        |     |
 |[solitude](problems.md#solitude)|1.1.3        |      |        |1    |
