@@ -2,6 +2,7 @@
 #' @tags future_lapply future_sapply future_vapply future_mapply
 #' @tags future_Map future_apply future_tapply future_eapply
 #' @tags future_replicate future_by future_Filter future_.mapply
+#' @tags detritus-files
 #' @tags sequential multisession multicore
 
 library(future.apply)
@@ -161,6 +162,7 @@ message("- RNG misuse detection ...")
 
 plan(multisession)
 
+oopts <- options(future.rng.onMisuse = "warning")
 w <- NULL
 y <- withCallingHandlers({
   future_lapply(1:2, FUN = function(x) runif(1))
@@ -168,6 +170,7 @@ y <- withCallingHandlers({
   w <<- cond
   invokeRestart("muffleWarning")
 })
+options(oopts)
 stopifnot(
   inherits(w, "RngFutureCondition"),
   inherits(w, "RngFutureWarning"),

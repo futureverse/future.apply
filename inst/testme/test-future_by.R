@@ -100,15 +100,19 @@ message("*** future_by() - default method (matrix) ... DONE")
 
 
 if (require("datasets") && require("stats")) { ## warpbreaks
-  message("*** future_by() - data.frame method with formula 'INDICES' ...")
-
   data <- warpbreaks
-  y0 <- by(data, INDICES = ~ tension, FUN = summary)
-  y1 <- future_by(data, INDICES = ~ tension, FUN = summary)
-  attr(y0, "call") <- NULL; attr(y1, "call") <- NULL
-  stopifnot(all.equal(y0, y1, check.attributes = FALSE))
 
-  message("*** future_by() - data.frame method with formula 'INDICES' ... DONE")
+  ## Formula 'INDICES' requires R (>= 4.3.0), just like base::by()
+  if (getRversion() >= "4.3.0") {
+    message("*** future_by() - data.frame method with formula 'INDICES' ...")
+
+    y0 <- by(data, INDICES = ~ tension, FUN = summary)
+    y1 <- future_by(data, INDICES = ~ tension, FUN = summary)
+    attr(y0, "call") <- NULL; attr(y1, "call") <- NULL
+    stopifnot(all.equal(y0, y1, check.attributes = FALSE))
+
+    message("*** future_by() - data.frame method with formula 'INDICES' ... DONE")
+  }
 
 
   message("*** future_by() - exceptions ...")
