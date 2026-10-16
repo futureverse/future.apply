@@ -63,6 +63,7 @@ revdep/run.R
 ## ---------------------------------------------------------------------
 ## Set: Too many cores due to detectCores()
 pkgs_detectCores=()
+if [[ ${#pkgs_detectCores[@]} -gt 0 ]]; then
     revdep/run.R --add "${pkgs_detectCores[@]}"
     NSLOTS=4 revdep/run.R
 fi

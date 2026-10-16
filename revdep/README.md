@@ -10,7 +10,7 @@
 |collate  |en_US.UTF-8                                                              |
 |ctype    |en_US.UTF-8                                                              |
 |tz       |America/Los_Angeles                                                      |
-|date     |2026-10-15                                                               |
+|date     |2026-10-16                                                               |
 |pandoc   |3.11 @ /path/to/pandoc-3.11/bin/pandoc       |
 |quarto   |1.10.18 @ /path/to/quarto-1.10.18/bin/quarto |
 
@@ -18,10 +18,10 @@
 
 |package      |old    |new         |Δ  |
 |:------------|:------|:-----------|:--|
-|future.apply |1.20.2 |1.20.2-9019 |*  |
+|future.apply |1.20.2 |1.20.2-9024 |*  |
 |codetools    |0.2-20 |0.2-20      |   |
 |digest       |0.6.39 |0.6.39      |   |
-|future       |1.76.0 |1.76.0      |   |
+|future       |1.76.0 |1.80.0      |*  |
 |globals      |0.19.1 |0.20.0      |*  |
 |listenv      |1.1.0  |1.1.0       |   |
 |parallelly   |1.48.0 |1.48.0      |   |
@@ -34,7 +34,7 @@
 |:-------|:-------|:-----|:-------|:----|
 |InPAS   |?       |      |        |     |
 
-## All (334)
+## All (335)
 
 |package                   |version      |error |warning |note |
 |:-------------------------|:------------|:-----|:-------|:----|
@@ -173,6 +173,7 @@
 |inlinedocs                |2023.9.4     |      |        |     |
 |ino                       |1.2.1        |      |        |     |
 |InPAS                     |?            |      |        |     |
+|InterconectaR             |1.0.1        |      |        |     |
 |InterpolateR              |1.4-3        |      |        |     |
 |irtsim                    |0.2.0        |      |        |     |
 |isopam                    |3.7          |      |        |     |
