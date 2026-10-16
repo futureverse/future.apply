@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9024</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,19 +72,19 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.21.0" id="version-1210">Version 1.21.0<a class="anchor" aria-label="anchor" href="#version-1210"></a></h2>
 <div class="section level3">
-<h3 id="significant-changes-development-version">Significant Changes<a class="anchor" aria-label="anchor" href="#significant-changes-development-version"></a></h3>
+<h3 id="significant-changes-1-21-0">Significant Changes<a class="anchor" aria-label="anchor" href="#significant-changes-1-21-0"></a></h3>
 <ul><li><p>Memory use on parallel workers has gone down significantly in some cases for functions <code><a href="../reference/future_lapply.html">future_lapply()</a></code>, <code><a href="../reference/future_lapply.html">future_sapply()</a></code>, <code><a href="../reference/future_apply.html">future_apply()</a></code>, <code><a href="../reference/future_lapply.html">future_tapply()</a></code>, <code><a href="../reference/future_by.html">future_by()</a></code>, <code><a href="../reference/future_mapply.html">future_Filter()</a></code>, <code><a href="../reference/future_lapply.html">future_eapply()</a></code>, <code><a href="../reference/future_mapply.html">future_mapply()</a></code>, and <code><a href="../reference/future_mapply.html">future_Map()</a></code>. An outcome of this is that the performance also improves.</p></li>
 <li><p>Separately from the above, the memory use of <code><a href="../reference/future_lapply.html">future_vapply()</a></code> has gone down significantly, which also resulted in improved overall performance.</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<h3 id="new-features-1-21-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-21-0"></a></h3>
 <ul><li><p>If argument <code>future.label</code> of <code><a href="../reference/future_lapply.html">future_lapply()</a></code> and friends has no format specifier, such as <code>%d</code>, then <code>-%d</code> is appended, e.g. <code>future.label = "my-label"</code> gives future labels <code>"my-label-1"</code>, <code>"my-label-2"</code>, and so on. Previously, such labels produced a warning ‘one argument not used by format’.</p></li>
 <li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code> and friends now signal “Caught … Canceling all iterations …” as a message instead of a warning.</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="bug-fixes-development-version">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
+<h3 id="bug-fixes-1-21-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-21-0"></a></h3>
 <ul><li><p><code><a href="../reference/future_lapply.html">future_lapply()</a></code>, <code><a href="../reference/future_lapply.html">future_sapply()</a></code>, <code><a href="../reference/future_lapply.html">future_vapply()</a></code>, <code><a href="../reference/future_lapply.html">future_tapply()</a></code>, <code><a href="../reference/future_lapply.html">future_eapply()</a></code>, <code><a href="../reference/future_by.html">future_by()</a></code>, and <code><a href="../reference/future_mapply.html">future_Filter()</a></code> ignored <code>... %seed% seed</code>. This led to random numbers depending on the future backend, the number of workers, and the chunk size. Per-element seeds were still generated, but silently dropped. Note that <code><a href="../reference/future_apply.html">future_apply()</a></code>, <code><a href="../reference/future_mapply.html">future_mapply()</a></code>, <code><a href="../reference/future_mapply.html">future_.mapply()</a></code>, and <code><a href="../reference/future_mapply.html">future_Map()</a></code> were not affected.</p></li>
 <li><p><code><a href="../reference/future_lapply.html">future_vapply()</a></code> on empty input failed with an error if <code>FUN.VALUE</code> had length greater than one.</p></li>
 <li><p><code><a href="../reference/future_lapply.html">future_vapply()</a></code> did not always return an object of the same type as <code>FUN.VALUE</code> like <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply()</a></code> does.</p></li>
@@ -96,7 +96,7 @@
 <li><p><code><a href="../reference/future_kernapply.html">future_kernapply()</a></code> ignored <code>future.*</code> arguments, and any additional arguments <code><a href="https://rdrr.io/r/stats/kernapply.html" class="external-link">stats::kernapply()</a></code> might take.</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="miscellaneous-development-version">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous-development-version"></a></h3>
+<h3 id="miscellaneous-1-21-0">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous-1-21-0"></a></h3>
 <ul><li>Package <strong>stats</strong> is now declared as an imported package instead of just a suggested package.</li>
 </ul></div>
 </div>
