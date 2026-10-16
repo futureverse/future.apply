@@ -21,6 +21,9 @@
    `"my-label-2"`, and so on. Previously, such labels produced a
    warning 'one argument not used by format'.
 
+ * `future_lapply()` and friends now signal "Caught ... Canceling all
+   iterations ..." as a message instead of a warning.
+
 ## Bug Fixes
 
  * `future_lapply()`, `future_sapply()`, `future_vapply()`,
