@@ -139,6 +139,14 @@ res <- tryCatch({
 options(oopts)
 stopifnot(inherits(res, "error"))
 
+## Same as above, but with debug messages enabled
+oopts <- options(future.globals.maxSize = 5 * 1024^2, future.apply.debug = TRUE)
+res <- tryCatch({
+  y <- future_apply(X, MARGIN = 1L, FUN = identity, future.globals = list(large = large_obj))
+}, error = identity)
+options(oopts)
+stopifnot(inherits(res, "error"))
+
 
 message("*** future_apply() ... DONE")
 
