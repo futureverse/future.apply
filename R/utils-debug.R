@@ -36,13 +36,6 @@ mdebug_pop <- function(...) {
   if (length(msg) == 0 || !is.na(msg)) mdebug(msg)
 }
 
-mdebugf_pop <- function(...) {
-  n <- length(.debug$stack)
-  msg <- .debug$stack[n]
-  .debug$stack <- .debug$stack[-n]
-  mdebug(sprintf("%s done", msg))
-}
-
 mdebug <- function(..., prefix = now()) {
   prefix <- paste(prefix, debug_indent(), sep = "")
   msg <- paste(..., sep = "")
