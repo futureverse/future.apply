@@ -122,8 +122,7 @@ future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES 
   ## Set .Random.seed?
   if (is.null(future.seed) || isFALSE(future.seed) || isNA(future.seed)) {
      expr <- quote({
-       args <- c(list(FUN = ...future.FUN), ...future.elements_ii, MoreArgs = list(MoreArgs), SIMPLIFY = FALSE, USE.NAMES = FALSE)
-       do.call(mapply, args = args)
+       .mapply(...future.FUN, dots = ...future.elements_ii, MoreArgs = MoreArgs)
      })
   } else {
     expr <- quote({
@@ -131,8 +130,7 @@ future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES 
         assign(".Random.seed", ...future.seeds_ii_jj, envir = globalenv(), inherits = FALSE)
         ...future.FUN(...)
       }
-      args <- c(list(FUN = ...future.FUN2), ...future.elements_ii, list(...future.seeds_ii_jj = ...future.seeds_ii), MoreArgs = list(MoreArgs), SIMPLIFY = FALSE, USE.NAMES = FALSE)
-      do.call(mapply, args = args)
+      .mapply(...future.FUN2, dots = c(...future.elements_ii, list(...future.seeds_ii_jj = ...future.seeds_ii)), MoreArgs = MoreArgs)
     })
   }
 
