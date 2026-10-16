@@ -55,8 +55,6 @@ hpaste <- function(..., sep = "", collapse = ", ", lastCollapse = NULL, maxHead 
 
 trim <- function(s) sub("[\t\n\f\r ]+$", "", sub("^[\t\n\f\r ]+", "", s))
 
-comma <- function(x, sep = ", ") paste(x, collapse = sep)
-
 commaq <- function(x, sep = ", ") paste(sQuote(x), collapse = sep)
 
 if (getRversion() < "4.0.0") {
@@ -110,13 +108,3 @@ stealth_sample.int <- function(n, size = n, replace = FALSE, ...) {
   })
   sample.int(n = n, size = size, replace = replace, ...)
 }
-
-
-#' @importFrom utils packageVersion
-future_version <- local({
-  ver <- NULL
-  function() {
-    if (is.null(ver)) ver <<- packageVersion("future")
-    ver
-  }
-})
