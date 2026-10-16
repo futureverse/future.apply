@@ -7,7 +7,7 @@
    `future_apply()`, `future_tapply()`, `future_by()`,
    `future_Filter()`, `future_eapply()`, `future_mapply()`, and
    `future_Map()`. An outcome of this is that the performance also
-   improves.
+   improves. These improvements come with **future** (>= 1.80.0).
 
  * Separately from the above, the memory use of `future_vapply()` has
    gone down significantly, which also resulted in improved overall
