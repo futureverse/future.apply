@@ -247,6 +247,11 @@ stopifnot(length(y) == 0L, !is.null(names(y)), identical(y, X))
 y <- future_mapply(FUN = identity, X, X)
 stopifnot(length(y) == 0L, !is.null(names(y)), identical(y, X))
 
+## One of several '...' arguments has length zero, and 'USE.NAMES = FALSE'
+y0 <- mapply(FUN = identity, integer(0), USE.NAMES = FALSE)
+y1 <- future_mapply(FUN = identity, integer(0), USE.NAMES = FALSE)
+stopifnot(identical(y1, y0))
+
 message("*** future_mapply() - special cases ... DONE")
 
 message("*** future_mapply() ... DONE")
