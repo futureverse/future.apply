@@ -83,11 +83,11 @@ getGlobalsAndPackagesXApply <- function(FUN, args = NULL, MoreArgs = NULL, envir
     globals <- c(globals, list(MoreArgs = MoreArgs))
   }
 
-  ## Assert there are no reserved variables names among globals
+  ## Assert there are no reserved variable names among globals
   reserved <- intersect(c("...future.FUN", "...future.elements_ii",
                         "...future.seeds_ii"), names)
   if (length(reserved) > 0) {
-    stop("Detected globals using reserved variables names: ",
+    stop("Detected globals using reserved variable names: ",
          commaq(reserved))
   }
  

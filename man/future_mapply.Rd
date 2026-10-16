@@ -34,7 +34,20 @@ future_mapply(
   future.label = "future_mapply-\%d"
 )
 
-future_.mapply(FUN, dots, MoreArgs, ..., future.label = "future_.mapply-\%d")
+future_.mapply(
+  FUN,
+  dots,
+  MoreArgs,
+  future.envir = parent.frame(),
+  future.stdout = TRUE,
+  future.conditions = "condition",
+  future.globals = TRUE,
+  future.packages = NULL,
+  future.seed = FALSE,
+  future.scheduling = 1,
+  future.chunk.size = NULL,
+  future.label = "future_.mapply-\%d"
+)
 }
 \arguments{
 \item{f}{A function of the arity \eqn{k} if \code{future_Map()} is called with
@@ -46,7 +59,10 @@ future_.mapply(FUN, dots, MoreArgs, ..., future.label = "future_.mapply-\%d")
 \code{\link[future:future]{future::future()}} as-is.}
 
 \item{future.label}{If a character string, then each future is assigned
-a label \code{sprintf(future.label, chunk_idx)}.  If TRUE, then the
+a label \code{sprintf(future.label, chunk_idx)}.  If the string has no
+format specifier, then \verb{-\%d} is appended, e.g.
+\code{future.label = "my-label"} is the same as
+\code{future.label = "my-label-\%d"}.  If TRUE, then the
 same as \code{future.label = "future_lapply-\%d"}.  If FALSE, no labels
 are assigned.}
 
@@ -56,7 +72,7 @@ are assigned.}
 
 \item{SIMPLIFY}{A logical or character string; attempt to reduce the
 result to a vector, matrix or higher dimensional array; see the simplify
-argument of \code{\link[base:lapply]{base::sapply()}}.}
+argument of \code{\link[base:sapply]{base::sapply()}}.}
 
 \item{USE.NAMES}{A logical; use names if the first \ldots argument has
 names, or if it is a character vector, use that character vector as the
@@ -70,7 +86,7 @@ If \code{NA} (not recommended), output is \emph{not} intercepted.}
 
 \item{future.conditions}{A character string of conditions classes to be
 captured and relayed.  The default is the same as the \code{condition}
-argument of \code{\link[future:Future-class]{future::Future()}}.
+argument of \code{\link[future:Future]{future::Future()}}.
 To not intercept conditions, use \code{conditions = character(0L)}.
 Errors are always relayed.}
 
@@ -115,7 +131,7 @@ See \link[=Map]{base::Map()} for details.
 \code{future_mapply()} returns a list, or for \code{SIMPLIFY = TRUE}, a vector,
 array or list.  See \code{\link[base:mapply]{base::mapply()}} for details.
 
-\code{future_.mapply()} returns a list. See \code{\link[base:mapply]{base::.mapply()}} for details.
+\code{future_.mapply()} returns a list. See \code{\link[base:.mapply]{base::.mapply()}} for details.
 }
 \description{
 \code{future_mapply()} implements \code{\link[base:mapply]{base::mapply()}} using futures with perfect
@@ -127,7 +143,7 @@ the second elements, the third elements, and so on.
 Arguments are recycled if necessary.
 }
 \details{
-Note that \code{\link[base:mapply]{base::.mapply()}}, which \code{future_.mapply()} is modeled after
+Note that \code{\link[base:.mapply]{base::.mapply()}}, which \code{future_.mapply()} is modeled after
 is listed as an "internal" function in \R despite being exported.
 }
 \examples{

@@ -25,10 +25,13 @@ onError <- function(ex, futures, debug = FALSE) {
     mdebug(sprintf("Received <%s>", class(ex)[1]))
     on.exit(mdebug_pop())
   }
-  
+
   ## Canceling all futures
   msg <- sprintf("Caught %s. Canceling all iterations ...", class(ex)[1])
-  warning(msg, immediate. = TRUE, call. = FALSE)
+  ## FIXME: Ideally we'd use message(FutureMessage(msg)), but with
+  ## future 1.80.0 it is currently not possible to avoid that the
+  ## extra future info is appended. /HB 2026-10-15
+  message(msg)
   futures <- cancel(futures)
 
   ## Make sure all workers finish before continuing

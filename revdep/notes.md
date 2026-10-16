@@ -65,7 +65,7 @@ Platform: x86_64-pc-linux-gnu (64-bit)
 [1] ‘0.2.1’
 
 > install.packages("stars")
-Installing package into ‘/wynton/home/cbi/hb/R/x86_64-pc-linux-gnu-library/4.0-CBI’
+Installing package into ‘~/R/x86_64-pc-linux-gnu-library/4.0-CBI’
 (as ‘lib’ is unspecified)
 * installing *source* package ‘stars’ ...
 ** package ‘stars’ successfully unpacked and MD5 sums checked
@@ -75,8 +75,8 @@ Installing package into ‘/wynton/home/cbi/hb/R/x86_64-pc-linux-gnu-library/4.0
 ** inst
 ** byte-compile and prepare package for lazy loading
 Error in dyn.load(file, DLLpath = DLLpath, ...) : 
-  unable to load shared object '/wynton/home/cbi/hb/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so':
-  /wynton/home/cbi/hb/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so: undefined symbol: GEOSClipByRect
+  unable to load shared object '~/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so':
+  ~/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so: undefined symbol: GEOSClipByRect
 Calls: <Anonymous> ... asNamespace -> loadNamespace -> library.dynam -> dyn.load
 ** help
 *** installing help indices
@@ -84,13 +84,13 @@ Calls: <Anonymous> ... asNamespace -> loadNamespace -> library.dynam -> dyn.load
 ** installing vignettes
 ** testing if installed package can be loaded from temporary location
 Error: package or namespace load failed for ‘stars’ in dyn.load(file, DLLpath = DLLpath, ...):
- unable to load shared object '/wynton/home/cbi/hb/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so':
-  /wynton/home/cbi/hb/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so: undefined symbol: GEOSClipByRect
+ unable to load shared object '~/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so':
+  ~/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so: undefined symbol: GEOSClipByRect
 Error: loading failed
 ** testing if installed package can be loaded from final location
 Error: package or namespace load failed for ‘stars’ in dyn.load(file, DLLpath = DLLpath, ...):
- unable to load shared object '/wynton/home/cbi/hb/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so':
-  /wynton/home/cbi/hb/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so: undefined symbol: GEOSClipByRect
+ unable to load shared object '~/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so':
+  ~/R/x86_64-pc-linux-gnu-library/4.0-CBI/lwgeom/libs/lwgeom.so: undefined symbol: GEOSClipByRect
 Error: loading failed
 ```
 

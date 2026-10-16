@@ -46,7 +46,7 @@ If \code{NA} (not recommended), output is \emph{not} intercepted.}
 
 \item{future.conditions}{A character string of conditions classes to be
 captured and relayed.  The default is the same as the \code{condition}
-argument of \code{\link[future:Future-class]{future::Future()}}.
+argument of \code{\link[future:Future]{future::Future()}}.
 To not intercept conditions, use \code{conditions = character(0L)}.
 Errors are always relayed.}
 
@@ -75,7 +75,10 @@ If \code{Inf}, then all elements are processed in a single future.
 If \code{NULL}, then argument \code{future.scheduling} is used.}
 
 \item{future.label}{If a character string, then each future is assigned
-a label \code{sprintf(future.label, chunk_idx)}.  If TRUE, then the
+a label \code{sprintf(future.label, chunk_idx)}.  If the string has no
+format specifier, then \verb{-\%d} is appended, e.g.
+\code{future.label = "my-label"} is the same as
+\code{future.label = "my-label-\%d"}.  If TRUE, then the
 same as \code{future.label = "future_lapply-\%d"}.  If FALSE, no labels
 are assigned.}
 

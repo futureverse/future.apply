@@ -1,8 +1,9 @@
 .package <- new.env()
 
 ## covr: skip=all
+#' @importFrom utils packageVersion
 .onLoad <- function(libname, pkgname) {
-  .package[["version"]] <- utils::packageVersion(pkgname)
+  .package[["version"]] <- packageVersion(pkgname)
 
   import_future_functions()
 

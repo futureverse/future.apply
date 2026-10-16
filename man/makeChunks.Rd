@@ -35,8 +35,9 @@ If \code{nbrOfElements == 0}, then an empty list is returned.
 \section{Control processing order of elements}{
 
 Attribute \code{ordering} of \code{future.chunk.size} or \code{future.scheduling} can
-be used to control the ordering the elements are iterated over, which
-only affects the processing order \emph{not} the order values are returned.
+be used to control the order in which the elements are iterated over, which
+only affects the processing order and \emph{not} the order in which values are
+returned.
 This attribute can take the following values:
 \itemize{
 \item index vector - a numeric vector of length \code{nbrOfElements} specifying

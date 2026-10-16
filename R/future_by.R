@@ -38,7 +38,7 @@
 #' default is.
 #' For example, the S3 method of `as.data.frame()` for lists changed its
 #' (effective) default from `stringsAsFactors = TRUE` to
-#' `stringsAsFactors = TRUE` in R 4.0.0.
+#' `stringsAsFactors = FALSE` in R 4.0.0.
 #' 
 #'
 #' @rdname future_by
@@ -162,8 +162,6 @@ future_by_internal <- function(data, INDICES, FUN, ..., simplify = TRUE, .SUBSET
 
 future_by_match_FUN <- function(FUN) {
   if (is.function(FUN)) return(FUN)
-  
-  .Defunct(msg = "Specifying the function 'FUN' for future_by() as a character string is defunct in future.apply (>= 1.12.0), because base::by() does not support it. Instead, specify it as a function, e.g. FUN = sqrt and FUN = `[[`", package = .packageName)
 
-  match.fun(FUN)
+  .Defunct(msg = "Specifying the function 'FUN' for future_by() as a character string is defunct in future.apply (>= 1.20.0), because base::by() does not support it. Instead, specify it as a function, e.g. FUN = sqrt and FUN = `[[`", package = .packageName)
 }

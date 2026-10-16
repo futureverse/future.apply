@@ -15,7 +15,7 @@ for (strategy in supportedStrategies()) {
   message(sprintf("*** strategy = %s ...", sQuote(strategy)))
   plan(strategy)
 
-  y <- Filter(is_even, x)
+  y <- future_Filter(is_even, x)
   str(y)
 
   stopifnot(identical(y, y_truth))
@@ -24,5 +24,15 @@ for (strategy in supportedStrategies()) {
 }
 
 plan(sequential)
+
+
+message("*** future_Filter() - empty input ...")
+
+y0 <- Filter(is_even, integer(0))
+y1 <- future_Filter(is_even, integer(0))
+stopifnot(identical(y1, y0))
+
+message("*** future_Filter() - empty input ... DONE")
+
 
 message("*** future_Filter() ... DONE")

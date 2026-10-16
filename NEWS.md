@@ -1,3 +1,74 @@
+# Version 1.21.0 [2026-10-16]
+
+## Significant Changes
+
+ * Memory use on parallel workers has gone down significantly in some
+   cases for functions `future_lapply()`, `future_sapply()`,
+   `future_apply()`, `future_tapply()`, `future_by()`,
+   `future_Filter()`, `future_eapply()`, `future_mapply()`, and
+   `future_Map()`. An outcome of this is that the performance also
+   improves.
+
+ * Separately from the above, the memory use of `future_vapply()` has
+   gone down significantly, which also resulted in improved overall
+   performance.
+
+## New Features
+
+ * If argument `future.label` of `future_lapply()` and friends has no
+   format specifier, such as `%d`, then `-%d` is appended, e.g.
+   `future.label = "my-label"` gives future labels `"my-label-1"`,
+   `"my-label-2"`, and so on. Previously, such labels produced a
+   warning 'one argument not used by format'.
+
+ * `future_lapply()` and friends now signal "Caught ... Canceling all
+   iterations ..." as a message instead of a warning.
+
+## Bug Fixes
+
+ * `future_lapply()`, `future_sapply()`, `future_vapply()`,
+   `future_tapply()`, `future_eapply()`, `future_by()`, and
+   `future_Filter()` ignored `... %seed% seed`. This led to random
+   numbers depending on the future backend, the number of workers, and
+   the chunk size. Per-element seeds were still generated, but
+   silently dropped. Note that `future_apply()`, `future_mapply()`,
+   `future_.mapply()`, and `future_Map()` were not affected.
+
+ * `future_vapply()` on empty input failed with an error if
+   `FUN.VALUE` had length greater than one.
+
+ * `future_vapply()` did not always return an object of the same type
+   as `FUN.VALUE` like `vapply()` does.
+
+ * `future_vapply()` with `FUN.VALUE` as a list would recursively
+   flatten the results into an atomic vector instead of returning a
+   list.
+   
+ * `future_lapply()` and friends with `%seed%`, `%packages%`,
+   ... would leak those options to the next call, if there were zero
+   elements to process.
+
+ * `future_lapply()` and friends with a `future.chunk.size` less
+   than one would launch futures that processed no elements. Now such
+   chunk sizes result in one element per future.   
+
+ * `future_apply()` with argument `future.globals` as a list could
+   produce a false error on globals exceeding the maximum size
+   allowed.
+   
+ * `future_.mapply()` could fail with "formal argument matched by
+   multiple actual arguments" if `dots` had names also used by
+   `future_mapply()`, e.g. `"MoreArgs"`.
+   
+ * `future_kernapply()` ignored `future.*` arguments, and any
+   additional arguments `stats::kernapply()` might take.
+
+## Miscellaneous
+
+ * Package **stats** is now declared as an imported package instead of
+   just a suggested package.
+
+
 # Version 1.20.2 [2026-02-19]
 
 ## Miscellaneous

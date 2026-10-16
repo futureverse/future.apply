@@ -37,6 +37,20 @@
 #' @importFrom future nbrOfWorkers
 #' @export
 future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = parent.frame(), future.stdout = TRUE, future.conditions = "condition", future.globals = TRUE, future.packages = NULL, future.seed = FALSE, future.scheduling = 1.0, future.chunk.size = NULL, future.label = "future_apply-%d") {
+    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    ## Support %globals%, %packages%, %seed%, ...
+    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    opts <- getOption("future.disposable", NULL)
+    if (length(opts) > 0) {
+      for (name in names(opts)) {
+        var <- sprintf("future.%s", name)
+        assign(var, opts[[name]], envir = environment(), inherits = FALSE)
+      }
+      if (!identical(attr(opts, "dispose"), FALSE)) {
+        options(future.disposable = NULL)
+      }
+    }
+
     debug <- isTRUE(getOption("future.debug"))
     debug <- isTRUE(getOption("future.apply.debug", debug))
 
@@ -86,22 +100,6 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
     }
 
 
-  
-    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    ## Support %globals%, %packages%, %seed%, ...
-    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    opts <- getOption("future.disposable", NULL)
-    if (length(opts) > 0) {
-      for (name in names(opts)) {
-        var <- sprintf("future.%s", name)
-        assign(var, opts[[name]], envir = environment(), inherits = FALSE)
-      }
-      if (!identical(attr(opts, "dispose"), FALSE)) {
-        options(future.disposable = NULL)
-      }
-    }
-
-
     ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     ## Globals and Packages
     ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -129,11 +127,11 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
       chunk_size <- size / nWorkers
       other_size <- attr(globals, "total_size")
       ## Calculate size of the 'globals', if not already done
-      if (is.na(other_size)) other_size <- objectSize(X)
+      if (is.null(other_size) || is.na(other_size)) other_size <- objectSize(globals)
       if (is.numeric(other_size)) chunk_size <- chunk_size + other_size
       if (chunk_size > maxSize) {
         asIEC <- import_future("asIEC")
-        msg <- sprintf("The total size of %s (of class %s and type %s) is %s and the total size of the other argument is %s. With %d workers, this translates to %s per worker needed for future_apply(), which exceeds the maximum allowed size of %s (option 'future.globals.maxSize').", sQuote("X"), sQuote(class(X)[1]), sQuote(typeof(X)), asIEC(size), asIEC(other_size), nWorkers, asIEC(chunk_size), asIEC(maxSize))
+        msg <- sprintf("The total size of %s (of class %s and type %s) is %s and the total size of the other arguments is %s. With %d workers, this translates to %s per worker needed for future_apply(), which exceeds the maximum allowed size of %s (option 'future.globals.maxSize').", sQuote("X"), sQuote(class(X)[1]), sQuote(typeof(X)), asIEC(size), asIEC(other_size), nWorkers, asIEC(chunk_size), asIEC(maxSize))
         if (debug) mdebug(msg)
         stop(msg)
       }

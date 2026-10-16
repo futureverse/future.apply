@@ -86,4 +86,60 @@ if (require("datasets") && require("stats")) { ## warpbreaks & lm()
   } ## for (cores ...)
 } ## if (require("stats"))
 
+
+message("*** future_by() - default method (matrix) ...")
+
+m <- matrix(1:12, nrow = 4L)
+g <- rep(1:2, times = 2L)
+y0 <- by(m, INDICES = g, FUN = colSums)
+y1 <- future_by(m, INDICES = g, FUN = colSums)
+attr(y0, "call") <- NULL; attr(y1, "call") <- NULL
+stopifnot(all.equal(y0, y1, check.attributes = FALSE))
+
+message("*** future_by() - default method (matrix) ... DONE")
+
+
+if (require("datasets") && require("stats")) { ## warpbreaks
+  data <- warpbreaks
+
+  ## Formula 'INDICES' requires R (>= 4.3.0), just like base::by()
+  if (getRversion() >= "4.3.0") {
+    message("*** future_by() - data.frame method with formula 'INDICES' ...")
+
+    y0 <- by(data, INDICES = ~ tension, FUN = summary)
+    y1 <- future_by(data, INDICES = ~ tension, FUN = summary)
+    attr(y0, "call") <- NULL; attr(y1, "call") <- NULL
+    stopifnot(all.equal(y0, y1, check.attributes = FALSE))
+
+    message("*** future_by() - data.frame method with formula 'INDICES' ... DONE")
+  }
+
+
+  message("*** future_by() - exceptions ...")
+
+  ## Error: 'INDICES' of length zero
+  res <- tryCatch({
+    future_by(data, INDICES = list(), FUN = summary)
+  }, error = identity)
+  stopifnot(inherits(res, "error"))
+
+  ## Error: length of 'INDICES' does not match 'data'
+  res <- tryCatch({
+    future_by(data, INDICES = 1:3, FUN = summary)
+  }, error = identity)
+  stopifnot(inherits(res, "error"))
+
+  message("*** future_by() - exceptions ... DONE")
+
+
+  message("*** future_by() - debug mode ...")
+
+  options(future.apply.debug = TRUE)
+  y <- future_by(data, INDICES = data[, "tension"], FUN = summary)
+  options(future.apply.debug = FALSE)
+  stopifnot(inherits(y, "by"))
+
+  message("*** future_by() - debug mode ... DONE")
+} ## if (require("stats"))
+
 message("*** future_by() ... DONE")

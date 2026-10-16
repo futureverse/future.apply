@@ -7,6 +7,8 @@ message("*** future_lapply() and RNGs ...")
 
 options(future.debug = FALSE)
 
+get_random_seed <- function() globalenv()$.Random.seed
+
 message("* future_lapply(x, ..., future.seed = <invalid>) ...")
 
 res <- tryCatch({
@@ -27,7 +29,7 @@ res <- tryCatch({
 print(res)
 stopifnot(inherits(res, "simpleError"))
 
-seeds <- lapply(1:3, FUN = as_lecyer_cmrg_seed)
+seeds <- make_rng_seeds(3L, seed = TRUE)
 res <- tryCatch({
   y <- future_lapply(1:3, FUN = identity, future.seed = lapply(seeds, FUN = as.numeric))
 }, error = identity)
@@ -84,7 +86,7 @@ seed_sets <- list(
   A = TRUE,
 ##  B = NA,
   C = 42L,
-  D = as_lecyer_cmrg_seed(42L),
+  D = make_rng_seeds(1L, seed = 42L)[[1]],
   E = list(),
   F = vector("list", length = length(x)),
   G = NULL

@@ -40,8 +40,31 @@ for (strategy in supportedStrategies()) {
   y1 <- future_vapply(x, FUN = fun, FUN.VALUE = fun_value)
   str(y1)
   stopifnot(all.equal(y1, y0))
-  
-  
+  message("- future_vapply(x, ...) with empty x ...")
+  for (USE.NAMES in c(TRUE, FALSE)) {
+    y0 <- vapply(integer(0), FUN = identity, FUN.VALUE = c(a = 1, b = 2), USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(integer(0), FUN = identity, FUN.VALUE = c(a = 1, b = 2), USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+
+    y0 <- vapply(integer(0), FUN = identity, FUN.VALUE = numeric(2), USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(integer(0), FUN = identity, FUN.VALUE = numeric(2), USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+
+    y0 <- vapply(setNames(integer(0), character(0)), FUN = identity, FUN.VALUE = c(a = 1, b = 2), USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(setNames(integer(0), character(0)), FUN = identity, FUN.VALUE = c(a = 1, b = 2), USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+
+    FV <- matrix(1:4, 2, 2, dimnames = list(c("r1", "r2"), c("c1", "c2")))
+    y0 <- vapply(integer(0), FUN = identity, FUN.VALUE = FV, USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(integer(0), FUN = identity, FUN.VALUE = FV, USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+
+    FV <- matrix(1:4, 2, 2)
+    y0 <- vapply(integer(0), FUN = identity, FUN.VALUE = FV, USE.NAMES = USE.NAMES)
+    y1 <- future_vapply(integer(0), FUN = identity, FUN.VALUE = FV, USE.NAMES = USE.NAMES)
+    stopifnot(identical(y1, y0))
+  }
+
   df <- data.frame(x = 1:10, y = letters[1:10], stringsAsFactors=FALSE)
   fun <- class
   fun_value <- character(1L)
@@ -155,6 +178,75 @@ for (strategy in supportedStrategies()) {
   y1 <- future_vapply(x, FUN = length, FUN.VALUE = -1L)
   stopifnot(identical(y1, y0))
 
+  message("- FUN.VALUE and return values with different dimensions ...")
+  y0 <- vapply(1:3, FUN = function(x) matrix(x * 1:4, 1, 4), FUN.VALUE = matrix(0L, 2, 2))
+  y1 <- future_vapply(1:3, FUN = function(x) matrix(x * 1:4, 1, 4), FUN.VALUE = matrix(0L, 2, 2))
+  stopifnot(identical(y1, y0))
+
+  y0 <- vapply(1:3, FUN = function(x) x * 1:4, FUN.VALUE = matrix(0L, 2, 2))
+  y1 <- future_vapply(1:3, FUN = function(x) x * 1:4, FUN.VALUE = matrix(0L, 2, 2))
+  stopifnot(identical(y1, y0))
+
+  message("- type promotion ...")
+  ## logical -> integer
+  y0 <- vapply(1:3, FUN = function(x) x > 1, FUN.VALUE = integer(1L))
+  y1 <- future_vapply(1:3, FUN = function(x) x > 1, FUN.VALUE = integer(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "integer")
+
+  ## integer -> double
+  y0 <- vapply(1:3, FUN = identity, FUN.VALUE = double(1L))
+  y1 <- future_vapply(1:3, FUN = identity, FUN.VALUE = double(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "double")
+
+  ## logical -> double
+  y0 <- vapply(1:3, FUN = function(x) x > 1, FUN.VALUE = double(1L))
+  y1 <- future_vapply(1:3, FUN = function(x) x > 1, FUN.VALUE = double(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "double")
+
+  ## integer -> complex
+  y0 <- vapply(1:3, FUN = identity, FUN.VALUE = complex(1L))
+  y1 <- future_vapply(1:3, FUN = identity, FUN.VALUE = complex(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "complex")
+
+  ## double -> complex
+  y0 <- vapply(1:3, FUN = function(x) x * 1.5, FUN.VALUE = complex(1L))
+  y1 <- future_vapply(1:3, FUN = function(x) x * 1.5, FUN.VALUE = complex(1L))
+  stopifnot(identical(y1, y0), typeof(y1) == "complex")
+
+  ## matrix promotion
+  y0 <- vapply(1:3, FUN = function(x) matrix(x, 2L, 2L), FUN.VALUE = matrix(0, 2L, 2L))
+  y1 <- future_vapply(1:3, FUN = function(x) matrix(x, 2L, 2L), FUN.VALUE = matrix(0, 2L, 2L))
+  message("- list FUN.VALUE ...")
+  ## scalar list template
+  y0 <- vapply(1:3, FUN = function(x) list(x), FUN.VALUE = list(1))
+  y1 <- future_vapply(1:3, FUN = function(x) list(x), FUN.VALUE = list(1))
+  stopifnot(identical(y1, y0))
+
+  ## scalar list template with complex elements
+  y0 <- vapply(1:3, FUN = function(x) list(1:x), FUN.VALUE = list(integer(0)))
+  y1 <- future_vapply(1:3, FUN = function(x) list(1:x), FUN.VALUE = list(integer(0)))
+  stopifnot(identical(y1, y0))
+
+  ## scalar list template with NULL elements
+  y0 <- vapply(1:3, FUN = function(x) list(if (x == 2) NULL else x), FUN.VALUE = list(1))
+  y1 <- future_vapply(1:3, FUN = function(x) list(if (x == 2) NULL else x), FUN.VALUE = list(1))
+  stopifnot(identical(y1, y0))
+
+  ## length-2 list template
+  y0 <- vapply(1:3, FUN = function(x) list(x, letters[x]), FUN.VALUE = list(1, "a"))
+  y1 <- future_vapply(1:3, FUN = function(x) list(x, letters[x]), FUN.VALUE = list(1, "a"))
+  stopifnot(identical(y1, y0))
+
+  ## with names on X and FUN.VALUE
+  y0 <- vapply(c(A = 1, B = 2), FUN = function(x) list(x = x, y = letters[x]), FUN.VALUE = list(x = 1, y = "a"))
+  y1 <- future_vapply(c(A = 1, B = 2), FUN = function(x) list(x = x, y = letters[x]), FUN.VALUE = list(x = 1, y = "a"))
+  stopifnot(identical(y1, y0))
+
+  ## empty input with list template
+  y0 <- vapply(integer(0), FUN = function(x) list(x), FUN.VALUE = list(1))
+  y1 <- future_vapply(integer(0), FUN = function(x) list(x), FUN.VALUE = list(1))
+  stopifnot(identical(y1, y0))
+
   message("- exceptions ...")
   res <- tryCatch({
     y0 <- vapply(1:3, FUN = identity, FUN.VALUE = c(3, 3))
@@ -164,10 +256,54 @@ for (strategy in supportedStrategies()) {
     y1 <- future_vapply(1:3, FUN = identity, FUN.VALUE = c(3, 3))
   }, error = identity)
   stopifnot(inherits(res, "error"))
-  
+
+  message("- approximately invariant to chunk size ...")
+  X <- replicate(10L, rnorm(10000), simplify = FALSE)
+  FUN <- function(x) {
+    getOption("future.globals.maxSize")
+  }
+  dummy_wrapper <- future.apply:::make_future_vapply_FUN(
+    FUN, times = 1L, valid_types = "double"
+  )
+  size_wrapper <- length(serialize(dummy_wrapper, NULL))
+  size_chunk <- unclass(object.size(X)) / length(X)
+  maxSize <- 2.0 * (size_wrapper + size_chunk)
+
+  oMaxSize <- options(future.globals.maxSize = 1L)
+  res <- tryCatch({
+    future_vapply(X, FUN = FUN, FUN.VALUE = 0.0)
+  }, error = identity)
+  stopifnot(inherits(res, "error"))
+
+  ## Skip test failing with 'covr'
+  if (!identical(Sys.getenv("R_COVR"), "true")) {
+    options(future.globals.maxSize = maxSize)
+    for (chunk.size in c(1L, 2L, 5L)) {
+      y <- future_vapply(X, FUN = FUN, FUN.VALUE = 0.0,
+                         future.chunk.size = chunk.size)
+      stopifnot(all(y == maxSize))
+    }
+  }
+  options(oMaxSize)
+
+
   plan(sequential)
   message(sprintf("*** strategy = %s ... done", sQuote(strategy)))
-} ## for (strategy in ...) 
+} ## for (strategy in ...)
 
+message("*** make_future_vapply_FUN() - environment isolation ...")
+make_future_vapply_FUN <- future.apply:::make_future_vapply_FUN
+fcn <- function() {
+  large_payload <- raw(1024 * 1024)  ## 1 MiB
+  times <- 1L
+  types <- "double"
+  make_future_vapply_FUN(identity, times = times, valid_types = types)
+}
+w <- fcn()
+stopifnot(identical(parent.env(environment(w)), asNamespace("future.apply")))
+vars <- ls(environment(w), all.names = TRUE)
+stopifnot(setequal(vars, c("FUN", "times", "valid_types")))
+stopifnot(length(serialize(w, NULL)) < 500 * 1024)
+message("*** make_future_vapply_FUN() - environment isolation ... DONE")
 
 message("*** future_vapply() ... DONE")

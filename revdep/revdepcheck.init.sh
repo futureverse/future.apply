@@ -1,23 +1,69 @@
 #! /usr/bin/env bash
 
 ## Missing or outdated LaTeX packages
-if (FALSE) {
-  tinytex::install_tinytex(force = TRUE)
-  message("TeX root: ", tinytex::tinytex_root())
-  tinytex::tlmgr_update()
-  tinytex::tlmgr_install("nowidow")  # QDNAseq
-  tinytex::tlmgr_install("wrapfig")  # tramvs
-  tinytex::tlmgr_install("apacite")  # ctsem
-}
+false && R --quiet --no-save <<EOF
+    tinytex::install_tinytex(force = TRUE)
+    message("TeX root: ", tinytex::tinytex_root())
+    tinytex::tlmgr_update()
+    tinytex::tlmgr_install(c(
+      "apacite",   # ctsem
+      "nowidow",   # QDNAseq
+      "wrapfig",   # tramvs
+      "thumbpdf"   # lme4
+    ))
+EOF
+
+
+## ---------------------------------------------------------------------
+## Phase 1
+## ---------------------------------------------------------------------
 
 ## Add packages to check
 revdep/run.R --add-children
 
-## Drop packages no longer on CRAN (2026-02-19)
-revdep/run.R --rm forecastML
+## Drop packages failing on CRAN (2026-10-08)
+#revdep/run.R --rm ...
 
-## Drop packages failing on Bioconductor (2026-02-19)
-revdep/run.R --rm MineICA
+## Drop packages failing on Bioconductor (2026-10-10)
+revdep/run.R --rm pgxRpi
 
-## Too many cores because of detectCores()
-# NSLOTS=4 revdep/run.R --add FracFixR lavDiag
+## CRAN packages that need extra care (2026-10-10)
+## 'pbdMPI' needs explicit 'configure.args' settings
+## WORKAROUND: Install first as:
+if ! Rscript -e 'quit(status = requireNamespace("pbdMPI", quietly = TRUE))'; then
+    Rscript -e 'crancache::install_packages("pbdMPI", configure.args="--with-mpi-include=$MPI_INCLUDE --with-mpi-libpath=$MPI_LIB --with-mpi-type=OPENMPI", Ncpus = parallelly::availableCores())' || { >&2 echo "Please crancache install 'pdbMPI' from CRAN first"; exit 1; }
+fi
+
+## Bioconductor packages that need extra care (2026-10-10)
+## 'lpsymphony' fails if another SYMPHONY installation is not the path
+## WORKAROUND: Install first as:
+## env -u PKG_CONFIG_PATH -u CPLUS_INCLUDE_PATH -u LIBRARY_PATH R -e 'crancache::install_packages("lpsymphony")'
+if ! Rscript -e 'quit(status = requireNamespace("lpsymphony", quietly = TRUE))'; then
+    env -u PKG_CONFIG_PATH -u CPLUS_INCLUDE_PATH -u LIBRARY_PATH Rscript -e 'crancache::install_packages("lpsymphony", Ncpus = parallelly::availableCores())' || { >&2 echo "Please crancache install 'lpsymphony' from Bioconductor first"; exit 1; }
+fi
+
+## Drop packages no longer on CRAN (2026-10-08)
+#revdep/run.R --rm ...
+
+## Drop packages no longer on Bioconductor (2026-10-08)
+#revdep/run.R --rm ...
+
+## Too many cores due to detectCores()
+pkgs_detectCores=()
+if [[ ${#pkgs_detectCores[@]} -gt 0 ]]; then
+    revdep/run.R --rm "${pkgs_detectCores[@]}"
+fi
+
+## Run revdep check
+revdep/run.R
+
+
+## ---------------------------------------------------------------------
+## Phase 2
+## ---------------------------------------------------------------------
+## Set: Too many cores due to detectCores()
+pkgs_detectCores=()
+if [[ ${#pkgs_detectCores[@]} -gt 0 ]]; then
+    revdep/run.R --add "${pkgs_detectCores[@]}"
+    NSLOTS=4 revdep/run.R
+fi

@@ -213,8 +213,8 @@ main <- function() {
     
     keep <- tryCatch(eval(expr, envir = testme), error = identity)
     if (inherits(keep, "error")) {
-      stop("Evaluation of R_TESTME_FILTER_NAME=%s produced an error: %s",
-           sQuote(code), conditionMessage(keep))
+      stop(sprintf("Evaluation of R_TESTME_FILTER_NAME=%s produced an error: %s",
+           sQuote(code), conditionMessage(keep)))
     }
     if (!isTRUE(keep)) testme[["status"]] <- "skipped"
   }
@@ -227,8 +227,8 @@ main <- function() {
     }
     keep <- tryCatch(eval(expr, envir = testme), error = identity)
     if (inherits(keep, "error")) {
-      stop("Evaluation of R_TESTME_FILTER_TAGS=%s produced an error: %s",
-           sQuote(code), conditionMessage(keep))
+      stop(sprintf("Evaluation of R_TESTME_FILTER_TAGS=%s produced an error: %s",
+           sQuote(code), conditionMessage(keep)))
     }
     if (!isTRUE(keep)) testme[["status"]] <- "skipped"
   }

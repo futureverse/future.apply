@@ -19,42 +19,64 @@ Run `revdepcheck::revdep_details(, "adestr")` for more info
          ‘plot.R’ ‘print.R’ ‘reference_implementation.R’
      ```
 
-# ClustIRR (1.8.0)
+# altdoc (0.7.3)
 
-* GitHub: <https://github.com/snaketron/ClustIRR>
-* Email: <mailto:simokitanovski@gmail.com>
+* GitHub: <https://github.com/etiennebacher/altdoc>
+* Email: <mailto:etienne.bacher@protonmail.com>
+* GitHub mirror: <https://github.com/cran/altdoc>
 
-Run `revdepcheck::revdep_details(, "ClustIRR")` for more info
+Run `revdepcheck::revdep_details(, "altdoc")` for more info
 
 ## In both
 
-*   checking DESCRIPTION meta-information ... NOTE
+*   checking for non-standard things in the check directory ... NOTE
      ```
-     Package listed in more than one of Depends, Imports, Suggests, Enhances:
-       ‘ggplot2’
-     A package should be listed in only one of these fields.
-     ```
-
-*   checking R code for possible problems ... NOTE
-     ```
-     get_ag_gene_hits: no visible binding for global variable ‘cells’
-     get_ag_gene_hits: no visible binding for global variable ‘clones’
-     get_ag_gene_hits: no visible binding for global variable ‘community’
-     get_ag_gene_hits: no visible binding for global variable ‘ag’
-     get_ag_species_hits: no visible binding for global variable ‘cells’
-     get_ag_species_hits: no visible binding for global variable ‘clones’
-     get_ag_species_hits: no visible binding for global variable ‘community’
-     get_ag_species_hits: no visible binding for global variable ‘ag’
-     get_beta_violin: no visible binding for global variable ‘spec’
-     get_beta_violin: no visible binding for global variable ‘size’
-     get_honeycombs: no visible binding for global variable ‘x_adj’
-     get_honeycombs: no visible binding for global variable ‘y_adj’
-     get_honeycombs: no visible binding for global variable ‘..count..’
-     Undefined global functions or variables:
-       ..count.. ag cells clones community size spec x_adj y_adj
+     Found the following files/directories:
+       ‘testpkg23606e37b5c75c’
      ```
 
-# cSEM (0.6.1)
+# conformalInference.fd (1.1.1)
+
+* GitHub: <https://github.com/ryantibs/conformal>
+* Email: <mailto:paolo.vergottini@gmail.com>
+* GitHub mirror: <https://github.com/cran/conformalInference.fd>
+
+Run `revdepcheck::revdep_details(, "conformalInference.fd")` for more info
+
+## In both
+
+*   checking S3 generic/method consistency ... NOTE
+     ```
+     Mismatches for apparent methods not registered:
+     max:
+       function(..., na.rm)
+     max.lol:
+       function(l)
+     
+     min:
+       function(..., na.rm)
+     min.lol:
+       function(l)
+     See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+     manual.
+     ```
+
+# CrcBiomeScreen (1.0.0)
+
+* GitHub: <https://github.com/omicsForestry/CrcBiomeScreen>
+* Email: <mailto:ngzh5554@leeds.ac.uk>
+
+Run `revdepcheck::revdep_details(, "CrcBiomeScreen")` for more info
+
+## In both
+
+*   checking for non-standard things in the check directory ... NOTE
+     ```
+     Found the following files/directories:
+       ‘roc.curve.rf.RF_TSS_toydata_Validation.pdf’
+     ```
+
+# cSEM (0.7.1)
 
 * GitHub: <https://github.com/FloSchuberth/cSEM>
 * Email: <mailto:f.schuberth@utwente.nl>
@@ -70,166 +92,20 @@ Run `revdepcheck::revdep_details(, "cSEM")` for more info
        All declared Imports should be used.
      ```
 
-# ctsem (3.10.6)
+# future.batchtools (0.22.0)
 
-* GitHub: <https://github.com/cdriveraus/ctsem>
-* Email: <mailto:charles.driver2@uzh.ch>
-* GitHub mirror: <https://github.com/cran/ctsem>
+* GitHub: <https://github.com/futureverse/future.batchtools>
+* Email: <mailto:henrikb@braju.com>
+* GitHub mirror: <https://github.com/cran/future.batchtools>
 
-Run `revdepcheck::revdep_details(, "ctsem")` for more info
-
-## In both
-
-*   checking whether package ‘ctsem’ can be installed ... WARNING
-     ```
-     Found the following significant warnings:
-       Warning: namespace ‘colorspace’ is not available and has been replaced
-     See ‘/scratch/henrik/revdep/future.apply/checks/ctsem/new/ctsem.Rcheck/00install.out’ for details.
-     ```
-
-*   checking re-building of vignette outputs ... WARNING
-     ```
-     ...
-       ...
-     --- re-building ‘hierarchicalmanual.rnw’ using knitr_notangle
-     Warning in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  :
-       texi2dvi script/program not available, using emulation
-     Error: processing vignette 'hierarchicalmanual.rnw' failed with diagnostics:
-     unable to run pdflatex on 'hierarchicalmanual.tex'
-     LaTeX errors:
-     ! LaTeX Error: File `apacite.sty' not found.
-     
-     Type X to quit or <RETURN> to proceed,
-     or enter new name. (Default extension: sty)
-     
-     ! Emergency stop.
-     <read *> 
-              
-     l.62 \bibliographystyle
-                            {apacite}     % Set bibliography style^^M
-     !  ==> Fatal error occurred, no output PDF file produced!
-     --- failed re-building ‘hierarchicalmanual.rnw’
-     
-     SUMMARY: processing the following file failed:
-       ‘hierarchicalmanual.rnw’
-     
-     Error: Vignette re-building failed.
-     Execution halted
-     ```
-
-# disk.frame (0.8.3)
-
-* GitHub: <https://github.com/DiskFrame/disk.frame>
-* Email: <mailto:zhuojia.dai@gmail.com>
-* GitHub mirror: <https://github.com/cran/disk.frame>
-
-Run `revdepcheck::revdep_details(, "disk.frame")` for more info
+Run `revdepcheck::revdep_details(, "future.batchtools")` for more info
 
 ## In both
 
-*   checking Rd files ... NOTE
+*   checking for non-standard things in the check directory ... NOTE
      ```
-     checkRd: (-1) csv_to_disk.frame.Rd:56: Lost braces; missing escapes or markup?
-         56 | strings, and you are encouraged to use {fasttime} to convert the strings to
-            |                                        ^
-     checkRd: (-1) purrr_as_mapper.Rd:10: Lost braces; missing escapes or markup?
-         10 | \item{.f}{a normal function or purrr syntax function i.e. `~{ ...code...}`}
-            |                                                             ^
-     ```
-
-# EFAtools (0.6.1)
-
-* GitHub: <https://github.com/mdsteiner/EFAtools>
-* Email: <mailto:markus.d.steiner@gmail.com>
-* GitHub mirror: <https://github.com/cran/EFAtools>
-
-Run `revdepcheck::revdep_details(, "EFAtools")` for more info
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-     ```
-     Namespace in Imports field not imported from: ‘progress’
-       All declared Imports should be used.
-     ```
-
-# fabletools (0.6.1)
-
-* GitHub: <https://github.com/tidyverts/fabletools>
-* Email: <mailto:mail@mitchelloharawild.com>
-* GitHub mirror: <https://github.com/cran/fabletools>
-
-Run `revdepcheck::revdep_details(, "fabletools")` for more info
-
-## In both
-
-*   checking examples ... ERROR
-     ```
-     ...
-      2 Adelaide       South Australia    Holiday  157.   27.1 
-      3 Adelaide       South Australia    Other     56.6  17.3 
-      4 Adelaide       South Australia    Visiting 205.   32.5 
-      5 Adelaide Hills South Australia    Business   2.66  4.30
-      6 Adelaide Hills South Australia    Holiday   10.5   6.37
-      7 Adelaide Hills South Australia    Other      1.40  1.65
-      8 Adelaide Hills South Australia    Visiting  14.2  10.7 
-      9 Alice Springs  Northern Territory Business  14.6   7.20
-     10 Alice Springs  Northern Territory Holiday   31.9  18.1 
-     # ℹ 294 more rows
-     > 
-     > # Search and use useful features with `feature_set()`. 
-     > 
-     > ## Don't show: 
-     > if (requireNamespace("feasts", quietly = TRUE)) withAutoprint({ # examplesIf
-     + ## End(Don't show)
-     + library(feasts)
-     + ## Don't show: 
-     + }) # examplesIf
-     > ## End(Don't show)
-     > tourism %>% 
-     +   features(Trips, features = feature_set(tags = "autocorrelation"))
-     Error in .l[[1]] : subscript out of bounds
-     Calls: %>% ... features.tbl_ts -> features_impl -> map -> lapply -> FUN -> transpose
-     Execution halted
-     ```
-
-# FracFixR (1.0.0)
-
-* Email: <mailto:alice.cleynen@cnrs.fr>
-* GitHub mirror: <https://github.com/cran/FracFixR>
-
-Run `revdepcheck::revdep_details(, "FracFixR")` for more info
-
-## In both
-
-*   checking re-building of vignette outputs ... ERROR
-     ```
-     ...
-          ▆
-       1. ├─FracFixR::FracFixR(MatrixCounts = counts, Annotation = annotation)
-       2. │ └─future::plan(...)
-       3. │   └─future (local) plan_set(...)
-       4. │     └─future:::plan_init(stack[[1]], debug = debug)
-       5. │       └─future:::makeFutureBackend(evaluator, debug = debug)
-       6. │         └─base::do.call(factory, args = args, envir = envir)
-       7. └─future (local) `<fn>`(workers = 255)
-       8.   └─future::ClusterFutureBackend(...)
-       9.     └─clusterRegistry$startCluster(...)
-      10.       └─future (local) makeCluster(workers, ...)
-      11.         ├─base::do.call(makeClusterPSOCK, args = args, quote = TRUE)
-      12.         └─parallelly (local) `<fn>`(base::quote(255L), rscript_libs = base::quote(`<chr>`))
-      13.           └─parallelly:::checkNumberOfLocalWorkers(workers)
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     
-     Error: processing vignette 'FracFixR-intro.Rmd' failed with diagnostics:
-     Attempting to set up 255 localhost parallel workers with only 5 CPU cores available for this R process (per 'N/A'), which could result in a 5100% load. The hard limit is set to 300%. Overusing the CPUs has negative impact on the current R process, but also on all other processes of yours and others running on the same machine. See help("parallelly.maxWorkers.localhost", package = "parallelly") for further explanations and how to override the hard limit that triggered this error. By the way, was parallel::detectCores() used, because the number of workers (255) equals detectCores() - 1? If so, please use parallelly::availableCores() instead
-     --- failed re-building ‘FracFixR-intro.Rmd’
-     
-     SUMMARY: processing the following file failed:
-       ‘FracFixR-intro.Rmd’
-     
-     Error: Vignette re-building failed.
-     Execution halted
+     Found the following files/directories:
+       ‘.future-set-during-startup’
      ```
 
 # hero (0.6)
@@ -241,6 +117,36 @@ Run `revdepcheck::revdep_details(, "hero")` for more info
 
 ## In both
 
+*   checking dependencies in R code ... NOTE
+     ```
+     ...
+     localhost::pid275307.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     localhost::pid275307: PSM3 can't open nic unit: 0 (err=23)
+     localhost::pid275307.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
+     localhost::pid275307.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     --------------------------------------------------------------------------
+     No OpenFabrics connection schemes reported that they were able to be
+     used on a specific port.  As such, the openib BTL (OpenFabrics
+     support) will be disabled for this port.
+     
+       Local host:           dev3
+       Local device:         mlx5_0
+       Local port:           1
+       CPCs attempted:       rdmacm, udcm
+     --------------------------------------------------------------------------
+     localhost::pid275307: PSM3 can't open nic unit: 0 (err=23)
+     localhost::pid275307.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
+     localhost::pid275307.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     --------------------------------------------------------------------------
+     Open MPI failed an OFI Libfabric library call (fi_endpoint).  This is highly
+     unusual; your job may behave unpredictably (and/or abort) after this.
+     
+       Local host: dev3
+       Location: mtl_ofi_component.c:513
+       Error: Invalid argument (22)
+     --------------------------------------------------------------------------
+     ```
+
 *   checking Rd files ... NOTE
      ```
      checkRd: (-1) hero.Rd:67-68: Lost braces
@@ -251,40 +157,10 @@ Run `revdepcheck::revdep_details(, "hero")` for more info
             |     ^
      ```
 
-# InPAS (2.18.1)
-
-* Email: <mailto:jou@morgridge.org>
-
-Run `revdepcheck::revdep_details(, "InPAS")` for more info
-
-## In both
-
-*   checking dependencies in R code ... NOTE
+*   checking for detritus in the temp directory ... NOTE
      ```
-     There are ::: calls to the package's namespace in its code. A package
-       almost never needs to use ::: for its own objects:
-       ‘adjust_distalCPs’ ‘adjust_proximalCPs’ ‘adjust_proximalCPsByNBC’
-       ‘adjust_proximalCPsByPWM’ ‘calculate_mse’ ‘find_valleyBySpline’
-       ‘get_PAscore’ ‘get_PAscore2’ ‘remove_convergentUTR3s’
-       ‘search_distalCPs’ ‘search_proximalCPs’
-     ```
-
-*   checking Rd metadata ... NOTE
-     ```
-     Invalid package aliases in Rd file 'InPAS.Rd':
-       ‘-package’
-     ```
-
-*   checking Rd \usage sections ... NOTE
-     ```
-     Documented arguments not in \usage in Rd file 'get_UTR3TotalCov.Rd':
-       ‘gcCompensationensation’
-     
-     Functions with \usage entries need to have the appropriate \alias
-     entries, and all their arguments documented.
-     The \usage entries must correspond to syntactically valid R code.
-     See chapter ‘Writing R documentation files’ in the ‘Writing R
-     Extensions’ manual.
+     Found the following files/directories:
+       ‘ompi.dev3.34002’
      ```
 
 # ivmte (1.4.0)
@@ -323,47 +199,7 @@ Run `revdepcheck::revdep_details(, "kappaGold")` for more info
          ‘kappa_inference.R’
      ```
 
-# lavDiag (0.1.0)
-
-* GitHub: <https://github.com/reckak/lavDiag>
-* Email: <mailto:reckak@mail.muni.cz>
-* GitHub mirror: <https://github.com/cran/lavDiag>
-
-Run `revdepcheck::revdep_details(, "lavDiag")` for more info
-
-## In both
-
-*   checking tests ...
-     ```
-     ...
-         6. │     └─furrr:::furrr_template(...)
-         7. │       ├─future::nbrOfWorkers()
-         8. │       └─future:::nbrOfWorkers.NULL()
-         9. │         └─future::plan("backend")
-        10. │           └─future:::plan_init(strategy, debug = debug)
-        11. │             └─future:::makeFutureBackend(evaluator, debug = debug)
-        12. │               └─base::do.call(factory, args = args, envir = envir)
-        13. └─future (local) `<fn>`(workers = 255L)
-        14.   └─future::ClusterFutureBackend(...)
-        15.     └─clusterRegistry$startCluster(...)
-        16.       └─future (local) makeCluster(workers, ...)
-        17.         ├─base::do.call(makeClusterPSOCK, args = args, quote = TRUE)
-        18.         └─parallelly (local) `<fn>`(base::quote(255L), rscript_libs = base::quote(`<chr>`))
-        19.           └─parallelly:::checkNumberOfLocalWorkers(workers)
-       ── Error ('test-prepare.R:12:3'): prepare merges branches for mixed model ──────
-       Error in `prepare(fit, length.out = 15)`: Neither continuous nor ordinal branch succeeded - check model/functions.
-       Backtrace:
-           ▆
-        1. └─lavDiag::prepare(fit, length.out = 15) at test-prepare.R:12:3
-        2.   └─rlang::abort("Neither continuous nor ordinal branch succeeded - check model/functions.")
-       
-       [ FAIL 3 | WARN 25 | SKIP 1 | PASS 28 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-# MAI (1.16.0)
+# MAI (1.18.0)
 
 * GitHub: <https://github.com/KechrisLab/MAI>
 * Email: <mailto:Jonathan.Dekermanjian@CUAnschutz.edu>
@@ -379,42 +215,74 @@ Run `revdepcheck::revdep_details(, "MAI")` for more info
      is not mentioned in the DESCRIPTION file.
      ```
 
-# mikropml (1.7.0)
+# mlr3resampling (2026.9.24)
 
-* GitHub: <https://github.com/SchlossLab/mikropml>
-* Email: <mailto:sovacool@umich.edu>
-* GitHub mirror: <https://github.com/cran/mikropml>
+* GitHub: <https://github.com/tdhock/mlr3resampling>
+* Email: <mailto:toby.hocking@r-project.org>
+* GitHub mirror: <https://github.com/cran/mlr3resampling>
 
-Run `revdepcheck::revdep_details(, "mikropml")` for more info
+Run `revdepcheck::revdep_details(, "mlr3resampling")` for more info
 
 ## In both
 
 *   checking dependencies in R code ... NOTE
      ```
-     Namespace in Imports field not imported from: ‘methods’
-       All declared Imports should be used.
+     ...
+     localhost::pid596872.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     localhost::pid596872: PSM3 can't open nic unit: 0 (err=23)
+     localhost::pid596872.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
+     localhost::pid596872.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     --------------------------------------------------------------------------
+     No OpenFabrics connection schemes reported that they were able to be
+     used on a specific port.  As such, the openib BTL (OpenFabrics
+     support) will be disabled for this port.
+     
+       Local host:           dev3
+       Local device:         mlx5_0
+       Local port:           1
+       CPCs attempted:       rdmacm, udcm
+     --------------------------------------------------------------------------
+     localhost::pid596872: PSM3 can't open nic unit: 0 (err=23)
+     localhost::pid596872.R: Unable to create send CQ of size 5080 on mlx5_0: Cannot allocate memory
+     localhost::pid596872.R: Unable to initialize verbs NIC /sys/class/infiniband/mlx5_0 (unit 0:0)
+     --------------------------------------------------------------------------
+     Open MPI failed an OFI Libfabric library call (fi_endpoint).  This is highly
+     unusual; your job may behave unpredictably (and/or abort) after this.
+     
+       Local host: dev3
+       Location: mtl_ofi_component.c:513
+       Error: Invalid argument (22)
+     --------------------------------------------------------------------------
      ```
 
-# nixtlar (0.6.2)
+# mlr3summary (0.1.2)
 
-* GitHub: <https://github.com/Nixtla/nixtlar>
-* Email: <mailto:mariana@nixtla.io>
-* GitHub mirror: <https://github.com/cran/nixtlar>
+* GitHub: <https://github.com/mlr-org/mlr3summary>
+* Email: <mailto:dandls.datascience@gmail.com>
+* GitHub mirror: <https://github.com/cran/mlr3summary>
 
-Run `revdepcheck::revdep_details(, "nixtlar")` for more info
+Run `revdepcheck::revdep_details(, "mlr3summary")` for more info
 
 ## In both
 
-*   checking DESCRIPTION meta-information ... NOTE
+*   checking Rd cross-references ... NOTE
      ```
-       Missing dependency on R >= 4.1.0 because package code uses the pipe
-       |> or function shorthand \(...) syntax added in R 4.1.0.
-       File(s) using such syntax:
-         ‘get_model_params.R’ ‘level_from_quantiles.R’ ‘make_request.R’
-         ‘nixtla_client_cross_validation.R’ ‘nixtla_client_detect_anomalies.R’
-         ‘nixtla_client_forecast.R’ ‘nixtla_client_historic.R’
-         ‘nixtla_client_plot.R’ ‘nixtla_validate_api_key.R’
-         ‘validate_exogenous.R’
+     Unknown package ‘fastshap’ in Rd xrefs
+     ```
+
+# nestedcv (0.9.0)
+
+* GitHub: <https://github.com/myles-lewis/nestedcv>
+* Email: <mailto:myles.lewis@qmul.ac.uk>
+* GitHub mirror: <https://github.com/cran/nestedcv>
+
+Run `revdepcheck::revdep_details(, "nestedcv")` for more info
+
+## In both
+
+*   checking Rd cross-references ... NOTE
+     ```
+     Unknown package ‘CORElearn’ in Rd xrefs
      ```
 
 # OutSeekR (1.1.0)
@@ -433,7 +301,7 @@ Run `revdepcheck::revdep_details(, "OutSeekR")` for more info
        All declared Imports should be used.
      ```
 
-# PAMpal (1.4.4)
+# PAMpal (1.6.1)
 
 * Email: <mailto:taiki.sakai@noaa.gov>
 * GitHub mirror: <https://github.com/cran/PAMpal>
@@ -446,10 +314,10 @@ Run `revdepcheck::revdep_details(, "PAMpal")` for more info
      ```
      Found the following significant warnings:
        Warning: no DISPLAY variable so Tk is not available
-     See ‘/scratch/henrik/revdep/future.apply/checks/PAMpal/new/PAMpal.Rcheck/00install.out’ for details.
+     See ‘/scratch/hb/revdepcheck/future.apply/checks/PAMpal/new/PAMpal.Rcheck/00install.out’ for details.
      ```
 
-# PAMscapes (0.15.0)
+# PAMscapes (0.17.2)
 
 * Email: <mailto:taiki.sakai@noaa.gov>
 * GitHub mirror: <https://github.com/cran/PAMscapes>
@@ -462,10 +330,10 @@ Run `revdepcheck::revdep_details(, "PAMscapes")` for more info
      ```
      Found the following significant warnings:
        Warning: no DISPLAY variable so Tk is not available
-     See ‘/scratch/henrik/revdep/future.apply/checks/PAMscapes/new/PAMscapes.Rcheck/00install.out’ for details.
+     See ‘/scratch/hb/revdepcheck/future.apply/checks/PAMscapes/new/PAMscapes.Rcheck/00install.out’ for details.
      ```
 
-# pavo (2.9.0)
+# pavo (2.10.0)
 
 * GitHub: <https://github.com/rmaia/pavo>
 * Email: <mailto:thomas.white026@gmail.com>
@@ -479,24 +347,7 @@ Run `revdepcheck::revdep_details(, "pavo")` for more info
      ```
      Found the following significant warnings:
        Warning: no DISPLAY variable so Tk is not available
-     See ‘/scratch/henrik/revdep/future.apply/checks/pavo/new/pavo.Rcheck/00install.out’ for details.
-     ```
-
-# pgxRpi (1.6.0)
-
-* GitHub: <https://github.com/progenetix/pgxRpi>
-* Email: <mailto:hangjia.zhao@uzh.ch>
-
-Run `revdepcheck::revdep_details(, "pgxRpi")` for more info
-
-## In both
-
-*   checking R code for possible problems ... NOTE
-     ```
-     pgxSegprocess: no visible binding for global variable
-       ‘followup_state_id’
-     Undefined global functions or variables:
-       followup_state_id
+     See ‘/scratch/hb/revdepcheck/future.apply/checks/pavo/new/pavo.Rcheck/00install.out’ for details.
      ```
 
 # powRICLPM (0.2.1)
@@ -533,52 +384,13 @@ Run `revdepcheck::revdep_details(, "qape")` for more info
             |                                                                            ^
      ```
 
-# QDNAseq (1.46.0)
+# rtemis (1.2.7)
 
-* GitHub: <https://github.com/ccagc/QDNAseq>
-* Email: <mailto:d.sie@vumc.nl>
+* GitHub: <https://github.com/rtemis-org/rtemis>
+* Email: <mailto:gennatas@gmail.com>
+* GitHub mirror: <https://github.com/cran/rtemis>
 
-Run `revdepcheck::revdep_details(, "QDNAseq")` for more info
-
-## In both
-
-*   checking re-building of vignette outputs ... WARNING
-     ```
-     ...
-     Total time:0minutes
-     
-     Warning in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  :
-       texi2dvi script/program not available, using emulation
-     Error: processing vignette 'QDNAseq.Rnw' failed with diagnostics:
-     unable to run pdflatex on 'QDNAseq.tex'
-     LaTeX errors:
-     ! LaTeX Error: File `nowidow.sty' not found.
-     
-     Type X to quit or <RETURN> to proceed,
-     or enter new name. (Default extension: sty)
-     
-     ! Emergency stop.
-     <read *> 
-              
-     l.197 \RequirePackage
-                          {parnotes}^^M
-     !  ==> Fatal error occurred, no output PDF file produced!
-     --- failed re-building ‘QDNAseq.Rnw’
-     
-     SUMMARY: processing the following file failed:
-       ‘QDNAseq.Rnw’
-     
-     Error: Vignette re-building failed.
-     Execution halted
-     ```
-
-# receptiviti (0.2.1)
-
-* GitHub: <https://github.com/Receptiviti/receptiviti-r>
-* Email: <mailto:kenglish@receptiviti.com>
-* GitHub mirror: <https://github.com/cran/receptiviti>
-
-Run `revdepcheck::revdep_details(, "receptiviti")` for more info
+Run `revdepcheck::revdep_details(, "rtemis")` for more info
 
 ## In both
 
@@ -586,52 +398,69 @@ Run `revdepcheck::revdep_details(, "receptiviti")` for more info
      ```
      ...
        
+       2026-10-16 01:03:12 [0m[1;38;2;15;106;102m✓[0m Done in 0.43 seconds.[0m [train]
+       [ FAIL 1 | WARN 4 | SKIP 4 | PASS 356 ]
+       
        ══ Skipped tests (4) ═══════════════════════════════════════════════════════════
-       • no API key (4): 'test-receptiviti.R:78:1',
-         'test-receptiviti_frameworks.R:1:1', 'test-receptiviti_norming.R:12:1',
-         'test-receptiviti_status.R:13:1'
+       • For local testing only; requires CSV file (3): 'test_ClusterConfig.R:19:3',
+         'test_DecomposeConfig.R:19:3', 'test_SuperConfig.R:48:3'
+       • empty test (1):
        
        ══ Failed tests ════════════════════════════════════════════════════════════════
-       ── Error ('test-receptiviti.R:9:3'): invalid inputs are caught ─────────────────
-       Error: Invalid header received from client.
-       
+       ── Error ('test_Clustering.R:96:3'): cluster_DBSCAN() succeeds ─────────────────
+       Error: approx must be a single, finite, nonnegative number.
        Backtrace:
            ▆
-        1. ├─testthat::expect_error(...) at test-receptiviti.R:9:3
-        2. │ └─testthat:::expect_condition_matching_(...)
-        3. │   └─testthat:::quasi_capture(...)
-        4. │     ├─testthat (local) .capture(...)
-        5. │     │ └─base::withCallingHandlers(...)
-        6. │     └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-        7. └─receptiviti::receptiviti(...)
-        8.   └─receptiviti:::manage_request(...)
+        1. └─rtemis::cluster(...) at test_Clustering.R:96:3
+        2.   └─rtemis:::cluster_(config = config, x = x, verbosity = verbosity) at rtemis/R/cluster.R:86:3
+        3.     ├─S7::S7_dispatch() at rtemis/R/00_init.R:268:5
+        4.     └─rtemis (local) `method(cluster_, rtemis::DBSCANConfig)`(...)
+        5.       └─dbscan::dbscan(...) at rtemis/R/cluster_DBSCAN.R:22:3
+        6.         └─dbscan:::.validate_nonnegative_scalar(extra$approx %||% 0, "approx")
        
-       [ FAIL 1 | WARN 0 | SKIP 4 | PASS 5 ]
+       [ FAIL 1 | WARN 4 | SKIP 4 | PASS 356 ]
        Error:
        ! Test failures.
        Execution halted
      ```
 
-# rsi (0.3.2)
+# Seqtometry (1.0.1)
 
-* GitHub: <https://github.com/Permian-Global-Research/rsi>
-* Email: <mailto:mike.mahoney.218@gmail.com>
-* GitHub mirror: <https://github.com/cran/rsi>
+* GitHub: <https://github.com/HawigerLab/Seqtometry>
+* Email: <mailto:robert.kousnetsov@health.slu.edu>
 
-Run `revdepcheck::revdep_details(, "rsi")` for more info
+Run `revdepcheck::revdep_details(, "Seqtometry")` for more info
 
 ## In both
 
-*   checking DESCRIPTION meta-information ... NOTE
+*   checking examples ... WARNING
      ```
-       Missing dependency on R >= 4.1.0 because package code uses the pipe
-       |> or function shorthand \(...) syntax added in R 4.1.0.
-       File(s) using such syntax:
-         ‘calculate_indices.Rd’ ‘get_stac_data.R’ ‘get_stac_data.Rd’
-         ‘landsat_mask_function.Rd’
+     Found the following significant warnings:
+     
+       Warning in .local(x, ...) : 'quickPerCellQC' is deprecated.
+       Warning in .local(x, ...) : 'normalizeCounts' is deprecated.
+       Warning in .local(x, ...) : 'quickPerCellQC' is deprecated.
+       Warning in .local(x, ...) : 'normalizeCounts' is deprecated.
+     Deprecated functions may be defunct as soon as of the next release of
+     R.
+     See ?Deprecated.
      ```
 
-# signeR (2.12.0)
+*   checking dependencies in R code ... NOTE
+     ```
+     Namespaces in Imports field not imported from:
+       ‘DelayedMatrixStats’ ‘sparseMatrixStats’
+       All declared Imports should be used.
+     ```
+
+*   checking R code for possible problems ... NOTE
+     ```
+     score: warning in assert_list(signatures, type = "character"): partial
+       argument match of 'type' to 'types'
+       (/scratch/hb/revdepcheck/future.apply/checks/Seqtometry/new/Seqtometry.Rcheck/00_pkg_src/Seqtometry/R/score.R:58)
+     ```
+
+# signeR (2.14.0)
 
 * GitHub: <https://github.com/TojalLab/signeR>
 * Email: <mailto:renan.valieris@accamargo.org.br>
@@ -640,35 +469,42 @@ Run `revdepcheck::revdep_details(, "signeR")` for more info
 
 ## In both
 
+*   checking whether package ‘signeR’ can be installed ... NOTE
+     ```
+     Found the following notes/warnings:
+       SystemRequirements specified C++14: support has been removed
+     See ‘/scratch/hb/revdepcheck/future.apply/checks/signeR/new/signeR.Rcheck/00install.out’ for details.
+     ```
+
 *   checking C++ specification ... NOTE
      ```
-       Specified C++14: please drop specification unless essential
+       Obsolete C++14 standard request will be ignored
      ```
 
 *   checking R code for possible problems ... NOTE
      ```
      ...
-       ‘Samples’
-     ExposureClassify,ANY-character: no visible binding for global variable
-       ‘Col’
-     ExposureClassify,ANY-character: no visible binding for global variable
-       ‘Frequency’
-     ExposureClassify,ANY-character: no visible binding for global variable
-       ‘Row’
      ExposureClassifyCV,ANY-character: no visible binding for global
        variable ‘Col’
+       (/scratch/hb/revdepcheck/future.apply/checks/signeR/new/signeR.Rcheck/00_pkg_src/signeR/R/SignExp_learning.R:367-371)
      ExposureClassifyCV,ANY-character: no visible binding for global
        variable ‘Frequency’
+       (/scratch/hb/revdepcheck/future.apply/checks/signeR/new/signeR.Rcheck/00_pkg_src/signeR/R/SignExp_learning.R:367-371)
      ExposureClassifyCV,ANY-character: no visible binding for global
        variable ‘Row’
+       (/scratch/hb/revdepcheck/future.apply/checks/signeR/new/signeR.Rcheck/00_pkg_src/signeR/R/SignExp_learning.R:367-371)
      ExposureCorrelation,SignExp-numeric: no visible binding for global
        variable ‘Feature’
+       (/scratch/hb/revdepcheck/future.apply/checks/signeR/new/signeR.Rcheck/00_pkg_src/signeR/R/SignExp_tests.R:569-575)
      ExposureCorrelation,SignExp-numeric: no visible binding for global
        variable ‘exposure’
+       (/scratch/hb/revdepcheck/future.apply/checks/signeR/new/signeR.Rcheck/00_pkg_src/signeR/R/SignExp_tests.R:569-575)
      ExposureCorrelation,matrix-numeric: no visible binding for global
        variable ‘Feature’
+       (/scratch/hb/revdepcheck/future.apply/checks/signeR/new/signeR.Rcheck/00_pkg_src/signeR/R/SignExp_tests.R:461-467)
      ExposureCorrelation,matrix-numeric: no visible binding for global
        variable ‘exposure’
+       (/scratch/hb/revdepcheck/future.apply/checks/signeR/new/signeR.Rcheck/00_pkg_src/signeR/R/SignExp_tests.R:461-467)
      Undefined global functions or variables:
        . Col Feature Frequency Reference_Allele Row Samples Signatures
        Tumor_Seq_Allele1 Tumor_Seq_Allele2 Variant_Type conf.high conf.low
@@ -688,6 +524,12 @@ Run `revdepcheck::revdep_details(, "signeR")` for more info
      prepare_Rd: tcga_tumors.Rd:21-23: Dropping empty section \source
      prepare_Rd: tcga_tumors.Rd:24-26: Dropping empty section \references
      prepare_Rd: tcga_tumors.Rd:27-28: Dropping empty section \examples
+     ```
+
+*   checking for non-standard things in the check directory ... NOTE
+     ```
+     Found the following files/directories:
+       ‘tmp.pdf’
      ```
 
 # solitude (1.1.3)
@@ -761,64 +603,7 @@ Run `revdepcheck::revdep_details(, "stppSim")` for more info
      ```
      Found the following significant warnings:
        Warning: no DISPLAY variable so Tk is not available
-     See ‘/scratch/henrik/revdep/future.apply/checks/stppSim/new/stppSim.Rcheck/00install.out’ for details.
-     ```
-
-# tramvs (0.0-8)
-
-* Email: <mailto:lucasheinrich.kook@gmail.com>
-* GitHub mirror: <https://github.com/cran/tramvs>
-
-Run `revdepcheck::revdep_details(, "tramvs")` for more info
-
-## In both
-
-*   checking re-building of vignette outputs ... WARNING
-     ```
-     ...
-       ...
-     --- re-building ‘tramvs.Rnw’ using knitr
-     Warning in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  :
-       texi2dvi script/program not available, using emulation
-     Error: processing vignette 'tramvs.Rnw' failed with diagnostics:
-     unable to run pdflatex on 'tramvs.tex'
-     LaTeX errors:
-     ! LaTeX Error: File `wrapfig.sty' not found.
-     
-     Type X to quit or <RETURN> to proceed,
-     or enter new name. (Default extension: sty)
-     
-     ! Emergency stop.
-     <read *> 
-              
-     l.68 \usepackage
-                     {float}^^M
-     !  ==> Fatal error occurred, no output PDF file produced!
-     --- failed re-building ‘tramvs.Rnw’
-     
-     SUMMARY: processing the following file failed:
-       ‘tramvs.Rnw’
-     
-     Error: Vignette re-building failed.
-     Execution halted
-     ```
-
-# tsgarch (1.0.3)
-
-* GitHub: <https://github.com/tsmodels/tsgarch>
-* Email: <mailto:alexios@4dscape.com>
-* GitHub mirror: <https://github.com/cran/tsgarch>
-
-Run `revdepcheck::revdep_details(, "tsgarch")` for more info
-
-## In both
-
-*   checking DESCRIPTION meta-information ... NOTE
-     ```
-       Missing dependency on R >= 4.1.0 because package code uses the pipe
-       |> or function shorthand \(...) syntax added in R 4.1.0.
-       File(s) using such syntax:
-         ‘benchmark.R’ ‘print.R’
+     See ‘/scratch/hb/revdepcheck/future.apply/checks/stppSim/new/stppSim.Rcheck/00install.out’ for details.
      ```
 
 # txshift (0.3.8)

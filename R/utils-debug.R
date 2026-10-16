@@ -13,9 +13,6 @@ debug_indent <- local({
   }
 })
 
-if (!exists(".debug", inherits = FALSE)) .debug <- new.env(parent = emptyenv())
-if (!"stack" %in% names(".debug")) .debug$stack <- list()
-
 mdebug_push <- function(...) {
   msg <- mdebug(...)
   .debug$stack <- c(.debug$stack, msg)
@@ -37,13 +34,6 @@ mdebug_pop <- function(...) {
   }
   .debug$stack <- .debug$stack[-n]
   if (length(msg) == 0 || !is.na(msg)) mdebug(msg)
-}
-
-mdebugf_pop <- function(...) {
-  n <- length(.debug$stack)
-  msg <- .debug$stack[n]
-  .debug$stack <- .debug$stack[-n]
-  mdebug(sprintf("%s done", msg))
 }
 
 mdebug <- function(..., prefix = now()) {

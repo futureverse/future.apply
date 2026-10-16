@@ -56,7 +56,10 @@
 #'        If `NULL`, then argument `future.scheduling` is used.
 #' 
 #' @param future.label If a character string, then each future is assigned
-#'        a label `sprintf(future.label, chunk_idx)`.  If TRUE, then the
+#'        a label `sprintf(future.label, chunk_idx)`.  If the string has no
+#'        format specifier, then `-%d` is appended, e.g.
+#'        `future.label = "my-label"` is the same as
+#'        `future.label = "my-label-%d"`.  If TRUE, then the
 #'        same as `future.label = "future_lapply-%d"`.  If FALSE, no labels
 #'        are assigned.
 #'
@@ -193,7 +196,24 @@ future_lapply <- local({
   function(X, FUN, ..., future.envir = parent.frame(), future.stdout = TRUE, future.conditions = "condition", future.globals = TRUE, future.packages = NULL, future.seed = FALSE, future.scheduling = 1.0, future.chunk.size = NULL, future.label = "future_lapply-%d") {
     fcn_name <- "future_lapply"
     args_name <- "X"
-  
+
+    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    ## Support %globals%, %packages%, %seed%, ...
+    ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    ## This must be done here, before choosing the future-expression
+    ## template, in order to get correct RNG seeds
+    opts <- getOption("future.disposable", NULL)
+    if (length(opts) > 0) {
+      ## Override future.* arguments per 'future.disposable' option
+      for (name in names(opts)) {
+        var <- sprintf("future.%s", name)
+        assign(var, opts[[name]], envir = environment(), inherits = FALSE)
+      }
+      if (!identical(attr(opts, "dispose"), FALSE)) {
+        options(future.disposable = NULL)
+      }
+    }
+
     ## Coerce to as.list()?
     if (!is.vector(X) || is.object(X)) X <- as.list(X)
     

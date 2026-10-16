@@ -8,11 +8,23 @@ home:
     href: https://www.futureverse.org/
   - text: Futureverse User Forum
     href: https://github.com/futureverse/future/discussions
+  sidebar:
+    structure: [links, license, futureverse_community, citation, authors, dev]
+    components:
+      futureverse_community:
+        title: Community
+        text: |
+          [Contributing guide](https://www.futureverse.org/contributing.html)
 
 navbar:
   structure:
+    left: [intro, reference, articles, news]
     right: [search, futureverse, pkgs, cran, github, lightswitch]
   components:
+
+    news:
+      text: News
+      href: news/index.html
     futureverse:
       icon: fas fa-home
       href: https://www.futureverse.org/
@@ -43,6 +55,8 @@ navbar:
         href: https://listenv.futureverse.org
       - text: parallelly 
         href: https://parallelly.futureverse.org
+      - text: progressify 
+        href: https://progressify.futureverse.org
       - text: progressr 
         href: https://progressr.futureverse.org
       - text: future.p2p (experimental)
@@ -51,6 +65,8 @@ navbar:
         href: https://future.tools.futureverse.org
       - text: marshal (experimental)
         href: https://marshal.futureverse.org
+      - text: rw (experimental)
+        href: https://rw.futureverse.org
     cran:
       icon: fab fa-r-project
       href: https://cloud.r-project.org/package=future.apply

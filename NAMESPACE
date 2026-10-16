@@ -17,25 +17,33 @@ export(future_replicate)
 export(future_sapply)
 export(future_tapply)
 export(future_vapply)
-importFrom(future,Future)
-importFrom(future,FutureError)
-importFrom(future,FutureInterruptError)
-importFrom(future,as.FutureGlobals)
-importFrom(future,cancel)
-importFrom(future,future)
-importFrom(future,getGlobalsAndPackages)
-importFrom(future,nbrOfWorkers)
-importFrom(future,resolve)
-importFrom(future,value)
-importFrom(globals,findGlobals)
-importFrom(globals,globalsByName)
+importFrom(future,
+  Future,
+  FutureError,
+  FutureInterruptError,
+  as.FutureGlobals,
+  cancel,
+  future,
+  getGlobalsAndPackages,
+  nbrOfWorkers,
+  resolve,
+  value
+)
+importFrom(globals,
+  findGlobals,
+  globalsByName
+)
 importFrom(parallel,splitIndices)
-importFrom(stats,end)
-importFrom(stats,frequency)
-importFrom(stats,kernapply)
-importFrom(stats,ts)
-importFrom(utils,capture.output)
-importFrom(utils,globalVariables)
-importFrom(utils,head)
-importFrom(utils,packageVersion)
-importFrom(utils,str)
+importFrom(stats,
+  end,
+  frequency,
+  kernapply,
+  ts
+)
+importFrom(utils,
+  capture.output,
+  globalVariables,
+  head,
+  packageVersion,
+  str
+)

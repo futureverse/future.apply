@@ -125,6 +125,74 @@ stopifnot(identical(y, y0))
 message("*** future_lapply() - special cases ... DONE")
 
 
+message("*** future_lapply() - labels ...")
+
+plan(sequential)
+
+## Labels without a format specifier
+y <- withCallingHandlers({
+  future_lapply(1:2, FUN = identity, future.label = "my-label")
+}, warning = function(w) {
+  stop("Unexpected warning: ", conditionMessage(w))
+})
+stopifnot(identical(y, list(1L, 2L)))
+
+message("*** future_lapply() - labels ... DONE")
+
+
+message("*** future_lapply() - future.chunk.size < 1 ...")
+
+y <- future_lapply(1:3, FUN = identity, future.chunk.size = 0.5, future.seed = TRUE)
+stopifnot(identical(y, list(1L, 2L, 3L)))
+
+message("*** future_lapply() - future.chunk.size < 1 ... DONE")
+
+
+message("*** future_lapply() - list with NULL elements ...")
+
+X <- list(1, NULL, 3)
+y0 <- lapply(X, FUN = identity)
+y1 <- future_lapply(X, FUN = identity)
+stopifnot(identical(y1, y0))
+
+message("*** future_lapply() - list with NULL elements ... DONE")
+
+
+message("*** future_lapply() - seed + custom ordering + debug ...")
+
+options(future.apply.debug = TRUE)
+y <- future_lapply(1:3, FUN = identity, future.seed = TRUE,
+                   future.scheduling = structure(TRUE, ordering = "random"))
+options(future.apply.debug = FALSE)
+stopifnot(identical(sort(unlist(y)), 1:3))
+
+message("*** future_lapply() - seed + custom ordering + debug ... DONE")
+
+
+message("*** future_lapply() - future.label = TRUE/FALSE ...")
+
+y0 <- lapply(1:3, FUN = identity)
+y1 <- future_lapply(1:3, FUN = identity, future.label = TRUE)
+stopifnot(identical(y1, y0))
+y2 <- future_lapply(1:3, FUN = identity, future.label = FALSE)
+stopifnot(identical(y2, y0))
+
+message("*** future_lapply() - future.label = TRUE/FALSE ... DONE")
+
+
+message("*** future_lapply() - FUN() relying on '...' as a global ...")
+
+make_FUN <- function(...) function(x) paste(x, ...)
+FUN <- make_FUN("extra")
+y0 <- lapply(1:2, FUN = FUN)
+options(future.apply.debug = TRUE)
+y1 <- future_lapply(1:2, FUN = FUN)
+options(future.apply.debug = FALSE)
+stopifnot(identical(y1, y0))
+
+message("*** future_lapply() - FUN() relying on '...' as a global ... DONE")
+
+
 message("*** future_lapply() - exceptions ...")
 
 res <- tryCatch({
