@@ -43,9 +43,6 @@
 #'
 #' @export
 future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE, future.envir = parent.frame(), future.stdout = TRUE, future.conditions = "condition", future.globals = TRUE, future.packages = NULL, future.seed = FALSE, future.scheduling = 1.0, future.chunk.size = NULL, future.label = "future_mapply-%d") {
-  fcn_name <- "future_mapply"
-  args_name <- "..."
-
   ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   ## Support %globals%, %packages%, %seed%, ...
   ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -59,14 +56,46 @@ future_mapply <- function(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES 
       options(future.disposable = NULL)
     }
   }
-  
+
   FUN <- match.fun(FUN)
 
   dots <- list(...)
-  
+
+  future_mapply_internal(
+    FUN = FUN,
+    dots = dots,
+    MoreArgs = MoreArgs,
+    SIMPLIFY = SIMPLIFY,
+    USE.NAMES = USE.NAMES,
+    future.envir = future.envir,
+    future.stdout = future.stdout,
+    future.conditions = future.conditions,
+    future.globals = future.globals,
+    future.packages = future.packages,
+    future.seed = future.seed,
+    future.scheduling = future.scheduling,
+    future.chunk.size = future.chunk.size,
+    future.label = future.label
+  )
+}
+
+
+#' Core of future_mapply()
+#'
+#' @inheritParams future_mapply
+#'
+#' @param dots The arguments to vectorize over, already resolved to a
+#' list, similarly to how [base::.mapply()]'s works.
+#'
+#' @noRd
+#' @keywords internal
+future_mapply_internal <- function(FUN, dots, MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE, future.envir, future.stdout = TRUE, future.conditions = "condition", future.globals = TRUE, future.packages = NULL, future.seed = FALSE, future.scheduling = 1.0, future.chunk.size = NULL, future.label = "future_mapply-%d") {
+  fcn_name <- "future_mapply"
+  args_name <- "..."
+
   ## Nothing to do?
   if (length(dots) == 0L) return(list())
-  
+
   ns <- lengths(dots)
   
   ## Nothing to do?
