@@ -56,6 +56,10 @@
    produce a false error on globals exceeding the maximum size
    allowed.
    
+ * `future_.mapply()` could fail with "formal argument matched by
+   multiple actual arguments" if `dots` had names also used by
+   `future_mapply()`, e.g. `"MoreArgs"`.
+   
  * `future_kernapply()` ignored `future.*` arguments, and any
    additional arguments `stats::kernapply()` might take.
 

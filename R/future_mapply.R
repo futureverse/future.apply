@@ -221,17 +221,37 @@ future_mapply_internal <- function(FUN, dots, MoreArgs = NULL, SIMPLIFY = TRUE, 
 #'
 #' @rdname future_mapply
 #' @export
-future_.mapply <- function(FUN, dots, MoreArgs, ..., future.label = "future_.mapply-%d") {
-  args <- c(
-    list(FUN = FUN),
-    dots,
-    list(
-      MoreArgs = MoreArgs,
-      SIMPLIFY = FALSE,
-      USE.NAMES = FALSE,
-      ...,
-      future.label = future.label
-    )
+future_.mapply <- function(FUN, dots, MoreArgs, future.envir = parent.frame(), future.stdout = TRUE, future.conditions = "condition", future.globals = TRUE, future.packages = NULL, future.seed = FALSE, future.scheduling = 1.0, future.chunk.size = NULL, future.label = "future_.mapply-%d") {
+  ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  ## Support %globals%, %packages%, %seed%, ...
+  ## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  opts <- getOption("future.disposable", NULL)
+  if (length(opts) > 0) {
+    for (name in names(opts)) {
+      var <- sprintf("future.%s", name)
+      assign(var, opts[[name]], envir = environment(), inherits = FALSE)
+    }
+    if (!identical(attr(opts, "dispose"), FALSE)) {
+      options(future.disposable = NULL)
+    }
+  }
+
+  FUN <- match.fun(FUN)
+
+  future_mapply_internal(
+    FUN = FUN,
+    dots = dots,
+    MoreArgs = MoreArgs,
+    SIMPLIFY = FALSE,
+    USE.NAMES = FALSE,
+    future.envir = future.envir,
+    future.stdout = future.stdout,
+    future.conditions = future.conditions,
+    future.globals = future.globals,
+    future.packages = future.packages,
+    future.seed = future.seed,
+    future.scheduling = future.scheduling,
+    future.chunk.size = future.chunk.size,
+    future.label = future.label
   )
-  do.call(future_mapply, args = args, envir = parent.frame())
 }
