@@ -64,5 +64,29 @@ if (require("datasets") && require("stats")) {
   y1_ts <- future_kernapply(x, k = k1, future.chunk.size = 1, future.label = "custom_%d", future.seed = TRUE)
   stopifnot(identical(y1_ts, y0_ts))
 
+  ## ------------------------------------------------------
+  ## Test passing non-future '...' arguments
+  ## ------------------------------------------------------
+  y0_vec <- kernapply(x_vec, k = k1, extra = 42)
+  y1_vec <- future_kernapply(x_vec, k = k1, extra = 42)
+  stopifnot(identical(y1_vec, y0_vec))
+
+  y0_ts <- kernapply(x, k = k1, extra = 42)
+  y1_ts <- future_kernapply(x, k = k1, extra = 42)
+  stopifnot(identical(y1_ts, y0_ts))
+
+  ## Unnamed argument
+  y0_vec <- kernapply(x_vec, k1, FALSE, 42)
+  y1_vec <- future_kernapply(x_vec, k1, FALSE, 42)
+  stopifnot(identical(y1_vec, y0_vec))
+
+  ## ------------------------------------------------------
+  ## Test error on unsupported object
+  ## ------------------------------------------------------
+  res <- tryCatch({
+    future_kernapply(data.frame(x = 1:3), k = k1)
+  }, error = identity)
+  stopifnot(inherits(res, "error"))
+
   plan(sequential)
 }
