@@ -39,7 +39,20 @@ future_mapply(
   future.label = "future_mapply-%d"
 )
 
-future_.mapply(FUN, dots, MoreArgs, ..., future.label = "future_.mapply-%d")
+future_.mapply(
+  FUN,
+  dots,
+  MoreArgs,
+  future.envir = parent.frame(),
+  future.stdout = TRUE,
+  future.conditions = "condition",
+  future.globals = TRUE,
+  future.packages = NULL,
+  future.seed = FALSE,
+  future.scheduling = 1,
+  future.chunk.size = NULL,
+  future.label = "future_.mapply-%d"
+)
 ```
 
 ## Arguments

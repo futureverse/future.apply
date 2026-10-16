@@ -82,6 +82,12 @@
   with argument `future.globals` as a list could produce a false error
   on globals exceeding the maximum size allowed.
 
+- [`future_.mapply()`](https://future.apply.futureverse.org/reference/future_mapply.md)
+  could fail with “formal argument matched by multiple actual arguments”
+  if `dots` had names also used by
+  [`future_mapply()`](https://future.apply.futureverse.org/reference/future_mapply.md),
+  e.g. `"MoreArgs"`.
+
 - [`future_kernapply()`](https://future.apply.futureverse.org/reference/future_kernapply.md)
   ignored `future.*` arguments, and any additional arguments
   [`stats::kernapply()`](https://rdrr.io/r/stats/kernapply.html) might

@@ -25,7 +25,7 @@ Arguments are recycled if necessary."><!-- Global site tag (gtag.js) - Google An
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9023</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2-9024</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,7 +122,20 @@ Arguments are recycled if necessary.</p>
 <span>  future.label <span class="op">=</span> <span class="st">"future_mapply-%d"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">future_.mapply</span><span class="op">(</span><span class="va">FUN</span>, <span class="va">dots</span>, <span class="va">MoreArgs</span>, <span class="va">...</span>, future.label <span class="op">=</span> <span class="st">"future_.mapply-%d"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">future_.mapply</span><span class="op">(</span></span>
+<span>  <span class="va">FUN</span>,</span>
+<span>  <span class="va">dots</span>,</span>
+<span>  <span class="va">MoreArgs</span>,</span>
+<span>  future.envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  future.stdout <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  future.conditions <span class="op">=</span> <span class="st">"condition"</span>,</span>
+<span>  future.globals <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  future.packages <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  future.seed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  future.scheduling <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  future.chunk.size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  future.label <span class="op">=</span> <span class="st">"future_.mapply-%d"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
