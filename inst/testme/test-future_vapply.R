@@ -258,32 +258,30 @@ for (strategy in supportedStrategies()) {
   stopifnot(inherits(res, "error"))
 
   message("- approximately invariant to chunk size ...")
-  if (packageVersion("future") > "1.76.0") {
-    X <- replicate(10L, rnorm(10000), simplify = FALSE)
-    FUN <- function(x) {
-      getOption("future.globals.maxSize")
-    }
-    dummy_wrapper <- future.apply:::make_future_vapply_FUN(
-      FUN, times = 1L, valid_types = "double"
-    )
-    size_wrapper <- length(serialize(dummy_wrapper, NULL))
-    size_chunk <- unclass(object.size(X)) / length(X)
-    maxSize <- 2.0 * (size_wrapper + size_chunk)
-
-    oMaxSize <- options(future.globals.maxSize = 1L)
-    res <- tryCatch({
-      future_vapply(X, FUN = FUN, FUN.VALUE = 0.0)
-    }, error = identity)
-    stopifnot(inherits(res, "error"))
-
-    options(future.globals.maxSize = maxSize)
-    for (chunk.size in c(1L, 2L, 5L)) {
-      y <- future_vapply(X, FUN = FUN, FUN.VALUE = 0.0,
-                         future.chunk.size = chunk.size)
-      stopifnot(all(y == maxSize))
-    }
-    options(oMaxSize)
+  X <- replicate(10L, rnorm(10000), simplify = FALSE)
+  FUN <- function(x) {
+    getOption("future.globals.maxSize")
   }
+  dummy_wrapper <- future.apply:::make_future_vapply_FUN(
+    FUN, times = 1L, valid_types = "double"
+  )
+  size_wrapper <- length(serialize(dummy_wrapper, NULL))
+  size_chunk <- unclass(object.size(X)) / length(X)
+  maxSize <- 2.0 * (size_wrapper + size_chunk)
+
+  oMaxSize <- options(future.globals.maxSize = 1L)
+  res <- tryCatch({
+    future_vapply(X, FUN = FUN, FUN.VALUE = 0.0)
+  }, error = identity)
+  stopifnot(inherits(res, "error"))
+
+  options(future.globals.maxSize = maxSize)
+  for (chunk.size in c(1L, 2L, 5L)) {
+    y <- future_vapply(X, FUN = FUN, FUN.VALUE = 0.0,
+                       future.chunk.size = chunk.size)
+    stopifnot(all(y == maxSize))
+  }
+  options(oMaxSize)
 
 
   plan(sequential)
