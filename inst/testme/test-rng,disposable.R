@@ -157,4 +157,36 @@ options(future.disposable = structure(list(seed = 42), dispose = TRUE))
 res <- future_mapply(identity)
 stopifnot(is.null(getOption("future.disposable")))
 
+message("- RNG misuse detection ...")
+
+plan(multisession)
+
+w <- NULL
+y <- withCallingHandlers({
+  future_lapply(1:2, FUN = function(x) runif(1))
+}, warning = function(cond) {
+  w <<- cond
+  invokeRestart("muffleWarning")
+})
+stopifnot(
+  inherits(w, "RngFutureCondition"),
+  inherits(w, "RngFutureWarning"),
+  grepl("UNRELIABLE VALUE", conditionMessage(w), fixed = TRUE)
+)
+
+oopts <- options(future.rng.onMisuse = "error")
+res <- tryCatch({
+  future_lapply(1:2, FUN = function(x) runif(1))
+}, error = identity)
+options(oopts)
+stopifnot(
+  inherits(res, "RngFutureCondition"),
+  inherits(res, "RngFutureError"),
+  grepl("UNRELIABLE VALUE", conditionMessage(res), fixed = TRUE)
+)
+
+plan(sequential)
+
+message("- RNG misuse detection ... DONE")
+
 message("*** RNG with 'seed' via future.disposable ... DONE")
