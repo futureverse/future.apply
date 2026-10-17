@@ -1,5 +1,5 @@
 Package: future.apply
-Version: 1.21.0-9000
+Version: 1.21.0-9001
 Title: Apply Function to Elements in Parallel using Futures
 Depends:
     R (>= 3.2.0),
@@ -29,4 +29,4 @@ BugReports: https://github.com/futureverse/future.apply/issues
 Language: en-US
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1
