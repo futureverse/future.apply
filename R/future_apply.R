@@ -118,9 +118,9 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
     ## Check size of global variables?
     ## Doing it here, on the matrix object, is much faster than doing it for
     ## the list elements passed to future_lapply()
-    oldMaxSize <- maxSize <- getOption("future.globals.maxSize")
-    if (is.null(maxSize) || is.finite(maxSize)) {
-      if (is.null(maxSize)) maxSize <- 500 * 1024^2
+    oldMaxSize <- getOption("future.globals.maxSize")
+    maxSize <- getOption("future.globals.maxSize", +Inf)
+    if (is.finite(maxSize)) {
       objectSize <- import_future("objectSize")
       size <- objectSize(X)
       nWorkers <- nbrOfWorkers()

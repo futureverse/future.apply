@@ -70,8 +70,8 @@ getGlobalsAndPackagesXApply <- function(FUN, args = NULL, MoreArgs = NULL, envir
       }
 
       ## Recalculate the total size?
-      maxSize <- getOption("future.globals.maxSize")
-      if (is.null(maxSize) || is.finite(maxSize)) {
+      maxSize <- getOption("future.globals.maxSize", +Inf)
+      if (is.finite(maxSize)) {
         objectSize <- import_future("objectSize")
         attr(dotdotdot, "total_size") <- objectSize(dotdotdot)
       }

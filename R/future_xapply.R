@@ -116,8 +116,7 @@ future_xapply <- local({
                      ...future.globals.maxSize <- NULL
   
     globals.maxSize <- getOption("future.globals.maxSize")
-    globals.maxSize.default <- globals.maxSize
-    if (is.null(globals.maxSize.default)) globals.maxSize.default <- 500 * 1024^2
+    globals.maxSize.default <- getOption("future.globals.maxSize", +Inf)
 
     nchunks <- length(chunks)
     if (debug) mdebugf("Number of futures (= number of chunks): %d", nchunks)
@@ -158,7 +157,7 @@ future_xapply <- local({
     ## scaling up the limit by the number of elements in the chunk.  This is
     ## a "good enough" approach.
     ## (https://github.com/futureverse/future.apply/issues/8).
-    if (nchunks > 1L) {
+    if (nchunks > 1L && is.finite(globals.maxSize.default)) {
       options(future.globals.maxSize = nchunks * globals.maxSize.default)
       if (debug) mdebugf(" - Adjusted option 'future.globals.maxSize': %.0f -> %d * %.0f = %.0f (bytes)", globals.maxSize.default, nchunks, globals.maxSize.default, getOption("future.globals.maxSize"))
       on.exit(options(future.globals.maxSize = globals.maxSize), add = TRUE)
