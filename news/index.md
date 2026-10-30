@@ -1,6 +1,17 @@
 # Changelog
 
+## Version (development version)
+
+### Bug Fixes
+
+- When option ‘future.globals.maxSize’ was unset, which is the default,
+  [`future_lapply()`](https://future.apply.futureverse.org/reference/future_lapply.md),
+  [`future_apply()`](https://future.apply.futureverse.org/reference/future_apply.md),
+  etc. fell back to a hardcoded 500 MiB limit.
+
 ## Version 1.21.0
+
+CRAN release: 2026-10-16
 
 ### Significant Changes
 

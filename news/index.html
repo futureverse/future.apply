@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">future.apply</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.0-9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,14 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.21.0" id="version-1210">Version 1.21.0<a class="anchor" aria-label="anchor" href="#version-1210"></a></h2>
+<h2 class="pkg-version" data-toc-text="development version" id="version-development-version">Version (development version)<a class="anchor" aria-label="anchor" href="#version-development-version"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-development-version">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
+<ul><li>When option ‘future.globals.maxSize’ was unset, which is the default, <code><a href="../reference/future_lapply.html">future_lapply()</a></code>, <code><a href="../reference/future_apply.html">future_apply()</a></code>, etc. fell back to a hardcoded 500 MiB limit.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.21.0" id="version-1210">Version 1.21.0<a class="anchor" aria-label="anchor" href="#version-1210"></a></h2><p class="text-muted">CRAN release: 2026-10-16</p>
 <div class="section level3">
 <h3 id="significant-changes-1-21-0">Significant Changes<a class="anchor" aria-label="anchor" href="#significant-changes-1-21-0"></a></h3>
 <ul><li><p>Memory use on parallel workers has gone down significantly in some cases for functions <code><a href="../reference/future_lapply.html">future_lapply()</a></code>, <code><a href="../reference/future_lapply.html">future_sapply()</a></code>, <code><a href="../reference/future_apply.html">future_apply()</a></code>, <code><a href="../reference/future_lapply.html">future_tapply()</a></code>, <code><a href="../reference/future_by.html">future_by()</a></code>, <code><a href="../reference/future_mapply.html">future_Filter()</a></code>, <code><a href="../reference/future_lapply.html">future_eapply()</a></code>, <code><a href="../reference/future_mapply.html">future_mapply()</a></code>, and <code><a href="../reference/future_mapply.html">future_Map()</a></code>. An outcome of this is that the performance also improves. These improvements come with <strong>future</strong> (&gt;= 1.80.0).</p></li>
