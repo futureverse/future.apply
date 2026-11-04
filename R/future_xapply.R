@@ -303,8 +303,8 @@ future_xapply <- local({
         }) ## withCallingHandlers()
       } else {
         ## value() exits early if it detects a future with an error.
-        ## In future (>= 1.40.0), non-resolved futures will be automatically
-        ## canceled if there's an error.
+        ## Non-resolved futures are automatically canceled if there's
+        ## an error.
         value(fs)
       }
     }, interrupt = function(int) {
