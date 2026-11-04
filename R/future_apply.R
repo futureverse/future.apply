@@ -121,7 +121,6 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
     oldMaxSize <- getOption("future.globals.maxSize")
     maxSize <- getOption("future.globals.maxSize", +Inf)
     if (is.finite(maxSize)) {
-      objectSize <- import_future("objectSize")
       size <- objectSize(X)
       nWorkers <- nbrOfWorkers()
       chunk_size <- size / nWorkers
@@ -130,7 +129,6 @@ future_apply <- function(X, MARGIN, FUN, ..., simplify = TRUE, future.envir = pa
       if (is.null(other_size) || is.na(other_size)) other_size <- objectSize(globals)
       if (is.numeric(other_size)) chunk_size <- chunk_size + other_size
       if (chunk_size > maxSize) {
-        asIEC <- import_future("asIEC")
         msg <- sprintf("The total size of %s (of class %s and type %s) is %s and the total size of the other arguments is %s. With %d workers, this translates to %s per worker needed for future_apply(), which exceeds the maximum allowed size of %s (option 'future.globals.maxSize').", sQuote("X"), sQuote(class(X)[1]), sQuote(typeof(X)), asIEC(size), asIEC(other_size), nWorkers, asIEC(chunk_size), asIEC(maxSize))
         if (debug) mdebug(msg)
         stop(msg)

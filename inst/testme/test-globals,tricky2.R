@@ -3,7 +3,7 @@
 #' @tags detritus-files
 #' @tags sequential multisession multicore
 
-if (packageVersion("future") > "1.49.0" && isTRUE(getOption("future.globals.keepWhere"))) {
+if (isTRUE(getOption("future.globals.keepWhere"))) {
 
   library(future.apply)
   options(future.debug = FALSE)
@@ -44,4 +44,4 @@ if (packageVersion("future") > "1.49.0" && isTRUE(getOption("future.globals.keep
     message(sprintf("- plan('%s') ... done", strategy))
   }
 
-} ## if (packageVersion("future") > ...)
+} ## if (isTRUE(getOption("future.globals.keepWhere")))
